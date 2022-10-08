@@ -1,1 +1,34 @@
-<p>login works!</p>
+<div class="wrapper">
+
+    <div class="container">
+        <h1>LOG IN</h1>
+        <p>Inicia sesion usando tu nombre de usuario y contraseña</p>
+        <div class="form" [formGroup]="this.form">
+            <p  style="display: block;"
+            *ngIf="this.form?.get('user')?.errors?.['pattern']">Correo invalido</p>
+            <p  style="display: block;"
+            *ngIf="this.form?.get('user')?.errors?.['required']">El campo no puede quedar vacio</p>
+
+            <div class="inputs" ><i class="icons icon-user"></i>
+                <input type="text" [(ngModel)]="user" id="inp-1" placeholder="user" formControlName="user">
+                        </div>
+                <p  style="display: block;"
+                        *ngIf="this.form?.get('pass')?.errors?.['pattern']">Contraseña invalida</p>
+                <p  style="display: block;"
+                        *ngIf="this.form?.get('pass')?.errors?.['required']">El campo no puede quedar vacio</p>
+            
+                <div class="inputs"><i class="icons icon-key"></i><input type="{{password}}" formControlName="pass" id="inp-2" placeholder="password" ><i class="icons icon-eye" (click)="password=='text'?password='password':password='text'"></i></div>
+        </div>
+        <div class="buttons">
+            <button type="submit" (click)="logIn()">Iniciar sesion</button>
+            <button>Olvide mi contraseña</button>
+            
+        </div>
+        <div class="options">
+            
+        </div>
+    </div>
+
+
+
+</div>
