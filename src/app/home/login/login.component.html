@@ -10,7 +10,7 @@
             *ngIf="this.form?.get('user')?.errors?.['required']">El campo no puede quedar vacio</p>
 
             <div class="inputs" ><i class="icons icon-user"></i>
-                <input type="text" [(ngModel)]="user" id="inp-1" placeholder="user" formControlName="user">
+                <input type="text"  id="inp-1" placeholder="user" formControlName="user">
                         </div>
                 <p  style="display: block;"
                         *ngIf="this.form?.get('pass')?.errors?.['pattern']">Contraseña invalida</p>

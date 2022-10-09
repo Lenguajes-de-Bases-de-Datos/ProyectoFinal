@@ -22,7 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   ],
   exports:[
-    NavbarComponent
+    NavbarComponent,
+    LoginComponent
   ]
 })
 export class HomeModule { }

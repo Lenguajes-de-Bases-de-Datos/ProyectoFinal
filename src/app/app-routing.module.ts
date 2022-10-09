@@ -5,7 +5,6 @@ import { PortalComponent } from './home/portal/portal.component';
 
 const routes: Routes = [
   {path:'portal', component:PortalComponent},
-  {path:'login', component:LoginComponent}
   
 
 ];

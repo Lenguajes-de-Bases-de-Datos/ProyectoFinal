@@ -1,6 +1,6 @@
  <div *ngIf="band else sidebar">
     <!--  -->
-    <app-navbar></app-navbar> 
+    <app-login (messageEvent)="change($event)"></app-login>
 
  </div>
  <ng-template #sidebar>
