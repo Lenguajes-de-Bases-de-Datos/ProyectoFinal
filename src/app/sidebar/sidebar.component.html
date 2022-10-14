@@ -1,5 +1,5 @@
-<div class="wrapper">
-    <nav id="sidebar" class="sidebar ">
+<!-- <div class="wrapper"> -->
+    <nav id="sidebar" class="sidebar " [ngClass]="{scrooll:band}">
          <!-- close sidebar menu -->
     <div class="dismiss">
         <i class="fas fa-arrow-left"></i>
@@ -9,9 +9,33 @@
         <h3><a href="index.html">Bootstrap 4 Template with Sidebar Menu</a></h3>
     </div>
  
-    <ul class="list-unstyled menu-elements">
-        <li class="active">
-            <a class="scroll-link" [routerLink]="['/portal']"><i class="fas fa-home"></i> Home</a>
+    <ul class="list-unstyled menu-elements" >
+
+        <li *ngFor="let option of options">
+            <a href="#{{option.id}}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button" aria-controls="otherSections">
+                <i class="fas fa-home"></i>{{option.opcion}}
+            </a>
+            <ul class="collapse list-unstyled" id="{{option.id}}">
+                <li>
+                    <a class="scroll-link" [routerLink]="['/sign-up']" routerLinkActive="active" href="">Create.</a>
+                </li>
+                <li>
+                    <a class="scroll-link" [routerLink]="['/read-users']" routerLinkActive="active" href="">Read.</a>
+                </li>
+                <li>
+                    <a class="scroll-link" [routerLink]="['/read-users']" routerLinkActive="active" href="">Update.</a>
+                </li>
+                <li>
+                    <a class="scroll-link" [routerLink]="['/read-users']" routerLinkActive="active" href="">Delete.</a>
+                </li>
+
+
+            </ul>
+        </li>
+      
+ <!-- 
+        <li class="">
+            <a class="scroll-link" [routerLink]="['/portal']" routerLinkActive="active"><i class="fas fa-home"></i> Home</a>
         </li>
         <li>
             <a class="scroll-link" href="#section-1"><i class="fas fa-cog"></i> What we do</a>
@@ -31,17 +55,17 @@
             </a>
             <ul class="collapse list-unstyled" id="otherSections">
                 <li>
-                    <a class="scroll-link" href="#section-3">Our projects</a>
+                    <a class="scroll-link" [routerLink]="['/sign-up']" href="">Sign Up</a>
                 </li>
                 <li>
-                    <a class="scroll-link" href="#section-4">We think that...</a>
+                    <a class="scroll-link" [routerLink]="['/read-users']" href="">Read users.</a>
                 </li>
             </ul>
-        </li>
+        </li> -->
     </ul>
  
-    <div class="to-top">
-        <a class="btn btn-primary btn-customized-3" href="#" role="button">
+    <div class="to-top" >
+        <a class="btn btn-primary btn-customized-3" role="button" >
             <i class="fas fa-arrow-up"></i> Top
         </a>
     </div>
@@ -68,4 +92,4 @@
  
         <!-- ... -->
     </div>
-</div>
+<!-- </div> -->

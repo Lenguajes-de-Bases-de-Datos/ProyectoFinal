@@ -4,17 +4,17 @@
         <h1>LOG IN</h1>
         <p>Inicia sesion usando tu nombre de usuario y contraseña</p>
         <div class="form" [formGroup]="this.form">
-            <p  style="display: block;"
+            <p class="feedbacks feed-2" style="display: block;"
             *ngIf="this.form?.get('user')?.errors?.['pattern']">Correo invalido</p>
-            <p  style="display: block;"
+            <p  class="feedbacks" style="display: block;"
             *ngIf="this.form?.get('user')?.errors?.['required']">El campo no puede quedar vacio</p>
 
             <div class="inputs" ><i class="icons icon-user"></i>
                 <input type="text"  id="inp-1" placeholder="user" formControlName="user">
                         </div>
-                <p  style="display: block;"
+                <p class="feedbacks feed-2" style="display: block;"
                         *ngIf="this.form?.get('pass')?.errors?.['pattern']">Contraseña invalida</p>
-                <p  style="display: block;"
+                <p class="feedbacks" style="display: block;"
                         *ngIf="this.form?.get('pass')?.errors?.['required']">El campo no puede quedar vacio</p>
             
                 <div class="inputs"><i class="icons icon-key"></i><input type="{{password}}" formControlName="pass" id="inp-2" placeholder="password" ><i class="icons icon-eye" (click)="password=='text'?password='password':password='text'"></i></div>

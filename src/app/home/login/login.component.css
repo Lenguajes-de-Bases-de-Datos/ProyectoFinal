@@ -48,7 +48,20 @@ p{
     margin-bottom: 1.5rem;
     
 }
-
+.feedbacks{
+   
+    padding: 0.2em;
+    position: relative;
+    left:55%;
+    top:5em;
+    background: pink;
+    border-radius: 2em;
+   
+}
+.feed-2{
+    left:25%;
+    
+}
 .icons{
     grid-column-start: 1;
     grid-column-end: 1;

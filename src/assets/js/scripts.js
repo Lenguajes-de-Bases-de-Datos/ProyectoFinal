@@ -57,6 +57,17 @@ function events(){
         console.log("his");
         $('.sidebar').addClass('light');
     });
+
+    $('.to-top a').on('click', function(e) {
+        e.preventDefault();
+        //if($(window).scrollTop() != 0) {
+            $('html, body,.sidebar').stop().animate({scrollTop: 0}, 150);
+            
+    
+        //}
+       
+    });
+
 }
 
 $('.btn-customized-dark').on('click', function(e) {
@@ -90,12 +101,7 @@ function scroll_to(clicked_link, nav_height) {
     }
 }
 
-$('.to-top a').on('click', function(e) {
-    e.preventDefault();
-    if($(window).scrollTop() != 0) {
-        $('html, body').stop().animate({scrollTop: 0}, 1000);
-    }
-});
+
 
 
 

@@ -1,0 +1,10 @@
+nav{
+    width: 80%;
+    float:right;
+    padding-right: 6em;
+}
+.collapse{
+    display: flex !important;
+    justify-content: flex-end;
+    
+}

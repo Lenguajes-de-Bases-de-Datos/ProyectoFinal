@@ -14,7 +14,8 @@ export class AppComponent {
   band:boolean=true;
   constructor(private request:RequestsService,private router:Router){
     let token = sessionStorage.getItem('token');
-    if(token == "null"){ this.band = true;
+    console.log("tokkk"+token);
+    if( token==null){ this.band = true;
     }else{
       
       request.verifyToken().subscribe({next:(resp:any)=>{
@@ -24,7 +25,7 @@ export class AppComponent {
       error:(err:any)=>{
         if(err.status===401){
           this.band=true;
-          sessionStorage.setItem('token',"null");
+          sessionStorage.removeItem('token');
           console.log("errrr");
           swal.fire({
             allowOutsideClick: true,
