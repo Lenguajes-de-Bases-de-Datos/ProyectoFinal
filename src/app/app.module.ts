@@ -6,6 +6,9 @@ import { HomeModule } from './home/home.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { HttpClientModule } from "@angular/common/http";
 import {ReactiveFormsModule} from '@angular/forms';
+import { SocketIoModule } from 'ngx-socket-io';
+import { FormsModule } from '@angular/forms';
+import { TemplatesModule } from './templates/templates.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +19,9 @@ import {ReactiveFormsModule} from '@angular/forms';
     AppRoutingModule,
     HomeModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SocketIoModule,
+    FormsModule
    
   ],
   providers: [],

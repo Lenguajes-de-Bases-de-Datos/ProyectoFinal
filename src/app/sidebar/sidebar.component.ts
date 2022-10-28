@@ -12,7 +12,12 @@ export class SidebarComponent implements OnInit {
     {
       opcion:"Usuarios",
       class:"",
-      ruta:"",
+      rutas:{
+        create:'/sign-up',
+        read:'/read-users',
+        update:'',
+        delete:''
+      },
       icono:"",
       id:"users"
     },
@@ -20,23 +25,47 @@ export class SidebarComponent implements OnInit {
     {
       opcion:"Categorias",
       class:"",
-      ruta:"",
+      rutas:{
+        create:'',
+        read:'',
+        update:'',
+        delete:''
+      },
       icono:"",
       id:"categories"
     },
     {
       opcion:"Proveedores",
       class:"",
-      ruta:"",
+      rutas:{
+        create:'',
+        read:'',
+        update:'',
+        delete:''
+      },
       icono:"",
       id:"providers"
     },
     {
       opcion:"Pedidos",
       class:"",
-      ruta:"",
+      rutas:{
+        create:'',
+        read:'',
+        update:'',
+        delete:''
+      },
       icono:"",
       id:"orders"
+    },
+    {
+      opcion:"Enviar notificación",
+      class:"",
+      rutas:{
+        create:'/send-msg'
+      },
+      icono:"",
+      id:"send-msg"
     },
 
   ];
@@ -49,7 +78,7 @@ export class SidebarComponent implements OnInit {
   }
   scroll(){
     this.band=true;
-    console.log("scroll");
+   
     window.scrollTo(0,0);
   }
 }

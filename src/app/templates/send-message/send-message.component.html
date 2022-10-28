@@ -1,0 +1,9 @@
+<div class="wrapper">
+    <div class="form-group shadow-textarea">
+        <label for="exampleFormControlTextarea6">Escribe el aviso a notificar</label>
+        <textarea  [(ngModel)]="payload.text" class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="Write something here..."  ></textarea>
+        <button type="button" class="btn btn-info" (click)="sendMsg()">Enviar</button>  
+        
+    </div>
+
+</div>

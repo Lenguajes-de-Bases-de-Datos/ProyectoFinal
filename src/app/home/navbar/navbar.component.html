@@ -23,7 +23,23 @@
         <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
         </li>
-        
+        <li class="nav-item dropdown" id="notification_li">
+          <span id="notification_count">{{count}}</span>
+        <a class="nav-link dropdown-toggle icon-bell-1" href="#" id="notificationLink" [ngClass]="{paused:band_paused}" role="button" data-toggle="dropdown" aria-expanded="false"></a>
+          <!-- <div id="notificationContainer" class="dropdown-menu">
+          <div id="notificationTitle" class="dropdown-item">Notifications</div>
+          <div id="notificationsBody" class="notifications dropdown-item"></div>
+          <div id="notificationFooter" class="dropdown-item"><a href="#">See All</a></div>
+          </div>  -->
+          <div class="dropdown-menu" >
+           
+              <a *ngFor="let obj of notifications,index as i" class="dropdown-item" href="#"  (click)="updateCount(i)">{{obj.text}}</a>
+           
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" (click)="logOut()">Log Out</a>
+          </div>
+          
+        </li>
         
 
         <li class="nav-item dropdown">

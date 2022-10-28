@@ -15,18 +15,18 @@
             <a href="#{{option.id}}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button" aria-controls="otherSections">
                 <i class="fas fa-home"></i>{{option.opcion}}
             </a>
-            <ul class="collapse list-unstyled" id="{{option.id}}">
+            <ul class="collapse list-unstyled" id="{{option.id}}" >
                 <li>
-                    <a class="scroll-link" [routerLink]="['/sign-up']" routerLinkActive="active" href="">Create.</a>
+                    <a class="scroll-link" [routerLink]="[option.rutas.create]" routerLinkActive="active" href="">Create.{{option.rutas.create}}</a>
                 </li>
                 <li>
-                    <a class="scroll-link" [routerLink]="['/read-users']" routerLinkActive="active" href="">Read.</a>
+                    <a class="scroll-link" [routerLink]="option.rutas.read" routerLinkActive="active" href="">Read.</a>
                 </li>
                 <li>
-                    <a class="scroll-link" [routerLink]="['/read-users']" routerLinkActive="active" href="">Update.</a>
+                    <a class="scroll-link" [routerLink]="option.rutas.update" routerLinkActive="active" href="">Update.</a>
                 </li>
                 <li>
-                    <a class="scroll-link" [routerLink]="['/read-users']" routerLinkActive="active" href="">Delete.</a>
+                    <a class="scroll-link" [routerLink]="option.rutas.delete" routerLinkActive="active" href="">Delete.</a>
                 </li>
 
 
