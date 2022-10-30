@@ -7,13 +7,16 @@
           <label for="inputEmail4">Buscar al usuario por su nombre</label>
           <input type="search" class="form-control" name="nombre_usuario" id="nombre_usuario" formControlName="user" (keyup)="detectT()" [disabled]="bandT">
         </div>
+        <div class="boton">
+          <button type="submit" (click)="buscar()">Buscar Usuario Nombre</button>
+        </div>
         <ng-template #noShow></ng-template>
   
         <div class="form-group col-md-12" *ngIf="bandID else noShow">
           <label for="inputEmail4">Buscar al usuario por su ID</label>
           <input type="number" class="form-control" name="id_usario" id="id_usuario" formControlName="id_user" (keyup)="detectID()" (click)="detectID" [disabled]="bandID">
           <div class="boton">
-            <button type="submit" (click)="buscar()">Buscar Usuario</button>
+            <button type="submit" (click)="buscar()">Buscar Usuario ID</button>
           </div>
         </div>
   

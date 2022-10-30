@@ -28,11 +28,9 @@ export class UpdateUserComponent implements OnInit {
     }else{
       this.bandID=false
     }
-    //this.nom=this.form.get('user')?.value;
   }
 
   detectID(){
-    //this.num=this.form.get('id_user')?.value;
     if(this.form.get('id_user')?.value==""){
       this.bandT=true
     }else{
@@ -41,7 +39,13 @@ export class UpdateUserComponent implements OnInit {
   }
 
   buscar(){
-    
+    if(this.form.get('user')?.value==""){
+      ///buscar por ID
+      
+    }else{
+      //buscar por nombre
+
+    }
   }
   ngOnInit(): void {
   }
