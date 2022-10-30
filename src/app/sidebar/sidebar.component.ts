@@ -15,8 +15,8 @@ export class SidebarComponent implements OnInit {
       rutas:{
         create:'/sign-up',
         read:'/read-users',
-        update:'',
-        delete:''
+        update:'/update-user',
+        delete:'/delete-user'
       },
       icono:"",
       id:"users"

@@ -18,6 +18,7 @@ import { DeleteUserComponent } from './delete-user/delete-user.component';
   ],
   imports: [
     CommonModule
-  ]
+  ],
+  exports: [DeleteUserComponent]
 })
 export class CrudUsersModule { }
