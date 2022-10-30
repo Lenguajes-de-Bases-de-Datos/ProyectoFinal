@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Options } from './options.model';
 declare const events : any;
+import jwt_decode from "jwt-decode";
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -69,7 +70,12 @@ export class SidebarComponent implements OnInit {
     },
 
   ];
-  constructor() { }
+  constructor() { try {
+    let token = sessionStorage.getItem('token') || "";
+    let resp = jwt_decode(token);
+  } catch(Error) {
+    console.log(Error);
+  }}
 
   ngOnInit(): void {
   }

@@ -9,10 +9,11 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { SocketIoModule } from 'ngx-socket-io';
 import { FormsModule } from '@angular/forms';
 import { TemplatesModule } from './templates/templates.module';
+
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent
+    SidebarComponent 
   ],
   imports: [
     BrowserModule,

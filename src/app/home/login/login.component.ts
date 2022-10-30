@@ -5,6 +5,7 @@ import{UntypedFormGroup,UntypedFormControl, Validators} from '@angular/forms';
 import swal from 'sweetalert2';
 import { User } from 'src/app/interfaces/user.model';
 import { SocketsWebService } from 'src/app/services/sockets-web.service';
+import jwt_decode from "jwt-decode";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -24,11 +25,19 @@ export class LoginComponent implements OnInit {
 
 
     });
+    try {
+      let token = sessionStorage.getItem('token') || "";
+      let resp = jwt_decode(token);
+      console.log(resp)
+    } catch(Error) {
+      console.log(Error);
+    }
   }
 
   ngOnInit(): void {
   }
   logIn():void{
+    let band = true;
     let params={
       nombre:(this.form.get('user'))?.value,
       password:(this.form.get('pass'))?.value
@@ -42,12 +51,13 @@ export class LoginComponent implements OnInit {
   //  let  param=JSON.stringify(params);
     this.requests.logIn(params).subscribe((res:any)=>{
       console.log('token '+res.msg+" datos: "+JSON.stringify(res.datos));
+      band=false;
       swal.close();
       if(res.msg!=undefined){
         sessionStorage.setItem('token',res.msg);
         let datos = JSON.stringify(res.datos);
         let user:User = JSON.parse(datos);
-        console.log("name: "+user.nombre);
+        localStorage.setItem('cuenta',datos);
       
         this.messageEvent.emit(false);
       }else{
@@ -60,6 +70,17 @@ export class LoginComponent implements OnInit {
 
       }
     });
-
+    setInterval(()=>{
+      if(swal.isVisible()&&band){
+        swal.close();
+        swal.fire({
+          allowOutsideClick: true,
+          title: "Servidor fuera de servicio...",
+          text: "Al parecer el servidor no esta respondiendo, intente mas tarde...",
+          confirmButtonText:'Entendido'
+        });
+      } 
+    },5000);
+    
   }
 }

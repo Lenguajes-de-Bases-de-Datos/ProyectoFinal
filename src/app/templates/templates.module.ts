@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SendMessageComponent } from './send-message/send-message.component';
 import { FormsModule } from '@angular/forms';
-
+import { ReactiveFormsModule } from '@angular/forms';
+export{ReactiveFormsModule } from '@angular/forms'
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +12,10 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    FormsModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
     ]
+    
 })
 export class TemplatesModule { }
