@@ -13,20 +13,22 @@ export class SidebarComponent implements OnInit {
     {
       opcion:"Usuarios",
       class:"",
-      rutas:[{
+
+      rutas:[
+       {
         ruta:'/sign-up',
         nombre:'Crear'
-      },
+       },
        { 
         ruta:'/read-users',
         nombre:'Consultar'
        } ,
        {
-        ruta:'',
+        ruta:'update-user',
         nombre:'Actualizar'
        }, 
        {
-        ruta:'',
+        ruta:'delete-user',
         nombre:'Eliminar'
       }
     ],

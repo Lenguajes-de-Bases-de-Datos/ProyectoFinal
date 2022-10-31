@@ -21,11 +21,13 @@ import { AppModule } from 'src/app/app.module';
     
   ],
   imports: [
+
     CommonModule,
     AppRoutingModule,
     TemplatesModule,
     ReactiveFormsModule
   ],
-  exports:[CreateUserComponent]
+  exports:[CreateUserComponent,DeleteUserComponent,UpdateUserComponent,ReadUserComponent]
+
 })
 export class CrudUsersModule { }
