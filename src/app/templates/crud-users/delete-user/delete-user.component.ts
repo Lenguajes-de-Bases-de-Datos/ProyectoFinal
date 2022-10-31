@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { RequestsService } from 'src/app/services/requests.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-delete-user',
@@ -13,13 +15,49 @@ export class DeleteUserComponent implements OnInit {
   id_user:number=0;
   nom:string="";
   form!:UntypedFormGroup;
+  vecUser:any[]=[];
 
-  constructor() {
+  constructor(private request:RequestsService) {
     this.form= new UntypedFormGroup({
       user: new UntypedFormControl('',[Validators.pattern(/^[a-zA-Z\\ ]+$/)]),
       id_user: new UntypedFormControl('',Validators.pattern(/^[^\.\\ ]+$/))
     });
     
+  }
+
+  petiRecupUs(){
+    let params={
+      nombre:this.form.get('user')?.value,
+      id:this.form.get('id_user')?.value
+    }
+
+    this.request.readUsuarios('/readUser',params).subscribe({next:(res:any)=>{
+      if(res.band){
+        swal.fire({
+          allowOutsideClick: true,
+          title: "Exito...",
+          text: "Usuario agregado exitosamente...",
+          confirmButtonText:'Entendido'
+        });
+        this.form.reset();
+      }else{
+        swal.fire({
+          allowOutsideClick: true,
+          title: "Error ...",
+          text: "No se pudo agregar al usuario...",
+          confirmButtonText:'Entendido'
+        });
+      }
+     },
+     error:(res:any)=>{
+      swal.fire({
+        allowOutsideClick: true,
+        title: "Error ...",
+        text: "No se pudo agregar al usuario...",
+        confirmButtonText:'Entendido'
+      });
+     }});
+
   }
 
   detectT(){
@@ -41,7 +79,7 @@ export class DeleteUserComponent implements OnInit {
   }
 
   buscar(){
-    
+    this.petiRecupUs();
   }
 
   ngOnInit(): void {

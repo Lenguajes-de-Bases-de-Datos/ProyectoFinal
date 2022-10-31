@@ -32,4 +32,12 @@ export class RequestsService {
     let headers = new HttpHeaders().set('crazys',token);
     return this.request.get(this.path+'/validate',{headers:headers});
   }
+
+  readUsuarios(a:string,params:any):any{
+    let token = sessionStorage.getItem('token');
+    if(token == null) token = '';
+    let headers = new HttpHeaders().set('crazys',token);
+    console.log(this.path+a,params);
+    return this.request.post(this.path+a,params,{headers:headers});
+  }
 }
