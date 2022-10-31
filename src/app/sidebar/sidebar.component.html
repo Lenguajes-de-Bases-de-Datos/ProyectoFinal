@@ -16,52 +16,17 @@
                 <i class="fas fa-home"></i>{{option.opcion}}
             </a>
             <ul class="collapse list-unstyled" id="{{option.id}}" >
-                <li>
-                    <a class="scroll-link" [routerLink]="[option.rutas.create]" routerLinkActive="active" href="">Create.</a>
+                <li *ngFor="let obj of option.rutas">
+                    <a class="scroll-link" [routerLink]="[obj.ruta]" routerLinkActive="active" href="">{{obj.nombre}}</a>
+    
                 </li>
-                <li>
-                    <a class="scroll-link" [routerLink]="option.rutas.read" routerLinkActive="active" href="">Read.</a>
-                </li>
-                <li>
-                    <a class="scroll-link" [routerLink]="option.rutas.update" routerLinkActive="active" href="">Update.</a>
-                </li>
-                <li>
-                    <a class="scroll-link" [routerLink]="option.rutas.delete" routerLinkActive="active" href="">Delete.</a>
-                </li>
+               
 
 
             </ul>
         </li>
       
- <!-- 
-        <li class="">
-            <a class="scroll-link" [routerLink]="['/portal']" routerLinkActive="active"><i class="fas fa-home"></i> Home</a>
-        </li>
-        <li>
-            <a class="scroll-link" href="#section-1"><i class="fas fa-cog"></i> What we do</a>
-        </li>
-        <li>
-            <a class="scroll-link" href="#section-2"><i class="fas fa-user"></i> About us</a>
-        </li>
-        <li>
-            <a class="scroll-link" href="#section-5"><i class="fas fa-pencil-alt"></i> Portfolio</a>
-        </li>
-        <li>
-            <a class="scroll-link" href="#section-6"><i class="fas fa-envelope"></i> Contact us</a>
-        </li>
-        <li>
-            <a href="#otherSections" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button" aria-controls="otherSections">
-                <i class="fas fa-sync"></i>Other sections
-            </a>
-            <ul class="collapse list-unstyled" id="otherSections">
-                <li>
-                    <a class="scroll-link" [routerLink]="['/sign-up']" href="">Sign Up</a>
-                </li>
-                <li>
-                    <a class="scroll-link" [routerLink]="['/read-users']" href="">Read users.</a>
-                </li>
-            </ul>
-        </li> -->
+
     </ul>
  
     <div class="to-top" >

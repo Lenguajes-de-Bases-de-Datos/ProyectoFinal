@@ -11,6 +11,7 @@ export class CreateUserComponent implements OnInit {
   form:FormGroup=new FormGroup({});
   type = "password";
   sucursales:any[]=[];
+  count:number=0;
   constructor(private request:RequestsService) { 
     this.form = new FormGroup({
       nombre:new FormControl('',[Validators.required,Validators.pattern('[^\'\"|&]+')]),
@@ -21,13 +22,20 @@ export class CreateUserComponent implements OnInit {
       privilegios:new FormControl('',[Validators.required]),
       sucursal:new FormControl('',[Validators.required]),
       desc:new FormControl('',[Validators.required]),
+      phone:new FormControl('',[Validators.required,Validators.pattern(/^[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}$/)]),
       
       
     });
-
+    
+    swal.fire({
+      allowOutsideClick: false,
+      title: "Cargando...",
+      text: "Espere por favor",
+    });
+    swal.showLoading();
     this.request.ReadSucursal('/readSucursal').subscribe((res:any)=>{
       this.sucursales = res;
-
+      swal.close();
 
     });
   }
@@ -49,12 +57,13 @@ export class CreateUserComponent implements OnInit {
       apmat:this.form.get('apmat')?.value,
       privilegios:this.form.get('privilegios')?.value.toLowerCase(),
       des:this.form.get('desc')?.value,
-      email:this.form.get('email')?.value
+      email:this.form.get('email')?.value,
+      telefono:this.form.get('phone')?.value
       
     }
     
     console.log(this.form.get('nombre')?.invalid);
-     this.request.insert('/insertUser',params).subscribe((res:any)=>{
+     this.request.insert('/insertUser',params).subscribe({next:(res:any)=>{
       if(res.band){
         swal.fire({
           allowOutsideClick: true,
@@ -71,6 +80,35 @@ export class CreateUserComponent implements OnInit {
           confirmButtonText:'Entendido'
         });
       }
-     });
+     },
+     error:(res:any)=>{
+      swal.fire({
+        allowOutsideClick: true,
+        title: "Error ...",
+        text: "No se pudo agregar al usuario...",
+        confirmButtonText:'Entendido'
+      });
+     }});
+  }
+  formatear(event:any){
+    let valor = this.form.get('phone')?.value;
+    console.log(valor.length)
+    let tamanio = valor.length;
+    console.log("event: "+event.keyCode)
+    if(event.keyCode == 8){
+      
+    }else{
+    if(tamanio==3 || tamanio==7 ){
+      console.log("true")
+      let aux = this.form.get('phone')?.value;
+      this.form.controls['phone'].setValue(aux+"-");
+      
+    }else if(tamanio==10 ){
+      let aux = this.form.get('phone')?.value;
+      this.form.controls['phone'].setValue(aux+"-");
+      this.count++;
+      
+    }
+    }
   }
 }

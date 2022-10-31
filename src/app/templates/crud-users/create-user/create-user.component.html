@@ -64,7 +64,11 @@
           </select>
           
         </div>
-        <div class="form-group col-md-4"></div>
+        <div class="form-group col-md-4">
+          <label for="phone">Telefono</label>
+          <input [ngClass]="{'invalid':this.form.get('phone')?.invalid,'valid':!this.form.get('phone')?.invalid}" type="text" class="form-control" id="phone" placeholder="449-223-88-22" formControlName="phone" (keyup)="formatear($event)">
+       
+        </div>
         <div class="form-group col-md-6">
           <label for="inputDesc">Descripción</label>
           <textarea  class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="Write something here..." formControlName="desc" ></textarea>

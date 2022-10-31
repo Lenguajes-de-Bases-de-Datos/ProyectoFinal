@@ -13,12 +13,23 @@ export class SidebarComponent implements OnInit {
     {
       opcion:"Usuarios",
       class:"",
-      rutas:{
-        create:'/sign-up',
-        read:'/read-users',
-        update:'',
-        delete:''
+      rutas:[{
+        ruta:'/sign-up',
+        nombre:'Crear'
       },
+       { 
+        ruta:'/read-users',
+        nombre:'Consultar'
+       } ,
+       {
+        ruta:'',
+        nombre:'Actualizar'
+       }, 
+       {
+        ruta:'',
+        nombre:'Eliminar'
+      }
+    ],
       icono:"",
       id:"users"
     },
@@ -26,45 +37,80 @@ export class SidebarComponent implements OnInit {
     {
       opcion:"Categorias",
       class:"",
-      rutas:{
-        create:'',
-        read:'',
-        update:'',
-        delete:''
+      rutas:[{
+        ruta:'',
+        nombre:'Crear'
       },
+       { 
+        ruta:'',
+        nombre:'Consultar'
+       } ,
+       {
+        ruta:'',
+        nombre:'Actualizar'
+       }, 
+       {
+        ruta:'',
+        nombre:'Eliminar'
+      }
+    ],
       icono:"",
       id:"categories"
     },
     {
       opcion:"Proveedores",
       class:"",
-      rutas:{
-        create:'',
-        read:'',
-        update:'',
-        delete:''
+      rutas:[{
+        ruta:'',
+        nombre:'Crear'
       },
+       { 
+        ruta:'',
+        nombre:'Consultar'
+       } ,
+       {
+        ruta:'',
+        nombre:'Actualizar'
+       }, 
+       {
+        ruta:'',
+        nombre:'Eliminar'
+      }
+    ],
       icono:"",
       id:"providers"
     },
     {
       opcion:"Pedidos",
       class:"",
-      rutas:{
-        create:'',
-        read:'',
-        update:'',
-        delete:''
+      rutas:[{
+        ruta:'',
+        nombre:'Crear'
       },
+       { 
+        ruta:'',
+        nombre:'Consultar'
+       } ,
+       {
+        ruta:'',
+        nombre:'Actualizar'
+       }, 
+       {
+        ruta:'',
+        nombre:'Eliminar'
+      }
+    ],
       icono:"",
       id:"orders"
     },
     {
       opcion:"Enviar notificación",
       class:"",
-      rutas:{
-        create:'/send-msg'
-      },
+      rutas:[{
+        ruta:'/send-msg',
+        nombre:'Crear Notificación'
+      }
+    ],
       icono:"",
       id:"send-msg"
     },

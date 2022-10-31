@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { catchError,Observable,retry } from 'rxjs';
 import { RequestsService } from './services/requests.service';
 import swal from 'sweetalert2';
+import { AuthGuardService } from './services/auth-guard.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,19 +13,20 @@ import swal from 'sweetalert2';
 export class AppComponent {
   title = 'crazy-candy';
   band:boolean=true;
-  constructor(private request:RequestsService,private router:Router){
+  constructor(private request:RequestsService,private router:Router,public auth:AuthGuardService){
     let token = sessionStorage.getItem('token');
     console.log("tokkk"+token);
-    if( token==null){ this.band = true;
+    if( token==null){ this.band = true;router.navigate(['/portal']);
     }else{
       
       request.verifyToken().subscribe({next:(resp:any)=>{
-        this.band = false;
-        console.log("fiiii")
+        this.auth.band = false;
+        console.log("fiiii");
+        router.navigate(['/default']);
       },
       error:(err:any)=>{
         if(err.status===401){
-          this.band=true;
+          this.auth.band=true;
           sessionStorage.removeItem('token');
           console.log("errrr");
           swal.fire({
@@ -33,18 +35,20 @@ export class AppComponent {
             text: "Tu session ha expirado por favor vuelve a autenticarte...",
             confirmButtonText:'Entendido'
           });
+          router.navigate(['/portal'])
         }
       },
       complete:()=>console.log("done")
     });
    
     }
-    console.log("banderita: "+this.band)
+    console.log("banderita: "+this.auth.band)
 
 
   }
   change(e:any){
     // e.preventDefault();
-    this.band?this.band=false:this.band=true;
+    this.auth.band?this.auth.band=false:this.auth.band=true;
+    this.router.navigate(['/default']);
   }
 }

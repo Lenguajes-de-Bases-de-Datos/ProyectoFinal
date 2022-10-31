@@ -6,6 +6,7 @@ import swal from 'sweetalert2';
 import { User } from 'src/app/interfaces/user.model';
 import { SocketsWebService } from 'src/app/services/sockets-web.service';
 import jwt_decode from "jwt-decode";
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
   form!:UntypedFormGroup;
 
   @Output() messageEvent = new EventEmitter<boolean>();
-  constructor(private requests:RequestsService) { 
+  constructor(private requests:RequestsService,private router:Router) { 
     this.form=new UntypedFormGroup({
       user:new UntypedFormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9_.-]+\.[a-zA-Z]+$/)]),
       pass:new UntypedFormControl('',[Validators.required,Validators.pattern('[^\'"!]{3,10}')])
@@ -60,7 +61,9 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('cuenta',datos);
       
         this.messageEvent.emit(false);
+        
       }else{
+        band=false;
         swal.fire({
           allowOutsideClick: true,
           title: "Datos invalidos...",

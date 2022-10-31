@@ -7,13 +7,15 @@ import { AppRoutingModule } from '../app-routing.module';
 import { ProductosComponent } from './productos/productos.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DefaultComponent } from './default/default.component';
 
 @NgModule({
   declarations: [
     PortalComponent,
     LoginComponent,
     NavbarComponent,
-    ProductosComponent
+    ProductosComponent,
+    DefaultComponent
   ],
   imports: [
     CommonModule,

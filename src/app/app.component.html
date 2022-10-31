@@ -1,4 +1,4 @@
- <div *ngIf="band else sidebar">
+ <div *ngIf="this.auth.band else sidebar">
     <!--  -->
     <app-login (messageEvent)="change($event)"></app-login>
 
