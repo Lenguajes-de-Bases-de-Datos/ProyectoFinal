@@ -28,7 +28,7 @@ const routes: Routes = [
   declarations:[CreateUserComponent,DeleteUserComponent,UpdateUserComponent],
   imports: [CommonModule,RouterModule.forRoot(routes),ReactiveFormsModule],
   exports: [RouterModule,ReactiveFormsModule],
-  providers:[RequestsService]
+  providers:[RequestsService,AuthGuardService]
 
 })
 export class AppRoutingModule { }
