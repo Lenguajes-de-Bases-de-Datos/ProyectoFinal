@@ -31,6 +31,8 @@ export class DeleteUserComponent implements OnInit {
       id:this.form.get('id_user')?.value
     }
 
+    console.log(params);
+
     this.request.readUsuarios('/readUser',params).subscribe({next:(res:any)=>{
       if(res.band){
         swal.fire({
