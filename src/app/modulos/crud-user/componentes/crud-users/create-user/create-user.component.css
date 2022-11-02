@@ -1,0 +1,17 @@
+.wrapper{
+    width: 60%;
+    margin: auto;
+}
+i{
+    height: 20%;
+    cursor: pointer;
+}
+.fa-eye-slash{
+    line-height: 4em;
+}
+.invalid{
+    border: 2px solid red;
+}
+.valid{
+    border: 2px solid green;
+}

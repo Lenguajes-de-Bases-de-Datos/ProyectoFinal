@@ -25,7 +25,8 @@ import { DefaultComponent } from './default/default.component';
   ],
   exports:[
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    PortalComponent
   ]
 })
 export class HomeModule { }

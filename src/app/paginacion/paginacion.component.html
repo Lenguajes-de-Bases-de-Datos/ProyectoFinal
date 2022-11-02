@@ -1,0 +1,16 @@
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item ">
+        <a class="page-link" *ngIf="this.cont!=0" (click)="previous()">Previous</a>
+      </li>
+      <li  class="page-item">
+        <a class="page-link">{{contpag}}</a>
+    </li>
+    <li  class="page-item" *ngIf="this.res.length>10">
+      <a class="page-link">{{contpag+1}}</a>
+  </li>
+     <li class="page-item">
+        <a class="page-link" *ngIf="this.res.length>10" (click)="next()">Next</a>
+      </li>
+    </ul>
+  </nav>

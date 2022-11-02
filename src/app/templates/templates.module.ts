@@ -5,6 +5,11 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 export{ReactiveFormsModule } from '@angular/forms'
 import { AppRoutingModule } from '../app-routing.module';
+import { HomeModule } from '../home/home.module';
+import { CreateUserComponent } from './crud-users/create-user/create-user.component';
+import { ReadUserComponent } from './crud-users/read-user/read-user.component';
+import { UpdateUserComponent } from './crud-users/update-user/update-user.component';
+import { DeleteUserComponent } from './crud-users/delete-user/delete-user.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +19,8 @@ import { AppRoutingModule } from '../app-routing.module';
     CommonModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HomeModule
     ]
     
 })

@@ -9,23 +9,27 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { SocketIoModule } from 'ngx-socket-io';
 import { FormsModule } from '@angular/forms';
 import { TemplatesModule } from './templates/templates.module';
+import { PaginacionComponent } from './paginacion/paginacion.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent 
+    SidebarComponent,
+    PaginacionComponent 
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    
     HomeModule,
     HttpClientModule,
     ReactiveFormsModule,
     SocketIoModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
    
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports:[PaginacionComponent]
 })
 export class AppModule { }

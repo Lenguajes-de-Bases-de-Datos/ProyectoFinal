@@ -16,7 +16,7 @@ export class SidebarComponent implements OnInit {
 
       rutas:[
        {
-        ruta:'/sign-up',
+        ruta:'sign-up',
         nombre:'Crear'
        },
        { 
@@ -40,15 +40,15 @@ export class SidebarComponent implements OnInit {
       opcion:"Categorias",
       class:"",
       rutas:[{
-        ruta:'',
+        ruta:'/create-categoria',
         nombre:'Crear'
       },
        { 
-        ruta:'',
+        ruta:'/read-categoria',
         nombre:'Consultar'
        } ,
        {
-        ruta:'',
+        ruta:'/update-categoria',
         nombre:'Actualizar'
        }, 
        {
