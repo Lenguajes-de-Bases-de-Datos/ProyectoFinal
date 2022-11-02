@@ -13,7 +13,7 @@ import { TemplatesModule } from './templates/templates.module';
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent 
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
