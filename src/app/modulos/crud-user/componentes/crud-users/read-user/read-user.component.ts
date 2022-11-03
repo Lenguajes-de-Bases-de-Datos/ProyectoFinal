@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestsService } from 'src/app/services/requests.service';
 import { FormGroup,FormControl, Validators } from '@angular/forms';
+import swal from 'sweetalert2';
+import { PaginacionComponent } from 'src/app/home/paginacion/paginacion.component';
 @Component({
   selector: 'app-read-user',
   templateUrl: './read-user.component.html',
@@ -8,14 +10,14 @@ import { FormGroup,FormControl, Validators } from '@angular/forms';
 })
 export class ReadUserComponent implements OnInit {
   users:any[] = [];
-  option:string = "";
+  option:string = "1";
   controlador:number = 0;
   form!:FormGroup;
   title:string='Todos';
   cont:number = 0;
   contpag:number=1;
   sql:string="SELECT * FROM usuario";
- 
+
   constructor(private request:RequestsService) {
     this.request.consultas('SELECT * FROM usuario LIMIT 0,11').subscribe((res:any)=>{
       this.users = res;
@@ -123,5 +125,95 @@ export class ReadUserComponent implements OnInit {
   }
   result(res:any){
     this.users = res;
+  }
+
+  accion(id:number,num:number){
+    let texto:string="",action:string="",stat:number;
+    if(num==1){
+      texto="eliminar";
+      stat=0;
+      action="Eliminación";
+    }else{
+      texto="dar de alta";
+      stat=1;
+      action="Actualización";
+    }
+    swal.fire({
+      title: '¿Esta seguro de hacerlo?',
+      text: "luego no puede modificar los datos!",
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: `Si, deseo ${texto}.`,
+      icon:'warning'
+    }).then((result)=>{
+      if(result.value){
+        let sql=`UPDATE usuario set status=${stat} where ID=${id}`;
+        let body={
+          sql:sql,
+          table:"usuario"
+        }
+        this.request.accion(body).subscribe({next:(res:any)=>{
+          if(res.band){
+            swal.fire({
+              allowOutsideClick: true,
+              title: "Exito...",
+              text: `${action} de usuario exitosamente...`,
+              confirmButtonText:'Entendido'
+            });
+          }else{
+            swal.fire({
+              allowOutsideClick: true,
+              title: "Error ...",
+              text: `${action} de usuario exitosamente...`,
+              confirmButtonText:'Entendido'
+            });
+          }
+        },
+        error:(res:any)=>{
+          swal.fire({
+            allowOutsideClick: true,
+            title: "Error ...",
+            text: `${action} de usuario exitosamente...`,
+            confirmButtonText:'Entendido'
+          });
+        }});
+        
+      }else{
+        swal.fire({
+          allowOutsideClick: true,
+          title: "Cancelación de acción...",
+          text: `${action} de usuario exitosamente...`,
+          confirmButtonText:'Entendido',
+          icon:"success"
+        });
+      }
+    });
+    
+  }
+  filtro(option:number){
+    let aux = "";
+    this.buscar();
+    if(this.option == "1"){
+      if(option == 1){
+        aux = this.sql;
+      }else if(option == 2){
+        aux = this.sql+" WHERE status = 1";
+      }else{
+       aux = this.sql += " WHERE status = 0";
+      }
+    }else{
+      if(option == 1){
+        aux = this.sql;
+      }else if(option == 2){
+        aux = this.sql+" and status = 1";
+      }else{
+       aux = this.sql += " and status = 0";
+      }
+    } 
+    this.sql = aux ;
+    console.log("mysql: "+this.sql);
+    // let obj = new PaginacionComponent(this.request);
+    // obj.update();
   }
 }
