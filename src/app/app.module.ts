@@ -11,11 +11,15 @@ import { FormsModule } from '@angular/forms';
 import { TemplatesModule } from './templates/templates.module';
 import { CrudUserModule } from './modulos/crud-user/crud-user.module';
 import { CrudCategoriaModule } from './modulos/crud-categoria/crud-categoria.module';
+import { CrudProveedorModule } from './modulos/crud-proveedor/crud-proveedor.module';
+import { CrudSucursalModule } from './modulos/crud-sucursal/crud-sucursal.module';
+import { CrudUbicacionModule } from './modulos/crud-ubicacion/crud-ubicacion.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent
+
   ],
   imports: [
     BrowserModule,
@@ -27,6 +31,9 @@ import { CrudCategoriaModule } from './modulos/crud-categoria/crud-categoria.mod
     FormsModule,
     CrudUserModule,
     CrudCategoriaModule,
+    CrudProveedorModule,
+    CrudSucursalModule,
+    CrudUbicacionModule,
     AppRoutingModule
 
    

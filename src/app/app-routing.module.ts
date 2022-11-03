@@ -36,7 +36,7 @@ const routes: Routes = [
 @NgModule({
   imports: [CommonModule,RouterModule.forRoot(routes),ReactiveFormsModule,FormsModule],
   exports: [RouterModule,ReactiveFormsModule],
-  providers:[RequestsService]
+  providers:[RequestsService,AuthGuardService]
 
 })
 export class AppRoutingModule { }
