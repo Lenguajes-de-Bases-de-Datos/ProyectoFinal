@@ -9,13 +9,13 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { SocketIoModule } from 'ngx-socket-io';
 import { FormsModule } from '@angular/forms';
 import { TemplatesModule } from './templates/templates.module';
-import { PaginacionComponent } from './paginacion/paginacion.component';
+import { CrudUserModule } from './modulos/crud-user/crud-user.module';
+import { CrudCategoriaModule } from './modulos/crud-categoria/crud-categoria.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent,
-    PaginacionComponent 
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -25,11 +25,13 @@ import { PaginacionComponent } from './paginacion/paginacion.component';
     ReactiveFormsModule,
     SocketIoModule,
     FormsModule,
+    CrudUserModule,
+    CrudCategoriaModule,
     AppRoutingModule
+
    
   ],
   providers: [],
-  bootstrap: [AppComponent],
-  exports:[PaginacionComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -14,13 +14,13 @@ export class ReadUserComponent implements OnInit {
   title:string='Todos';
   cont:number = 0;
   contpag:number=1;
-  sql:string="";
+  sql:string="SELECT * FROM usuario";
   constructor(private request:RequestsService) {
     this.request.consultas('SELECT * FROM usuario LIMIT 0,11').subscribe((res:any)=>{
       this.users = res;
     });
 
-
+    this.sql = "SELECT * FROM usuario";
     this.form = new FormGroup({
       nombre : new FormControl('example',[Validators.required,Validators.pattern('[^|\"\'&!$()?`]+')]),
       appat : new FormControl('prueba',[Validators.required,Validators.pattern('[^|\"\'&!$()?`]+')]),
@@ -32,6 +32,7 @@ export class ReadUserComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
   buscar(){
     this.controlador = 0;
     console.log(this.option);

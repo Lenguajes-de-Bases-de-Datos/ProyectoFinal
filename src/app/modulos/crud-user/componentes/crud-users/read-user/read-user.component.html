@@ -70,16 +70,16 @@
         <tbody>
           <tr *ngFor="let obj of users,index as i,let ultimo = last">
              
-            <td *ngIf="!ultimo">{{obj.ID}}</td>
-            <td *ngIf="!ultimo">{{obj.ID_sucursal}}</td>
-            <td *ngIf="!ultimo">{{obj.nombre}}</td>
-            <td *ngIf="!ultimo">{{obj.appat}}</td>
-            <td *ngIf="!ultimo">{{obj.apmat}}</td>
-            <td *ngIf="!ultimo">{{obj.privilegios}}</td>
-            <td *ngIf="!ultimo">{{obj.email}}</td>
-            <td *ngIf="!ultimo">{{obj.status}}</td>
-            <td *ngIf="!ultimo">{{obj.activo}}</td>
-            <td *ngIf="!ultimo"><i class="icon-newspaper-o"></i></td>
+            <td *ngIf="i!=10">{{obj.ID}}</td>
+            <td *ngIf="i!=10">{{obj.ID_sucursal}}</td>
+            <td *ngIf="i!=10">{{obj.nombre}}</td>
+            <td *ngIf="i!=10">{{obj.appat}}</td>
+            <td *ngIf="i!=10">{{obj.apmat}}</td>
+            <td *ngIf="i!=10">{{obj.privilegios}}</td>
+            <td *ngIf="i!=10">{{obj.email}}</td>
+            <td *ngIf="i!=10">{{obj.status}}</td>
+            <td *ngIf="i!=10">{{obj.activo}}</td>
+            <td *ngIf="i!=10"><i class="icon-newspaper-o"></i></td>
             
           </tr>
         
@@ -102,6 +102,6 @@
     </li>
   </ul>
 </nav> -->
-<!-- <app-paginacion [query]="sql" (array)="result($event)"></app-paginacion> -->
-<app-portal></app-portal>
+<app-paginacion [query]="sql" (array)="result($event)"></app-paginacion>
+
 </div>

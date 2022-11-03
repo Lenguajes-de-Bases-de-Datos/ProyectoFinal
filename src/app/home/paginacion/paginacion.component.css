@@ -1,0 +1,6 @@
+.buttons{
+    cursor: pointer;
+}
+.active{
+    font-weight: 900;
+}

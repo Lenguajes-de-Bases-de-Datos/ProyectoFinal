@@ -5,6 +5,7 @@ import { HttpClient,HttpHeaders, HttpParams } from '@angular/common/http';
 })
 export class RequestsService {
   path:string="http://localhost:3000";
+  sucursal!:number;
   constructor(private request:HttpClient) { }
 
   insert(a:String,params:any):any{
