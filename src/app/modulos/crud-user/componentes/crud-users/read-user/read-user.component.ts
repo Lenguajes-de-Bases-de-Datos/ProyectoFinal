@@ -15,6 +15,7 @@ export class ReadUserComponent implements OnInit {
   cont:number = 0;
   contpag:number=1;
   sql:string="SELECT * FROM usuario";
+ 
   constructor(private request:RequestsService) {
     this.request.consultas('SELECT * FROM usuario LIMIT 0,11').subscribe((res:any)=>{
       this.users = res;
@@ -35,6 +36,8 @@ export class ReadUserComponent implements OnInit {
   
   buscar(){
     this.controlador = 0;
+    this.cont = 0;
+    this.contpag = 1;
     console.log(this.option);
      this.sql = `SELECT * FROM usuario WHERE privilegios = `;
     if(this.option == "1"){
@@ -64,9 +67,9 @@ export class ReadUserComponent implements OnInit {
       this.sql = `SELECT * FROM usuario WHERE email = '${this.form.get('email')?.value}'`;
       this.title = 'Por correo electrónico';
     }
-    this.request.consultas(this.sql).subscribe((res:any)=>{
-      this.users = res;
-    });
+    // this.request.consultas(this.sql).subscribe((res:any)=>{
+    //   this.users = res;
+    // });
   }
   change(){
     if(this.option == "5"){
