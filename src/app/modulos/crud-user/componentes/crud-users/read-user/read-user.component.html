@@ -15,7 +15,23 @@
       
     </select>
   </div>
+<div class="input-group mb-3">
 
+  <div class="custom-control custom-radio custom-control-inline">
+    <input type="radio" id="Todos" name="customRadioInline" class="custom-control-input" checked="true" (click)="filtro(1)" (click)="paginacion.update(1)">
+    <label class="custom-control-label" for="Todos">Todos</label>
+  </div>
+  <div class="custom-control custom-radio custom-control-inline">
+    <input type="radio" id="Habilitados" name="customRadioInline" class="custom-control-input" (click)="filtro(2)" (click)="paginacion.update(1)">
+    <label class="custom-control-label" for="Habilitados">Habilitados</label>
+  </div>
+
+  <div class="custom-control custom-radio custom-control-inline">
+    <input type="radio" id="Inhabilitados" name="customRadioInline" class="custom-control-input" (click)="filtro(3)" (click)="paginacion.update(1)">
+    <label class="custom-control-label" for="Inhabilitados">Inhabilitados</label>
+  </div>
+
+</div>
   <div [formGroup]="form">
     <div class="form-row">
       <div *ngIf="controlador == 1 " class="form-group col-md-6">
@@ -64,6 +80,7 @@
             <th scope="col">Email</th>
             <th scope="col">Status</th>
             <th scope="col">Activo</th>
+            <th scope="col">Acción</th>
             <th scope="col">Más</th>
           </tr>
         </thead>
@@ -79,6 +96,12 @@
             <td *ngIf="i!=10">{{obj.email}}</td>
             <td *ngIf="i!=10">{{obj.status}}</td>
             <td *ngIf="i!=10">{{obj.activo}}</td>
+            <td *ngIf="i!=10">
+              <a *ngIf="obj.status==1 else darAlta" class="icon-trash-4 delete" (click)="accion(obj.ID,obj.status)" (click)="paginacion.update(2000)"></a>
+              <ng-template #darAlta>
+                <a class="icon-upload update" (click)="accion(obj.ID,obj.status)" (click)="paginacion.update(2000)"></a>
+              </ng-template>
+            </td>
             <td *ngIf="i!=10"><i class="icon-newspaper-o"></i></td>
             
           </tr>
@@ -102,6 +125,6 @@
     </li>
   </ul>
 </nav> -->
-<app-paginacion [query]="sql" (array)="result($event)"></app-paginacion>
+<app-paginacion [query]="sql" (array)="result($event)" #paginacion></app-paginacion>
 
 </div>

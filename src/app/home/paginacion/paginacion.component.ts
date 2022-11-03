@@ -45,4 +45,12 @@ export class PaginacionComponent implements OnInit {
       this.array.emit(res);
     });
   }
+  update(time:number){
+    setTimeout(()=>{
+      this.request.consultas(this.query+` LIMIT ${this.cont},11`).subscribe((res:any)=>{
+        this.res =res;
+        this.array.emit(res);
+      });
+    },time);
+  }
 }
