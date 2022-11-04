@@ -8,6 +8,7 @@
         <th scope="col">Categoria</th>
         <th scope="col">pasillo donde comienza</th>
         <th scope="col">pasillo donde finaliza</th>
+        <th scope="col">Estado</th>
         <th scope="col">Mas detalles</th>
         <th scope="col">Editar</th>
         
@@ -19,7 +20,8 @@
         <td *ngIf="i!=10">{{obj.ncategoria}}</td>
         <td *ngIf="i!=10">{{obj.pasilloInicio}}</td>
         <td *ngIf="i!=10">{{obj.pasilloFin}}</td>
-        <td *ngIf="i!=10"><a href="#">Ver productos que contiene</a></td>
+        <td *ngIf="i!=10">{{obj.status}}</td>
+        <td *ngIf="i!=10"><a (click)="mas(obj.ID)"><i class="icon-info-circle"></i> </a></td>
         <td *ngIf="i!=10"><i (click)="update(obj.ID)" class="icon-pencil"></i></td>
         
       </tr>

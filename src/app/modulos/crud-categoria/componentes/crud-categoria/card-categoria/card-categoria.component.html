@@ -1,0 +1,17 @@
+
+<div class="wrapper">
+<div class="card-columns">
+    <div class="card">
+      <img src="" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{datos.id}} {{datos.nombre}}</h5>
+        <p class="card-text">{{datos.pasilloInicio}}</p><br>
+        <p class="card-text">{{datos.pasilloFin}}</p><br>
+        <p class="card-text">{{datos.pasilloIniciostatus}}</p><br>
+        <p class="card-text" *ngFor="let obj of datos.productos">{{obj}}</p><br>
+        
+      </div>
+    </div>
+   
+  </div>
+</div>

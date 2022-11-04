@@ -30,4 +30,8 @@ export class ReadCategoriaComponent implements OnInit {
     console.log(index);
     this.router.navigate(['/update-categoria',index]);
   }
+  mas(index:number){
+    console.log("indice "+index);
+    this.router.navigate(['/card-categoria',index]);
+  }
 }
