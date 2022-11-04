@@ -11,3 +11,12 @@ a, .delete{
 .update{
     color: rgb(13, 217, 16) !important;
 }
+
+i{
+    cursor: pointer;
+    color: rgb(26, 243, 232);
+}
+
+i:hover{
+    color: rgb(154, 92, 154);
+}

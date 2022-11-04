@@ -16,6 +16,7 @@ import { CreateCategoriaComponent } from './modulos/crud-categoria/componentes/c
 import { ReadCategoriaComponent } from './modulos/crud-categoria/componentes/crud-categoria/read-categoria/read-categoria.component';
 import { UpdateCategoriaComponent } from './modulos/crud-categoria/componentes/crud-categoria/update-categoria/update-categoria.component';
 import { HomeModule } from './home/home.module';
+import { MoreUserComponent } from './modulos/crud-user/componentes/crud-users/more-user/more-user.component';
 const routes: Routes = [
   {path:'portal', component:PortalComponent},
   {path:'sign-up',component:CreateUserComponent,canActivate:[AuthGuardService],data:['administrador']},
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path:'read-categoria',component:ReadCategoriaComponent},
   {path:'update-categoria/:id',component:UpdateCategoriaComponent},
   {path:'update-categoria',component:UpdateCategoriaComponent},
+  {path:'more-user/:ID',component:MoreUserComponent},
   {path:'**',component:PortalComponent},
   {path:'default',component:DefaultComponent},
 
