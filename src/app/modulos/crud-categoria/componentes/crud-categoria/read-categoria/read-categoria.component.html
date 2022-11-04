@@ -1,0 +1,33 @@
+
+
+<div class="wrapper">
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Categoria</th>
+        <th scope="col">pasillo donde comienza</th>
+        <th scope="col">pasillo donde finaliza</th>
+        <th scope="col">Mas detalles</th>
+        <th scope="col">Editar</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let obj of cats,index as i">
+        <th *ngIf="i!=10" scope="row">{{obj.ID}}</th>
+        <td *ngIf="i!=10">{{obj.ncategoria}}</td>
+        <td *ngIf="i!=10">{{obj.pasilloInicio}}</td>
+        <td *ngIf="i!=10">{{obj.pasilloFin}}</td>
+        <td *ngIf="i!=10"><a href="#">Ver productos que contiene</a></td>
+        <td *ngIf="i!=10"><i (click)="update(obj.ID)" class="icon-pencil"></i></td>
+        
+      </tr>
+      
+    </tbody>
+  </table>
+  
+  <app-paginacion [query]="sql" (array)="result($event)"></app-paginacion>
+
+</div>
+ 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Options } from './options.model';
 declare const events : any;
 import jwt_decode from "jwt-decode";
+import { RequestsService } from '../services/requests.service';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -16,7 +17,7 @@ export class SidebarComponent implements OnInit {
 
       rutas:[
        {
-        ruta:'/sign-up',
+        ruta:'sign-up',
         nombre:'Crear'
        },
        { 
@@ -40,15 +41,15 @@ export class SidebarComponent implements OnInit {
       opcion:"Categorias",
       class:"",
       rutas:[{
-        ruta:'',
+        ruta:'/create-categoria',
         nombre:'Crear'
       },
        { 
-        ruta:'',
+        ruta:'/read-categoria',
         nombre:'Consultar'
        } ,
        {
-        ruta:'',
+        ruta:'/update-categoria',
         nombre:'Actualizar'
        }, 
        {
@@ -118,12 +119,19 @@ export class SidebarComponent implements OnInit {
     },
 
   ];
-  constructor() { try {
-    let token = sessionStorage.getItem('token') || "";
-    let resp = jwt_decode(token);
-  } catch(Error) {
-    console.log(Error);
-  }}
+  constructor(private request:RequestsService) {
+    try {
+      let token = sessionStorage.getItem('token') || "";
+      let resp:any = jwt_decode(token);
+      if(resp!=undefined){
+        this.request.sucursal = resp.sucursal;
+        console.log("suc: "+this.request.sucursal)
+      }
+      
+    } catch(Error) {
+      console.log(Error);
+    }
+  }
 
   ngOnInit(): void {
   }

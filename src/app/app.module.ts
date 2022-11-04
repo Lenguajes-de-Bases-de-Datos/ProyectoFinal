@@ -9,20 +9,33 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { SocketIoModule } from 'ngx-socket-io';
 import { FormsModule } from '@angular/forms';
 import { TemplatesModule } from './templates/templates.module';
+import { CrudUserModule } from './modulos/crud-user/crud-user.module';
+import { CrudCategoriaModule } from './modulos/crud-categoria/crud-categoria.module';
+import { CrudProveedorModule } from './modulos/crud-proveedor/crud-proveedor.module';
+import { CrudSucursalModule } from './modulos/crud-sucursal/crud-sucursal.module';
+import { CrudUbicacionModule } from './modulos/crud-ubicacion/crud-ubicacion.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent 
+    SidebarComponent
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    
     HomeModule,
     HttpClientModule,
     ReactiveFormsModule,
     SocketIoModule,
-    FormsModule
+    FormsModule,
+    CrudUserModule,
+    CrudCategoriaModule,
+    CrudProveedorModule,
+    CrudSucursalModule,
+    CrudUbicacionModule,
+    AppRoutingModule
+
    
   ],
   providers: [],

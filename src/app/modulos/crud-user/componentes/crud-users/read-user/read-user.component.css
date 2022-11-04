@@ -1,0 +1,13 @@
+.wrapper{
+    width: 60%;
+    margin: auto;
+}
+a, .delete{
+    cursor: pointer;
+    text-decoration: none;
+    color: rgb(229, 45, 45) !important;
+}
+
+.update{
+    color: rgb(13, 217, 16) !important;
+}

@@ -51,8 +51,7 @@ export class LoginComponent implements OnInit {
     swal.showLoading();
   //  let  param=JSON.stringify(params);
     this.requests.logIn(params).subscribe((res:any)=>{
-      console.log('token '+res.msg+" datos: "+JSON.stringify(res.datos));
-      band=false;
+     band=false;
       swal.close();
       if(res.msg!=undefined){
         sessionStorage.setItem('token',res.msg);

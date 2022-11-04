@@ -38,15 +38,19 @@ export class DeleteUserComponent implements OnInit {
         swal.fire({
           allowOutsideClick: true,
           title: "Exito...",
-          text: "Usuario agregado exitosamente...",
+          text: "Consulta de Usuario(s) exitosamente...",
           confirmButtonText:'Entendido'
         });
+        //this.vecUser=res.resultado;
+        this.bandID=true;
+        this.bandT=true;
         this.form.reset();
+        //console.log(this.vecUser);
       }else{
         swal.fire({
           allowOutsideClick: true,
           title: "Error ...",
-          text: "No se pudo agregar al usuario...",
+          text: "No se pudo consultar Usuario(s)...",
           confirmButtonText:'Entendido'
         });
       }
@@ -55,7 +59,7 @@ export class DeleteUserComponent implements OnInit {
       swal.fire({
         allowOutsideClick: true,
         title: "Error ...",
-        text: "No se pudo agregar al usuario...",
+        text: "No se pudo consultar Usuario(s)...",
         confirmButtonText:'Entendido'
       });
      }});
