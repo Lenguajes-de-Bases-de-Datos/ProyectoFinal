@@ -17,6 +17,9 @@ import { ReadCategoriaComponent } from './modulos/crud-categoria/componentes/cru
 import { UpdateCategoriaComponent } from './modulos/crud-categoria/componentes/crud-categoria/update-categoria/update-categoria.component';
 import { HomeModule } from './home/home.module';
 import { CardCategoriaComponent } from './modulos/crud-categoria/componentes/crud-categoria/card-categoria/card-categoria.component';
+import { CreateSucursalComponent } from './modulos/crud-sucursal/componentes/create-sucursal/create-sucursal.component';
+import { ReadSucursalComponent } from './modulos/crud-sucursal/componentes/read-sucursal/read-sucursal.component';
+import { UpdateSucursalComponent } from './modulos/crud-sucursal/componentes/update-sucursal/update-sucursal.component';
 const routes: Routes = [
   {path:'portal', component:PortalComponent},
   {path:'sign-up',component:CreateUserComponent,canActivate:[AuthGuardService],data:['administrador']},
@@ -29,7 +32,9 @@ const routes: Routes = [
   {path:'card-categoria/:id',component:CardCategoriaComponent},
   {path:'update-categoria/:id',component:UpdateCategoriaComponent},
   {path:'update-categoria',component:UpdateCategoriaComponent},
-
+  {path:'create-sucursal',component:CreateSucursalComponent},
+  {path:'read-sucursal',component:ReadSucursalComponent},
+  {path:'update-sucursal',component:UpdateSucursalComponent},
   {path:'**',component:PortalComponent},
   {path:'default',component:DefaultComponent},
 

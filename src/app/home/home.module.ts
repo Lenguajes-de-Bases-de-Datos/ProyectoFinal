@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DefaultComponent } from './default/default.component';
 import { PaginacionComponent } from './paginacion/paginacion.component';
+import { OptionsComponent } from './options/options.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PaginacionComponent } from './paginacion/paginacion.component';
     NavbarComponent,
     ProductosComponent,
     DefaultComponent,
-    PaginacionComponent
+    PaginacionComponent,
+    OptionsComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +31,8 @@ import { PaginacionComponent } from './paginacion/paginacion.component';
     NavbarComponent,
     LoginComponent,
     PortalComponent,
-    PaginacionComponent
+    PaginacionComponent,
+    OptionsComponent
   ]
 })
 export class HomeModule { }

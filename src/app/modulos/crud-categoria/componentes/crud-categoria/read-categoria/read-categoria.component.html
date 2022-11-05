@@ -1,14 +1,15 @@
 
 
 <div class="wrapper">
-<table class="table">
+  <app-options [sql]="this.sql" (event)="cambio($event)" (event)="pag.reinicia()" #options></app-options>
+<table  class="table table-striped table-dark">
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
         <th scope="col">Categoria</th>
         <th scope="col">pasillo donde comienza</th>
         <th scope="col">pasillo donde finaliza</th>
-        <th scope="col">Estado</th>
+        <th scope="col">Activa</th>
         <th scope="col">Mas detalles</th>
         <th scope="col">Editar</th>
         
@@ -20,7 +21,12 @@
         <td *ngIf="i!=10">{{obj.ncategoria}}</td>
         <td *ngIf="i!=10">{{obj.pasilloInicio}}</td>
         <td *ngIf="i!=10">{{obj.pasilloFin}}</td>
-        <td *ngIf="i!=10">{{obj.status}}</td>
+        <td *ngIf="i!=10">{{obj.status}}
+          <a *ngIf="obj.status=='1' else darAlta" class="icon-trash-4 delete" (click)="pag.accion('elimina',this.sentencia+'0 WHERE id = '+obj.ID)" (click)="pag.update(2000)"></a>
+          <ng-template #darAlta>
+            <a class="icon-upload update" (click)="pag.accion('actualiza',this.sentencia+'1 WHERE id = '+obj.ID)" (click)="pag.update(2000)" ></a>
+          </ng-template>
+        </td>
         <td *ngIf="i!=10"><a (click)="mas(obj.ID)"><i class="icon-info-circle"></i> </a></td>
         <td *ngIf="i!=10"><i (click)="update(obj.ID)" class="icon-pencil"></i></td>
         
@@ -29,7 +35,7 @@
     </tbody>
   </table>
   
-  <app-paginacion [query]="sql" (array)="result($event)"></app-paginacion>
+  <app-paginacion [query]="sql" (array)="result($event)" #pag></app-paginacion>
 
 </div>
  

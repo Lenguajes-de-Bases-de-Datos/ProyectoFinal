@@ -61,18 +61,18 @@ export class SidebarComponent implements OnInit {
       id:"categories"
     },
     {
-      opcion:"Proveedores",
+      opcion:"Sucursales",
       class:"",
       rutas:[{
-        ruta:'',
+        ruta:'/create-sucursal',
         nombre:'Crear'
       },
        { 
-        ruta:'',
+        ruta:'/read-sucursal',
         nombre:'Consultar'
        } ,
        {
-        ruta:'',
+        ruta:'/update-sucursal',
         nombre:'Actualizar'
        }, 
        {

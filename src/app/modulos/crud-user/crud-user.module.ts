@@ -23,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
     HomeModule, ReactiveFormsModule,
     FormsModule
-  ]
+  ],
+  exports:[CreateUserComponent]
 })
 export class CrudUserModule { }

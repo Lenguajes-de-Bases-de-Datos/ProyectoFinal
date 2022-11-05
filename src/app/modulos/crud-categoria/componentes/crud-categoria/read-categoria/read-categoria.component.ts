@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { ThisReceiver } from '@angular/compiler';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { OptionsComponent } from 'src/app/home/options/options.component';
+import { PaginacionComponent } from 'src/app/home/paginacion/paginacion.component';
 import { RequestsService } from 'src/app/services/requests.service';
 
 @Component({
@@ -10,7 +13,9 @@ import { RequestsService } from 'src/app/services/requests.service';
 export class ReadCategoriaComponent implements OnInit {
   cats:any[] = [];
   lon:number =10;
+  sentencia:string="UPDATE categoria SET status = ";
   sql:string="SELECT * FROM categoria";
+  @ViewChild('pag') element?:PaginacionComponent;
   constructor(private request:RequestsService,private router:Router) { 
     this.request.consultas('SELECT * FROM categoria LIMIT 0,11').subscribe((res:any)=>{
       this.cats = res;
@@ -19,6 +24,8 @@ export class ReadCategoriaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+  ngAfterViewInit(){
   }
   next(){
     
@@ -33,5 +40,9 @@ export class ReadCategoriaComponent implements OnInit {
   mas(index:number){
     console.log("indice "+index);
     this.router.navigate(['/card-categoria',index]);
+  }
+  cambio(sql:string){
+    this.sql = sql;
+    this.element?.update(1);
   }
 }
