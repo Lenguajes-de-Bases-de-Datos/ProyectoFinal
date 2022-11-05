@@ -17,6 +17,9 @@ import { ReadCategoriaComponent } from './modulos/crud-categoria/componentes/cru
 import { UpdateCategoriaComponent } from './modulos/crud-categoria/componentes/crud-categoria/update-categoria/update-categoria.component';
 import { HomeModule } from './home/home.module';
 import { MoreUserComponent } from './modulos/crud-user/componentes/crud-users/more-user/more-user.component';
+import { CreateUbicacionComponent } from './modulos/crud-ubicacion/componentes/create-ubicacion/create-ubicacion.component';
+import { UpdateUbicacionComponent } from './modulos/crud-ubicacion/componentes/update-ubicacion/update-ubicacion.component';
+import { ReadUbicacionComponent } from './modulos/crud-ubicacion/componentes/read-ubicacion/read-ubicacion.component';
 const routes: Routes = [
   {path:'portal', component:PortalComponent},
   {path:'sign-up',component:CreateUserComponent,canActivate:[AuthGuardService],data:['administrador']},
@@ -29,6 +32,9 @@ const routes: Routes = [
   {path:'update-categoria/:id',component:UpdateCategoriaComponent},
   {path:'update-categoria',component:UpdateCategoriaComponent},
   {path:'more-user/:ID',component:MoreUserComponent},
+  {path:'create-ubicacion',component:CreateUbicacionComponent},
+  {path:'read-ubicacion',component:ReadUbicacionComponent},
+  {path:'update-ubicacion',component:UpdateUbicacionComponent},
   {path:'**',component:PortalComponent},
   {path:'default',component:DefaultComponent},
 

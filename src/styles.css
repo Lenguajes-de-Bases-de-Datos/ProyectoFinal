@@ -21,3 +21,11 @@
 .valid{
     border: 2px solid green !important;
 }
+.more{
+    cursor: pointer;
+    color: rgb(26, 243, 232);
+}
+
+.more:hover{
+    color: rgb(154, 92, 154);
+}
