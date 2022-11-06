@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { PaginacionComponent } from 'src/app/home/paginacion/paginacion.component';
 import { RequestsService } from 'src/app/services/requests.service';
 import { FormGroup,FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-read-sucursal',
   templateUrl: './read-sucursal.component.html',
@@ -15,7 +16,7 @@ export class ReadSucursalComponent implements OnInit {
   sql:string="SELECT s.id 'ID',concat(u.estado,' ',u.ciudad,' ',u.colonia,' ',u.cp) 'ID_ubicacion',u.cp,s.calle,s.numero,s.telefono,s.email,s.status,s.horarioap,s.horariocierre FROM sucursal s,ubicacion u WHERE s.id_ubicacion=u.id";
   sentencia:string="UPDATE sucursal SET status = ";
   @ViewChild('paginacion') element?:PaginacionComponent;
-  constructor(private request:RequestsService) {
+  constructor(private request:RequestsService,private router:Router) {
     this.form = new FormGroup({
       texto : new FormControl('',[Validators.required]),
       id : new FormControl('',[Validators.required])
@@ -63,5 +64,8 @@ export class ReadSucursalComponent implements OnInit {
     
     },200);
     
+  }
+  update(id:number){
+    this.router.navigate(['/create-sucursal',id])
   }
 }

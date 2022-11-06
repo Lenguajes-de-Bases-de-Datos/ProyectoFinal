@@ -68,7 +68,7 @@
                   </td>
                   <td *ngIf="i!=10">{{obj.horarioap}}</td>
                   <td *ngIf="i!=10">{{obj.horariocierre}}</td>
-                  <td *ngIf="i!=10"><i class="icon-refresh"></i></td>
+                  <td *ngIf="i!=10"><i class="icon-refresh" (click)="update(obj.ID)"></i></td>
                 </tr>
               
               </tbody>

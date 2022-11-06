@@ -84,10 +84,33 @@ export class SidebarComponent implements OnInit {
       id:"providers"
     },
     {
-      opcion:"Pedidos",
+      opcion:"Productos",
       class:"",
       rutas:[{
+        ruta:'/create-producto',
+        nombre:'Crear'
+      },
+       { 
+        ruta:'/read-producto',
+        nombre:'Consultar'
+       } ,
+       {
         ruta:'',
+        nombre:'Actualizar'
+       }, 
+       {
+        ruta:'',
+        nombre:'Eliminar'
+      }
+    ],
+      icono:"",
+      id:"orders"
+    },
+    {
+      opcion:"Compras",
+      class:"",
+      rutas:[{
+        ruta:'/create-compra',
         nombre:'Crear'
       },
        { 
@@ -104,7 +127,7 @@ export class SidebarComponent implements OnInit {
       }
     ],
       icono:"",
-      id:"orders"
+      id:"compras"
     },
     {
       opcion:"Enviar notificación",
