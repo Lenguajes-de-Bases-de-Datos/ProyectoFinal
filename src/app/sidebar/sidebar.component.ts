@@ -140,7 +140,29 @@ export class SidebarComponent implements OnInit {
       icono:"",
       id:"send-msg"
     },
-
+    {
+      opcion:"Ubicación",
+      class:"",
+      rutas:[{
+        ruta:'/create-ubicacion',
+        nombre:'Crear'
+      },
+       { 
+        ruta:'/read-ubicacion',
+        nombre:'Consultar'
+       } ,
+       {
+        ruta:'/update-ubicacion',
+        nombre:'Actualizar'
+       }, 
+       {
+        ruta:'',
+        nombre:'Eliminar'
+      }
+    ],
+      icono:"",
+      id:"ubicacion"
+    },
   ];
   constructor(private request:RequestsService) {
     try {

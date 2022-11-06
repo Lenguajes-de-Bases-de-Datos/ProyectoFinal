@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { CreateUbicacionComponent } from './componentes/create-ubicacion/create-ubicacion.component';
 import { ReadUbicacionComponent } from './componentes/read-ubicacion/read-ubicacion.component';
 import { UpdateUbicacionComponent } from './componentes/update-ubicacion/update-ubicacion.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CapitalizacionPipePipe } from 'src/app/pipe/capitalizacion-pipe.pipe';
+import { HomeModule } from 'src/app/home/home.module';
 
 
 
@@ -10,10 +13,14 @@ import { UpdateUbicacionComponent } from './componentes/update-ubicacion/update-
   declarations: [
     CreateUbicacionComponent,
     ReadUbicacionComponent,
-    UpdateUbicacionComponent
+    UpdateUbicacionComponent,
+    CapitalizacionPipePipe
   ],
   imports: [
-    CommonModule
+    CommonModule, 
+    ReactiveFormsModule,
+    FormsModule,
+    HomeModule,
   ]
 })
 export class CrudUbicacionModule { }

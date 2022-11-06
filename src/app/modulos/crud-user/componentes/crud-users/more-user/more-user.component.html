@@ -1,0 +1,32 @@
+<div class="wrapper">
+    <div class="card" style="width: 35rem;">
+        <img [src]="user.imagen" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Más información sobre el usuario</h5>
+          <p class="card-text">
+            <b>Nombre: </b>{{ user.nombre }} {{ user.appat }} {{ user.apmat }}
+          </p>
+          <p><b>ID: </b>{{ user.ID }}</p>
+          <p><b>Telefono: </b>{{ user.telefono }}</p>
+          <p><b>Email: </b>{{ user.email }}</p>
+          <p><b>Status: </b>{{ user.status }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <!-- <p>{{}}</p> -->
+            <p><b>Puesto: </b>{{ user.privilegios }}</p>
+            <p><b>ID sucursal: </b> {{ user.ID_sucursal }}</p>
+          </li>
+          <li class="list-group-item">
+            <p><b>Descripción: </b>{{ user.des }}</p>
+          </li>
+          <li class="list-group-item">
+            <p><b>Huella: </b>{{ user.password }}</p>
+          </li>
+        </ul>
+        <div class="card-body">
+            <!-- <a class="scroll-link" [routerLink]="read-users" routerLinkActive="active" href="">Regresar</a> -->
+          <a class="icon-arrow-left card-link reg" (click)="regresar()">  Regresar</a>
+        </div>
+    </div>
+</div>

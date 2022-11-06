@@ -21,6 +21,7 @@
 .valid{
     border: 2px solid green !important;
 }
+
 .delete{
     cursor: pointer;
     text-decoration: none;
@@ -31,4 +32,13 @@
     cursor: pointer;
     text-decoration: none;
     color: rgb(13, 217, 16) !important;
+}
+.more{
+    cursor: pointer;
+    color: rgb(26, 243, 232);
+}
+
+.more:hover{
+    color: rgb(154, 92, 154);
+
 }

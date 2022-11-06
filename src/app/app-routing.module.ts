@@ -23,6 +23,10 @@ import { UpdateSucursalComponent } from './modulos/crud-sucursal/componentes/upd
 import { ReadProductoComponent } from './modulos/crud-producto/componentes/read-producto/read-producto.component';
 import { CreateProductoComponent } from './modulos/crud-producto/componentes/create-producto/create-producto.component';
 import { CreateCompraComponent } from './modulos/crud-compra/componentes/create-compra/create-compra.component';
+import { MoreUserComponent } from './modulos/crud-user/componentes/crud-users/more-user/more-user.component';
+import { CreateUbicacionComponent } from './modulos/crud-ubicacion/componentes/create-ubicacion/create-ubicacion.component';
+import { UpdateUbicacionComponent } from './modulos/crud-ubicacion/componentes/update-ubicacion/update-ubicacion.component';
+import { ReadUbicacionComponent } from './modulos/crud-ubicacion/componentes/read-ubicacion/read-ubicacion.component';
 const routes: Routes = [
   {path:'portal', component:PortalComponent},
   {path:'sign-up',component:CreateUserComponent,canActivate:[AuthGuardService],data:['administrador']},
@@ -43,6 +47,10 @@ const routes: Routes = [
   {path:'read-producto',component:ReadProductoComponent},
   {path:'create-compra',component:CreateCompraComponent},
 
+  {path:'more-user/:ID',component:MoreUserComponent},
+  {path:'create-ubicacion',component:CreateUbicacionComponent},
+  {path:'read-ubicacion',component:ReadUbicacionComponent},
+  {path:'update-ubicacion',component:UpdateUbicacionComponent},
   {path:'**',component:PortalComponent},
   {path:'default',component:DefaultComponent},
 

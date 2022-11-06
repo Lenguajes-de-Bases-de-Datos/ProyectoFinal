@@ -102,7 +102,7 @@
                 <a class="icon-upload update" (click)="accion(obj.ID,obj.status)" (click)="paginacion.update(2000)"></a>
               </ng-template>
             </td>
-            <td *ngIf="i!=10"><i class="icon-newspaper-o"></i></td>
+            <td *ngIf="i!=10"><i class="icon-newspaper-o more" (click)="moreUser(obj.ID)"></i></td>
             
           </tr>
         
