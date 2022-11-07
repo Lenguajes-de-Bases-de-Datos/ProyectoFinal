@@ -131,7 +131,7 @@ a.btn-customized.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
     display: inline-block;
     width: 172px;
     height: 34px;
-    background: url('../../assets/img/logo.png') left top no-repeat;
+    background: url('../../assets/img/logomenu.png') left top no-repeat;
     border: 0;
     text-indent: -999999px;
 }

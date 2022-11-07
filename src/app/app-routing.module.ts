@@ -16,6 +16,13 @@ import { CreateCategoriaComponent } from './modulos/crud-categoria/componentes/c
 import { ReadCategoriaComponent } from './modulos/crud-categoria/componentes/crud-categoria/read-categoria/read-categoria.component';
 import { UpdateCategoriaComponent } from './modulos/crud-categoria/componentes/crud-categoria/update-categoria/update-categoria.component';
 import { HomeModule } from './home/home.module';
+import { CardCategoriaComponent } from './modulos/crud-categoria/componentes/crud-categoria/card-categoria/card-categoria.component';
+import { CreateSucursalComponent } from './modulos/crud-sucursal/componentes/create-sucursal/create-sucursal.component';
+import { ReadSucursalComponent } from './modulos/crud-sucursal/componentes/read-sucursal/read-sucursal.component';
+import { UpdateSucursalComponent } from './modulos/crud-sucursal/componentes/update-sucursal/update-sucursal.component';
+import { ReadProductoComponent } from './modulos/crud-producto/componentes/read-producto/read-producto.component';
+import { CreateProductoComponent } from './modulos/crud-producto/componentes/create-producto/create-producto.component';
+import { CreateCompraComponent } from './modulos/crud-compra/componentes/create-compra/create-compra.component';
 import { MoreUserComponent } from './modulos/crud-user/componentes/crud-users/more-user/more-user.component';
 import { CreateUbicacionComponent } from './modulos/crud-ubicacion/componentes/create-ubicacion/create-ubicacion.component';
 import { UpdateUbicacionComponent } from './modulos/crud-ubicacion/componentes/update-ubicacion/update-ubicacion.component';
@@ -29,12 +36,21 @@ const routes: Routes = [
   {path:'send-msg',component:SendMessageComponent},
   {path:'create-categoria',component:CreateCategoriaComponent},
   {path:'read-categoria',component:ReadCategoriaComponent},
+  {path:'card-categoria/:id',component:CardCategoriaComponent},
   {path:'update-categoria/:id',component:UpdateCategoriaComponent},
   {path:'update-categoria',component:UpdateCategoriaComponent},
+  {path:'create-sucursal',component:CreateSucursalComponent},
+  {path:'create-sucursal/:id',component:CreateSucursalComponent},
+  {path:'read-sucursal',component:ReadSucursalComponent},
+  {path:'update-sucursal',component:UpdateSucursalComponent},
+  {path:'create-producto',component:CreateProductoComponent},
+  {path:'read-producto',component:ReadProductoComponent},
+  {path:'create-compra',component:CreateCompraComponent},
   {path:'more-user/:ID',component:MoreUserComponent},
   {path:'create-ubicacion',component:CreateUbicacionComponent},
   {path:'read-ubicacion',component:ReadUbicacionComponent},
   {path:'update-ubicacion',component:UpdateUbicacionComponent},
+  {path:'update-ubicacion/:id',component:UpdateUbicacionComponent},
   {path:'**',component:PortalComponent},
   {path:'default',component:DefaultComponent},
 

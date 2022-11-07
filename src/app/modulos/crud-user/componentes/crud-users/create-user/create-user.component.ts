@@ -99,7 +99,7 @@ export class CreateUserComponent implements OnInit {
   }
   formatear(event:any){
     let valor = this.form.get('phone')?.value;
-    console.log(valor.length)
+   
     let tamanio = valor.length;
     console.log("event: "+event.keyCode)
     if(event.keyCode == 8){

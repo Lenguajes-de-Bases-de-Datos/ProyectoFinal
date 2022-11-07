@@ -18,16 +18,16 @@
 <div class="input-group mb-3">
 
   <div class="custom-control custom-radio custom-control-inline">
-    <input type="radio" id="Todos" name="customRadioInline" class="custom-control-input" checked="true" (click)="filtro(1)" (click)="paginacion.update(1)">
+    <input type="radio" id="Todos" name="customRadioInline" class="custom-control-input" checked="true" (click)="filtro(1)" (click)="paginacion.update(1)" (click)="paginacion.reinicia()">
     <label class="custom-control-label" for="Todos">Todos</label>
   </div>
   <div class="custom-control custom-radio custom-control-inline">
-    <input type="radio" id="Habilitados" name="customRadioInline" class="custom-control-input" (click)="filtro(2)" (click)="paginacion.update(1)">
+    <input type="radio" id="Habilitados" name="customRadioInline" class="custom-control-input" (click)="filtro(2)" (click)="paginacion.update(1)" (click)="paginacion.reinicia()">
     <label class="custom-control-label" for="Habilitados">Habilitados</label>
   </div>
 
   <div class="custom-control custom-radio custom-control-inline">
-    <input type="radio" id="Inhabilitados" name="customRadioInline" class="custom-control-input" (click)="filtro(3)" (click)="paginacion.update(1)">
+    <input type="radio" id="Inhabilitados" name="customRadioInline" class="custom-control-input" (click)="filtro(3)" (click)="paginacion.update(1)" (click)="paginacion.reinicia()">
     <label class="custom-control-label" for="Inhabilitados">Inhabilitados</label>
   </div>
 

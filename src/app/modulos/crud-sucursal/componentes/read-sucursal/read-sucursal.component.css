@@ -1,0 +1,8 @@
+.wrapper{
+    width: 80%;
+    margin: auto;
+}
+.icon-refresh{
+    cursor: pointer;
+    color: aqua;
+}

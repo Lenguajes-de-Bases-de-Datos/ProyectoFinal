@@ -25,6 +25,7 @@ import { MoreUserComponent } from './componentes/crud-users/more-user/more-user.
 
     HomeModule, ReactiveFormsModule,
     FormsModule
-  ]
+  ],
+  exports:[CreateUserComponent]
 })
 export class CrudUserModule { }

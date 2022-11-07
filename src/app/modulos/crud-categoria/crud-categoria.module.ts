@@ -5,6 +5,7 @@ import { UpdateCategoriaComponent } from './componentes/crud-categoria/update-ca
 import { ReadCategoriaComponent } from './componentes/crud-categoria/read-categoria/read-categoria.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeModule } from 'src/app/home/home.module';
+import { CardCategoriaComponent } from './componentes/crud-categoria/card-categoria/card-categoria.component';
 
 
 
@@ -12,7 +13,8 @@ import { HomeModule } from 'src/app/home/home.module';
   declarations: [
     CreateCategoriaComponent,
     UpdateCategoriaComponent,
-    ReadCategoriaComponent
+    ReadCategoriaComponent,
+    CardCategoriaComponent
   ],
   imports: [
     CommonModule,
