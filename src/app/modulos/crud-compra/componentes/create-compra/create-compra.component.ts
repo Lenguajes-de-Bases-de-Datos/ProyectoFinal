@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { RequestsService } from 'src/app/services/requests.service';
 
 @Component({
   selector: 'app-create-compra',
@@ -11,7 +12,11 @@ export class CreateCompraComponent implements OnInit {
   form!:FormGroup;
   prod:any[]=[];
   in!:FormGroup;
-  constructor() { 
+  total:number=0;
+  proveedor:any[ ]=[ ];
+  idprov:number = 0;
+  obs:string="";
+  constructor(private request:RequestsService) { 
     this.form = new FormGroup({
       texto : new FormControl('',[Validators.required]),
       id : new FormControl('',[Validators.required])
@@ -20,9 +25,21 @@ export class CreateCompraComponent implements OnInit {
       cantidad : new FormControl('',[Validators.required,Validators.pattern('[0-9]+')]),
       descripcion : new FormControl('',[Validators.required,Validators.pattern('[^\'\"!&|]+')])
     });
+    this.request.consultas('SELECT * FROM proveedor').subscribe((res:any)=>{
+      this.proveedor = res;
+    })
   }
 
   ngOnInit(): void {
+  }
+  actTotal(key:any,i:number){
+    if(key.keyCode >=96 && key.keyCode <=105){
+      this.total -= this.prod[i].tot;
+      this.prod[i].tot = this.prod[i].precio*this.prod[i].cant;
+      this.total += this.prod[i].tot;
+    }else{
+
+    }
   }
 change(){
 
@@ -32,15 +49,126 @@ buscar(){
 }
   recep(obj:any){ 
     let i = this.prod.findIndex(p=>p.ID === obj.ID);
-    console.log(i)
+    
     if(i != -1){
       this.prod[i].cant++;
-     }else{
+      this.prod[i].tot +=  this.prod[i].precio;
+      this.total += this.prod[i].precio;
+    }else{
       this.prod.push({
         ID:obj.ID,
         nombre:obj.nombre,
-        cant:1
+        precio:obj.precioUnitario*0.95,
+        cant:1,
+        tot:obj.precioUnitario*0.95
       });
+      this.total += obj.precioUnitario*0.95;
+    
     }
+     
   } 
+  realizaCompra(){
+    let user:any = localStorage.getItem('cuenta');
+    user = JSON.parse(user);
+    let sql = `INSERT INTO compra (ID,ID_usuario,ID_sucursal,ID_prov,total,fecha,observaciones) `;
+    sql += `VALUES(ID,${user.ID},${user.ID_sucursal},${this.idprov},${this.total},curdate(),'${this.obs}')`;
+    let body= {
+      sql:sql,
+      table:'compra'
+    };
+    this.request.accion(body).subscribe((res:any)=>{
+      this.compProd();
+    });
+    
+    
+  }
+  compProd(){
+    let user:any = localStorage.getItem('cuenta');
+    user = JSON.parse(user);
+    
+    let sql="";
+    let auxsql=`SELECT * FROM sucursal_producto WHERE ID_sucursal=${user.ID_sucursal} and ID_producto in(`;  
+    
+    sql = `INSERT INTO compra_producto VALUES`;
+    this.request.consultas('SELECT MAX(id) id from compra').subscribe((res:any)=>{
+      
+      let id = res[0].id;
+      for(let i = 0;i<this.prod.length;i++){
+        sql += `(${this.prod[i].ID},${id},${this.prod[i].cant},${this.prod[i].precio})`;
+        auxsql += `${this.prod[i].ID}` ;
+        if(i == this.prod.length-1){
+          
+        }else{
+          sql += ',';
+          auxsql += `,` ;
+        }
+        
+      }
+      auxsql+=')';
+      let body = {
+        sql:sql,
+        table:'compra_producto'
+      };
+      this.request.accion(body).subscribe((res:any)=>{
+        
+      });
+      
+      
+      this.insertaSucProd(auxsql,user.ID_sucursal);
+    });
+  }
+  insertaSucProd(auxsql:string,suc:any){
+    let sql = `INSERT INTO sucursal_producto VALUES `;
+    let sql2 = `UPDATE sucursal_producto SET `;
+    this.request.consultas(auxsql).subscribe((res:any)=>{
+      let i = 0;
+      let j = 0;
+      if(res.length>0){
+      for(let i = 0;i<this.prod.length; i++){
+        if(res[j].ID_producto == this.prod[i].ID){
+          
+          sql2 = `UPDATE sucursal_producto SET existencias=existencias + ${this.prod[i].cant} WHERE ID_sucursal = ${suc} and ID_producto = ${this.prod[i].ID}`;
+        let body = {
+          sql:sql2,
+          table:'sucursal_producto'
+        };
+        this.request.accion(body).subscribe((res:any)=>{
+
+        });
+          j+1>res.length-1? j :j++;
+
+        }else{
+          sql += `(${suc},${this.prod[i].ID},${this.prod[i].cant},1)`;
+          if(i == this.prod.length-1){
+
+          }else{
+            sql += ',';
+          }
+        }
+       
+      }
+    }else{
+      for(let i=0;i<this.prod.length;i++){
+        sql += `(${suc},${this.prod[i].ID},${this.prod[i].cant},1)`;
+          if(i == this.prod.length-1){
+
+          }else{
+            sql += ',';
+          }
+      
+      }  
+    }
+      
+      let body = {
+        sql:sql,
+        table:'sucursal_producto'
+      }
+      this.request.accion(body).subscribe((res:any)=>{
+
+      });
+     
+
+    });
+
+  }
 }

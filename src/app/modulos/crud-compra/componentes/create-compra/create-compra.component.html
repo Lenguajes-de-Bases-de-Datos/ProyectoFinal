@@ -1,7 +1,28 @@
 <div class="wrapper">
+<div>
+  <div class="form-row">
+  <div class="form-group col-md-6">
+    <label for="inputSucursal">Sucursal</label>
+    <select  id="inputSucursal" class="form-control" [(ngModel)]="this.idprov">
+      <option selected disabled>Choose...</option>
+      <option *ngFor="let obj of proveedor" [value]="obj.ID">{{obj.ID}} {{obj.nempresa}}</option>
+      
+      <option >
+      </option>
+     
+    
+    
+    </select>
+    
+  </div>
+</div>
+</div>
+<textarea [(ngModel)]="this.obs" class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="Comentarios..."  
+                >
+    
+                </textarea>
+    <button type="submit" class="btn btn-primary mb-2" (click)="realizaCompra()" >Realizar</button>
 
-   
-    <button type="submit" class="btn btn-primary mb-2" >Realizar</button>
   <div class="table-responsive-lg">
       <table class="table table-striped table-dark">
           <thead>
@@ -14,7 +35,6 @@
               <th scope="col">Producto</th>
               <th scope="col">Cantidad</th>
               <th scope="col">Total</th>
-              <th scope="col">Observaciones</th>
              
              
             </tr>
@@ -26,26 +46,28 @@
               <td *ngIf="i!=10">{{obj.nombre}}</td>
               <td *ngIf="i!=10">
                 
-                <input [(ngModel)]="obj.cant" type="text" id="inputcantidad" class="form-control"  placeholder="0-9">
+                <input (keyup)="actTotal($event,i)" [(ngModel)]="obj.cant" type="text" id="inputcantidad" class="form-control"  placeholder="0-9">
 
               </td>
-              <td *ngIf="i!=10">total</td>
+              <td *ngIf="i!=10">{{obj.tot | number: '1.1-3' }}</td>
               <td *ngIf="i!=10">
                 
-                <textarea  class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="Comentarios..."  
-                >
-    
-                </textarea>
+                
 
 
               </td>
+              <td *ngIf="i!=10"><i class="icon-trash-4 delete"></i></td>
                 <!-- <a *ngIf="obj.status==1 else darAlta" (click)="paginacion.accion('elimina',this.sentencia+'0 WHERE id = '+obj.ID)" class="icon-trash-4 delete"  (click)="paginacion.update(2000)"></a>
                 <ng-template #darAlta>
                   <a class="icon-upload update" (click)="paginacion.accion('actualiza',this.sentencia+'1 WHERE id = '+obj.ID)" (click)="paginacion.update(2000)"></a>
                 </ng-template> -->
               
             </tr>
-          
+          <tr >
+            <td colspan="2" style="text-align: center;">Total</td>
+            <td colspan="1"></td>
+            <td  colspan="1" >{{total | number: '1.1-3' }}</td>
+          </tr>
           </tbody>
         </table>
   </div>      
