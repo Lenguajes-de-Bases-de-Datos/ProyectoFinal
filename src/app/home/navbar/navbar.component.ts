@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SocketsWebService } from 'src/app/services/sockets-web.service';
+declare const events : any;
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -29,6 +30,9 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+  ngAfterViewInit(){
+    events();
   }
   logOut(){
     

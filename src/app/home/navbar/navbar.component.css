@@ -3,11 +3,11 @@ nav{
     float:right;
     padding-right: 6em;
 }
-.collapse{
+/* .collapse{
     display: flex !important;
     justify-content: flex-end;
     
-}
+} */
 /*NOTIFICATIONS*/
 #nav{list-style:none;margin: 0px;padding: 0px;}
 #nav li {

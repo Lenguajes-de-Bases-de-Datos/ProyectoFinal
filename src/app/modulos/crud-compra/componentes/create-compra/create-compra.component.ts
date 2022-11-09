@@ -16,6 +16,7 @@ export class CreateCompraComponent implements OnInit {
   proveedor:any[ ]=[ ];
   idprov:number = 0;
   obs:string="";
+  valida:boolean=true;
   constructor(private request:RequestsService) { 
     this.form = new FormGroup({
       texto : new FormControl('',[Validators.required]),
@@ -120,6 +121,7 @@ buscar(){
   insertaSucProd(auxsql:string,suc:any){
     let sql = `INSERT INTO sucursal_producto VALUES `;
     let sql2 = `UPDATE sucursal_producto SET `;
+    let band=false;
     this.request.consultas(auxsql).subscribe((res:any)=>{
       let i = 0;
       let j = 0;
@@ -138,6 +140,7 @@ buscar(){
           j+1>res.length-1? j :j++;
 
         }else{
+          band=true;
           sql += `(${suc},${this.prod[i].ID},${this.prod[i].cant},1)`;
           if(i == this.prod.length-1){
 
@@ -146,6 +149,9 @@ buscar(){
           }
         }
        
+      }
+      if(sql[sql.length-1]==','){
+        sql = sql.substring(0,sql.length-1);
       }
     }else{
       for(let i=0;i<this.prod.length;i++){
@@ -158,17 +164,25 @@ buscar(){
       
       }  
     }
-      
-      let body = {
-        sql:sql,
-        table:'sucursal_producto'
-      }
-      this.request.accion(body).subscribe((res:any)=>{
+      if(band){
+        let body = {
+          sql:sql,
+          table:'sucursal_producto'
+        }
+        this.request.accion(body).subscribe((res:any)=>{
 
-      });
-     
+        });
+    }
 
     });
-
+    // this.prod = [];
+    // this.valida=true;
+    // this.idprov=0;
+    // this.total = 0;
+  }
+  validar(){
+    if(this.idprov!=0){
+      this.valida=false;
+    }
   }
 }
