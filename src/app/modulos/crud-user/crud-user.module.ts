@@ -10,7 +10,7 @@ import { HomeModule } from 'src/app/home/home.module';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MoreUserComponent } from './componentes/crud-users/more-user/more-user.component';
-
+import { StatusPipe } from '../../pipe/status.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,8 @@ import { MoreUserComponent } from './componentes/crud-users/more-user/more-user.
     DeleteUserComponent,
     UpdateUserComponent,
     ReadUserComponent,
-    MoreUserComponent
+    MoreUserComponent,
+    StatusPipe
   ],
   imports: [
     CommonModule,

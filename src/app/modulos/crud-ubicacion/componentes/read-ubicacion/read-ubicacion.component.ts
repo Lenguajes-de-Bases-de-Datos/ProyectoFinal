@@ -80,7 +80,7 @@ export class ReadUbicacionComponent implements OnInit {
           if(result.value){
             this.b = this.form.get('id_inf')?.value;
             this.a = this.form.get('id_sup')?.value;
-            this.title = 'Intervalo ed ID ubicación';
+            //this.title = 'Intervalo ed ID ubicación';
             this.form.patchValue({
               id_sup : this.b,
               id_inf : this.a

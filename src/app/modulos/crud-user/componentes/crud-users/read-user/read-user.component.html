@@ -94,7 +94,7 @@
             <td *ngIf="i!=10">{{obj.apmat}}</td>
             <td *ngIf="i!=10">{{obj.privilegios}}</td>
             <td *ngIf="i!=10">{{obj.email}}</td>
-            <td *ngIf="i!=10">{{obj.status}}</td>
+            <td *ngIf="i!=10">{{obj.status | statusPipe }}</td>
             <td *ngIf="i!=10">{{obj.activo}}</td>
             <td *ngIf="i!=10">
               <a *ngIf="obj.status==1 else darAlta" class="icon-trash-4 delete" (click)="accion(obj.ID,obj.status)" (click)="paginacion.update(2000)"></a>
