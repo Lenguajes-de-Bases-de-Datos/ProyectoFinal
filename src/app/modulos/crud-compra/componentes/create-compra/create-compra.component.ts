@@ -71,8 +71,8 @@ buscar(){
   realizaCompra(){
     let user:any = localStorage.getItem('cuenta');
     user = JSON.parse(user);
-    let sql = `INSERT INTO compra (ID,ID_usuario,ID_sucursal,ID_prov,total,fecha,observaciones) `;
-    sql += `VALUES(ID,${user.ID},${user.ID_sucursal},${this.idprov},${this.total},curdate(),'${this.obs}')`;
+    let sql = `INSERT INTO compra (ID,ID_usuario,ID_prov,total,fecha,observaciones) `;
+    sql += `VALUES(ID,${user.ID},${this.idprov},${this.total},now(),'${this.obs}')`;
     let body= {
       sql:sql,
       table:'compra'
@@ -181,7 +181,7 @@ buscar(){
     // this.total = 0;
   }
   validar(){
-    if(this.idprov!=0){
+    if(this.idprov!=0 &&this.prod.length>0){
       this.valida=false;
     }
   }

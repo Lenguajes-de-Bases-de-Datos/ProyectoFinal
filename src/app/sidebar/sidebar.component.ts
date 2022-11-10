@@ -114,7 +114,7 @@ export class SidebarComponent implements OnInit {
         nombre:'Crear'
       },
        { 
-        ruta:'',
+        ruta:'/read-compra',
         nombre:'Consultar'
        } ,
        {
