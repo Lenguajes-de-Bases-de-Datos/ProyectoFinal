@@ -1,1 +1,53 @@
-<p>update-ubicacion works!</p>
+<div class="wrapper" >
+    <div [formGroup]="this.form">
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputnum">Ingresa ID de la ubicación</label>
+              <input type="text" class="form-control" id="inputnum" formControlName="ubinum">
+              <p *ngIf='this.form.get("ubinum")?.value == "" || this.form.get("ubinum")?.value == null'><b>Si no te sabes el id de la ubicacion ve a la opción Consultas</b></p>
+            <!-- <label for="inputest">Nombre de la Ciudad</label>
+      
+            <select [(ngModel)]="this.optionCiudad"  class="custom-select" id="inputGroupSelect02" aria-label="Example select with button addon" >
+                <option selected value="0">Todas las Ubicaciones por Ciudad...</option>
+                <option *ngFor="let cd of resCiudades" [value]="cd.ciudad">{{cd.ciudad}}</option>
+            </select>
+
+            <select [(ngModel)]="this.optionColonia"  class="custom-select" id="inputGroupSelect02" aria-label="Example select with button addon" >
+                <option selected value="0">Todas las Ubicaciones por Ciudad...</option>
+                <option *ngFor="let cd of resCiudades" [value]="cd.ciudad">{{cd.ciudad}}</option>
+            </select> -->
+            <button  (click)="buscar()" type="submit" class="btn btn-primary" id="Buscar" [disabled]="(this.form.get('ubinum')?.invalid && this.form.get('estado')?.invalid && this.form.get('ciudad')?.invalid)">Buscar</button>
+             
+            </div>
+            <!-- <div style="display: none;" class="form-group col-md-6">
+                <label for="inputnom"></label>
+                <input type="text" class="form-control" id="inputnom"  formControlName="busnombre" (keyup)="controlar(2)">
+                 </div> -->
+        </div>
+        
+        <div class="form-row" >
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">Estado</label>
+            <input placeholder="No se admiten caracteres especiales('!&|)" [ngClass]="{'invalid':this.form.get('estado')?.invalid,'valid':!this.form.get('estado')?.invalid}" type="text" class="form-control" id="inputNombre" formControlName="estado">
+           </div>
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">Ciudad</label>
+            <input placeholder="No se admiten caracteres especiales('!&|)" [ngClass]="{'invalid':this.form.get('ciudad')?.invalid,'valid':!this.form.get('ciudad')?.invalid}" type="text" class="form-control" id="inputAppat" formControlName="ciudad">
+          </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Colonia</label>
+              <input placeholder="No se admiten caracteres especiales('!&|)" [ngClass]="{'invalid':this.form.get('colonia')?.invalid,'valid':!this.form.get('colonia')?.invalid}" type="text" class="form-control" id="inputApmat" formControlName="colonia">
+            </div>
+            <div class="form-group col-md-5">
+              <label for="inputPassword4">cp</label>
+              <input placeholder="4 caracteres numericos obligatorios" [ngClass]="{'invalid':this.form.get('cp')?.invalid,'valid':!this.form.get('cp')?.invalid}" type="text" class="form-control" id="inputPassword4" formControlName="cp">
+             
+            </div>
+            
+          </div>
+        <button (click)="update()" type="submit" class="btn btn-primary">Actualizar</button>
+      </div>
+    </div>

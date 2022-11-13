@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RequestsService } from 'src/app/services/requests.service';
 import swal from 'sweetalert2';
 
@@ -26,7 +27,7 @@ export class ReadUbicacionComponent implements OnInit {
   optionCiudad:any;
   resCiudades:any[]=[];
   a:any; b:any;
-  constructor(private request:RequestsService) {
+  constructor(private request:RequestsService, private router:Router) {
     this.request.consultas('SELECT * FROM ubicacion LIMIT 0,11').subscribe((res:any)=>{
       this.ubicaciones = res;
     });
@@ -138,7 +139,8 @@ export class ReadUbicacionComponent implements OnInit {
   result(res:any){
     this.ubicaciones = res;
   }
-  moreUser(id:number){
-    alert("ID de la ubicación ----> "+id);
+  update(id:number){
+    this.router.navigate(['/update-ubicacion',id]);
+    
   }
 }
