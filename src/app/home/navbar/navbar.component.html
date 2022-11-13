@@ -30,14 +30,28 @@
           
           <div class="dropdown-menu" >
            
-              <a *ngFor="let obj of notifications,index as i" class="dropdown-item" href="#"  (click)="updateCount(i)">{{obj.text}}</a>
-           
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" (click)="logOut()">Log Out</a>
+              <!-- <a *ngFor="let obj of notifications,index as i" class="dropdown-item" href="#"  (click)="updateCount(i)">{{obj.text}}</a> -->
+              <div class="list-group lista" >
+                <a class="list-group-item list-group-item-action active" *ngFor="let obj of notifications,index as i" class="dropdown-item" href="#"  (click)="updateCount(i)">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">List group item heading</h5>
+                    <small></small>
+                  </div>
+                  <p class="mb-1">{{obj.text}}.</p>
+                  <small>{{obj.author}}</small>
+                  <div class="dropdown-divider"></div>
+                </a>
+               
+              </div>
+
+            
+            
           </div>
           
         </li>
         
+        
+
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">

@@ -15,6 +15,8 @@ export class OptionsComponent implements OnInit {
     console.log("wiiii")
   }
   filtro(option1:number){
+  
+    console.log("valor ref: "+this.ref)
     let aux = "";
    console.log("d: "+this.sql.indexOf('WHERE',0));
    let lim = this.sql.indexOf('WHERE',0);
@@ -25,18 +27,20 @@ export class OptionsComponent implements OnInit {
       if(option1 == 1){
         aux = this.sql;
       }else if(option1 == 2){
-        aux = this.sql+" WHERE status = 1";
+        aux = this.sql+` WHERE ${this.ref}status = 1`;
       }else{
-       aux = this.sql += " WHERE status = 0";
+       aux = this.sql += ` WHERE ${this.ref}status = 0`;
       }
-    }else if(this.sql.includes(' status = ')){
-      console.log("s2")
+    }else if(this.sql.includes(` ${this.ref}status = `)){
+      console.log("s2"+ `${this.ref}status = 0`)
       if(option1 == 1){
         aux = this.sql.slice(0,lim);
-      }else if(option1 == 2 && this.sql.includes('status = 0')){
-        aux = this.sql.replace('status = 0','status = 1');
-      }else if(option1 == 3 && this.sql.includes('status = 1')){
-       aux = this.sql.replace('status = 1','status = 0');
+      }else if(option1 == 2 && this.sql.includes(`${this.ref}status = 0`)){
+        aux = this.sql.replace(`${this.ref}status = 0`,`${this.ref}status = 1`);
+        console.log("op2 "+aux)
+      }else if(option1 == 3 && this.sql.includes(`${this.ref}status = 1`)){
+       aux = this.sql.replace(`${this.ref}status = 1`,`${this.ref}status = 0`);
+       console.log("op3 "+aux)
       }else{
         aux = this.sql;
       }
@@ -72,7 +76,8 @@ export class OptionsComponent implements OnInit {
         aux = this.sql;
       }
     } 
-    this.sql = aux ;
+  
+    this.sql =aux;
     console.log("mysql: "+this.sql);
     this.event.emit(this.sql);
     // let obj = new PaginacionComponent(this.request);

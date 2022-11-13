@@ -8,10 +8,16 @@ import { SocketsWebService } from 'src/app/services/sockets-web.service';
 export class SendMessageComponent implements OnInit {
   payload:any={
     author:"a1",
-    text:""
+    text:"",
+    room:''
   }
   msg:String="";
-  constructor(private socket:SocketsWebService) { }
+  constructor(private socket:SocketsWebService) { 
+    let user:any = localStorage.getItem('cuenta');
+    user = JSON.parse(user);
+    this.payload.author = `${user.nombre}`;
+    this.payload.room = user.ID_sucursal; 
+  }
 
   ngOnInit(): void {
   }

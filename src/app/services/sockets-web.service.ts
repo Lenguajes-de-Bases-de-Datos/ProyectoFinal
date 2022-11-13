@@ -9,10 +9,15 @@ export class SocketsWebService extends Socket{
   callback:EventEmitter<any> = new EventEmitter();
   receive:EventEmitter<any> = new EventEmitter();
   constructor() { 
+    let user:any = localStorage.getItem('cuenta');
+    user = JSON.parse(user);
     super({
       url:"http://localhost:3000",
       options:{
-        transports: ["websocket"] 
+        transports: ["websocket"],
+        query:{
+          room:`${user.ID_sucursal}`
+        } 
       }
     });
     this.ioSocket.on("messages",(res:any)=>{this.array = res; this.callback.emit(res)});

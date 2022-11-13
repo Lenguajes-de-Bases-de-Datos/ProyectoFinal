@@ -162,7 +162,8 @@ buscar(){
             sql += ',';
           }
       
-      }  
+      }
+      band=true;  
     }
       if(band){
         let body = {

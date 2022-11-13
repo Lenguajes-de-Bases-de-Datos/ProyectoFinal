@@ -19,7 +19,10 @@ font-weight:bold;
 #nav li a{color:#333333;text-decoration:none}
 #nav li a:hover{color:#006699;text-decoration:none}
 
-
+.lista{
+    height: 15em;
+    overflow: scroll;
+}
 
 #notification_li
 {
