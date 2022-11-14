@@ -5,7 +5,8 @@ import { EventEmitter } from '@angular/core';
   providedIn: 'root'
 })
 export class SocketsWebService extends Socket{
-  array:any[] = []
+  array:any[] = [];
+  isFirst:boolean=true;
   callback:EventEmitter<any> = new EventEmitter();
   receive:EventEmitter<any> = new EventEmitter();
   constructor() { 
@@ -23,6 +24,10 @@ export class SocketsWebService extends Socket{
     this.ioSocket.on("messages",(res:any)=>{this.array = res; this.callback.emit(res)});
     this.ioSocket.on("notification",(res:any)=>{this.receive.emit(res)});
       this.getArray();
+      
+  }
+  conneccion(){
+    
   }
   emitEvent = (payload = {})=>{
     this.ioSocket.emit('msg',payload);
@@ -31,5 +36,9 @@ export class SocketsWebService extends Socket{
   getArray():any[]{
      return this.array;
     
+  }
+  logOut(){
+    this.isFirst=false;
+    this.ioSocket.disconnect();
   }
 }

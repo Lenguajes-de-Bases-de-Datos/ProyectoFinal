@@ -64,7 +64,7 @@
                     <th scope="col">Total</th>
                     <th scope="col">Fecha</th>
                     <th scope="col">Observaciones</th>
-                    
+                    <th scope="col">Más</th>
                 </tr>
             </thead>
             <tbody>
@@ -77,8 +77,8 @@
                     <td *ngIf="i!=10">{{obj.tot}}</td>
                     <td *ngIf="i!=10">{{obj.fecha | date: 'shortDate'}}</td>
                     <td *ngIf="i!=10">{{obj.obs}}</td>
-                    
-                   
+                    <td *ngIf="i!=10">{{obj.obs}}</td>
+                    <td *ngIf="i!=10"><i class="icon-info-circle" (click)="oneCompra(obj.id)"></i></td>
                 </tr>
 
             </tbody>

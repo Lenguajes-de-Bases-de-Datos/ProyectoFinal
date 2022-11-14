@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { PaginacionComponent } from 'src/app/home/paginacion/paginacion.component';
 import { RequestsService } from 'src/app/services/requests.service';
 
@@ -17,7 +18,7 @@ export class ReadCompraComponent implements OnInit {
   band!:boolean;
   user!:any;
   @ViewChild('pag') element?:PaginacionComponent;
-  constructor(private request:RequestsService) { 
+  constructor(private request:RequestsService,private router:Router) { 
     this.user = localStorage.getItem('cuenta') || "";
     let sqltot = "";
     this.user = JSON.parse(this.user);
@@ -130,6 +131,9 @@ export class ReadCompraComponent implements OnInit {
     }
    }
   ngOnInit(): void {
+  }
+  oneCompra(id:number){
+    this.router.navigate(['one-compra',id]);
   }
   result(res:any){
     this.compras = res;

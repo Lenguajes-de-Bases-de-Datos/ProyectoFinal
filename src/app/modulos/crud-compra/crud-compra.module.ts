@@ -5,13 +5,15 @@ import { ReadCompraComponent } from './componentes/read-compra/read-compra.compo
 import { CrudProductoModule } from '../crud-producto/crud-producto.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeModule } from 'src/app/home/home.module';
+import { OneCompraComponent } from './componentes/one-compra/one-compra.component';
 
 
 
 @NgModule({
   declarations: [
     CreateCompraComponent,
-    ReadCompraComponent
+    ReadCompraComponent,
+    OneCompraComponent
   ],
   imports: [
     CommonModule,
