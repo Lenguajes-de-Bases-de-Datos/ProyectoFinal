@@ -3,3 +3,10 @@
     margin: auto;
 
 }
+.reg{
+    cursor: pointer;
+    color: red !important;
+}
+.reg:hover{
+    color: rgb(24, 24, 155) !important;
+}

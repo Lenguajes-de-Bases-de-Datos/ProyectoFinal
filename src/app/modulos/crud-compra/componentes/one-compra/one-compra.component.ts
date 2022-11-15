@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { RequestsService } from 'src/app/services/requests.service';
 
 @Component({
@@ -20,7 +20,7 @@ export class OneCompraComponent implements OnInit {
   };
   band=false;
   sum:number=0;
-  constructor(private request:RequestsService,private active:ActivatedRoute) { 
+  constructor(private request:RequestsService,private active:ActivatedRoute,private router:Router) { 
     let user:any=localStorage.getItem('cuenta');
     user = JSON.parse(user);
     if(user!=undefined){
@@ -63,6 +63,9 @@ export class OneCompraComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+  regresar(){
+    this.router.navigate(['/read-compra']);
   }
 
 }
