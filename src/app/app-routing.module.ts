@@ -32,6 +32,7 @@ import { OneCompraComponent } from './modulos/crud-compra/componentes/one-compra
 const routes: Routes = [
   {path:'portal', component:PortalComponent},
   {path:'sign-up',component:CreateUserComponent,canActivate:[AuthGuardService],data:['administrador']},
+
   {path:'read-users', component:ReadUserComponent,canActivate:[AuthGuardService]},
   {path:'update-user', component:UpdateUserComponent,canActivate:[AuthGuardService]},
   {path:'delete-user', component:DeleteUserComponent,canActivate:[AuthGuardService]},
@@ -51,10 +52,12 @@ const routes: Routes = [
   {path:'read-compra',component:ReadCompraComponent,canActivate:[AuthGuardService]},
   {path:'one-compra/:id',component:OneCompraComponent,canActivate:[AuthGuardService]},
 
+
   {path:'more-user/:ID',component:MoreUserComponent},
   {path:'create-ubicacion',component:CreateUbicacionComponent},
   {path:'read-ubicacion',component:ReadUbicacionComponent},
   {path:'update-ubicacion',component:UpdateUbicacionComponent},
+  {path:'update-ubicacion/:id',component:UpdateUbicacionComponent},
   {path:'**',component:PortalComponent},
   {path:'default',component:DefaultComponent},
 

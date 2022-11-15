@@ -63,4 +63,11 @@ export class RequestsService {
     console.log(this.path+a,params);
     return this.request.post(this.path+a,params,{headers:headers});
   }
+
+  uploadFile(formData:FormData){
+    let urlApi = '/api/subir';
+    return this.request.post(this.path+urlApi, formData);
+
+
+  }
 }
