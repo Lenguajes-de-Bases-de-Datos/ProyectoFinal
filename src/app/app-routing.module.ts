@@ -29,6 +29,8 @@ import { UpdateUbicacionComponent } from './modulos/crud-ubicacion/componentes/u
 import { ReadUbicacionComponent } from './modulos/crud-ubicacion/componentes/read-ubicacion/read-ubicacion.component';
 import { ReadCompraComponent } from './modulos/crud-compra/componentes/read-compra/read-compra.component';
 import { OneCompraComponent } from './modulos/crud-compra/componentes/one-compra/one-compra.component';
+import { CreateVentaComponent } from './modulos/crud-venta/componentes/create-venta/create-venta.component';
+import { ReadVentaComponent } from './modulos/crud-venta/componentes/read-venta/read-venta.component';
 const routes: Routes = [
   {path:'portal', component:PortalComponent},
   {path:'sign-up',component:CreateUserComponent,canActivate:[AuthGuardService],data:['administrador']},
@@ -51,6 +53,8 @@ const routes: Routes = [
   {path:'create-compra',component:CreateCompraComponent,canActivate:[AuthGuardService]},
   {path:'read-compra',component:ReadCompraComponent,canActivate:[AuthGuardService]},
   {path:'one-compra/:id',component:OneCompraComponent,canActivate:[AuthGuardService]},
+  {path:'create-venta',component:CreateVentaComponent,canActivate:[AuthGuardService]},
+  {path:'read-venta',component:ReadVentaComponent,canActivate:[AuthGuardService]},
 
 
   {path:'more-user/:ID',component:MoreUserComponent},

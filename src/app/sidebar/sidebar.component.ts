@@ -129,6 +129,33 @@ export class SidebarComponent implements OnInit {
       icono:"",
       id:"compras"
     },
+
+    {
+      opcion:"Ventas",
+      class:"",
+
+      rutas:[
+       {
+        ruta:'/create-venta',
+        nombre:'Crear'
+       },
+       { 
+        ruta:'/read-venta',
+        nombre:'Consultar'
+       } ,
+       {
+        ruta:'update-user',
+        nombre:'Actualizar'
+       }, 
+       {
+        ruta:'delete-user',
+        nombre:'Eliminar'
+      }
+    ],
+      icono:"",
+      id:"ventas"
+    },
+
     {
       opcion:"Enviar notificación",
       class:"",

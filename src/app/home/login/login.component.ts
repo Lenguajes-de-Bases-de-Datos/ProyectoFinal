@@ -72,7 +72,7 @@ export class LoginComponent implements OnInit {
 
       }
     });
-    setInterval(()=>{
+    setTimeout(()=>{
       if(swal.isVisible()&&band){
         swal.close();
         swal.fire({

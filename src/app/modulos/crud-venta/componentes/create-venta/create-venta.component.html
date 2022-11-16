@@ -1,0 +1,94 @@
+
+<div class="wrapper">
+  
+  
+    
+ 
+    <button type="submit" class="btn btn-primary mb-2" >Realizar</button>
+  
+    <div class="table-responsive-lg">
+        <table class="table table-striped table-dark">
+            <thead>
+              <tr>
+                <th scope="col" colspan="8" style="text-align: center;">Productos agregados</th>
+                
+              </tr>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Producto</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Precio Unitario</th>
+                <th scope="col">Total</th>
+               
+               
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let obj of prod,index as i,let ultimo = last ">
+                 
+                <td *ngIf="i!=10">{{obj.id}}</td>
+                <td *ngIf="i!=10">{{obj.nombre}}</td>
+                <td *ngIf="i!=10">
+                  
+                  <input (keyup)="actTotal($event,i)" [(ngModel)]="obj.cant" type="text" id="inputcantidad" class="form-control"  placeholder="0-9">
+  
+                </td>
+                <td *ngIf="i!=10">{{obj.precio | number: '1.1-3' }}</td>
+                <td *ngIf="i!=10">{{obj.tot | number: '1.1-3' }}</td>
+                <td *ngIf="i!=10">
+                  
+                  
+  
+  
+                </td>
+                <td *ngIf="i!=10"><i class="icon-trash-4 delete"></i></td>
+                  
+                
+              </tr>
+            <tr >
+              <td colspan="2" style="text-align: center;">Total</td>
+              <td colspan="1"></td>
+              <td  colspan="1" >{{total | number: '1.1-3' }}</td>
+            </tr>
+            </tbody>
+          </table>
+    </div>      
+    
+
+
+
+    <!--Read productos-->
+
+    <div class="table-responsive-lg">
+      <table class="table table-striped table-dark">
+          <thead>
+            <tr>
+              <th scope="col" colspan="8" style="text-align: center;">Productos agregados</th>
+              
+            </tr>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Producto</th>
+              <th scope="col">Categoria</th>
+              <th scope="col">Existencias</th>
+              <th scope="col">Precio Unitario</th>
+             
+             
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let obj of prods | async,index as i,let ultimo = last ">
+               
+              <td *ngIf="i!=10">{{obj.id}}</td>
+              <td *ngIf="i!=10">{{obj.nombre}}</td>
+              <td *ngIf="i!=10">{{obj.ncategoria}}</td>
+              <td *ngIf="i!=10">{{obj.existencias}}</td>
+              <td *ngIf="i!=10">{{obj.precioUnitario}}</td>
+              <td *ngIf="i!=10 "><i class="icon-cart-plus car" (click)="agregar(obj)"></i></td>
+              
+          </tbody>
+        </table>
+  </div>  
+
+</div>
+
