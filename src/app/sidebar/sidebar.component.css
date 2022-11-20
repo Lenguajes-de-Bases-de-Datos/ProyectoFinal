@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
 .wrapper {
     display: block;
-   
+    
 }
 
 .sidebar {
@@ -76,13 +78,14 @@ a.btn-customized {
     margin-left: 5px;
     margin-right: 5px;
     padding: .75rem 1.5rem;
-    background: #f35b3f;
+    background: rgb(235, 64, 93);
     border: 0;
     border-radius: 4px;
     font-size: 16px;
     font-weight: 300;
     color: #fff;
     box-shadow: none;
+    font-family: Fredoka One;
 }
 a.btn-customized:hover, 
 a.btn-customized:active, 
@@ -92,10 +95,10 @@ a.btn-customized.active:focus,
 a.btn-customized.btn.btn-primary:not(:disabled):not(.disabled):active,
 a.btn-customized.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
     outline: 0;
-    background: #cd533d; /* for browsers that don't recognize rgba */
-    background: rgba(243, 91, 63, 0.7);
+    background: rgb(233, 163, 175); /* for browsers that don't recognize rgba */
+    background: rgb(233, 163, 175);
     border: 0;
-    color: #fff;
+    color: white;
     box-shadow: none;
 }
 
@@ -129,9 +132,9 @@ a.btn-customized.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
  
 .sidebar .logo a {
     display: inline-block;
-    width: 172px;
-    height: 34px;
-    background: url('../../assets/img/logomenu.png') left top no-repeat;
+    width: 200px;
+    height: 168px;
+    background: url('../../assets/img/logoblancorm.png') left top no-repeat;
     border: 0;
     text-indent: -999999px;
 }
@@ -148,6 +151,7 @@ a.btn-customized.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
     padding: 10px 20px;
     border: 0;
     color: #fff;
+    font-family: Fredoka One;
 }
  
 .sidebar ul li a:hover,
@@ -195,6 +199,7 @@ a[aria-expanded="true"] {
 .sidebar .to-top {
     padding: 20px;
     text-align: center;
+    font-family: Fredoka One;
 }
 
 /*----------------------------------*/
@@ -209,7 +214,7 @@ a[aria-expanded="true"] {
 .sidebar.light .dismiss:focus { background: #ccc; color: #888; }
 
 .sidebar.light .logo { border-color: #eee; }
-.sidebar.light .logo a { background-image: url('../../assets/img/logo-dark.png'); }
+.sidebar.light .logo a { background-image: url('../../assets/img/logonegro1.png'); }
 
 .sidebar.light ul.menu-elements { border-color: #eee; }
 
@@ -366,19 +371,19 @@ only screen and (                min-resolution: 192dpi),
 only screen and (                min-resolution: 2dppx) {
  
     .sidebar .logo a {
-        background-image: url('../../assets/img/logo@2x.png') !important;
+        background-image: url('../../assets/img/logonegro1.png') !important;
         background-repeat: no-repeat !important;
         background-size: 172px 34px !important;
     }
  
     .sidebar.light .logo a {
-        background-image: url('../../assets/img/logo-dark@2x.png') !important;
+        background-image: url('../../assets/img/logonegro1.png') !important;
     }
  
 }
  
 .content{
-  
+    /*background: deeppink;*/
     padding-top: 6em;
    
 }

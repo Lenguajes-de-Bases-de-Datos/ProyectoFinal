@@ -1,0 +1,8 @@
+.imgd{
+    background-image: url('../../../assets/img/crazy.png');
+    width: 900px;
+    height: 900px;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    margin-top: 20%;
+}
