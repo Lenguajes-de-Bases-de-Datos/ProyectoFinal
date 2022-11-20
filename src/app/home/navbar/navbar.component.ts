@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthGuardService } from 'src/app/services/auth-guard.service';
 import { SocketsWebService } from 'src/app/services/sockets-web.service';
+import swal from 'sweetalert2';
 declare const events : any;
 @Component({
   selector: 'app-navbar',
@@ -13,7 +14,8 @@ export class NavbarComponent implements OnInit {
   count:number = 0;
   band_paused:boolean=true;
   name!:any;
-  
+  prod:string="";
+  valid:boolean=true;
   constructor(public socket:SocketsWebService,private router:Router,private auth:AuthGuardService) { 
     let user:any = localStorage.getItem('cuenta') || "";
     user = JSON.parse(user);
@@ -46,7 +48,19 @@ export class NavbarComponent implements OnInit {
     this.count++;
     });
   }
-
+  buscar(){
+    if(this.prod=="" || this.prod.match('[\'\"|&]+')){
+      swal.fire({
+        backdrop: true, 
+        allowOutsideClick: true,
+        title: "Texto incorrecto...",
+        text: "No se permiten caracteres como \", ', |,etc...",
+        confirmButtonText:'Entendido'
+      });
+    }else{
+      this.router.navigate(['one-producto',this.prod]);
+    }
+  }
   ngOnInit(): void {
   }
   ngAfterViewInit(){

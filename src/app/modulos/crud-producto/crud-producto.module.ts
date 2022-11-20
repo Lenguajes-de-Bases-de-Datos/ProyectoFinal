@@ -4,13 +4,15 @@ import { ReadProductoComponent } from './componentes/read-producto/read-producto
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeModule } from 'src/app/home/home.module';
 import { CreateProductoComponent } from './componentes/create-producto/create-producto.component';
+import { OneProductoComponent } from './componentes/one-producto/one-producto.component';
 
 
 
 @NgModule({
   declarations: [
     ReadProductoComponent,
-    CreateProductoComponent
+    CreateProductoComponent,
+    OneProductoComponent
   ],
   imports: [
     CommonModule,

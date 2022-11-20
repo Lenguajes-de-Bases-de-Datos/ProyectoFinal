@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ReadProductoComponent } from 'src/app/modulos/crud-producto/componentes/read-producto/read-producto.component';
 import { RequestsService } from 'src/app/services/requests.service';
-
+import swal from 'sweetalert2';
 @Component({
   selector: 'app-create-compra',
   templateUrl: './create-compra.component.html',
@@ -17,6 +18,8 @@ export class CreateCompraComponent implements OnInit {
   idprov:number = 0;
   obs:string="";
   valida:boolean=true;
+  
+  @ViewChild('prods') element?:ReadProductoComponent;
   constructor(private request:RequestsService) { 
     this.form = new FormGroup({
       texto : new FormControl('',[Validators.required]),
@@ -141,7 +144,7 @@ buscar(){
 
         }else{
           band=true;
-          sql += `(${suc},${this.prod[i].ID},${this.prod[i].cant},1)`;
+          sql += `(${suc},${this.prod[i].ID},${this.prod[i].cant},1,'caja')`;
           if(i == this.prod.length-1){
 
           }else{
@@ -155,7 +158,8 @@ buscar(){
       }
     }else{
       for(let i=0;i<this.prod.length;i++){
-        sql += `(${suc},${this.prod[i].ID},${this.prod[i].cant},1)`;
+        
+        sql += `(${suc},${this.prod[i].ID},${this.prod[i].cant},1,'caja')`;
           if(i == this.prod.length-1){
 
           }else{
@@ -171,15 +175,27 @@ buscar(){
           table:'sucursal_producto'
         }
         this.request.accion(body).subscribe((res:any)=>{
-
+         
         });
-    }
+      }else{
+        
+      }
 
     });
-    // this.prod = [];
-    // this.valida=true;
-    // this.idprov=0;
-    // this.total = 0;
+    setTimeout(()=>{
+      this.prod=[];
+      this.element?.update(1);
+    },2000);
+     this.valida = true;
+     this.idprov = 0;
+     this.total = 0;
+     swal.fire({
+      backdrop:true,
+      allowOutsideClick: true,
+      title: "Exito...",
+      text: "Compra realizada exitosamente...",
+      confirmButtonText:'Entendido'
+    });
   }
   validar(){
     if(this.idprov!=0 &&this.prod.length>0){

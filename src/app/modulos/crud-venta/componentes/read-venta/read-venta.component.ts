@@ -12,6 +12,7 @@ export class ReadVentaComponent implements OnInit {
   ventas:any[]=[];
   sql:string="";
   sentencia:string="UPDATE venta SET status = ";
+  total:number=0;
   constructor(private request:RequestsService,private router:Router) { 
     let user:any = localStorage.getItem('cuenta');
     user = JSON.parse(user);
@@ -26,6 +27,10 @@ export class ReadVentaComponent implements OnInit {
     }
     this.request.consultas(this.sql).subscribe((res:any)=>{
       this.ventas = res;
+    });
+    let sqltot = `select sum(v.total) total from venta v,usuario u WHERE v.ID_usuario=u.id and u.ID_sucursal=${user.ID_sucursal} GROUP BY u.ID_sucursal`;
+    this.request.consultas(sqltot).subscribe((res:any)=>{
+      this.total = res[0].total;
     });
 
   }

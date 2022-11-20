@@ -105,6 +105,6 @@ export class ReadProductoComponent implements OnInit {
    
   }
   update(id:number){
-    
+    this.element?.update(1);
   }
 }
