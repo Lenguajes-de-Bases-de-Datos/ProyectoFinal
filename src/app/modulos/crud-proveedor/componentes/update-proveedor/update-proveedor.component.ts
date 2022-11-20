@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { RequestsService } from 'src/app/services/requests.service';
 import swal from 'sweetalert2';
 
@@ -14,8 +14,9 @@ export class UpdateProveedorComponent implements OnInit {
   form:FormGroup=new FormGroup({});
   ubicaciones:any[]=[];
   proveedor:any;
+  idprov:any=0;
 
-  constructor(private request:RequestsService, private active:ActivatedRoute) {
+  constructor(private request:RequestsService, private router:Router, private active:ActivatedRoute) {
 
     this.form = new FormGroup({
       nempresa:new FormControl('',[Validators.required,Validators.pattern('[^\'\"|&]+')]),
@@ -38,6 +39,7 @@ export class UpdateProveedorComponent implements OnInit {
       if(params['id'] == undefined){
 
       }else{
+        this.idprov=params['id'];
         this.request.consultas(`SELECT * FROM proveedor where id=${params['id']}`).subscribe((res:any)=>{
           this.form.controls['nempresa'].setValue(res[0].nempresa);
           this.form.controls['nencargado'].setValue(res[0].nempresa);
@@ -45,8 +47,8 @@ export class UpdateProveedorComponent implements OnInit {
           this.form.controls['apmat'].setValue(res[0].appat);
           this.form.controls['calle'].setValue(res[0].calle);
           this.form.controls['numero'].setValue(res[0].numero);
-          this.form.controls['email'].setValue(res(0).email);
-          this.form.controls['ubicacion'].setValue(res[0].ubicacion);
+          this.form.controls['email'].setValue(res[0].email);
+          this.form.controls['ubicacion'].setValue(res[0].ID_ubicacion);
           this.form.controls['descripcion'].setValue(res[0].descripcion);
           this.form.controls['phone'].setValue(res[0].telefono);
         });
@@ -58,13 +60,13 @@ export class UpdateProveedorComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  create(){
+  upload(){
     console.log(this.form.value);
-    /*let mysql = `INSERT INTO proveedor(id,id_ubicacion,nempresa,nencargado,appat,apmat,calle,numero,descripcion,email,status,telefono)  VALUES
-    (id,${this.form.get('ubicacion')?.value},LOWER('${this.form.get('nempresa')?.value}'),LOWER('${this.form.get('nencargado')?.value}')
-    ,LOWER('${this.form.get('appat')?.value}'),LOWER('${this.form.get('apmat')?.value}'),LOWER('${this.form.get('calle')?.value}'),
-    ${this.form.get('numero')?.value},'${this.form.get('descripcion')?.value}','${this.form.get('email')?.value}',
-    ${1},'${this.form.get('phone')?.value}')`;
+    let mysql =`UPDATE proveedor set id_ubicacion=${this.form.get('ubicacion')?.value}, nempresa='${this.form.get('nempresa')?.value}',
+    nencargado='${this.form.get('nencargado')?.value}', appat='${this.form.get('appat')?.value}', apmat='${this.form.get('apmat')?.value}',
+    calle='${this.form.get('calle')?.value}', numero=${this.form.get('numero')?.value}, descripcion='${this.form.get('descripcion')?.value}',
+    email='${this.form.get('email')?.value}', telefono='${this.form.get('phone')?.value}' WHERE id=${this.idprov}`;
+    
     console.log(mysql)
     let obj = {
       sql:mysql,
@@ -75,7 +77,7 @@ export class UpdateProveedorComponent implements OnInit {
         swal.fire({
           allowOutsideClick: true,
           title: "Exito...",
-          text: "Proveedor agregada exitosamente...",
+          text: "Proveedor Actualizado exitosamente...",
           confirmButtonText:'Entendido'
         });
         this.form.reset();
@@ -83,7 +85,7 @@ export class UpdateProveedorComponent implements OnInit {
         swal.fire({
           allowOutsideClick: true,
           title: "Error ...",
-          text: "No se pudo agregar el proveedor...",
+          text: "No se pudo Actualizar el proveedor...",
           confirmButtonText:'Entendido'
         });
       }
@@ -92,10 +94,11 @@ export class UpdateProveedorComponent implements OnInit {
     swal.fire({
       allowOutsideClick: true,
       title: "Error ...",
-      text: "No se pudo agregar el proveedor...",
+      text: "No se pudo Actualizar el proveedor...",
       confirmButtonText:'Entendido'
     });
-  }});*/
+  }});
+  this.router.navigate(['/read-proveedor'])
   }
 
 }

@@ -39,10 +39,11 @@ export class CreateProveedorComponent implements OnInit {
   create(){
     console.log(this.form.value);
     let mysql = `INSERT INTO proveedor(id,id_ubicacion,nempresa,nencargado,appat,apmat,calle,numero,descripcion,email,status,telefono)  VALUES
-    (id,${this.form.get('ubicacion')?.value},LOWER('${this.form.get('nempresa')?.value}'),LOWER('${this.form.get('nencargado')?.value}')
-    ,LOWER('${this.form.get('appat')?.value}'),LOWER('${this.form.get('apmat')?.value}'),LOWER('${this.form.get('calle')?.value}'),
+    (id,${this.form.get('ubicacion')?.value},'${this.form.get('nempresa')?.value}','${this.form.get('nencargado')?.value}'
+    ,'${this.form.get('appat')?.value}','${this.form.get('apmat')?.value}','${this.form.get('calle')?.value}',
     ${this.form.get('numero')?.value},'${this.form.get('descripcion')?.value}','${this.form.get('email')?.value}',
     ${1},'${this.form.get('phone')?.value}')`;
+    
     console.log(mysql)
     let obj = {
       sql:mysql,
