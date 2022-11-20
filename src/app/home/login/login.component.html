@@ -17,7 +17,7 @@
                 <p class="feedbacks" style="display: block;"
                         *ngIf="this.form?.get('pass')?.errors?.['required']">El campo no puede quedar vacio</p>
             
-                <div class="inputs"><i class="icons icon-key"></i><input type="{{password}}" formControlName="pass" id="inp-2" placeholder="Contraseña" ><i class="icons icon-eye" (click)="password=='text'?password='password':password='text'"></i></div>
+                <div class="inputs"><i class="icons icon-key"></i><input type="{{password}}" formControlName="pass" id="inp-2" placeholder="Contraseña" (keyup.enter)="enter()"><i class="icons icon-eye" (click)="password=='text'?password='password':password='text'"></i></div>
         </div>
         <div class="buttons">
             <button type="submit" (click)="logIn()" [disabled]="this.form.invalid">Iniciar sesion</button>

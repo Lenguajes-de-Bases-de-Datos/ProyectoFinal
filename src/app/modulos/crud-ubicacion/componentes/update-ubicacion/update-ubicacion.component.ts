@@ -34,7 +34,7 @@ export class UpdateUbicacionComponent implements OnInit {
       this.colonias = res;
     }); */
 
-    this,active.params.subscribe((params:Params)=>{
+    this.active.params.subscribe((params:Params)=>{
       if(params['id'] == undefined){
 
       }else{

@@ -45,6 +45,9 @@ export class RequestsService {
 
     return this.request.post("http://localhost:3000/login",params,{responseType: 'json'});
   }
+  extender(body:any):any{
+    return this.request.post("http://localhost:3000/extender",body,{responseType: 'json'});
+  }
   verifyToken(){
     
     let token = sessionStorage.getItem('token');

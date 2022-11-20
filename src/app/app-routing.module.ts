@@ -27,32 +27,39 @@ import { MoreUserComponent } from './modulos/crud-user/componentes/crud-users/mo
 import { CreateUbicacionComponent } from './modulos/crud-ubicacion/componentes/create-ubicacion/create-ubicacion.component';
 import { UpdateUbicacionComponent } from './modulos/crud-ubicacion/componentes/update-ubicacion/update-ubicacion.component';
 import { ReadUbicacionComponent } from './modulos/crud-ubicacion/componentes/read-ubicacion/read-ubicacion.component';
+import { CreateProveedorComponent } from './modulos/crud-proveedor/componentes/create-proveedor/create-proveedor.component';
+import { ReadProveedorComponent } from './modulos/crud-proveedor/componentes/read-proveedor/read-proveedor.component';
+import { UpdateProveedorComponent } from './modulos/crud-proveedor/componentes/update-proveedor/update-proveedor.component';
+
 const routes: Routes = [
   {path:'portal', component:PortalComponent},
   {path:'sign-up',component:CreateUserComponent,canActivate:[AuthGuardService],data:['administrador']},
-  {path:'read-users', component:ReadUserComponent},
-  {path:'update-user', component:UpdateUserComponent},
-  {path:'delete-user', component:DeleteUserComponent},
-  {path:'send-msg',component:SendMessageComponent},
-  {path:'create-categoria',component:CreateCategoriaComponent},
-  {path:'read-categoria',component:ReadCategoriaComponent},
-  {path:'card-categoria/:id',component:CardCategoriaComponent},
-  {path:'update-categoria/:id',component:UpdateCategoriaComponent},
-  {path:'update-categoria',component:UpdateCategoriaComponent},
-  {path:'create-sucursal',component:CreateSucursalComponent},
-  {path:'create-sucursal/:id',component:CreateSucursalComponent},
-  {path:'read-sucursal',component:ReadSucursalComponent},
-  {path:'update-sucursal',component:UpdateSucursalComponent},
-  {path:'create-producto',component:CreateProductoComponent},
-  {path:'read-producto',component:ReadProductoComponent},
-  {path:'create-compra',component:CreateCompraComponent},
-  {path:'more-user/:ID',component:MoreUserComponent},
-  {path:'create-ubicacion',component:CreateUbicacionComponent},
-  {path:'read-ubicacion',component:ReadUbicacionComponent},
-  {path:'update-ubicacion',component:UpdateUbicacionComponent},
-  {path:'update-ubicacion/:id',component:UpdateUbicacionComponent},
-  {path:'**',component:PortalComponent},
-  {path:'default',component:DefaultComponent},
+  {path:'read-users', component:ReadUserComponent,canActivate:[AuthGuardService]},
+  {path:'update-user', component:UpdateUserComponent,canActivate:[AuthGuardService]},
+  {path:'delete-user', component:DeleteUserComponent,canActivate:[AuthGuardService]},
+  {path:'send-msg',component:SendMessageComponent,canActivate:[AuthGuardService]},
+  {path:'create-categoria',component:CreateCategoriaComponent,canActivate:[AuthGuardService]},
+  {path:'read-categoria',component:ReadCategoriaComponent,canActivate:[AuthGuardService]},
+  {path:'card-categoria/:id',component:CardCategoriaComponent,canActivate:[AuthGuardService]},
+  {path:'update-categoria/:id',component:UpdateCategoriaComponent,canActivate:[AuthGuardService]},
+  {path:'update-categoria',component:UpdateCategoriaComponent,canActivate:[AuthGuardService]},
+  {path:'create-sucursal',component:CreateSucursalComponent,canActivate:[AuthGuardService]},
+  {path:'create-sucursal/:id',component:CreateSucursalComponent,canActivate:[AuthGuardService]},
+  {path:'read-sucursal',component:ReadSucursalComponent,canActivate:[AuthGuardService]},
+  {path:'update-sucursal',component:UpdateSucursalComponent,canActivate:[AuthGuardService]},
+  {path:'create-producto',component:CreateProductoComponent,canActivate:[AuthGuardService]},
+  {path:'read-producto',component:ReadProductoComponent,canActivate:[AuthGuardService]},
+  {path:'create-compra',component:CreateCompraComponent,canActivate:[AuthGuardService]},
+  {path:'create-proveedor', component:CreateProveedorComponent,canActivate:[AuthGuardService]},
+  {path:'read-proveedor',component:ReadProveedorComponent,canActivate:[AuthGuardService]},
+  {path:'update-proveedor/:id',component:UpdateProveedorComponent,canActivate:[AuthGuardService]},
+  {path:'more-user/:ID',component:MoreUserComponent,canActivate:[AuthGuardService]},
+  {path:'create-ubicacion',component:CreateUbicacionComponent,canActivate:[AuthGuardService]},
+  {path:'read-ubicacion',component:ReadUbicacionComponent,canActivate:[AuthGuardService]},
+  {path:'update-ubicacion',component:UpdateUbicacionComponent,canActivate:[AuthGuardService]},
+  {path:'update-ubicacion/:id',component:UpdateUbicacionComponent,canActivate:[AuthGuardService]},
+  {path:'**',component:PortalComponent,canActivate:[AuthGuardService]},
+  {path:'default',component:DefaultComponent,canActivate:[AuthGuardService]},
 
  
 ];
