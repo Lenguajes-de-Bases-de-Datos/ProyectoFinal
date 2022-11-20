@@ -19,13 +19,13 @@ export class AuthGuardService implements CanActivate{
  
 
       let token = sessionStorage.getItem('token');
-    console.log("tokkk"+token);
+   
     if( token==null){ this.band = true;this.router.navigate(['/portal']);
     }else{
       
       this.request.verifyToken().subscribe({next:(resp:any)=>{
         this.band = false;
-        console.log("fiiii");
+      
         
       },
       error:(err:any)=>{
@@ -54,9 +54,9 @@ export class AuthGuardService implements CanActivate{
                 nombre:cuenta.email,
                 password:cuenta.password
               } 
-              console.log("body:"+JSON.stringify(body));
+              
               this.request.extender(body).subscribe((res:any)=>{
-                console.log(JSON.stringify(res)+" ++"+res.msg);
+                
                 if(res.msg != undefined){
                   sessionStorage.setItem('token',res.msg);
                  

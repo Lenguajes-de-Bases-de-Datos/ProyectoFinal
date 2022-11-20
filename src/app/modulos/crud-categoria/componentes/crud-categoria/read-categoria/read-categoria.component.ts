@@ -41,11 +41,11 @@ export class ReadCategoriaComponent implements OnInit {
     this.cats=array;
   }
   update(index:any){
-    console.log(index);
+    
     this.router.navigate(['/update-categoria',index]);
   }
   mas(index:number){
-    console.log("indice "+index);
+    
     this.router.navigate(['/card-categoria',index]);
   }
   cambio(sql:string){

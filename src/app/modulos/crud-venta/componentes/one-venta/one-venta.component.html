@@ -1,0 +1,73 @@
+<div class="wrapper">
+    <a class="icon-arrow-left card-link reg" (click)="regresar()">  Regresar</a>
+    <!--Información de la venta-->
+    <div class="table-responsive-lg">
+        <table class="table table-striped table-dark">
+            <thead>
+              <tr>
+                <th scope="col" colspan="8" style="text-align: center;">Venta</th>
+                
+              </tr>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Realizó</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Total</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Estado</th>
+                
+               
+              </tr>
+            </thead>
+            <tbody>
+              <tr >
+                 
+                <td >{{obj.id}}</td>
+                <td >{{obj.usuario}}</td>
+                <td >{{obj.fecha | date:'short'}}</td>
+                <td >{{obj.total | currency:'MXN'}}</td>
+                <td >{{obj.descripcion}}</td>
+                <td >{{obj.status}}</td>
+              
+              </tr>
+            
+            </tbody>
+          </table>
+    </div> 
+     <!--Productos que contiene la venta-->
+     <div class="table-responsive-lg">
+        <table class="table table-striped table-dark">
+            <thead>
+              <tr>
+                <th scope="col" colspan="8" style="text-align: center;">Productos de la Venta</th>
+                
+              </tr>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Producto</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Cantidad</th>
+               
+                
+               
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let prod of prods,index as i">
+                 
+                <td *ngIf="i!=10">{{prod.id}}</td>
+                <td *ngIf="i!=10">{{prod.nombre}}</td>
+                <td *ngIf="i!=10">{{prod.ncategoria}}</td>
+                <td *ngIf="i!=10">{{prod.precio}}</td>
+                <td *ngIf="i!=10">{{prod.cant}}</td>
+              
+              </tr>
+            
+            </tbody>
+          </table>
+    </div> 
+     
+</div>
+<app-paginacion [query]="sql" (array)="result($event)" #paginacion></app-paginacion>
+  

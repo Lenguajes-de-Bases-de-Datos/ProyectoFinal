@@ -150,12 +150,12 @@ export class CreateSucursalComponent implements OnInit {
   let valor = this.form.get('telefono')?.value;
    
   let tamanio = valor.length;
-  console.log("event: "+event.keyCode)
+  
   if(event.keyCode == 8){
     
   }else{
   if(tamanio==3 || tamanio==7 ){
-    console.log("true")
+    
     let aux = this.form.get('telefono')?.value;
     this.form.controls['telefono'].setValue(aux+"-");
     

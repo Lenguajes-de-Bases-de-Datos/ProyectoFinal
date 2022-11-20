@@ -10,7 +10,7 @@ import swal from 'sweetalert2';
 export class CreateCategoriaComponent implements OnInit {
   form!:FormGroup;
   constructor(private request:RequestsService) {
-    console.log('entre')
+    
     this.form= new FormGroup({
       nombre:new FormControl('',[Validators.required,Validators.pattern('[^|!&\'\"]+')]),
       pasilloInicio:new FormControl('',[Validators.required,Validators.pattern('[0-9]+')]),
@@ -22,7 +22,6 @@ export class CreateCategoriaComponent implements OnInit {
   }
   create(){
 
-    console.log(this.form.value);
     let mysql = `INSERT INTO categoria(id,ncategoria,pasilloInicio,pasilloFin)  VALUES
     (id,LOWER('${this.form.get('nombre')?.value}'),${this.form.get('pasilloInicio')?.value},
     ${this.form.get('pasilloFin')?.value})`;

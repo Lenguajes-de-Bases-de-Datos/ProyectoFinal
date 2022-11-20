@@ -9,7 +9,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { RequestsService } from './services/requests.service';
 import { CreateUserComponent } from './modulos/crud-user/componentes/crud-users/create-user/create-user.component';
 import { ReadUserComponent } from './modulos/crud-user/componentes/crud-users/read-user/read-user.component';
-import { SendMessageComponent } from './templates/send-message/send-message.component';
+import { SendMessageComponent } from './send-message/send-message.component';
 import { UpdateUserComponent } from './modulos/crud-user/componentes/crud-users/update-user/update-user.component';
 import { DeleteUserComponent } from './modulos/crud-user/componentes/crud-users/delete-user/delete-user.component';
 import { CreateCategoriaComponent } from './modulos/crud-categoria/componentes/crud-categoria/create-categoria/create-categoria.component';
@@ -31,6 +31,7 @@ import { ReadCompraComponent } from './modulos/crud-compra/componentes/read-comp
 import { OneCompraComponent } from './modulos/crud-compra/componentes/one-compra/one-compra.component';
 import { CreateVentaComponent } from './modulos/crud-venta/componentes/create-venta/create-venta.component';
 import { ReadVentaComponent } from './modulos/crud-venta/componentes/read-venta/read-venta.component';
+import { OneVentaComponent } from './modulos/crud-venta/componentes/one-venta/one-venta.component';
 const routes: Routes = [
   {path:'portal', component:PortalComponent},
   {path:'sign-up',component:CreateUserComponent,canActivate:[AuthGuardService],data:['administrador']},
@@ -55,6 +56,7 @@ const routes: Routes = [
   {path:'one-compra/:id',component:OneCompraComponent,canActivate:[AuthGuardService]},
   {path:'create-venta',component:CreateVentaComponent,canActivate:[AuthGuardService]},
   {path:'read-venta',component:ReadVentaComponent,canActivate:[AuthGuardService]},
+  {path:'one-venta/:id',component:OneVentaComponent,canActivate:[AuthGuardService]},
 
 
   {path:'more-user/:ID',component:MoreUserComponent},

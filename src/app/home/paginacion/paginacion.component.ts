@@ -17,7 +17,7 @@ export class PaginacionComponent implements OnInit {
    
   }
   accion(tipo:string,sql:string){
-    console.log("sentencia: "+sql);
+   
     let texto:string="",action:string="",stat:number;
     if(tipo=='elimina'){
       texto="eliminar";
@@ -91,16 +91,13 @@ export class PaginacionComponent implements OnInit {
     this.aux = "";
     this.request.consultas(this.query+` LIMIT ${this.cont},11`).subscribe((res:any)=>{
       this.res =res;
-      console.log("tam: "+res.length);
       this.array.emit(res);
     });
   }
   ngAfterViewInit(){
-    console.log("pag: "+this.query);
     this.aux = this.query;
     this.request.consultas(this.query+` LIMIT ${this.cont},11`).subscribe((res:any)=>{
       this.res =res;
-      console.log("pag: "+res);
     
       // this.array.emit(res);
     });
@@ -111,7 +108,6 @@ export class PaginacionComponent implements OnInit {
       this.contpag++;
       this.cont+=10;
    
-    console.log("next: "+this.query+` LIMIT${this.cont},11`);
     this.request.consultas(this.query+` LIMIT ${this.cont},11`).subscribe((res:any)=>{
       this.res =res;
       this.array.emit(res);

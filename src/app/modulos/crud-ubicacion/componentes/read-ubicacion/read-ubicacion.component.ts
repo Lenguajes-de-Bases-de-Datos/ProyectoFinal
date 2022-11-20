@@ -55,7 +55,6 @@ export class ReadUbicacionComponent implements OnInit {
     this.controlador = 0;
     this.cont = 0;
     this.contpag = 1;
-    console.log(this.option);
      this.sql = `SELECT * FROM ubicacion WHERE `;
     if(this.option == "1"){
       this.sql = `SELECT * FROM ubicacion`;

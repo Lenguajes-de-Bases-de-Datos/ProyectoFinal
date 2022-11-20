@@ -29,9 +29,9 @@ export class LoginComponent implements OnInit {
     try {
       let token = sessionStorage.getItem('token') || "";
       let resp = jwt_decode(token);
-      console.log(resp)
+      
     } catch(Error) {
-      console.log(Error);
+      
     }
   }
 

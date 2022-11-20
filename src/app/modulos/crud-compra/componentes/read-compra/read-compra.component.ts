@@ -22,7 +22,7 @@ export class ReadCompraComponent implements OnInit {
     this.user = localStorage.getItem('cuenta') || "";
     let sqltot = "";
     this.user = JSON.parse(this.user);
-    console.log("user: "+this.user);
+    
     if(this.user.privilegios != "superadmin"){
       this.sql = `SELECT c.id id,concat(u.id,' ',u.nombre,' ',u.appat,' ',apmat) usuario,u.id_sucursal suc,c.id_prov prov,c.total tot,c.fecha fecha,c.observaciones obs FROM compra c,usuario u WHERE c.id_usuario=u.id and u.ID_sucursal=${this.user.ID_sucursal}`;
       sqltot = `select sum(c.total) total from compra c,usuario u WHERE c.ID_usuario=u.id and u.ID_sucursal=${this.user.ID_sucursal} GROUP BY u.ID_sucursal`;

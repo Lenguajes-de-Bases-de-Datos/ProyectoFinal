@@ -58,7 +58,7 @@ export class CreateUserComponent implements OnInit {
       
     }
     
-    console.log(this.form.get('nombre')?.invalid);
+    
      this.request.accion(params).subscribe({next:(res:any)=>{
       if(res.band){
         swal.fire({
@@ -69,7 +69,7 @@ export class CreateUserComponent implements OnInit {
         });
         this.form.reset();
       }else{
-        console.log(res);
+        
         if(res.errno == 1062){
           swal.fire({
             allowOutsideClick: true,
@@ -101,12 +101,12 @@ export class CreateUserComponent implements OnInit {
     let valor = this.form.get('phone')?.value;
    
     let tamanio = valor.length;
-    console.log("event: "+event.keyCode)
+   
     if(event.keyCode == 8){
       
     }else{
     if(tamanio==3 || tamanio==7 ){
-      console.log("true")
+      
       let aux = this.form.get('phone')?.value;
       this.form.controls['phone'].setValue(aux+"-");
       

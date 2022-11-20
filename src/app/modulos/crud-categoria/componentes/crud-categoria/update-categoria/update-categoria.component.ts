@@ -113,7 +113,7 @@ export class UpdateCategoriaComponent implements OnInit {
 
   }
   controlar(num:number){
-    console.log(num)
+    
     if(num==1){
       this.form.controls['busnombre'].setValue('');
     }else{

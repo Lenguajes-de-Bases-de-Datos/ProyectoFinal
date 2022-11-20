@@ -22,7 +22,7 @@ export class SendMessageComponent implements OnInit {
   ngOnInit(): void {
   }
   sendMsg(){
-    console.log(this.payload);
+   
     this.socket.emitEvent(this.payload);
   }
   receiveMsg(){

@@ -31,14 +31,14 @@ export class CreateProductoComponent implements OnInit {
   }
   handleFiles(files:any){
     const myfile:File = files.target.files[0];
-    console.log("file: "+myfile);
+    
     if (myfile) {
 
       let fileName = myfile.name;
       const formData = new FormData();
       formData.append("thumbnail", myfile);
       let path = URL.createObjectURL(myfile)
-      console.log("formData: "+path);
+     
       
   }
 
@@ -53,12 +53,12 @@ export class CreateProductoComponent implements OnInit {
 
     for(let i=0; i<this.uploadedFiles.length; i++){
       formData.append('uploads[]',this.uploadedFiles[i],this.uploadedFiles[i].name);
-      console.log("formData",formData);
+     
 
     }
     //call service
     this.request.uploadFile(formData).subscribe((res:any)=>{
-      console.log('Response:',res);
+   
     });
     this.bandImg=false;
   }

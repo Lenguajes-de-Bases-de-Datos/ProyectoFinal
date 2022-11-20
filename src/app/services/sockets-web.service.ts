@@ -58,7 +58,6 @@ export class SocketsWebService {
     });
     this.ioSocket.on("messages",(res:any)=>{this.array = res; this.callback.emit(res)});
     this.ioSocket.on("notification",(res:any)=>{this.receive.emit(res)});
-    console.log("opts: "+JSON.stringify(this.ioSocket.emptyConfig.options));
     this.ioSocket.connect();
   }
   emitEvent = (payload = {})=>{
