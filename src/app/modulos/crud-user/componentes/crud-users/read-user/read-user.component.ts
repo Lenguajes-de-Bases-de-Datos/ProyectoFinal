@@ -3,6 +3,7 @@ import { RequestsService } from 'src/app/services/requests.service';
 import { FormGroup,FormControl, Validators } from '@angular/forms';
 import swal from 'sweetalert2';
 import { PaginacionComponent } from 'src/app/home/paginacion/paginacion.component';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-read-user',
   templateUrl: './read-user.component.html',
@@ -17,8 +18,9 @@ export class ReadUserComponent implements OnInit {
   cont:number = 0;
   contpag:number=1;
   sql:string="SELECT * FROM usuario";
+  bandMore:boolean=false;
 
-  constructor(private request:RequestsService) {
+  constructor(private request:RequestsService,private router:Router) {
     this.request.consultas('SELECT * FROM usuario LIMIT 0,11').subscribe((res:any)=>{
       this.users = res;
     });
@@ -125,6 +127,7 @@ export class ReadUserComponent implements OnInit {
   }
   result(res:any){
     this.users = res;
+    console.log(res);
   }
 
   accion(id:number,num:number){
@@ -215,5 +218,8 @@ export class ReadUserComponent implements OnInit {
     console.log("mysql: "+this.sql);
     // let obj = new PaginacionComponent(this.request);
     // obj.update();
+  }
+  moreUser(id:number){
+    this.router.navigate([`/more-user/${id}`]);
   }
 }

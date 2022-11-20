@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    
+    
+}
+
+.imagen{
+    width: 100%;
+    height: 50%;
+    margin: auto;
+}
+
+.other{
+    height: 800px !important;
+
+}
+
+.carousel-inner{
+    width: 70%;
+    height: 30% !important;
+    margin: auto;
+    margin-top: 10%;
+   
+    
+}
+
+.fondoprincipal{
+    
+    /*background-image: linear-gradient(to right, #d16ba5, #d26bb0, #d26cbd, #d06dca, #cc70d8, #b184ed, #9296fa, #72a5ff, #34bfff, #00d6ff, #00eaff, #5ffbf1);*/
+    /*background-image: linear-gradient(to bottom, #45f8ff, #34eaff, #51d9ff, #78c7ff, #9bb4ff, #b3a4fb, #cf91ee, #ea7bd6, #f868bb, #ff569c, #ff477a, #fe4057);*/
+    /*background-image: url('../../../assets/img/fondo7.jpg');*/
+    background-size: 100vh 100vw;
+    background-color: #EE5B9F;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    
+    
+}
+
+.texto{
+    font-family: Fredoka One;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    text-align: justify;
+    color: white;
+    text-shadow: 5px 5px 7px rgb(77, 77, 77);
+    
+    
+}
+
+#bienvenido{
+    
+    margin-top: -175%;
+    justify-content: center;
+    
+}
+
+p{
+    margin-left: 3% !important;
+    margin-right: 3% !important;
+    margin-top: 5%;
+    padding: 3px;
+}
+
+div.carousel-item > img{
+    width: 50%;
+    height: 10% !important;
+    box-shadow: 0 0 20px rgb(255, 255, 255);
+}
+
+.t{
+    display: flex;
+    justify-content: end;
+    margin: 50px;
+    
+}

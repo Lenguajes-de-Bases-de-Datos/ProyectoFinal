@@ -61,18 +61,18 @@ export class SidebarComponent implements OnInit {
       id:"categories"
     },
     {
-      opcion:"Proveedores",
+      opcion:"Sucursales",
       class:"",
       rutas:[{
-        ruta:'',
+        ruta:'/create-sucursal',
         nombre:'Crear'
       },
        { 
-        ruta:'',
+        ruta:'/read-sucursal',
         nombre:'Consultar'
        } ,
        {
-        ruta:'',
+        ruta:'/update-sucursal',
         nombre:'Actualizar'
        }, 
        {
@@ -84,14 +84,14 @@ export class SidebarComponent implements OnInit {
       id:"providers"
     },
     {
-      opcion:"Pedidos",
+      opcion:"Productos",
       class:"",
       rutas:[{
-        ruta:'',
+        ruta:'/create-producto',
         nombre:'Crear'
       },
        { 
-        ruta:'',
+        ruta:'/read-producto',
         nombre:'Consultar'
        } ,
        {
@@ -107,6 +107,29 @@ export class SidebarComponent implements OnInit {
       id:"orders"
     },
     {
+      opcion:"Compras",
+      class:"",
+      rutas:[{
+        ruta:'/create-compra',
+        nombre:'Crear'
+      },
+       { 
+        ruta:'',
+        nombre:'Consultar'
+       } ,
+       {
+        ruta:'',
+        nombre:'Actualizar'
+       }, 
+       {
+        ruta:'',
+        nombre:'Eliminar'
+      }
+    ],
+      icono:"",
+      id:"compras"
+    },
+    {
       opcion:"Enviar notificación",
       class:"",
       rutas:[{
@@ -117,7 +140,29 @@ export class SidebarComponent implements OnInit {
       icono:"",
       id:"send-msg"
     },
-
+    {
+      opcion:"Ubicación",
+      class:"",
+      rutas:[{
+        ruta:'/create-ubicacion',
+        nombre:'Crear'
+      },
+       { 
+        ruta:'/read-ubicacion',
+        nombre:'Consultar'
+       } ,
+       {
+        ruta:'/update-ubicacion',
+        nombre:'Actualizar'
+       }, 
+       {
+        ruta:'',
+        nombre:'Eliminar'
+      }
+    ],
+      icono:"",
+      id:"ubicacion"
+    },
   ];
   constructor(private request:RequestsService) {
     try {

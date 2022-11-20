@@ -9,6 +9,7 @@ import { ReadUserComponent } from './componentes/crud-users/read-user/read-user.
 import { HomeModule } from 'src/app/home/home.module';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MoreUserComponent } from './componentes/crud-users/more-user/more-user.component';
 
 
 @NgModule({
@@ -16,13 +17,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CreateUserComponent,
     DeleteUserComponent,
     UpdateUserComponent,
-    ReadUserComponent
+    ReadUserComponent,
+    MoreUserComponent
   ],
   imports: [
     CommonModule,
 
     HomeModule, ReactiveFormsModule,
     FormsModule
-  ]
+  ],
+  exports:[CreateUserComponent]
 })
 export class CrudUserModule { }

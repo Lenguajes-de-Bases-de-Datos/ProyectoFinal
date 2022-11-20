@@ -1,1 +1,60 @@
-<p>create-sucursal works!</p>
+<div class="wrapper">
+    <div [formGroup]="form">
+
+        <h1 *ngIf="actualiza else alta">Actualizar sucursal</h1>
+        <ng-template #alta>
+          <h1 >Registrar Sucursal</h1>
+        
+        </ng-template>
+        <div class="form-group col-md-4">
+            <label for="inputState">Ubicación</label>
+            <select id="inputState" class="form-control" formControlName="ubicacion" [ngClass]="{'invalid':this.form.get('ubicacion')?.invalid,'valid':!this.form.get('ubicacion')?.invalid}">
+              <option selected>------</option>
+              <option [value]="obj.ID" *ngFor="let obj of ubicaciones">{{obj.ID}} {{obj.estado}} {{obj.ciudad}} {{obj.colonia}} {{obj.cp}}</option>
+            </select>
+          </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">Calle</label>
+            <input formControlName="calle" type="text" class="form-control" id="inputEmail4"
+            [ngClass]="{'invalid':this.form.get('calle')?.invalid,'valid':!this.form.get('calle')?.invalid}">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputnombre">Numero</label>
+            <input formControlName="numero" type="text" class="form-control" id="inputnombre"
+            [ngClass]="{'invalid':this.form.get('numero')?.invalid,'valid':!this.form.get('numero')?.invalid}">
+          </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputtelefono">Telefono</label>
+              <input (keyup)="formatear($event)" formControlName="telefono" type="text" class="form-control" id="inputtelefono" placeholder="789-874-88-88"
+              [ngClass]="{'invalid':this.form.get('telefono')?.invalid,'valid':!this.form.get('telefono')?.invalid}">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputemail">Email</label>
+              <input formControlName="email" type="text" class="form-control" id="inputemail" placeholder="example@gmail.com" 
+              [ngClass]="{'invalid':this.form.get('email')?.invalid,'valid':!this.form.get('email')?.invalid}">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputhap">Hora de apertura</label>
+              <input formControlName="hap" type="text" class="form-control" id="inputhap" placeholder="00:00:00"
+              [ngClass]="{'invalid':this.form.get('hap')?.invalid,'valid':!this.form.get('hap')?.invalid}">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputhci">Hora de cierre</label>
+              <input formControlName="hci" type="text" class="form-control" id="inputhci" placeholder="00:00:00"
+              [ngClass]="{'invalid':this.form.get('hci')?.invalid,'valid':!this.form.get('hci')?.invalid}">
+            </div>
+          </div>
+
+         
+        <button *ngIf="!actualiza" type="submit" class="btn btn-primary" [disabled]="form.invalid" (click)="enviar()">Dar de alta</button>
+        <button *ngIf="actualiza" type="submit" class="btn btn-primary" [disabled]="form.invalid" (click)="update()">Actualizar</button>
+          
+      
+      </div>
+</div>

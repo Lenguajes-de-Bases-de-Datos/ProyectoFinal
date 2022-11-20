@@ -14,11 +14,15 @@ import { CrudCategoriaModule } from './modulos/crud-categoria/crud-categoria.mod
 import { CrudProveedorModule } from './modulos/crud-proveedor/crud-proveedor.module';
 import { CrudSucursalModule } from './modulos/crud-sucursal/crud-sucursal.module';
 import { CrudUbicacionModule } from './modulos/crud-ubicacion/crud-ubicacion.module';
+import { CrudProductoModule } from './modulos/crud-producto/crud-producto.module';
+import { CrudCompraModule } from './modulos/crud-compra/crud-compra.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent
+    SidebarComponent,
+    
 
   ],
   imports: [
@@ -34,6 +38,8 @@ import { CrudUbicacionModule } from './modulos/crud-ubicacion/crud-ubicacion.mod
     CrudProveedorModule,
     CrudSucursalModule,
     CrudUbicacionModule,
+    CrudProductoModule,
+    CrudCompraModule,
     AppRoutingModule
 
    
