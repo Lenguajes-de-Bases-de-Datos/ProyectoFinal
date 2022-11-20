@@ -19,7 +19,7 @@ export class OneProductoComponent implements OnInit {
 
       }else{
         this.nombre = params['nombre'];
-        this.prods=this.request.consultas(`SELECT p.nombre,p.imagen,p.descripcion FROM producto p,categoria c WHERE p.categoria=c.id and concat(p.nombre,c.ncategoria) like '%${this.nombre}%'`)
+        this.prods=this.request.consultas(`SELECT p.nombre,p.imagen,p.descripcion FROM producto p,categoria c WHERE p.categoria=c.id and concat(p.nombre,c.ncategoria) like '%${this.nombre}%' and p.pieza=0`)
         .pipe(map((data:any)=>data));
 
       }

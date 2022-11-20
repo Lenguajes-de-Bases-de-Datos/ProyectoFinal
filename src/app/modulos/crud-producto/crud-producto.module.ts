@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeModule } from 'src/app/home/home.module';
 import { CreateProductoComponent } from './componentes/create-producto/create-producto.component';
 import { OneProductoComponent } from './componentes/one-producto/one-producto.component';
+import { OpenCajaComponent } from './componentes/open-caja/open-caja.component';
 
 
 
@@ -12,7 +13,8 @@ import { OneProductoComponent } from './componentes/one-producto/one-producto.co
   declarations: [
     ReadProductoComponent,
     CreateProductoComponent,
-    OneProductoComponent
+    OneProductoComponent,
+    OpenCajaComponent
   ],
   imports: [
     CommonModule,

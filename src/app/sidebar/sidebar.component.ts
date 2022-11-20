@@ -90,6 +90,10 @@ export class SidebarComponent implements OnInit {
         ruta:'/create-producto',
         nombre:'Crear'
       },
+      { 
+        ruta:'/open-caja',
+        nombre:'Abrir caja'
+       } ,
        { 
         ruta:'/read-producto',
         nombre:'Consultar'

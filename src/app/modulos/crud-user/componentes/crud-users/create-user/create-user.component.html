@@ -47,6 +47,21 @@
           
           </select>
         </div>
+
+        <div class="form-group col-md-6">
+          <label for="inputAddress">Salario</label>
+          <input [ngClass]="{'invalid':this.form.get('salario')?.invalid,'valid':!this.form.get('salario')?.invalid}" type="text" class="form-control" id="inputAddress" placeholder="" formControlName="salario">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputAddress">Genero</label>
+          <div class="genders">
+            <input [ngClass]="{'invalid':this.form.get('genero')?.invalid,'valid':!this.form.get('genero')?.invalid}" type="radio" value="hombre" name="gender" class="form-control" id="m" placeholder="" formControlName="genero">
+            <label for="m">Hombre</label><br>
+            <input [ngClass]="{'invalid':this.form.get('genero')?.invalid,'valid':!this.form.get('genero')?.invalid}" type="radio" value="mujer" name="gender" class="form-control" id="f" placeholder="" formControlName="genero">
+            <label for="f">Mujer</label><br>
+          </div>
+        </div>
+
         <div class="form-group col-md-2">
           <label for="inputSucursal">Sucursal</label>
           <select [ngClass]="{'invalid':this.form.get('sucursal')?.invalid,'valid':!this.form.get('sucursal')?.invalid}" id="inputSucursal" class="form-control" formControlName="sucursal">

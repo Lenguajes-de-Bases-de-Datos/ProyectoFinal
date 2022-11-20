@@ -114,11 +114,22 @@ buscar(){
         table:'compra_producto'
       };
       this.request.accion(body).subscribe((res:any)=>{
-        
+        this.prod=[];
+        this.element?.update(1);
+        this.valida = true;
+        this.idprov = 0;
+        this.total = 0;
+        swal.fire({
+          backdrop:true,
+          allowOutsideClick: true,
+          title: "Exito...",
+          text: "Compra realizada exitosamente...",
+          confirmButtonText:'Entendido'
+        });
       });
       
       
-      this.insertaSucProd(auxsql,user.ID_sucursal);
+      // this.insertaSucProd(auxsql,user.ID_sucursal);
     });
   }
   insertaSucProd(auxsql:string,suc:any){

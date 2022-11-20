@@ -17,3 +17,11 @@ i{
 .valid{
     border: 2px solid green;
 }
+.genders{
+    display: flex;
+    justify-content: space-between;
+}
+input[type="radio"]{
+    width: 4em;
+
+}

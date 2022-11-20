@@ -73,7 +73,7 @@ CREATE TABLE `compra` (
   KEY `ID_prov` (`ID_prov`),
   CONSTRAINT `compra_ibfk_1` FOREIGN KEY (`ID_usuario`) REFERENCES `usuario` (`ID`) ON UPDATE CASCADE,
   CONSTRAINT `compra_ibfk_3` FOREIGN KEY (`ID_prov`) REFERENCES `proveedor` (`ID`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -86,7 +86,8 @@ INSERT INTO `compra` VALUES
 (2,12,2,120.6500,'2022-11-11 22:59:00','dd'),
 (3,1,5,71.2500,'2022-11-11 23:47:32','suc1'),
 (4,1,5,100.2250,'2022-11-11 23:48:22','suc1'),
-(5,1,1,46.0750,'2022-11-11 23:51:40','w');
+(5,1,1,46.0750,'2022-11-11 23:51:40','w'),
+(6,12,1,132.0500,'2022-11-20 14:50:10','');
 /*!40000 ALTER TABLE `compra` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -119,8 +120,11 @@ INSERT INTO `compra_producto` VALUES
 (1,2,3,28.9750),
 (1,4,1,28.9750),
 (1,5,1,28.9750),
+(1,6,1,28.9750),
 (2,2,1,19.4750),
+(2,6,1,19.4750),
 (3,2,1,14.2500),
+(4,6,4,20.9000),
 (5,3,2,17.1000),
 (5,4,2,17.1000),
 (5,5,1,17.1000),
@@ -128,6 +132,37 @@ INSERT INTO `compra_producto` VALUES
 (6,4,3,12.3500);
 /*!40000 ALTER TABLE `compra_producto` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER suc_prod
+AFTER INSERT ON compra_producto
+FOR EACH ROW
+BEGIN
+
+DECLARE num INT;
+DECLARE suc INT;
+DECLARE unidad VARCHAR(5);
+SELECT u.id_sucursal INTO suc FROM compra c,usuario u WHERE c.id_usuario=u.id and c.id=NEW.id_comp;
+SELECT IF(p.pieza = 0,'caja','pieza') INTO unidad FROM producto p,compra_producto cp WHERE p.id=cp.id_prod and p.id=NEW.id_prod and cp.id_comp=NEW.id_comp;
+SELECT count(*) tot INTO num FROM sucursal_producto WHERE id_producto=NEW.id_prod and id_sucursal=(SELECT u.id_sucursal FROM compra c,usuario u WHERE c.id_usuario=u.id and c.id=NEW.id_comp);
+IF num>0 THEN 
+UPDATE sucursal_producto SET existencias = existencias + NEW.cantidad WHERE id_sucursal=suc and id_producto=NEW.id_prod;
+ELSE
+INSERT INTO sucursal_producto(ID_sucursal,ID_producto,existencias,status,unidad) VALUES (suc,NEW.id_prod,NEW.cantidad,1,unidad);
+END IF; 
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `detalle_venta`
@@ -215,7 +250,7 @@ CREATE TABLE `producto` (
   KEY `pertenece` (`pertenece`),
   CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`categoria`) REFERENCES `categoria` (`ID`) ON UPDATE CASCADE,
   CONSTRAINT `producto_ibfk_2` FOREIGN KEY (`pertenece`) REFERENCES `producto` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -228,7 +263,7 @@ INSERT INTO `producto` VALUES
 (1,1,'Chocolate Resees','Chocolatina de chocolate con leche rellena de mantequilla de cacahuate',30.5000,0,'reeses.jpg',20,NULL,0),
 (2,1,'Chocolate Ghirardelli','Clasico sabor de chocolate con leche acompañado de caramelo suave, hecho con manteca de cacao y con relleno de caramelo cremoso una combinacion unica',20.5000,1,'ghirardelli.jpg',20,NULL,0),
 (3,1,'Chocolate Twix','Barra de chocolate compuesta de galleta en el centro, cubierta de caramelo y recubierta de chocolate con leche.',15.0000,1,'twix.jpg',20,NULL,0),
-(4,1,'Chocolate Whoppers','Bolitas de leche malteada cubiertas por una cobertura de chocolate artificial',22.0000,1,'whoppers.png',20,NULL,0),
+(4,1,'Chocolate Whoppers','Bolitas de leche malteada cubiertas por una cobertura de chocolate artificial',22.0000,1,'whoppers.png',20,36,0),
 (5,1,'Chocolate Almond Joy','Cuando tu diente dulce golpea espontáneamente, hay una cosa que seguramente lo satisface: coco, almendras enteras y chocolate.',18.0000,1,'almond.jpg',20,NULL,0),
 (6,3,'Cheetos Puffs','El intenso sabor a queso con una textura liviana y esponjosa. Los CHEETOS® inflados, bocadillos sabor a queso, están llenos de sabor y ¡hechos con queso de verdad!',13.0000,1,'cheetospuffs.png',20,NULL,0),
 (7,3,'Cheetos Flamin Hot','Un sabor picante y especiado en un bocadillo crocante y con queso. Los CHEETOS® FLAMIN HOT® crocantes, bocadillos sabor a queso, están llenos de sabor y hechos con queso de verdad.',14.0000,1,'cheetosflamin.jpg',20,NULL,0),
@@ -259,7 +294,8 @@ INSERT INTO `producto` VALUES
 (32,12,'Doritos Tapatio','Bolsa de 10.7 onzas de doritos taptio con sabor a tortilla, las papas fritas crujientes y la audacia hacen que los aperitivos DORITOS sean impresionantes e ideales para tu despensa ',14.0000,1,'doritostapatio.jpg',20,NULL,0),
 (33,12,'Funyuns Flamin Hot','Los aros FUNYUNS sabor a cebolla, son una botana deliciosamente diferente a cualquier otra, con una textura crujiente y un sabroso sabor.',15.0000,1,'funyuns.jpg',20,NULL,0),
 (34,12,'Fritos Twists','Bolsa de fragmentos de maíz con sabor a miel para barbacoa 4,25 oz. Snacks de maíz trenzado, divertido para aperitivos.',11.0000,1,'fritostwists.jpg',20,NULL,0),
-(35,12,'Pringles Cheese','No usamos cualquier sabor de queso en las papas fritas con queso cheddar Pringles. Elegimos queso cheddar, el rey de los quesos. Así que incluso podrías decir que es un sabor real. Es tan majestuosamente bueno que no querrás mencionárselo a tus amigos intolerantes a la lactosa.',17.3500,1,'pringlescheese.jpg',20,NULL,0);
+(35,12,'Pringles Cheese','No usamos cualquier sabor de queso en las papas fritas con queso cheddar Pringles. Elegimos queso cheddar, el rey de los quesos. Así que incluso podrías decir que es un sabor real. Es tan majestuosamente bueno que no querrás mencionárselo a tus amigos intolerantes a la lactosa.',17.3500,1,'pringlescheese.jpg',20,NULL,0),
+(36,1,'Chocolate Whoppers (por pieza)','Bolitas de leche malteada cubiertas por una cobertura de chocolate artificial',1.1000,1,'whoppers.png',1,NULL,1);
 /*!40000 ALTER TABLE `producto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -377,9 +413,11 @@ INSERT INTO `sucursal_producto` VALUES
 (1,1,0,1,'caja'),
 (1,5,2,1,'caja'),
 (1,6,2,1,'caja'),
-(2,1,0,1,'caja'),
-(2,2,0,1,'caja'),
-(2,3,1,1,'caja');
+(2,1,1,1,'caja'),
+(2,2,1,1,'caja'),
+(2,3,1,1,'caja'),
+(2,4,2,1,'caja'),
+(2,36,40,1,'pieza');
 /*!40000 ALTER TABLE `sucursal_producto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -529,6 +567,31 @@ UNLOCK TABLES;
 --
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `insertPiezas` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertPiezas`(IN suc INT,IN prod INT,IN exist INT,IN status BOOLEAN,IN unidad VARCHAR(5))
+BEGIN
+DECLARE num INT;
+SELECT count(*) INTO num FROM sucursal_producto WHERE id_producto=prod and id_sucursal=suc;
+IF num>0 THEN
+UPDATE sucursal_producto SET existencias=existencias+exist WHERE id_producto=prod and id_sucursal=suc; 
+ELSE
+INSERT INTO sucursal_producto VALUES (suc,prod,exist,status,unidad);
+END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `obtenerProductosCompra` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -537,7 +600,7 @@ UNLOCK TABLES;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 DELIMITER ;;
-CREATE OR REPLACE DEFINER=`root`@`localhost` PROCEDURE `obtenerProductosCompra`(IN id_compra INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `obtenerProductosCompra`(IN id_compra INT)
 BEGIN
 SELECT c.id,p.id id_prod,p.nombre,cat.ncategoria,cp.cantidad,cp.precioUnitario precioCompra,p.precioUnitario precioVenta 
 FROM compra c,compra_producto cp,producto p,categoria cat 
@@ -558,4 +621,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-19 18:19:45
+-- Dump completed on 2022-11-20 14:52:37

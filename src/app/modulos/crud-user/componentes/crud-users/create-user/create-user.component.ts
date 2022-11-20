@@ -23,8 +23,8 @@ export class CreateUserComponent implements OnInit {
       sucursal:new FormControl('',[Validators.required]),
       desc:new FormControl('',[Validators.required]),
       phone:new FormControl('',[Validators.required,Validators.pattern(/^[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}$/)]),
-      
-      
+      salario: new FormControl('',[Validators.required,Validators.pattern('[0-9]+')]),
+      genero: new FormControl('',[Validators.required])
     });
     
     swal.fire({
@@ -49,9 +49,16 @@ export class CreateUserComponent implements OnInit {
     this.type="password"
   }
   send(){
-    let mysql = `INSERT INTO usuario (ID,ID_sucursal,password,nombre,appat,apmat,privilegios,des,email,telefono)
+    let gender;
+    if(this.form.get('genero')?.value == "hombre"){
+      gender='m';
+    }else{
+      gender="f";
+    }
+    let mysql = `INSERT INTO usuario (ID,ID_sucursal,password,nombre,appat,apmat,privilegios,des,email,telefono,salario,genero,fecha)
     VALUES(ID,${this.form.get('sucursal')?.value.charAt(0)},sha2('${this.form.get('password')?.value}',256),LOWER('${this.form.get('nombre')?.value}'),LOWER('${this.form.get('appat')?.value}'),
-    LOWER('${this.form.get('apmat')?.value}'),'${this.form.get('privilegios')?.value.toLowerCase()}',LOWER('${this.form.get('desc')?.value}'),'${this.form.get('email')?.value}','${this.form.get('phone')?.value}')`;
+    LOWER('${this.form.get('apmat')?.value}'),'${this.form.get('privilegios')?.value.toLowerCase()}',LOWER('${this.form.get('desc')?.value}'),'${this.form.get('email')?.value}','${this.form.get('phone')?.value}',
+    ${this.form.get('salario')?.value},'${gender}',now())`;
     let params = {
       sql:mysql,
       table:'usuario'

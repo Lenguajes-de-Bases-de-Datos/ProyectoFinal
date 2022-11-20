@@ -33,6 +33,7 @@ import { CreateVentaComponent } from './modulos/crud-venta/componentes/create-ve
 import { ReadVentaComponent } from './modulos/crud-venta/componentes/read-venta/read-venta.component';
 import { OneVentaComponent } from './modulos/crud-venta/componentes/one-venta/one-venta.component';
 import { OneProductoComponent } from './modulos/crud-producto/componentes/one-producto/one-producto.component';
+import { OpenCajaComponent } from './modulos/crud-producto/componentes/open-caja/open-caja.component';
 const routes: Routes = [
   {path:'portal', component:PortalComponent},
   {path:'sign-up',component:CreateUserComponent,canActivate:[AuthGuardService],data:['administrador']},
@@ -53,6 +54,7 @@ const routes: Routes = [
   {path:'create-producto',component:CreateProductoComponent,canActivate:[AuthGuardService]},
   {path:'read-producto',component:ReadProductoComponent,canActivate:[AuthGuardService]},
   {path:'one-producto/:nombre',component:OneProductoComponent,canActivate:[AuthGuardService]},
+  {path:'open-caja',component:OpenCajaComponent,canActivate:[AuthGuardService]},
   
   {path:'create-compra',component:CreateCompraComponent,canActivate:[AuthGuardService]},
   {path:'read-compra',component:ReadCompraComponent,canActivate:[AuthGuardService]},
