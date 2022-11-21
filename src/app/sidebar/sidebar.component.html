@@ -12,6 +12,7 @@
     <ul class="list-unstyled menu-elements" >
 
         <li *ngFor="let option of options">
+            <div *ngIf="option.data.includes(this.user.privilegios)">
             <a href="#{{option.id}}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button" aria-controls="otherSections">
                 <i class="fas fa-home"></i>{{option.opcion}}
             </a>
@@ -26,6 +27,7 @@
 
 
             </ul>
+        </div>
         </li>
       
 

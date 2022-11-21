@@ -1,0 +1,91 @@
+<div class="wrapper">
+    <div class="table-responsive-lg">
+        <table class="table table-striped table-dark">
+            <thead>
+                <tr>
+                    <th scope="col" colspan="8" style="text-align: center;">
+                        {{this.prods[0].nom}} (cajas)
+                    </th>
+                  
+
+                </tr>
+
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Sucursal</th>
+                    <th scope="col">Telefóno</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Existencias</th> 
+                    <th scope="col">Precio por unidad</th>
+                    
+
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let obj of prods,index as i,let ultimo = last">
+
+                    <td *ngIf="i!=10">{{obj.id}}</td>
+                    <td *ngIf="i!=10">{{obj.ubi}}</td>
+                    <td *ngIf="i!=10">{{obj.telefono}}</td>
+                    <td *ngIf="i!=10">{{obj.email}}</td>
+                    <td *ngIf="i!=10">{{obj.existencias}}</td>
+                    <td *ngIf="i!=10">{{obj.precioUnitario | currency:'MXN'}}</td>
+                    
+                    
+                   
+
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <app-paginacion [query]="sql" (array)="result($event)" #paginacion></app-paginacion>
+  
+
+    <!--Piezas (si es que hay registros )-->
+    <div class="table-responsive-lg" *ngIf="piezas!=null">
+        <table class="table table-striped table-dark">
+            <thead>
+                <tr>
+                    <th scope="col" colspan="8" style="text-align: center;">
+                        {{this.prods[0].nom}} (piezas)
+                    </th>
+                  
+
+                </tr>
+
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Sucursal</th>
+                    <th scope="col">Telefóno</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Existencias</th> 
+                    <th scope="col">Precio por unidad</th>
+                    
+
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let obj of prodspiezas,index as i,let ultimo = last">
+
+                    <td *ngIf="i!=10">{{obj.id}}</td>
+                    <td *ngIf="i!=10">{{obj.ubi}}</td>
+                    <td *ngIf="i!=10">{{obj.telefono}}</td>
+                    <td *ngIf="i!=10">{{obj.email}}</td>
+                    <td *ngIf="i!=10">{{obj.existencias}}</td>
+                    <td *ngIf="i!=10">{{obj.precioUnitario | currency:'MXN'}}</td>
+                    
+                    
+                   
+
+                </tr>
+
+            </tbody>
+        </table>
+        <app-paginacion [query]="sql2" (array)="result2($event)" #paginacion2></app-paginacion>
+    </div>
+   
+  
+</div>
