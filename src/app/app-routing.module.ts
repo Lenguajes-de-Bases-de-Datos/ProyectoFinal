@@ -9,7 +9,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { RequestsService } from './services/requests.service';
 import { CreateUserComponent } from './modulos/crud-user/componentes/crud-users/create-user/create-user.component';
 import { ReadUserComponent } from './modulos/crud-user/componentes/crud-users/read-user/read-user.component';
-import { SendMessageComponent } from './templates/send-message/send-message.component';
+import { SendMessageComponent } from './send-message/send-message.component';
 import { UpdateUserComponent } from './modulos/crud-user/componentes/crud-users/update-user/update-user.component';
 import { DeleteUserComponent } from './modulos/crud-user/componentes/crud-users/delete-user/delete-user.component';
 import { CreateCategoriaComponent } from './modulos/crud-categoria/componentes/crud-categoria/create-categoria/create-categoria.component';
@@ -30,7 +30,13 @@ import { ReadUbicacionComponent } from './modulos/crud-ubicacion/componentes/rea
 import { CreateProveedorComponent } from './modulos/crud-proveedor/componentes/create-proveedor/create-proveedor.component';
 import { ReadProveedorComponent } from './modulos/crud-proveedor/componentes/read-proveedor/read-proveedor.component';
 import { UpdateProveedorComponent } from './modulos/crud-proveedor/componentes/update-proveedor/update-proveedor.component';
-
+import { ReadCompraComponent } from './modulos/crud-compra/componentes/read-compra/read-compra.component';
+import { OneCompraComponent } from './modulos/crud-compra/componentes/one-compra/one-compra.component';
+import { CreateVentaComponent } from './modulos/crud-venta/componentes/create-venta/create-venta.component';
+import { ReadVentaComponent } from './modulos/crud-venta/componentes/read-venta/read-venta.component';
+import { OneVentaComponent } from './modulos/crud-venta/componentes/one-venta/one-venta.component';
+import { OneProductoComponent } from './modulos/crud-producto/componentes/one-producto/one-producto.component';
+import { OpenCajaComponent } from './modulos/crud-producto/componentes/open-caja/open-caja.component';
 const routes: Routes = [
   {path:'portal', component:PortalComponent},
   {path:'sign-up',component:CreateUserComponent,canActivate:[AuthGuardService],data:['administrador']},
@@ -49,6 +55,8 @@ const routes: Routes = [
   {path:'update-sucursal',component:UpdateSucursalComponent,canActivate:[AuthGuardService]},
   {path:'create-producto',component:CreateProductoComponent,canActivate:[AuthGuardService]},
   {path:'read-producto',component:ReadProductoComponent,canActivate:[AuthGuardService]},
+  {path:'one-producto/:nombre',component:OneProductoComponent,canActivate:[AuthGuardService]},
+  {path:'open-caja',component:OpenCajaComponent,canActivate:[AuthGuardService]},
   {path:'create-compra',component:CreateCompraComponent,canActivate:[AuthGuardService]},
   {path:'create-proveedor', component:CreateProveedorComponent,canActivate:[AuthGuardService]},
   {path:'read-proveedor',component:ReadProveedorComponent,canActivate:[AuthGuardService]},
@@ -60,8 +68,11 @@ const routes: Routes = [
   {path:'update-ubicacion/:id',component:UpdateUbicacionComponent,canActivate:[AuthGuardService]},
   {path:'**',component:PortalComponent,canActivate:[AuthGuardService]},
   {path:'default',component:DefaultComponent,canActivate:[AuthGuardService]},
-
- 
+  {path:'read-compra',component:ReadCompraComponent,canActivate:[AuthGuardService]},
+  {path:'one-compra/:id',component:OneCompraComponent,canActivate:[AuthGuardService]},
+  {path:'create-venta',component:CreateVentaComponent,canActivate:[AuthGuardService]},
+  {path:'read-venta',component:ReadVentaComponent,canActivate:[AuthGuardService]},
+  {path:'one-venta/:id',component:OneVentaComponent,canActivate:[AuthGuardService]},
 ];
 
 @NgModule({

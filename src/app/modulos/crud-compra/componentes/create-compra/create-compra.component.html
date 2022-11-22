@@ -4,8 +4,8 @@
   
     <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputSucursal">Sucursal</label>
-      <select  id="inputSucursal" class="form-control" [(ngModel)]="this.idprov" (change)="validar()">
+      <label for="inputprov">Proveedor</label>
+      <select  id="inputprov" class="form-control" [(ngModel)]="this.idprov" (change)="validar()">
         <option value="0" selected disabled>Choose...</option>
         <option *ngFor="let obj of proveedor" [value]="obj.ID">{{obj.ID}} {{obj.nempresa}}</option>
         
@@ -59,10 +59,7 @@
   
                 </td>
                 <td *ngIf="i!=10"><i class="icon-trash-4 delete"></i></td>
-                  <!-- <a *ngIf="obj.status==1 else darAlta" (click)="paginacion.accion('elimina',this.sentencia+'0 WHERE id = '+obj.ID)" class="icon-trash-4 delete"  (click)="paginacion.update(2000)"></a>
-                  <ng-template #darAlta>
-                    <a class="icon-upload update" (click)="paginacion.accion('actualiza',this.sentencia+'1 WHERE id = '+obj.ID)" (click)="paginacion.update(2000)"></a>
-                  </ng-template> -->
+                  
                 
               </tr>
             <tr >
@@ -77,5 +74,5 @@
 
 </div>
 
-<app-read-producto [cart]="true" (ev)="recep($event)"></app-read-producto>
+<app-read-producto [cart]="true" (ev)="recep($event)" #prods></app-read-producto>
 

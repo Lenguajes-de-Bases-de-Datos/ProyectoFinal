@@ -1,7 +1,32 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+a{
+    cursor: pointer;
+}
+
+form{
+    padding-right: 3em;
+}
+
+.btn{
+    background: rgb(235, 64, 93);
+    color: white;
+    box-shadow: 3px 3px 3px rgba(51, 51, 51, 0.5);
+}
+
+.btn:hover{
+    cursor: pointer;
+    background: rgb(233, 163, 175);
+}
+
 nav{
-    width: 80%;
+    height: 90px !important;
+    width: 100%;
     float:right;
-    padding-right: 6em;
+    padding-left: 24em;
+    font-family: Fredoka One;
+    /*background-color:  #5de696 ;*/
+    background-color: #75dadd;
 }
 /* .collapse{
     display: flex !important;
@@ -19,7 +44,10 @@ font-weight:bold;
 #nav li a{color:#333333;text-decoration:none}
 #nav li a:hover{color:#006699;text-decoration:none}
 
-
+.lista{
+    height: 15em;
+    overflow: scroll;
+}
 
 #notification_li
 {
@@ -110,4 +138,19 @@ font-size: 11px;
     99%{
         transform: rotate(-45deg) scale(0.7);
     }
+}
+
+li.nav-item a{
+    color: rgb(230, 53, 82)!important;
+    font-size: 19px;
+
+}
+
+li.nav-item a:hover{
+    color:  rgb(185, 42, 42)!important;
+    font-size: 22px;
+}
+
+li.nav-item{
+    margin-right: 2em;
 }

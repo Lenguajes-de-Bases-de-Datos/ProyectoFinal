@@ -43,7 +43,6 @@ export class CreateUbicacionComponent implements OnInit {
     let sql=`SELECT * FROM ubicacion WHERE cp=${this.form.get('cp')?.value}`;
     this.request.consultas(sql).subscribe((res:any)=>{
       this.ubicaciones = res;
-      console.log(this.ubicaciones);
       if(this.ubicaciones.length==0){
         this.insertarUbicacion(params);
       }else{

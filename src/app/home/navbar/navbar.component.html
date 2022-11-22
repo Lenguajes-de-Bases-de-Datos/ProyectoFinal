@@ -1,12 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg">
     
-  <form class="form-inline my-2 my-lg-0">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-  </form>
 
-  <a class="navbar-brand" href="#">Navbar</a>
-    <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navtext" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
       
     </button>
@@ -14,34 +10,39 @@
     <div class="collapse navbar-collapse" id="navtext">
       <ul class="navbar-nav mr-auto">
         <img src="" alt="">
-        <li class="nav-item active" >
-          
-          <a class="nav-link" [routerLink]="['portal']">User <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item" >
-          <a class="nav-link" [routerLink]="['login']" >Log in</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
+       
         <li class="nav-item dropdown" id="notification_li">
           <span id="notification_count">{{count}}</span>
         <a class="nav-link dropdown-toggle icon-bell-1" href="#" id="notificationLink" [ngClass]="{paused:band_paused}" role="button" data-toggle="dropdown" aria-expanded="false"></a>
           
           <div class="dropdown-menu" >
            
-              <a *ngFor="let obj of notifications,index as i" class="dropdown-item" href="#"  (click)="updateCount(i)">{{obj.text}}</a>
-           
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" (click)="logOut()">Log Out</a>
+              <!-- <a *ngFor="let obj of notifications,index as i" class="dropdown-item" href="#"  (click)="updateCount(i)">{{obj.text}}</a> -->
+              <div class="list-group lista" >
+                <a class="list-group-item list-group-item-action active" *ngFor="let obj of notifications,index as i" class="dropdown-item" href="#"  (click)="updateCount(i)">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">List group item heading</h5>
+                    <small></small>
+                  </div>
+                  <p class="mb-1">{{obj.text}}.</p>
+                  <small>{{obj.author}}</small>
+                  <div class="dropdown-divider"></div>
+                </a>
+               
+              </div>
+
+            
+            
           </div>
           
         </li>
         
+        
+
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-            User
+            {{name}}
           </a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="#">Action</a>
@@ -59,4 +60,10 @@
 
 
     </div>
+    <form class="form-inline my-2 my-lg-0">
+      <input [ngModelOptions]="{standalone: true}" [(ngModel)]="this.prod" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" (keyup.enter)="buscar()" 
+      >
+      <button class="btn" type="submit" (click)="buscar()">Search</button>
+    </form>
   </nav>
+

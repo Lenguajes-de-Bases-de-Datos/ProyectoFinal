@@ -15,20 +15,20 @@ export class AppComponent {
   band:boolean=true;
   constructor(private request:RequestsService,private router:Router,public auth:AuthGuardService){
     let token = sessionStorage.getItem('token');
-    console.log("tokkk"+token);
+
     if( token==null){ this.band = true;router.navigate(['/portal']);
     }else{
       
       request.verifyToken().subscribe({next:(resp:any)=>{
         this.auth.band = false;
-        console.log("fiiii");
+      
         router.navigate(['/default']);
       },
       error:(err:any)=>{
         if(err.status===401){
           this.auth.band=true;
           sessionStorage.removeItem('token');
-          console.log("errrr");
+         
           swal.fire({
             allowOutsideClick: true,
             title: "Error de Session...",
@@ -42,8 +42,7 @@ export class AppComponent {
     });
    
     }
-    console.log("banderita: "+this.auth.band)
-
+  
 
   }
   change(e:any){

@@ -1,1 +1,89 @@
-<p>read-compra works!</p>
+<div class="wrapper">
+<!--Tipos de busqueda.....-->
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <button   (click)="buscar()"  class="btn btn-outline-secondary" type="button" [disabled]="form.invalid">Buscar</button>
+        </div>
+        <select (change)="change()" [(ngModel)]="this.option"  class="custom-select" id="inputGroupSelect03" aria-label="Example select with button addon" >
+          <option selected value="0">Tipos de consultas...</option>
+          <option value="1">Todos</option>
+          <option value="2">Por fecha</option>
+          <option value="3">Por rango de fecha</option>
+          <option value="4">Por quien la realizo</option>
+          <option value="5" *ngIf="band">Por id de sucursal</option>
+           
+        </select>
+      </div>
+      <div [formGroup]="form">
+        <div class="form-row">
+          <div *ngIf="this.option == '2'" class="form-group col-md-6">
+            <label for="inputnom">Fecha</label>
+            <input formControlName="fecha" type="date" class="form-control" id="inputnom">
+          </div>
+    
+          <div *ngIf="this.option == '3'" class="form-group col-md-6">
+            <label for="inputnom">Fecha de inicio</label>
+            <input formControlName="fechaini" type="date" class="form-control" id="inputnom">
+          </div>
+          <div *ngIf="this.option == '3'" class="form-group col-md-6">
+            <label for="inputnom">Fecha Final</label>
+            <input formControlName="fechafin" type="date" class="form-control" id="inputnom">
+          </div>
+
+          <div *ngIf="this.option == '4'" class="form-group col-md-6">
+            <label for="inputid">Nombre</label>
+            <input formControlName="nombre" type="text" class="form-control" id="inputid">
+          </div>
+
+          <div *ngIf="this.option == '5'" class="form-group col-md-6">
+            <label for="inputid">Sucursal</label>
+            <input formControlName="sucursal" type="text" class="form-control" id="inputid">
+          </div>
+
+    
+        </div>
+        
+      </div>
+<!--Fin tipos de busqueda-->
+
+    <div class="alert alert-success" role="alert">
+        Inversión <a href="#" class="alert-link">{{total | number:'1.1-3'}}</a> en todas las compras
+      </div>
+    <div class="table-responsive-lg">
+        <table class="table table-striped table-dark">
+            <thead>
+                <tr>
+                    <th scope="col" colspan="8" style="text-align: center;">Compras realizadas</th>
+
+                </tr>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Realizó</th>
+                    <th scope="col" *ngIf="band">Sucursal</th>
+                    <th scope="col">Proveedor</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Observaciones</th>
+                    <th scope="col">Más</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let obj of compras,index as i,let ultimo = last">
+
+                    <td *ngIf="i!=10">{{obj.id}}</td>
+                    <td *ngIf="i!=10">{{obj.usuario}}</td>
+                    <td *ngIf="i!=10 && band" >{{obj.suc}}</td>
+                    <td *ngIf="i!=10">{{obj.prov}}</td>
+                    <td *ngIf="i!=10">{{obj.tot}}</td>
+                    <td *ngIf="i!=10">{{obj.fecha | date: 'short'}}</td>
+                    <td *ngIf="i!=10">{{obj.obs}}</td>
+                    <td *ngIf="i!=10">{{obj.obs}}</td>
+                    <td *ngIf="i!=10"><i class="icon-info-circle" (click)="oneCompra(obj.id)"></i></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <app-paginacion [query]="sql" (array)="result($event)" #pag></app-paginacion>
+
+</div>

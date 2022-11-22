@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
 .wrapper{
     width: 60%;
     margin: auto;
@@ -14,4 +16,12 @@ i{
 }
 .valid{
     border: 2px solid green;
+}
+.genders{
+    display: flex;
+    justify-content: space-between;
+}
+input[type="radio"]{
+    width: 4em;
+
 }
