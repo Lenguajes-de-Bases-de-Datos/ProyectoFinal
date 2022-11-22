@@ -1,0 +1,13 @@
+<div class="wrapper">
+    <div class="card-columns">
+        <div class="card" *ngFor="let obj of prods | async">
+            <img [src]="'../../../../assets/productos/'+obj.imagen" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{obj.nombre}} {{obj.precio | currency:'MXN'}}</h5>
+                <p class="card-text">{{obj.descripcion}}</p>
+                <button type="button" class="btn btn-warning" (click)="goExistencias(obj.id)">Consultar existencias</button>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -10,6 +10,7 @@ import { RequestsService } from '../services/requests.service';
 })
 export class SidebarComponent implements OnInit {
   band:boolean=false;
+  user:any;
   options:any[]=[
     {
       opcion:"Usuarios",
@@ -34,7 +35,8 @@ export class SidebarComponent implements OnInit {
       }
     ],
       icono:"",
-      id:"users"
+      id:"users",
+      data:['administrador','superadmin']
     },
 
     {
@@ -58,7 +60,8 @@ export class SidebarComponent implements OnInit {
       }
     ],
       icono:"",
-      id:"categories"
+      id:"categories",
+      data:['administrador','superadmin','vendedor','almacenista','reponedor']
     },
     {
       opcion:"Sucursales",
@@ -78,10 +81,12 @@ export class SidebarComponent implements OnInit {
        {
         ruta:'',
         nombre:'Eliminar'
+        
       }
     ],
       icono:"",
-      id:"providers"
+      id:"providers",
+      data:['administrador','superadmin']
     },
     {
       opcion:"Productos",
@@ -90,6 +95,10 @@ export class SidebarComponent implements OnInit {
         ruta:'/create-producto',
         nombre:'Crear'
       },
+      { 
+        ruta:'/open-caja',
+        nombre:'Abrir caja'
+       } ,
        { 
         ruta:'/read-producto',
         nombre:'Consultar'
@@ -104,7 +113,8 @@ export class SidebarComponent implements OnInit {
       }
     ],
       icono:"",
-      id:"orders"
+      id:"orders",
+      data:['administrador','superadmin','vendedor','almacenista','reponedor']
     },
     {
       opcion:"Compras",
@@ -127,7 +137,8 @@ export class SidebarComponent implements OnInit {
       }
     ],
       icono:"",
-      id:"compras"
+      id:"compras",
+      data:['administrador','superadmin','almacenista']
     },
 
     {
@@ -153,7 +164,8 @@ export class SidebarComponent implements OnInit {
       }
     ],
       icono:"",
-      id:"ventas"
+      id:"ventas",
+      data:['administrador','superadmin','vendedor']
     },
 
     {
@@ -165,7 +177,8 @@ export class SidebarComponent implements OnInit {
       }
     ],
       icono:"",
-      id:"send-msg"
+      id:"send-msg",
+      data:['administrador','superadmin','vendedor','almacenista','reponedor']
     },
     {
       opcion:"Ubicación",
@@ -185,13 +198,17 @@ export class SidebarComponent implements OnInit {
        {
         ruta:'',
         nombre:'Eliminar'
+       
       }
     ],
       icono:"",
-      id:"ubicacion"
+      id:"ubicacion",
+      data:['administrador','superadmin','vendedor','almacenista','reponedor']
     },
   ];
   constructor(private request:RequestsService) {
+    this.user = localStorage.getItem('cuenta');
+    this.user = JSON.parse(this.user);
     try {
       let token = sessionStorage.getItem('token') || "";
       let resp:any = jwt_decode(token);
@@ -206,6 +223,7 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.options[0].data.includes('administrador'));
   }
   ngAfterViewInit(){
     events();
