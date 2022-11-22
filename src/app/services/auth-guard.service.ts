@@ -19,28 +19,76 @@ export class AuthGuardService implements CanActivate{
  
 
       let token = sessionStorage.getItem('token');
-    console.log("tokkk"+token);
+   
     if( token==null){ this.band = true;this.router.navigate(['/portal']);
     }else{
       
       this.request.verifyToken().subscribe({next:(resp:any)=>{
         this.band = false;
-        console.log("fiiii");
+      
         
       },
       error:(err:any)=>{
-        if(err.status===401){
-          this.band=true;
-          sessionStorage.removeItem('token');
-          console.log("errrr");
+        if(err.status===401 && !this.band){
+
+
+
           swal.fire({
-            allowOutsideClick: true,
-            title: "Error de Session...",
-            text: "Tu session ha expirado por favor vuelve a autenticarte...",
-            confirmButtonText:'Entendido'
+            title: 'Tu sesion ha expirado ',
+            text: "¿Deseas extenderla?",
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: `Si, acepto.`,
+            cancelButtonText:"No",
+            icon:'warning'
+          }).then((result)=>{
+            if(result.value){
+              let cuenta:any = localStorage.getItem('cuenta');
+              if(cuenta === null){
+
+              }else{
+                cuenta = JSON.parse(cuenta);
+              }
+              let body = {
+                nombre:cuenta.email,
+                password:cuenta.password
+              } 
+              
+              this.request.extender(body).subscribe((res:any)=>{
+                
+                if(res.msg != undefined){
+                  sessionStorage.setItem('token',res.msg);
+                 
+                  swal.fire({
+                    allowOutsideClick: true,
+                    title: "Exito...",
+                    text: `Tu sesion ha sido actualizada...`,
+                    confirmButtonText:'Entendido',
+                    icon:"success"
+                  });
+                }else{
+                  swal.fire({
+                    allowOutsideClick: true,
+                    title: "Error...",
+                    text: `Por favor vuelve a iniciar sesion...`,
+                    confirmButtonText:'Entendido',
+                    icon:"error"
+                  });
+                }
+              });
+              
+              
+              
+            }else{
+              this.reubicar();
+            }
           });
-          this.router.navigate(['/portal']);
+
           
+          
+        }else{
+          this.reubicar();
         }
       },
       complete:()=>console.log("done")
@@ -64,5 +112,17 @@ export class AuthGuardService implements CanActivate{
 
       // return true;
 
+  }
+  reubicar(){
+    this.band=true;
+    sessionStorage.removeItem('token');
+    
+    swal.fire({
+      allowOutsideClick: true,
+      title: "Error de Session...",
+      text: "Tu session ha expirado por favor vuelve a autenticarte...",
+      confirmButtonText:'Entendido'
+    });
+    this.router.navigate(['/portal']);
   }
 }

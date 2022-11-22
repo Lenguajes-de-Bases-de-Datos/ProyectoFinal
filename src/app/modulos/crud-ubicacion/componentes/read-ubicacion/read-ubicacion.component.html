@@ -53,6 +53,7 @@
               <th scope="col">Ciudad</th>
               <th scope="col">Colonia</th>
               <th scope="col">Código Postal</th>
+              <th scope="col">Editar</th>
             </tr>
           </thead>
           <tbody>
@@ -63,6 +64,7 @@
               <td *ngIf="i!=10">{{obj.ciudad}}</td>
               <td *ngIf="i!=10">{{obj.colonia}}</td>
               <td *ngIf="i!=10">{{obj.cp}}</td>
+              <td *ngIf="i!=10"><i (click)="update(obj.ID)" class="icon-pencil"></i></td>
             </tr>
           
           </tbody>

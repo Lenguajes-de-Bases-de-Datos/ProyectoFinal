@@ -1,0 +1,79 @@
+<div class="wrapper">
+    <a class="icon-arrow-left card-link reg" (click)="regresar()">  Regresar</a>
+    <div class="table-responsive-lg">
+        <table class="table table-striped table-dark">
+            <thead>
+                <tr>
+                    <th scope="col" colspan="8" style="text-align: center;">Compra</th>
+
+                </tr>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Realizó</th>
+                    <th scope="col" *ngIf="band">Sucursal</th>
+                    <th scope="col">Proveedor</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Observaciones</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr >
+
+                    <td >{{compra.id}}</td>
+                    <td >{{compra.user}}</td>
+                    <td *ngIf=" band">{{compra.suc}}</td>
+                    <td  >{{compra.prov}}</td>
+                    <td >{{compra.tot | number:'1.1-3'}}</td>
+                    <td >{{compra.fecha | date: 'shortDate'}}</td>
+                    <td >{{compra.obs}}</td>
+                   
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div class="alert alert-success" role="alert">
+        Inversion de: <a  class="alert-link">{{compra.tot | number:'1.1-3'}}</a>. Se espera generar en ventas: 
+        <a class="alert-link">{{sum | number:'1.1-3'}}</a>. Para obtener la ganancia de: 
+        <a class="alert-link">{{sum-compra.tot | number:'1.1-3'}}</a> 
+      </div>
+<!--PRODUCTOS QUE SE RELACIONAN CON LA COMPRA-->
+    <div class="table-responsive-lg">
+        <table class="table table-striped table-dark">
+            <thead>
+                <tr>
+                    <th scope="col" colspan="8" style="text-align: center;">Productos que se relacionan</th>
+
+                </tr>
+                <tr>
+                    <th scope="col"># Compra</th>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Precio por el proveedor</th>
+                    <th scope="col">Precio a vender</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let obj of prods,index as i,let ultimo = last">
+
+                    <td *ngIf="i!=10">{{obj.id}}</td>
+                    <td *ngIf="i!=10">{{obj.nombre}}</td>
+                    <td *ngIf="i!=10" >{{obj.ncategoria}}</td>
+                    <td *ngIf="i!=10">{{obj.cantidad}}</td>
+                    <td *ngIf="i!=10">{{obj.precioCompra | number:'1.1-3'}}</td>
+                    <td *ngIf="i!=10">{{obj.precioVenta | number:'1.1-3'}}</td>
+                    
+                   
+                </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+
+
+</div>

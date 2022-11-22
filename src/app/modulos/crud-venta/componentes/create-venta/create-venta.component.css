@@ -1,0 +1,27 @@
+.wrapper{
+    width: 80%;
+    margin: auto;
+}
+#inputcantidad{
+    width: 6em !important;
+}
+.car{
+    animation: car;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    font-size: 2em;
+    cursor: pointer;
+    
+}
+@keyframes car{
+    0%{
+        color: red;
+    }
+    50%{
+        color: green;
+    }
+    100%{
+        color: aqua;
+        
+    }
+}

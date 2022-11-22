@@ -8,21 +8,22 @@ import { HttpClientModule } from "@angular/common/http";
 import {ReactiveFormsModule} from '@angular/forms';
 import { SocketIoModule } from 'ngx-socket-io';
 import { FormsModule } from '@angular/forms';
-import { TemplatesModule } from './templates/templates.module';
 import { CrudUserModule } from './modulos/crud-user/crud-user.module';
 import { CrudCategoriaModule } from './modulos/crud-categoria/crud-categoria.module';
 import { CrudProveedorModule } from './modulos/crud-proveedor/crud-proveedor.module';
 import { CrudSucursalModule } from './modulos/crud-sucursal/crud-sucursal.module';
 import { CrudUbicacionModule } from './modulos/crud-ubicacion/crud-ubicacion.module';
-import { CrudProductoModule } from './modulos/crud-producto/crud-producto.module';
+import { CrudProductoModule } from'./modulos/crud-producto/crud-producto.module';
 import { CrudCompraModule } from './modulos/crud-compra/crud-compra.module';
+import { CrudVentaModule } from './modulos/crud-venta/crud-venta.module';
+import { SendMessageComponent } from './send-message/send-message.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
-    
+    SendMessageComponent
 
   ],
   imports: [
@@ -40,6 +41,7 @@ import { CrudCompraModule } from './modulos/crud-compra/crud-compra.module';
     CrudUbicacionModule,
     CrudProductoModule,
     CrudCompraModule,
+    CrudVentaModule,
     AppRoutingModule
 
    

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RequestsService } from 'src/app/services/requests.service';
 import swal from 'sweetalert2';
 
@@ -26,7 +27,7 @@ export class ReadUbicacionComponent implements OnInit {
   optionCiudad:any;
   resCiudades:any[]=[];
   a:any; b:any;
-  constructor(private request:RequestsService) {
+  constructor(private request:RequestsService, private router:Router) {
     this.request.consultas('SELECT * FROM ubicacion LIMIT 0,11').subscribe((res:any)=>{
       this.ubicaciones = res;
     });
@@ -54,7 +55,6 @@ export class ReadUbicacionComponent implements OnInit {
     this.controlador = 0;
     this.cont = 0;
     this.contpag = 1;
-    console.log(this.option);
      this.sql = `SELECT * FROM ubicacion WHERE `;
     if(this.option == "1"){
       this.sql = `SELECT * FROM ubicacion`;
@@ -80,7 +80,7 @@ export class ReadUbicacionComponent implements OnInit {
           if(result.value){
             this.b = this.form.get('id_inf')?.value;
             this.a = this.form.get('id_sup')?.value;
-            this.title = 'Intervalo ed ID ubicación';
+            //this.title = 'Intervalo ed ID ubicación';
             this.form.patchValue({
               id_sup : this.b,
               id_inf : this.a
@@ -138,7 +138,8 @@ export class ReadUbicacionComponent implements OnInit {
   result(res:any){
     this.ubicaciones = res;
   }
-  moreUser(id:number){
-    alert("ID de la ubicación ----> "+id);
+  update(id:number){
+    this.router.navigate(['/update-ubicacion',id]);
+    
   }
 }

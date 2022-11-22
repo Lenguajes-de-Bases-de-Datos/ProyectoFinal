@@ -42,7 +42,6 @@ export class ReadUserComponent implements OnInit {
     this.controlador = 0;
     this.cont = 0;
     this.contpag = 1;
-    console.log(this.option);
      this.sql = `SELECT * FROM usuario WHERE privilegios = `;
     if(this.option == "1"){
       this.sql = `SELECT * FROM usuario`;
@@ -127,7 +126,6 @@ export class ReadUserComponent implements OnInit {
   }
   result(res:any){
     this.users = res;
-    console.log(res);
   }
 
   accion(id:number,num:number){
@@ -215,9 +213,6 @@ export class ReadUserComponent implements OnInit {
       }
     } 
     this.sql = aux ;
-    console.log("mysql: "+this.sql);
-    // let obj = new PaginacionComponent(this.request);
-    // obj.update();
   }
   moreUser(id:number){
     this.router.navigate([`/more-user/${id}`]);

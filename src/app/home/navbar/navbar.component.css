@@ -1,5 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+a{
+    cursor: pointer;
+}
 
 form{
     padding-right: 3em;
@@ -27,11 +30,11 @@ nav{
     
     
 }
-.collapse{
+/* .collapse{
     display: flex !important;
     justify-content: flex-end;
     
-}
+} */
 /*NOTIFICATIONS*/
 #nav{list-style:none;margin: 0px;padding: 0px;}
 #nav li {
@@ -43,7 +46,10 @@ font-weight:bold;
 #nav li a{color:#333333;text-decoration:none}
 #nav li a:hover{color:#006699;text-decoration:none}
 
-
+.lista{
+    height: 15em;
+    overflow: scroll;
+}
 
 #notification_li
 {

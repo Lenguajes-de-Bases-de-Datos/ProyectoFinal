@@ -12,7 +12,7 @@ export class RequestsService {
     let token = sessionStorage.getItem('token');
     if(token == null) token=""
     let headers = new HttpHeaders().set('crazys',token);
-    console.log(this.path+a,params);
+    
     return this.request.post(this.path+a,params,{headers:headers});
   }
   accion(body:any){
@@ -45,6 +45,9 @@ export class RequestsService {
 
     return this.request.post("http://localhost:3000/login",params,{responseType: 'json'});
   }
+  extender(body:any):any{
+    return this.request.post("http://localhost:3000/extender",body,{responseType: 'json'});
+  }
   verifyToken(){
     
     let token = sessionStorage.getItem('token');
@@ -57,7 +60,14 @@ export class RequestsService {
     let token = sessionStorage.getItem('token');
     if(token == null) token = '';
     let headers = new HttpHeaders().set('crazys',token);
-    console.log(this.path+a,params);
+
     return this.request.post(this.path+a,params,{headers:headers});
+  }
+
+  uploadFile(formData:FormData){
+    let urlApi = '/api/subir';
+    return this.request.post(this.path+urlApi, formData);
+
+
   }
 }

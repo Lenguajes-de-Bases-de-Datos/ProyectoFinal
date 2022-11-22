@@ -4,7 +4,6 @@ import { PortalComponent } from './portal/portal.component';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AppRoutingModule } from '../app-routing.module';
-import { ProductosComponent } from './productos/productos.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DefaultComponent } from './default/default.component';
@@ -17,7 +16,6 @@ import { PaginainicioComponent } from './paginainicio/paginainicio.component';
     PortalComponent,
     LoginComponent,
     NavbarComponent,
-    ProductosComponent,
     DefaultComponent,
     PaginacionComponent,
     OptionsComponent,

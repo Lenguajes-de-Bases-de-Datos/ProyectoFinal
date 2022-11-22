@@ -10,7 +10,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { RequestsService } from './services/requests.service';
 import { CreateUserComponent } from './modulos/crud-user/componentes/crud-users/create-user/create-user.component';
 import { ReadUserComponent } from './modulos/crud-user/componentes/crud-users/read-user/read-user.component';
-import { SendMessageComponent } from './templates/send-message/send-message.component';
+import { SendMessageComponent } from './send-message/send-message.component';
 import { UpdateUserComponent } from './modulos/crud-user/componentes/crud-users/update-user/update-user.component';
 import { DeleteUserComponent } from './modulos/crud-user/componentes/crud-users/delete-user/delete-user.component';
 import { CreateCategoriaComponent } from './modulos/crud-categoria/componentes/crud-categoria/create-categoria/create-categoria.component';
@@ -28,34 +28,43 @@ import { MoreUserComponent } from './modulos/crud-user/componentes/crud-users/mo
 import { CreateUbicacionComponent } from './modulos/crud-ubicacion/componentes/create-ubicacion/create-ubicacion.component';
 import { UpdateUbicacionComponent } from './modulos/crud-ubicacion/componentes/update-ubicacion/update-ubicacion.component';
 import { ReadUbicacionComponent } from './modulos/crud-ubicacion/componentes/read-ubicacion/read-ubicacion.component';
+import { ReadCompraComponent } from './modulos/crud-compra/componentes/read-compra/read-compra.component';
+import { OneCompraComponent } from './modulos/crud-compra/componentes/one-compra/one-compra.component';
+import { CreateVentaComponent } from './modulos/crud-venta/componentes/create-venta/create-venta.component';
+import { ReadVentaComponent } from './modulos/crud-venta/componentes/read-venta/read-venta.component';
+import { OneVentaComponent } from './modulos/crud-venta/componentes/one-venta/one-venta.component';
 
 const routes: Routes = [
   {path:'portal', component:PortalComponent},
   {path:'sign-up',component:CreateUserComponent,canActivate:[AuthGuardService],data:['administrador']},
-  {path: 'paginainicio',component:PaginainicioComponent},
-  {path:'read-users', component:ReadUserComponent},
-  {path:'update-user', component:UpdateUserComponent},
-  {path:'delete-user', component:DeleteUserComponent},
-  {path:'send-msg',component:SendMessageComponent},
-  {path:'create-categoria',component:CreateCategoriaComponent},
-  {path:'read-categoria',component:ReadCategoriaComponent},
-  {path:'card-categoria/:id',component:CardCategoriaComponent},
-  {path:'update-categoria/:id',component:UpdateCategoriaComponent},
-  {path:'update-categoria',component:UpdateCategoriaComponent},
-  {path:'create-sucursal',component:CreateSucursalComponent},
-  {path:'create-sucursal/:id',component:CreateSucursalComponent},
-  {path:'read-sucursal',component:ReadSucursalComponent},
-  {path:'update-sucursal',component:UpdateSucursalComponent},
-  {path:'create-producto',component:CreateProductoComponent},
-  {path:'read-producto',component:ReadProductoComponent},
-  {path:'create-compra',component:CreateCompraComponent},
 
+  {path:'read-users', component:ReadUserComponent,canActivate:[AuthGuardService]},
+  {path:'update-user', component:UpdateUserComponent,canActivate:[AuthGuardService]},
+  {path:'delete-user', component:DeleteUserComponent,canActivate:[AuthGuardService]},
+  {path:'send-msg',component:SendMessageComponent,canActivate:[AuthGuardService]},
+  {path:'create-categoria',component:CreateCategoriaComponent,canActivate:[AuthGuardService]},
+  {path:'read-categoria',component:ReadCategoriaComponent,canActivate:[AuthGuardService]},
+  {path:'card-categoria/:id',component:CardCategoriaComponent,canActivate:[AuthGuardService]},
+  {path:'update-categoria/:id',component:UpdateCategoriaComponent,canActivate:[AuthGuardService]},
+  {path:'update-categoria',component:UpdateCategoriaComponent,canActivate:[AuthGuardService]},
+  {path:'create-sucursal',component:CreateSucursalComponent,canActivate:[AuthGuardService]},
+  {path:'create-sucursal/:id',component:CreateSucursalComponent,canActivate:[AuthGuardService]},
+  {path:'read-sucursal',component:ReadSucursalComponent,canActivate:[AuthGuardService]},
+  {path:'update-sucursal',component:UpdateSucursalComponent,canActivate:[AuthGuardService]},
+  {path:'create-producto',component:CreateProductoComponent,canActivate:[AuthGuardService]},
+  {path:'read-producto',component:ReadProductoComponent,canActivate:[AuthGuardService]},
+  {path:'create-compra',component:CreateCompraComponent,canActivate:[AuthGuardService]},
+  {path:'read-compra',component:ReadCompraComponent,canActivate:[AuthGuardService]},
+  {path:'one-compra/:id',component:OneCompraComponent,canActivate:[AuthGuardService]},
+  {path:'create-venta',component:CreateVentaComponent,canActivate:[AuthGuardService]},
+  {path:'read-venta',component:ReadVentaComponent,canActivate:[AuthGuardService]},
+  {path:'one-venta/:id',component:OneVentaComponent,canActivate:[AuthGuardService]},
   {path:'more-user/:ID',component:MoreUserComponent},
   {path:'create-ubicacion',component:CreateUbicacionComponent},
   {path:'read-ubicacion',component:ReadUbicacionComponent},
-  {path:'update-ubicacion',component:UpdateUbicacionComponent},
-  {path:'**',component:DefaultComponent},
-  
+  {path:'update-ubicacion/:id',component:UpdateUbicacionComponent},
+  {path:'**',component:PortalComponent},
+  {path:'default',component:DefaultComponent},
 
  
 ];
