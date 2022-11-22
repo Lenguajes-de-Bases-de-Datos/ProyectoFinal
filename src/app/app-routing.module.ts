@@ -71,6 +71,7 @@ const routes: Routes = [
   {path:'create-ubicacion',component:CreateUbicacionComponent},
   {path:'read-ubicacion',component:ReadUbicacionComponent},
   {path:'update-ubicacion/:id',component:UpdateUbicacionComponent},
+  {path: 'paginainicio',component:PaginainicioComponent},
   {path:'default',component:DefaultComponent},
   {path:'**',component:PortalComponent},
   
