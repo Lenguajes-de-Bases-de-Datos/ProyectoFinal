@@ -34,9 +34,7 @@
     /*background-image: url('../../../assets/img/fondo7.jpg');*/
     background-size: 100vh 100vw;
     background-color: #EE5B9F;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    
+    height: 100%;
     
 }
 

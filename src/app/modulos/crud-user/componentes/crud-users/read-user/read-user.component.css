@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
 .wrapper{
-    width: 60%;
+    width: 85%;
     margin: auto;
     font-family: Fredoka One;
 }
@@ -17,10 +17,11 @@ a, .delete{
 
 .fondo{
     background-image: url('../../../../../../assets/img/fondo4.jpg');
-    height: 100vh;
+    background-size: 100% 100%;
     background-attachment: fixed;
     background-repeat: no-repeat;
     padding: 2em;
+
 }
 
 .custom-select{
@@ -42,3 +43,4 @@ a, .delete{
 table{
     background: rgb(20, 141, 255);
 }
+
