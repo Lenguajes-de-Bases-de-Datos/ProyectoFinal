@@ -19,19 +19,23 @@ export class SidebarComponent implements OnInit {
       rutas:[
        {
         ruta:'sign-up',
-        nombre:'Crear'
+        nombre:'Crear',
+        excluye:[""]
        },
        { 
         ruta:'/read-users',
-        nombre:'Consultar'
+        nombre:'Consultar',
+        excluye:[""]
        } ,
        {
         ruta:'update-user',
-        nombre:'Actualizar'
+        nombre:'Actualizar',
+        excluye:[""]
        }, 
        {
         ruta:'delete-user',
-        nombre:'Eliminar'
+        nombre:'Eliminar',
+        excluye:[""]
       }
     ],
       icono:"",
@@ -44,20 +48,19 @@ export class SidebarComponent implements OnInit {
       class:"",
       rutas:[{
         ruta:'/create-categoria',
-        nombre:'Crear'
+        nombre:'Crear',
+        excluye:[""]
       },
        { 
         ruta:'/read-categoria',
-        nombre:'Consultar'
+        nombre:'Consultar',
+        excluye:[""]
        } ,
        {
         ruta:'/update-categoria',
-        nombre:'Actualizar'
-       }, 
-       {
-        ruta:'',
-        nombre:'Eliminar'
-      }
+        nombre:'Actualizar',
+        excluye:[""]
+       }
     ],
       icono:"",
       id:"categories",
@@ -68,21 +71,19 @@ export class SidebarComponent implements OnInit {
       class:"",
       rutas:[{
         ruta:'/create-sucursal',
-        nombre:'Crear'
+        nombre:'Crear',
+        excluye:["administrador"]
       },
        { 
         ruta:'/read-sucursal',
-        nombre:'Consultar'
+        nombre:'Consultar',
+        excluye:[""]
        } ,
        {
         ruta:'/update-sucursal',
-        nombre:'Actualizar'
-       }, 
-       {
-        ruta:'',
-        nombre:'Eliminar'
-        
-      }
+        nombre:'Actualizar',
+        excluye:[""]
+       }
     ],
       icono:"",
       id:"providers",
@@ -93,24 +94,24 @@ export class SidebarComponent implements OnInit {
       class:"",
       rutas:[{
         ruta:'/create-producto',
-        nombre:'Crear'
+        nombre:'Crear',
+        excluye:[""]
       },
       { 
         ruta:'/open-caja',
-        nombre:'Abrir caja'
+        nombre:'Abrir caja',
+        excluye:[""]
        } ,
        { 
         ruta:'/read-producto',
-        nombre:'Consultar'
+        nombre:'Consultar',
+        excluye:[""]
        } ,
        {
         ruta:'',
-        nombre:'Actualizar'
-       }, 
-       {
-        ruta:'',
-        nombre:'Eliminar'
-      }
+        nombre:'Actualizar',
+        excluye:[""]
+       }
     ],
       icono:"",
       id:"orders",
@@ -121,19 +122,23 @@ export class SidebarComponent implements OnInit {
       class:"",
       rutas:[{
         ruta:'/create-proveedor',
-        nombre:'Crear'
+        nombre:'Crear',
+        excluye:[""]
       },
        { 
         ruta:'/read-proveedor',
-        nombre:'Consultar'
+        nombre:'Consultar',
+        excluye:[""]
        } ,
        {
         ruta:'',
-        nombre:'Actualizar'
+        nombre:'Actualizar',
+        excluye:[""]
        }, 
        {
         ruta:'',
-        nombre:'Eliminar'
+        nombre:'Eliminar',
+        excluye:[""]
       }
     ],
       icono:"",
@@ -145,20 +150,19 @@ export class SidebarComponent implements OnInit {
       class:"",
       rutas:[{
         ruta:'/create-compra',
-        nombre:'Crear'
+        nombre:'Crear',
+        excluye:["superadmin"]
       },
        { 
         ruta:'/read-compra',
-        nombre:'Consultar'
+        nombre:'Consultar',
+        excluye:[""]
        } ,
        {
         ruta:'',
-        nombre:'Actualizar'
-       }, 
-       {
-        ruta:'',
-        nombre:'Eliminar'
-      }
+        nombre:'Actualizar',
+        excluye:[""]
+       }
     ],
       icono:"",
       id:"compras",
@@ -172,20 +176,19 @@ export class SidebarComponent implements OnInit {
       rutas:[
        {
         ruta:'/create-venta',
-        nombre:'Crear'
+        nombre:'Crear',
+        excluye:["superadmin"]
        },
        { 
         ruta:'/read-venta',
-        nombre:'Consultar'
+        nombre:'Consultar',
+        excluye:[""]
        } ,
        {
         ruta:'update-user',
-        nombre:'Actualizar'
-       }, 
-       {
-        ruta:'delete-user',
-        nombre:'Eliminar'
-      }
+        nombre:'Actualizar',
+        excluye:[""]
+       }
     ],
       icono:"",
       id:"ventas",
@@ -197,7 +200,8 @@ export class SidebarComponent implements OnInit {
       class:"",
       rutas:[{
         ruta:'/send-msg',
-        nombre:'Crear Notificación'
+        nombre:'Crear Notificación',
+        excluye:[""]
       }
     ],
       icono:"",
@@ -209,20 +213,23 @@ export class SidebarComponent implements OnInit {
       class:"",
       rutas:[{
         ruta:'/create-ubicacion',
-        nombre:'Crear'
+        nombre:'Crear',
+        excluye:[""]
       },
        { 
         ruta:'/read-ubicacion',
-        nombre:'Consultar'
+        nombre:'Consultar',
+        excluye:[""]
        } ,
        {
         ruta:'/update-ubicacion',
-        nombre:'Actualizar'
+        nombre:'Actualizar',
+        excluye:[""]
        }, 
        {
         ruta:'',
-        nombre:'Eliminar'
-       
+        nombre:'Eliminar',
+        excluye:[""]
       }
     ],
       icono:"",
