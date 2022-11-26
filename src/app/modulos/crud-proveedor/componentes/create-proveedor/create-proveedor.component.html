@@ -1,1 +1,66 @@
-<p>create-proveedor works!</p>
+<div class="wrapper">
+    <div [formGroup]="this.form">
+        <div class="form-row" >
+            <div class="form-group col-md-6">
+                <label for="inputNEmpresa">Nombre Empresa</label>
+                <input placeholder="No se admiten caracteres especiales('!&|)" [ngClass]="{'invalid':this.form.get('nempresa')?.invalid,'valid':!this.form.get('nempresa')?.invalid}" type="text" class="form-control" id="inputNEmpresa" formControlName="nempresa">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputUbi">Ubicación de la Empresa</label>
+                <select [ngClass]="{'invalid':this.form.get('ubicacion')?.invalid,'valid':!this.form.get('ubicacion')?.invalid}" id="inputUbi" class="form-control" formControlName="ubicacion">
+                    <option selected disabled>Choose...</option>
+                    <option [value]="obj.ID" *ngFor="let obj of ubicaciones">{{obj.ID}}.- {{obj.estado}} {{obj.ciudad}} {{obj.colonia}} {{obj.cp}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="inputNEncargado">Nombre del Encargado</label>
+                <input placeholder="No se admiten caracteres especiales('!&|)" [ngClass]="{'invalid':this.form.get('nencargado')?.invalid,'valid':!this.form.get('nencargado')?.invalid}" type="text" class="form-control" id="inputNEncargado" formControlName="nencargado">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputAppat">Apellido paterno del Encargado</label>
+                <input placeholder="No se admiten caracteres especiales('!&|)" [ngClass]="{'invalid':this.form.get('appat')?.invalid,'valid':!this.form.get('appat')?.invalid}" type="text" class="form-control" id="inputAppat" formControlName="appat">
+            </div>
+            <div class="form-group col-md-4">
+            <label for="inputApmat">Apellido materno del Encargado</label>
+            <input placeholder="No se admiten caracteres especiales('!&|)" [ngClass]="{'invalid':this.form.get('apmat')?.invalid,'valid':!this.form.get('apmat')?.invalid}" type="text" class="form-control" id="inputApmat" formControlName="apmat">
+           </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputCalle">Calle de la dirección del encargado</label>
+                <input placeholder="Debe de ser numeros solamente" [ngClass]="{'invalid':this.form.get('calle')?.invalid,'valid':!this.form.get('calle')?.invalid}" type="text" class="form-control" id="inputCalle" formControlName="calle">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputNumDire">Número de la dirección del encargado</label>
+                <input placeholder="Ejemplo: 7851" [ngClass]="{'invalid':this.form.get('numero')?.invalid,'valid':!this.form.get('numero')?.invalid}" type="text" class="form-control" id="inputNumDire" formControlName="numero">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputPhone">Telefono</label>
+                <input placeholder="449-223-88-22" [ngClass]="{'invalid':this.form.get('phone')?.invalid,'valid':!this.form.get('phone')?.invalid}" type="text" class="form-control" id="inputPhone" formControlName="phone">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="exampleFormControlTextarea6">Descripción</label>
+                <textarea  class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="Comentarios..." formControlName="descripcion" 
+                [ngClass]="{'invalid':this.form.get('descripcion')?.invalid,'valid':!this.form.get('descripcion')?.invalid}">
+    
+                </textarea>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputAddress">Email</label>
+                <input [ngClass]="{'invalid':this.form.get('email')?.invalid,'valid':!this.form.get('email')?.invalid}" type="text" class="form-control" id="inputAddress" placeholder="example@gmail.com" formControlName="email">
+              </div>
+              
+        </div>
+       
+        
+        <button  class="btn btn-primary" (click)="create()" [disabled]="this.form.invalid">Dar alta proveedor</button>
+      </div>
+</div>

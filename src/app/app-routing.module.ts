@@ -28,6 +28,9 @@ import { MoreUserComponent } from './modulos/crud-user/componentes/crud-users/mo
 import { CreateUbicacionComponent } from './modulos/crud-ubicacion/componentes/create-ubicacion/create-ubicacion.component';
 import { UpdateUbicacionComponent } from './modulos/crud-ubicacion/componentes/update-ubicacion/update-ubicacion.component';
 import { ReadUbicacionComponent } from './modulos/crud-ubicacion/componentes/read-ubicacion/read-ubicacion.component';
+import { CreateProveedorComponent } from './modulos/crud-proveedor/componentes/create-proveedor/create-proveedor.component';
+import { ReadProveedorComponent } from './modulos/crud-proveedor/componentes/read-proveedor/read-proveedor.component';
+import { UpdateProveedorComponent } from './modulos/crud-proveedor/componentes/update-proveedor/update-proveedor.component';
 import { ReadCompraComponent } from './modulos/crud-compra/componentes/read-compra/read-compra.component';
 import { OneCompraComponent } from './modulos/crud-compra/componentes/one-compra/one-compra.component';
 import { CreateVentaComponent } from './modulos/crud-venta/componentes/create-venta/create-venta.component';
@@ -41,7 +44,6 @@ import { CheckExistenciasComponent } from './modulos/crud-producto/componentes/c
 const routes: Routes = [
   {path:'portal', component:PortalComponent},
   {path:'sign-up',component:CreateUserComponent,canActivate:[AuthGuardService],data:['administrador']},
-
   {path:'read-users', component:ReadUserComponent,canActivate:[AuthGuardService]},
   {path:'update-user', component:UpdateUserComponent,canActivate:[AuthGuardService]},
   {path:'delete-user', component:DeleteUserComponent,canActivate:[AuthGuardService]},
@@ -60,23 +62,24 @@ const routes: Routes = [
   {path:'one-producto/:nombre',component:OneProductoComponent,canActivate:[AuthGuardService]},
   {path:'open-caja',component:OpenCajaComponent,canActivate:[AuthGuardService]},
   {path:'check-existencias/:id',component:CheckExistenciasComponent,canActivate:[AuthGuardService]},
-  
   {path:'create-compra',component:CreateCompraComponent,canActivate:[AuthGuardService]},
+  {path:'create-proveedor', component:CreateProveedorComponent,canActivate:[AuthGuardService]},
+  {path:'read-proveedor',component:ReadProveedorComponent,canActivate:[AuthGuardService]},
+  {path:'update-proveedor/:id',component:UpdateProveedorComponent,canActivate:[AuthGuardService]},
+  {path:'more-user/:ID',component:MoreUserComponent,canActivate:[AuthGuardService]},
+  {path:'create-ubicacion',component:CreateUbicacionComponent,canActivate:[AuthGuardService]},
+  {path:'read-ubicacion',component:ReadUbicacionComponent,canActivate:[AuthGuardService]},
+  {path:'update-ubicacion',component:UpdateUbicacionComponent,canActivate:[AuthGuardService]},
+  {path:'update-ubicacion/:id',component:UpdateUbicacionComponent,canActivate:[AuthGuardService]},
+  {path: 'paginainicio',component:PaginainicioComponent},
+  {path:'default',component:DefaultComponent,canActivate:[AuthGuardService]},
   {path:'read-compra',component:ReadCompraComponent,canActivate:[AuthGuardService]},
   {path:'one-compra/:id',component:OneCompraComponent,canActivate:[AuthGuardService]},
   {path:'create-venta',component:CreateVentaComponent,canActivate:[AuthGuardService]},
   {path:'read-venta',component:ReadVentaComponent,canActivate:[AuthGuardService]},
   {path:'one-venta/:id',component:OneVentaComponent,canActivate:[AuthGuardService]},
-  {path:'more-user/:ID',component:MoreUserComponent},
-  {path:'create-ubicacion',component:CreateUbicacionComponent},
-  {path:'read-ubicacion',component:ReadUbicacionComponent},
-  {path:'update-ubicacion/:id',component:UpdateUbicacionComponent},
-  {path: 'paginainicio',component:PaginainicioComponent},
-  {path:'default',component:DefaultComponent},
-  {path:'**',component:PortalComponent},
+  {path:'**',component:PortalComponent,canActivate:[AuthGuardService]},
   
-
- 
 ];
 
 @NgModule({

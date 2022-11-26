@@ -37,6 +37,11 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  enter(){
+    if(this.form.valid){
+      this.logIn();
+    }
+  }
   logIn():void{
     let band = true;
     let params={

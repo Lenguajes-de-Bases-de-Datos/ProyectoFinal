@@ -1,1 +1,71 @@
-<p>read-proveedor works!</p>
+<div class="wrapper">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <button   (click)="buscar()" (click)="paginacion.reinicia()" (click)="change()" class="btn btn-outline-secondary" type="button">Buscar</button>
+        </div>
+        <select (change)="change()" [(ngModel)]="this.option"  class="custom-select" id="inputGroupSelect03" aria-label="Example select with button addon" >
+            <option selected value="0">Tipos de consultas...</option>
+            <option value="1">Todos</option>
+            <option value="2">ID</option>
+            <option value="3">Nombre proveedor</option>
+        </select>
+    </div>
+
+    <div *ngIf="controlador == 2 " class="form-group col-md-6">
+        <label for="">ID del proveedo</label>
+        <div class="input-group mb-3">
+            <input [(ngModel)]="this.idProveedor" type="text" class="form-control" id="inputId">
+        </div>
+    </div>
+
+    <div *ngIf="controlador == 3 " class="form-group col-md-6">
+        <label for="inputnom">Nombre del proveedor</label>
+        <div class="input-group mb-3">
+            <input [(ngModel)]="this.nomEncargado" type="text" class="form-control" id="inputnom">
+        </div>
+    </div>
+
+    <div class="table-responsive-lg">
+        <table class="table table-striped table-dark">
+            <thead>
+              <tr>
+                <th scope="col" colspan="9" style="text-align: center;">{{title}}</th>
+                
+              </tr>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre de la Empresa</th>
+                <th scope="col">Nombre del Encargado</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Status</th>
+                <th scope="col">Acción</th>
+                <th scope="col">Más</th>
+                <th scope="col">Editar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let obj of proveedores,index as i,let ultimo = last">
+                 
+                <td *ngIf="i!=10">{{obj.ID}}</td>
+                <td *ngIf="i!=10">{{obj.nempresa}}</td>
+                <td *ngIf="i!=10">{{obj.nencargado}} {{obj.appat}} {{obj.apmat}}</td>
+                <td *ngIf="i!=10">{{obj.email}}</td>
+                <td *ngIf="i!=10">{{obj.telefono}}</td>
+                <td *ngIf="i!=10">{{obj.status}}</td>
+                <td *ngIf="i!=10">
+                    <a *ngIf="obj.status==1 else darAlta" class="icon-trash-4 delete" (click)="accion(obj.ID,obj.status)" (click)="paginacion.update(2000)"></a>
+                    <ng-template #darAlta>
+                      <a class="icon-upload update" (click)="accion(obj.ID,obj.status)" (click)="paginacion.update(2000)"></a>
+                    </ng-template>
+                </td>
+                <td *ngIf="i!=10"><i class="icon-newspaper-o more" (click)="moreUser(obj.ID)"></i></td>
+                <td *ngIf="i!=10"><i (click)="update(obj.ID)" class="icon-pencil"></i></td>
+              </tr>
+            
+            </tbody>
+          </table>
+    </div>      
+
+    <app-paginacion [query]="sql" (array)="result($event)" #paginacion></app-paginacion>
+</div>

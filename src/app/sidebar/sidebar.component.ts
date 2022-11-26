@@ -117,6 +117,29 @@ export class SidebarComponent implements OnInit {
       data:['administrador','superadmin','vendedor','almacenista','reponedor']
     },
     {
+      opcion:"Proveedores",
+      class:"",
+      rutas:[{
+        ruta:'/create-proveedor',
+        nombre:'Crear'
+      },
+       { 
+        ruta:'/read-proveedor',
+        nombre:'Consultar'
+       } ,
+       {
+        ruta:'',
+        nombre:'Actualizar'
+       }, 
+       {
+        ruta:'',
+        nombre:'Eliminar'
+      }
+    ],
+      icono:"",
+      id:"proveedor"
+    },
+    {
       opcion:"Compras",
       class:"",
       rutas:[{

@@ -49,3 +49,10 @@ body{
     height: 100% !important;
     width: 100% !important;
 }
+.icon-pencil{
+    color: rgb(60, 195, 60);
+}
+
+.icon-pencil:hover{
+    color: rgb(196, 255, 3);
+}
