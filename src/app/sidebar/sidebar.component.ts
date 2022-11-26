@@ -137,7 +137,8 @@ export class SidebarComponent implements OnInit {
       }
     ],
       icono:"",
-      id:"proveedor"
+      id:"proveedor",
+      data:['administrador','superadmin','vendedor','almacenista']
     },
     {
       opcion:"Compras",
