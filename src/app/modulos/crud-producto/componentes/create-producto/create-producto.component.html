@@ -13,7 +13,7 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="inputprecio">Precio</label>
-                <input type="text" class="form-control" id="inputprecio" formControlName="precio" placeholder="0-9"
+                <input type="text" class="form-control" id="inputprecio" formControlName="precio" placeholder="0-9.0-9 (Obligatorio el . con deciamales)"
                 [ngClass]="{'invalid':this.form.get('precio')?.invalid,'valid':!this.form.get('precio')?.invalid}">
             </div>
         </div>

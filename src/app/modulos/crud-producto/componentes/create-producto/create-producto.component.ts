@@ -21,7 +21,7 @@ export class CreateProductoComponent implements OnInit {
     this.form = new FormGroup({
       categoria : new FormControl('',[Validators.required]),
       nombre : new FormControl('',[Validators.required,Validators.pattern('[^\"\'\`|!&()]+')]),
-      precio : new FormControl('',[Validators.required,Validators.pattern('[0-9]+')]),
+      precio : new FormControl('',[Validators.required,Validators.pattern('[0-9]+\.\[0-9]+')]),
       contenido: new FormControl('',[Validators.required,Validators.pattern('[0-9]+')]),
       descripcion: new FormControl('',[Validators.pattern('[^\"\'\`|&!]+')]),
     });
