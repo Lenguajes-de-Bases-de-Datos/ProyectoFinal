@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { CreateProveedorComponent } from './componentes/create-proveedor/create-proveedor.component';
 import { ReadProveedorComponent } from './componentes/read-proveedor/read-proveedor.component';
 import { UpdateProveedorComponent } from './componentes/update-proveedor/update-proveedor.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HomeModule } from 'src/app/home/home.module';
 
 
 
@@ -13,7 +15,10 @@ import { UpdateProveedorComponent } from './componentes/update-proveedor/update-
     UpdateProveedorComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HomeModule
   ]
 })
 export class CrudProveedorModule { }

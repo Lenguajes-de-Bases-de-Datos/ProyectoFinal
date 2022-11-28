@@ -8,3 +8,7 @@
     position: relative;
     top: -0.5em;
 }
+
+.form-check{
+    margin: 8px;
+}

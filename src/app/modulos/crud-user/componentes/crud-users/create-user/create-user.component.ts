@@ -33,7 +33,7 @@ export class CreateUserComponent implements OnInit {
       text: "Espere por favor",
     });
     swal.showLoading();
-    this.request.ReadSucursal('/readSucursal').subscribe((res:any)=>{
+    this.request.consultas('SELECT b.id,a.estado,a.ciudad,a.colonia,b.calle,b.numero FROM ubicacion a,sucursal b WHERE a.id=b.id_ubicacion').subscribe((res:any)=>{
       this.sucursales = res;
       swal.close();
 

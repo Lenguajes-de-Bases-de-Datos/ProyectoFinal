@@ -19,8 +19,9 @@
             <ul class="collapse list-unstyled" id="{{option.id}}" >
 
                 <li *ngFor="let obj of option.rutas">
-                    <a class="scroll-link" [routerLink]="[obj.ruta]" routerLinkActive="active" href="">{{obj.nombre}}</a>
-    
+                    <div *ngIf="!obj.excluye.includes(this.user.privilegios)">
+                        <a class="scroll-link"  [routerLink]="[obj.ruta]" routerLinkActive="active" href="">{{obj.nombre}}</a>
+                    </div>
 
                 </li>
                

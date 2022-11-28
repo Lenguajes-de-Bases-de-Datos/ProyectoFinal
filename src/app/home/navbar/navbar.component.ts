@@ -31,6 +31,10 @@ export class NavbarComponent implements OnInit {
       
       this.name = user.nombre+" "+user.appat+" "+user.apmat;
     }
+    setTimeout(()=>{
+      this.band_paused=false;
+    },4000);
+    
    socket.callback.subscribe((res:any)=>{
      this.notifications=res;
      this.count = this.notifications.length;
