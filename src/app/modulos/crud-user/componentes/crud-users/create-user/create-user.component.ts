@@ -23,7 +23,7 @@ export class CreateUserComponent implements OnInit {
       sucursal:new FormControl('',[Validators.required]),
       desc:new FormControl('',[Validators.required]),
       phone:new FormControl('',[Validators.required,Validators.pattern(/^[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}$/)]),
-      salario: new FormControl('',[Validators.required,Validators.pattern('[0-9]+')]),
+      salario: new FormControl('',[Validators.required,Validators.pattern('[0-9]+\.\[0-9]+')]),
       genero: new FormControl('',[Validators.required])
     });
     

@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl,FormGroup, Validators } from '@angular/forms';
-import { RequestsService } from '../../../../services/requests.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { RequestsService } from 'src/app/services/requests.service';
 import swal from 'sweetalert2';
-
 @Component({
-  selector: 'app-create-producto',
-  templateUrl: './create-producto.component.html',
-  styleUrls: ['./create-producto.component.css']
+  selector: 'app-update-producto',
+  templateUrl: './update-producto.component.html',
+  styleUrls: ['./update-producto.component.css']
 })
-export class CreateProductoComponent implements OnInit {
+export class UpdateProductoComponent implements OnInit {
+
   form!:FormGroup;
   actualiza:boolean = false;
   uploadedFiles!: Array<File>;
@@ -43,13 +43,14 @@ export class CreateProductoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  alta(){
-    let mysql = `INSERT INTO producto (ID,categoria,nombre,descripcion,precioUnitario,
+  actualizar(){
+   /* let mysql = `INSERT INTO producto (ID,categoria,nombre,descripcion,precioUnitario,
       status,imagen,piezas,pieza) values (ID,${this.form.get('categoria')?.value},
       '${this.form.get('nombre')?.value}','${this.form.get('descripcion')?.value}',
       ${this.form.get('precio')?.value},${1},'${this.name}',${this.form.get('contenido')?.value},
-      ${this.pieza})`;
-
+      ${this.pieza})`;*/
+      let mysql = `UPDATE producto SET categoria=${this.form.get('categoria')?.value},nombre='${this.form.get('nombre')?.value}',descripcion='${this.form.get('descripcion')?.value}',
+      precioUnitario=${this.form.get('precio')?.value},piezas=${this.form.get('contenido')?.value},pieza=${this.pieza}`;
       let obj = {
         sql:mysql,
         table:'producto'
@@ -60,7 +61,7 @@ export class CreateProductoComponent implements OnInit {
           swal.fire({
             allowOutsideClick: true,
             title: "Exito...",
-            text: "Producto agregada exitosamente...",
+            text: "Producto se actualizo exitosamente...",
             confirmButtonText:'Entendido'
           });
           this.form.reset();
@@ -68,7 +69,7 @@ export class CreateProductoComponent implements OnInit {
           swal.fire({
             allowOutsideClick: true,
             title: "Error ...",
-            text: "No se pudo agregar el producto...",
+            text: "No se pudo actualizar el producto...",
             confirmButtonText:'Entendido'
           });
         }
@@ -77,24 +78,10 @@ export class CreateProductoComponent implements OnInit {
       swal.fire({
         allowOutsideClick: true,
         title: "Error ...",
-        text: "No se pudo agregar el producto...",
+        text: "No se pudo actualizar el producto...",
         confirmButtonText:'Entendido'
       });
     }});
-
-  }
-  handleFiles(files:any){
-    const myfile:File = files.target.files[0];
-    
-    if (myfile) {
-
-      let fileName = myfile.name;
-      const formData = new FormData();
-      formData.append("thumbnail", myfile);
-      let path = URL.createObjectURL(myfile)
-     
-      
-  }
 
   }
   onFileChange(e:any){
@@ -105,7 +92,7 @@ export class CreateProductoComponent implements OnInit {
   onUpload(){
     let formData = new FormData();
 
-    for(let i=0; i<this.uploadedFiles.length; i++){
+    /*for(let i=0; i<this.uploadedFiles.length; i++){
       formData.append('uploads[]',this.uploadedFiles[i],this.uploadedFiles[i].name);
      
 
@@ -114,8 +101,9 @@ export class CreateProductoComponent implements OnInit {
     this.request.uploadFile(formData).subscribe((res:any)=>{
    
     });
-    this.bandImg=false;
+    this.bandImg=false;*/
     console.log(this.form);
-    this.alta();
+    this.actualizar();
   }
+
 }

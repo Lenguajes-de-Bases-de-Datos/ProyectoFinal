@@ -217,4 +217,8 @@ export class ReadUserComponent implements OnInit {
   moreUser(id:number){
     this.router.navigate([`/more-user/${id}`]);
   }
+  update(id:number){
+    this.router.navigate(['/update-user',id]);
+    
+  }
 }

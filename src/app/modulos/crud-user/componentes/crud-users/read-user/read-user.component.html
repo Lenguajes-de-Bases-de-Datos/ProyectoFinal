@@ -88,6 +88,7 @@
             <th scope="col">Activo</th>
             <th scope="col">Acción</th>
             <th scope="col">Más</th>
+            <th scope="col">Actualizar</th>
           </tr>
         </thead>
         <tbody>
@@ -109,7 +110,7 @@
               </ng-template>
             </td>
             <td *ngIf="i!=10"><i class="icon-newspaper-o more" (click)="moreUser(obj.ID)"></i></td>
-            
+            <td *ngIf="i!=10"><i (click)="update(obj.ID)" class="icon-pencil"></i></td>
           </tr>
         
         </tbody>
