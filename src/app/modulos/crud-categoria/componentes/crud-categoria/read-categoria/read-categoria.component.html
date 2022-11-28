@@ -1,9 +1,9 @@
 
-
+<div class="fondo">
 <div class="wrapper">
   <div class="input-group mb-3">
     <div class="input-group-prepend">
-      <button   (click)="buscar()"  class="btn btn-outline-secondary" type="button" [disabled]="form.invalid">Buscar</button>
+      <button   (click)="buscar()"  class="btnbuscar" type="button" [disabled]="form.invalid">Buscar</button>
     </div>
     <select (change)="change()" [(ngModel)]="this.option"  class="custom-select" id="inputGroupSelect03" aria-label="Example select with button addon" >
       <option selected value="0">Tipos de consultas...</option>
@@ -30,13 +30,13 @@
   </div>
 
   <app-options [sql]="this.sql" (event)="cambio($event)" (event)="pag.reinicia()" #options></app-options>
-<table  class="table table-striped table-dark">
-    <thead class="thead-dark">
+<table  class="table table-striped table-white">
+    <thead class="thead-white">
       <tr>
         <th scope="col">#</th>
         <th scope="col">Categoria</th>
-        <th scope="col">pasillo donde comienza</th>
-        <th scope="col">pasillo donde finaliza</th>
+        <th scope="col">Pasillo donde comienza</th>
+        <th scope="col">Pasillo donde finaliza</th>
         <th scope="col">Activa</th>
         <th scope="col">Mas detalles</th>
         <th scope="col">Editar</th>
@@ -65,5 +65,6 @@
   
   <app-paginacion [query]="sql" (array)="result($event)" #pag></app-paginacion>
 
+</div>
 </div>
  

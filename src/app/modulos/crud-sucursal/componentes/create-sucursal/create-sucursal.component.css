@@ -1,4 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
 .wrapper{
     width: 80%;
     margin: auto;
+    font-family: Fredoka One;
+}
+
+.fondo{
+    background-image: url('../../../../../assets/img/fondo11.png');
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    padding: 4em;
+    
+    
 }
