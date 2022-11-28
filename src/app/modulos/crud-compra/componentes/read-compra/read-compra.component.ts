@@ -55,7 +55,7 @@ export class ReadCompraComponent implements OnInit {
     let sqltot="";
     if(this.option == "2"){
       this.sql = "SELECT c.id id,concat(u.id,' ',u.nombre,' ',u.appat,' ',apmat) usuario,u.id_sucursal suc,c.id_prov prov,c.total tot,c.fecha fecha,c.observaciones obs"; 
-      this.sql+=` FROM compra c,usuario u WHERE c.id_usuario=u.id and c.fecha = '${this.form.get('fecha')?.value}'`;
+      this.sql+=` FROM compra c,usuario u WHERE c.id_usuario=u.id and DATE(c.fecha) = '${this.form.get('fecha')?.value}'`;
       sqltot = `select sum(c.total) total from compra c,usuario u WHERE c.ID_usuario=u.id and u.ID_sucursal=${this.user.ID_sucursal} and c.fecha='${this.form.get('fecha')?.value}' GROUP BY u.ID_sucursal`;
     }else if(this.option == "3"){
       this.sql = "SELECT c.id id,concat(u.id,' ',u.nombre,' ',u.appat,' ',apmat) usuario,u.id_sucursal suc,c.id_prov prov,c.total tot,c.fecha fecha,c.observaciones obs"; 

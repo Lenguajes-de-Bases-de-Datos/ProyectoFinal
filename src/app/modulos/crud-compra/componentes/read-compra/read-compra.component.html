@@ -18,26 +18,31 @@
         <div class="form-row">
           <div *ngIf="this.option == '2'" class="form-group col-md-6">
             <label for="inputnom">Fecha</label>
-            <input formControlName="fecha" type="date" class="form-control" id="inputnom">
+            <input formControlName="fecha" type="date" class="form-control" id="inputnom" 
+            [ngClass]="{'invalid':this.form.get('fecha')?.invalid,'valid':!this.form.get('fecha')?.invalid}">
           </div>
     
           <div *ngIf="this.option == '3'" class="form-group col-md-6">
             <label for="inputnom">Fecha de inicio</label>
-            <input formControlName="fechaini" type="date" class="form-control" id="inputnom">
+            <input formControlName="fechaini" type="date" class="form-control" id="inputnom" 
+            [ngClass]="{'invalid':this.form.get('fechaini')?.invalid,'valid':!this.form.get('fechaini')?.invalid}">
           </div>
           <div *ngIf="this.option == '3'" class="form-group col-md-6">
             <label for="inputnom">Fecha Final</label>
-            <input formControlName="fechafin" type="date" class="form-control" id="inputnom">
+            <input formControlName="fechafin" type="date" class="form-control" id="inputnom" 
+            [ngClass]="{'invalid':this.form.get('fechafin')?.invalid,'valid':!this.form.get('fechafin')?.invalid}">
           </div>
 
           <div *ngIf="this.option == '4'" class="form-group col-md-6">
             <label for="inputid">Nombre</label>
-            <input formControlName="nombre" type="text" class="form-control" id="inputid">
+            <input formControlName="nombre" type="text" class="form-control" id="inputid" 
+            [ngClass]="{'invalid':this.form.get('nombre')?.invalid,'valid':!this.form.get('nombre')?.invalid}">
           </div>
 
           <div *ngIf="this.option == '5'" class="form-group col-md-6">
             <label for="inputid">Sucursal</label>
-            <input formControlName="sucursal" type="text" class="form-control" id="inputid">
+            <input formControlName="sucursal" type="text" class="form-control" id="inputid" 
+            [ngClass]="{'invalid':this.form.get('sucursal')?.invalid,'valid':!this.form.get('sucursal')?.invalid}">
           </div>
 
     

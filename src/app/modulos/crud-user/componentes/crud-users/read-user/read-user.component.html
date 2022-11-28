@@ -37,29 +37,34 @@
     <div class="form-row">
       <div *ngIf="controlador == 1 " class="form-group col-md-6">
         <label for="inputnom">Nombre</label>
-        <input formControlName="nombre" type="text" class="form-control" id="inputnom">
+        <input formControlName="nombre" type="text" class="form-control" id="inputnom" 
+        [ngClass]="{'invalid':this.form.get('nombre')?.invalid,'valid':!this.form.get('nombre')?.invalid}">
       </div>
 
       <div *ngIf="controlador == 2 " class="form-group col-md-6">
         <label for="inputid">Id</label>
-        <input formControlName="id" type="text" class="form-control" id="inputid">
+        <input formControlName="id" type="text" class="form-control" id="inputid" 
+        [ngClass]="{'invalid':this.form.get('id')?.invalid,'valid':!this.form.get('id')?.invalid}">
       </div>
       <div *ngIf="controlador == 3 " class="form-group col-md-6">
         <label for="inputemail">Email</label>
-        <input formControlName="email" type="text" class="form-control" id="inputemail">
+        <input formControlName="email" type="text" class="form-control" id="inputemail" 
+        [ngClass]="{'invalid':this.form.get('email')?.invalid,'valid':!this.form.get('email')?.invalid}">
       </div>
 
 
 
       <div *ngIf="controlador == 1 " class="form-group col-md-6">
         <label for="inputapmat">Apellido paterno</label>
-        <input formControlName="appat" type="text" class="form-control" id="inputapmat">
+        <input formControlName="appat" type="text" class="form-control" id="inputapmat" 
+        [ngClass]="{'invalid':this.form.get('appat')?.invalid,'valid':!this.form.get('appat')?.invalid}">
       </div>
     </div>
     <div class="form-row" *ngIf="controlador == 1 ">
       <div class="form-group col-md-6" *ngIf="controlador == 1 ">
         <label for="inputapmat">Apellido materno</label>
-        <input formControlName="apmat" type="text" class="form-control" id="inputapmat">
+        <input formControlName="apmat" type="text" class="form-control" id="inputapmat" 
+        [ngClass]="{'invalid':this.form.get('apmat')?.invalid,'valid':!this.form.get('apmat')?.invalid}">
       </div>
     </div>
   </div>
