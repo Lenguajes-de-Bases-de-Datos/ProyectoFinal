@@ -1,3 +1,4 @@
+
 <div class="fondo">
   <div class="wrapper" >
     <div [formGroup]="this.form">
@@ -38,7 +39,8 @@
           <div class="form-group col-md-6">
             <label for="inputState">Privilegios</label>
             <select [ngClass]="{'invalid':this.form.get('privilegios')?.invalid,'valid':!this.form.get('privilegios')?.invalid}" id="inputState" class="form-control" formControlName="privilegios">
-              <option selected disabled>Choose...</option>
+              <option value="" selected="true" disable>Choose...</option>
+              <option>Superadmin</option>
               <option>Administrador</option>
               <option>Vendedor</option>
               <option>Almacenista</option>
@@ -50,7 +52,7 @@
   
           <div class="form-group col-md-6">
             <label for="inputAddress">Salario</label>
-            <input [ngClass]="{'invalid':this.form.get('salario')?.invalid,'valid':!this.form.get('salario')?.invalid}" type="text" class="form-control" id="inputAddress" placeholder="" formControlName="salario">
+            <input [ngClass]="{'invalid':this.form.get('salario')?.invalid,'valid':!this.form.get('salario')?.invalid}" type="text" class="form-control" id="inputAddress" placeholder="0-9.0-9 (Obligatorio el . con deciamales)" formControlName="salario">
           </div>
           <div class="form-group col-md-6">
             <label for="inputAddress">Genero</label>

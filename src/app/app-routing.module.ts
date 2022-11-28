@@ -45,7 +45,7 @@ const routes: Routes = [
   {path:'portal', component:PortalComponent},
   {path:'sign-up',component:CreateUserComponent,canActivate:[AuthGuardService],data:['administrador']},
   {path:'read-users', component:ReadUserComponent,canActivate:[AuthGuardService]},
-  {path:'update-user', component:UpdateUserComponent,canActivate:[AuthGuardService]},
+  {path:'update-user/:id', component:UpdateUserComponent,canActivate:[AuthGuardService]},
   {path:'delete-user', component:DeleteUserComponent,canActivate:[AuthGuardService]},
   {path:'send-msg',component:SendMessageComponent,canActivate:[AuthGuardService]},
   {path:'create-categoria',component:CreateCategoriaComponent,canActivate:[AuthGuardService]},
