@@ -10,6 +10,7 @@ import { RequestsService } from '../services/requests.service';
 })
 export class SidebarComponent implements OnInit {
   band:boolean=false;
+  user:any;
   options:any[]=[
     {
       opcion:"Usuarios",
@@ -18,23 +19,28 @@ export class SidebarComponent implements OnInit {
       rutas:[
        {
         ruta:'sign-up',
-        nombre:'Crear'
+        nombre:'Crear',
+        excluye:[""]
        },
        { 
         ruta:'/read-users',
-        nombre:'Consultar'
+        nombre:'Consultar',
+        excluye:[""]
        } ,
        {
         ruta:'update-user',
-        nombre:'Actualizar'
+        nombre:'Actualizar',
+        excluye:[""]
        }, 
        {
         ruta:'delete-user',
-        nombre:'Eliminar'
+        nombre:'Eliminar',
+        excluye:[""]
       }
     ],
       icono:"",
-      id:"users"
+      id:"users",
+      data:['administrador','superadmin']
     },
 
     {
@@ -42,119 +48,125 @@ export class SidebarComponent implements OnInit {
       class:"",
       rutas:[{
         ruta:'/create-categoria',
-        nombre:'Crear'
+        nombre:'Crear',
+        excluye:[""]
       },
        { 
         ruta:'/read-categoria',
-        nombre:'Consultar'
+        nombre:'Consultar',
+        excluye:[""]
        } ,
        {
         ruta:'/update-categoria',
-        nombre:'Actualizar'
-       }, 
-       {
-        ruta:'',
-        nombre:'Eliminar'
-      }
+        nombre:'Actualizar',
+        excluye:[""]
+       }
     ],
       icono:"",
-      id:"categories"
+      id:"categories",
+      data:['administrador','superadmin','vendedor','almacenista','reponedor']
     },
     {
       opcion:"Sucursales",
       class:"",
       rutas:[{
         ruta:'/create-sucursal',
-        nombre:'Crear'
+        nombre:'Crear',
+        excluye:["administrador"]
       },
        { 
         ruta:'/read-sucursal',
-        nombre:'Consultar'
+        nombre:'Consultar',
+        excluye:[""]
        } ,
        {
         ruta:'/update-sucursal',
-        nombre:'Actualizar'
-       }, 
-       {
-        ruta:'',
-        nombre:'Eliminar'
-      }
+        nombre:'Actualizar',
+        excluye:[""]
+       }
     ],
       icono:"",
-      id:"providers"
+      id:"providers",
+      data:['administrador','superadmin']
     },
     {
       opcion:"Productos",
       class:"",
       rutas:[{
         ruta:'/create-producto',
-        nombre:'Crear'
+        nombre:'Crear',
+        excluye:[""]
       },
       { 
         ruta:'/open-caja',
-        nombre:'Abrir caja'
+        nombre:'Abrir caja',
+        excluye:[""]
        } ,
        { 
         ruta:'/read-producto',
-        nombre:'Consultar'
+        nombre:'Consultar',
+        excluye:[""]
        } ,
        {
         ruta:'',
-        nombre:'Actualizar'
-       }, 
-       {
-        ruta:'',
-        nombre:'Eliminar'
-      }
+        nombre:'Actualizar',
+        excluye:[""]
+       }
     ],
       icono:"",
-      id:"orders"
+      id:"orders",
+      data:['administrador','superadmin','vendedor','almacenista','reponedor']
     },
     {
       opcion:"Proveedores",
       class:"",
       rutas:[{
         ruta:'/create-proveedor',
-        nombre:'Crear'
+        nombre:'Crear',
+        excluye:[""]
       },
        { 
         ruta:'/read-proveedor',
-        nombre:'Consultar'
+        nombre:'Consultar',
+        excluye:[""]
        } ,
        {
         ruta:'',
-        nombre:'Actualizar'
+        nombre:'Actualizar',
+        excluye:[""]
        }, 
        {
         ruta:'',
-        nombre:'Eliminar'
+        nombre:'Eliminar',
+        excluye:[""]
       }
     ],
       icono:"",
-      id:"proveedor"
+      id:"proveedor",
+      data:['administrador','superadmin','vendedor','almacenista']
     },
     {
       opcion:"Compras",
       class:"",
       rutas:[{
         ruta:'/create-compra',
-        nombre:'Crear'
+        nombre:'Crear',
+        excluye:["superadmin"]
       },
        { 
         ruta:'/read-compra',
-        nombre:'Consultar'
+        nombre:'Consultar',
+        excluye:[""]
        } ,
        {
         ruta:'',
-        nombre:'Actualizar'
-       }, 
-       {
-        ruta:'',
-        nombre:'Eliminar'
-      }
+        nombre:'Actualizar',
+        excluye:[""]
+       }
     ],
       icono:"",
-      id:"compras"
+      id:"compras",
+      data:['administrador','superadmin','almacenista']
     },
 
     {
@@ -164,23 +176,23 @@ export class SidebarComponent implements OnInit {
       rutas:[
        {
         ruta:'/create-venta',
-        nombre:'Crear'
+        nombre:'Crear',
+        excluye:["superadmin"]
        },
        { 
         ruta:'/read-venta',
-        nombre:'Consultar'
+        nombre:'Consultar',
+        excluye:[""]
        } ,
        {
         ruta:'update-user',
-        nombre:'Actualizar'
-       }, 
-       {
-        ruta:'delete-user',
-        nombre:'Eliminar'
-      }
+        nombre:'Actualizar',
+        excluye:[""]
+       }
     ],
       icono:"",
-      id:"ventas"
+      id:"ventas",
+      data:['administrador','superadmin','vendedor']
     },
 
     {
@@ -188,37 +200,46 @@ export class SidebarComponent implements OnInit {
       class:"",
       rutas:[{
         ruta:'/send-msg',
-        nombre:'Crear Notificación'
+        nombre:'Crear Notificación',
+        excluye:[""]
       }
     ],
       icono:"",
-      id:"send-msg"
+      id:"send-msg",
+      data:['administrador','superadmin','vendedor','almacenista','reponedor']
     },
     {
       opcion:"Ubicación",
       class:"",
       rutas:[{
         ruta:'/create-ubicacion',
-        nombre:'Crear'
+        nombre:'Crear',
+        excluye:[""]
       },
        { 
         ruta:'/read-ubicacion',
-        nombre:'Consultar'
+        nombre:'Consultar',
+        excluye:[""]
        } ,
        {
         ruta:'/update-ubicacion',
-        nombre:'Actualizar'
+        nombre:'Actualizar',
+        excluye:[""]
        }, 
        {
         ruta:'',
-        nombre:'Eliminar'
+        nombre:'Eliminar',
+        excluye:[""]
       }
     ],
       icono:"",
-      id:"ubicacion"
+      id:"ubicacion",
+      data:['administrador','superadmin','vendedor','almacenista','reponedor']
     },
   ];
   constructor(private request:RequestsService) {
+    this.user = localStorage.getItem('cuenta');
+    this.user = JSON.parse(this.user);
     try {
       let token = sessionStorage.getItem('token') || "";
       let resp:any = jwt_decode(token);
@@ -233,6 +254,7 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.options[0].data.includes('administrador'));
   }
   ngAfterViewInit(){
     events();

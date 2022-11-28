@@ -21,8 +21,10 @@ export class AppComponent {
       
       request.verifyToken().subscribe({next:(resp:any)=>{
         this.auth.band = false;
-      
-        router.navigate(['/default']);
+        
+        console.log("fiiii");
+        router.navigate(['/paginainicio']);
+
       },
       error:(err:any)=>{
         if(err.status===401){
@@ -48,6 +50,6 @@ export class AppComponent {
   change(e:any){
     // e.preventDefault();
     this.auth.band?this.auth.band=false:this.auth.band=true;
-    this.router.navigate(['/default']);
+    this.router.navigate(['/paginainicio']);
   }
 }

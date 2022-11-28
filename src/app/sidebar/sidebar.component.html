@@ -6,26 +6,29 @@
     </div>
  
     <div class="logo">
-        <h3><a [routerLink]="['/default']">Bootstrap 4 Template with Sidebar Menu</a></h3>
+        <h3><a [routerLink]="['/paginainicio']">Bootstrap 4 Template with Sidebar Menu</a></h3>
     </div>
  
     <ul class="list-unstyled menu-elements" >
 
         <li *ngFor="let option of options">
+            <div *ngIf="option.data.includes(this.user.privilegios)">
             <a href="#{{option.id}}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button" aria-controls="otherSections">
                 <i class="fas fa-home"></i>{{option.opcion}}
             </a>
             <ul class="collapse list-unstyled" id="{{option.id}}" >
 
                 <li *ngFor="let obj of option.rutas">
-                    <a class="scroll-link" [routerLink]="[obj.ruta]" routerLinkActive="active" href="">{{obj.nombre}}</a>
-    
+                    <div *ngIf="!obj.excluye.includes(this.user.privilegios)">
+                        <a class="scroll-link"  [routerLink]="[obj.ruta]" routerLinkActive="active" href="">{{obj.nombre}}</a>
+                    </div>
 
                 </li>
                
 
 
             </ul>
+        </div>
         </li>
       
 

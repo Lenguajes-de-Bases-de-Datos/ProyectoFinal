@@ -31,16 +31,20 @@ export class NavbarComponent implements OnInit {
       
       this.name = user.nombre+" "+user.appat+" "+user.apmat;
     }
+    setTimeout(()=>{
+      this.band_paused=false;
+    },4000);
+    
    socket.callback.subscribe((res:any)=>{
      this.notifications=res;
      this.count = this.notifications.length;
-    setInterval(()=>{
+    setTimeout(()=>{
       this.band_paused=false;
     },4000);
     });
   socket.receive.subscribe((res:any)=>{
     this.band_paused=true;
-    setInterval(()=>{
+    setTimeout(()=>{
       this.band_paused=false;
     },4000);
     
@@ -83,5 +87,8 @@ export class NavbarComponent implements OnInit {
       this.notifications[i].cont=0;
     }
     
+  }
+  seen(){
+    this.count= 0;
   }
 }

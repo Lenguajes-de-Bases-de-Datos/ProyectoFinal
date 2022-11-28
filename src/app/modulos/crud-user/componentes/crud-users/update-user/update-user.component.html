@@ -1,45 +1,95 @@
-
-<div class="wrapper">
-  <h1>Actualizar Usuario</h1>
-    <div class="find">
-      <div class="form" [formGroup]="form">
-  
-        <div class="form-group col-md-12" *ngIf="bandT else noShow">
-          <label for="inputEmail4">Buscar al usuario por su nombre</label>
-          <input type="search" class="form-control" name="nombre_usuario" id="nombre_usuario" formControlName="user" (keyup)="detectT()" [disabled]="bandT">
-        </div>
-        <div class="boton">
-          <button type="submit" (click)="buscar()">Buscar Usuario Nombre</button>
-        </div>
-        <ng-template #noShow></ng-template>
-  
-        <div class="form-group col-md-12" *ngIf="bandID else noShow">
-          <label for="inputEmail4">Buscar al usuario por su ID</label>
-          <input type="number" class="form-control" name="id_usario" id="id_usuario" formControlName="id_user" (keyup)="detectID()" (click)="detectID" [disabled]="bandID">
-          <div class="boton">
-            <button type="submit" (click)="buscar()">Buscar Usuario ID</button>
+<div class="fondo">
+  <div class="wrapper" >
+    <h1>Actualizar Usuario</h1>
+    <div [formGroup]="this.form">
+        
+        <div class="form-row" >
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">Nombre</label>
+            <input placeholder="No se admiten caracteres especiales('!&|)" [ngClass]="{'invalid':this.form.get('nombre')?.invalid,'valid':!this.form.get('nombre')?.invalid}" type="text" class="form-control" id="inputNombre" formControlName="nombre">
+           </div>
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">Apellido Paterno</label>
+            <input placeholder="No se admiten caracteres especiales('!&|)" [ngClass]="{'invalid':this.form.get('appat')?.invalid,'valid':!this.form.get('appat')?.invalid}" type="text" class="form-control" id="inputAppat" formControlName="appat">
           </div>
         </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Apellido Materno</label>
+              <input placeholder="No se admiten caracteres especiales('!&|)" [ngClass]="{'invalid':this.form.get('apmat')?.invalid,'valid':!this.form.get('apmat')?.invalid}" type="text" class="form-control" id="inputApmat" formControlName="apmat">
+            </div>
+            <div class="form-group col-md-5">
+              <label for="inputPassword4">Contraseña </label>
+              <input placeholder="Nueva contraseña minimo 3 caracteres, máximo 10" [ngClass]="{'invalid':this.form.get('password')?.invalid,'valid':!this.form.get('password')?.invalid}" type={{type}} class="form-control" id="inputPassword4" formControlName="password">
+             
+            </div>
+            <div class="form-group col-md-1">
+                
+                <i class="fa fa-eye-slash" aria-hidden="true" (mouseup)="hiddenp()" (mousedown)="showp()"></i>
+            </div>
+          </div>
+          
+      
+       
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputAddress">Email</label>
+                <input [ngClass]="{'invalid':this.form.get('email')?.invalid,'valid':!this.form.get('email')?.invalid}" type="text" class="form-control" id="inputAddress" placeholder="example@gmail.com" formControlName="email">
+              </div>
+          <div class="form-group col-md-6">
+            <label for="inputState">Privilegios</label>
+            <select [ngClass]="{'invalid':this.form.get('privilegios')?.invalid,'valid':!this.form.get('privilegios')?.invalid}" id="inputState" class="form-control" formControlName="privilegios">
+              <option selected="true" disabled>Choose...</option>
+              <option>Superadmin</option>
+              <option>Administrador</option>
+              <option>Vendedor</option>
+              <option>Almacenista</option>
+              <option>Reponedor</option>
+            
+            
+            </select>
+          </div>
   
+          <div class="form-group col-md-6">
+            <label for="inputAddress">Salario</label>
+            <input [ngClass]="{'invalid':this.form.get('salario')?.invalid,'valid':!this.form.get('salario')?.invalid}" type="text" class="form-control" id="inputAddress" placeholder="0-9.0-9 (Obligatorio el . con deciamales)" formControlName="salario">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputAddress">Genero</label>
+            <div class="genders">
+              <input [ngClass]="{'invalid':this.form.get('genero')?.invalid,'valid':!this.form.get('genero')?.invalid}" type="radio" value="hombre" name="gender" class="form-control" id="m" placeholder="" formControlName="genero">
+              <label for="m">Hombre</label><br>
+              <input [ngClass]="{'invalid':this.form.get('genero')?.invalid,'valid':!this.form.get('genero')?.invalid}" type="radio" value="mujer" name="gender" class="form-control" id="f" placeholder="" formControlName="genero">
+              <label for="f">Mujer</label><br>
+            </div>
+          </div>
+  
+          <div class="form-group col-md-2">
+            <label for="inputSucursal">Sucursal</label>
+            <select [ngClass]="{'invalid':this.form.get('sucursal')?.invalid,'valid':!this.form.get('sucursal')?.invalid}" id="inputSucursal" class="form-control" formControlName="sucursal">
+              <option selected disabled>Choose...</option>
+              <option *ngFor="let obj of sucursales,index as i">{{obj.id}}
+                {{obj.estado}} {{obj.ciudad}}
+                 {{obj.colonia}} {{obj.calle}} {{obj.numero}}
+              </option>
+             
+            
+            
+            </select>
+            
+          </div>
+          <div class="form-group col-md-4">
+            <label for="phone">Telefono</label>
+            <input [ngClass]="{'invalid':this.form.get('phone')?.invalid,'valid':!this.form.get('phone')?.invalid}" type="text" class="form-control" id="phone" placeholder="449-223-88-22" formControlName="phone" (keyup)="formatear($event)">
+         
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputDesc">Descripción</label>
+            <textarea  class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="Write something here..." formControlName="desc" ></textarea>
+        </div>
+        </div>
+        <button  class="btn btn-primary" (click)="send()" [disabled]="this.form.invalid">Actualizar</button>
+        
       </div>
     </div>
-    
-  </div>
-  <div class="wrapper wrapper2">
-    <table>
-      <th>Hola</th>
-      <tr>
-        <td>hola</td>
-        <td>Perr</td>
-        <td>cama</td>
-        <td>nomas</td>
-      </tr>
-      <tr>
-        
-        <td>hola</td>
-        <td>Perr</td>
-        <td>cama</td>
-        <td>nomas</td>
-      </tr>
-    </table>
-  </div> 
+</div>

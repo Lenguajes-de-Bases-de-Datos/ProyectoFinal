@@ -18,6 +18,7 @@ import { CrudCompraModule } from './modulos/crud-compra/crud-compra.module';
 import { CrudVentaModule } from './modulos/crud-venta/crud-venta.module';
 import { SendMessageComponent } from './send-message/send-message.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

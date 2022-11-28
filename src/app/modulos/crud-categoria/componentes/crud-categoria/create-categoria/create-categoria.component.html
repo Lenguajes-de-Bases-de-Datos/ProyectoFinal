@@ -1,11 +1,15 @@
-
+<div class="fondo">
 <div class="wrapper">
-    <div [formGroup]="form" >
+    <div class="form" [formGroup]="form" >
 
+        <div class="cajauno">
         <div class="form-group">
             <label for="inputnombre">Nombre de la categoria</label>
             <input [ngClass]="{'invalid':this.form.get('nombre')?.invalid,'valid':!this.form.get('nombre')?.invalid}" formControlName="nombre" type="text" class="form-control" id="inputnombre" placeholder="Ingresa nombre">
           </div>
+        </div>
+
+        <div class="cajados">
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputpinicio">Pasillo donde comienza</label>
@@ -16,9 +20,11 @@
             <input [ngClass]="{'invalid':this.form.get('pasilloFin')?.invalid,'valid':!this.form.get('pasilloFin')?.invalid}" formControlName="pasilloFin" type="text" class="form-control" id="inputpfin">
           </div>
         </div>
+      </div>
        
-       
-        <button (click)="create()" type="submit" class="btn btn-primary">Dar de alta</button>
+        <div class="boton">
+        <button class="botonbuscar" (click)="create()" type="submit">Dar de alta</button>
+        </div>
     </div>
 </div>
-
+</div>

@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DefaultComponent } from './default/default.component';
 import { PaginacionComponent } from './paginacion/paginacion.component';
 import { OptionsComponent } from './options/options.component';
+import { PaginainicioComponent } from './paginainicio/paginainicio.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { OptionsComponent } from './options/options.component';
     NavbarComponent,
     DefaultComponent,
     PaginacionComponent,
-    OptionsComponent
+    OptionsComponent,
+    PaginainicioComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,81 @@
+<div class="wrapper">
+    <h1 *ngIf="actualiza else alta">Actualizar Producto</h1>
+    <ng-template #alta>
+        <h1>Registrar Producto</h1>
+    </ng-template>
+    <div [formGroup]="form">
+        
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputnombre" >Nombre</label>
+                <input type="text" class="form-control" id="inputnombre" formControlName="nombre" placeholder="producto"
+                [ngClass]="{'invalid':this.form.get('nombre')?.invalid,'valid':!this.form.get('nombre')?.invalid}">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputprecio">Precio</label>
+                <input type="text" class="form-control" id="inputprecio" formControlName="precio" placeholder="0-9.0-9 (Obligatorio el . con deciamales)"
+                [ngClass]="{'invalid':this.form.get('precio')?.invalid,'valid':!this.form.get('precio')?.invalid}">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputcont">Contenido</label>
+                <input type="text" class="form-control" id="inputcont" formControlName="contenido" placeholder="0-9"
+                [ngClass]="{'invalid':this.form.get('contenido')?.invalid,'valid':!this.form.get('contenido')?.invalid}">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputDesc">Descripción</label>
+                <textarea  class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="Comentarios..." formControlName="descripcion" 
+                formControlName="descripcion" [ngClass]="{'invalid':this.form.get('descripcion')?.invalid,'valid':!this.form.get('descripcion')?.invalid}">
+    
+                </textarea>
+            </div>
+        </div>
+        <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputState">Categoria</label>
+            <select id="inputState" class="form-control" formControlName="categoria"
+            [ngClass]="{'invalid':this.form.get('categoria')?.invalid,'valid':!this.form.get('categoria')?.invalid}">
+                <option value="" selected="true" disabled>Choose...</option>
+                <option *ngFor="let obj of categorias" [value]="obj.ID">{{ obj.ncategoria }}</option>
+            </select>
+           
+        </div>
+        <!-- <div class="input-group  col-md-6">
+            <div class="input-group"><label for="">Imagen</label></div>
+            <div class="input-group filee">
+            <div class="form-group-prepend">
+              <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+            </div>
+            <div class="custom-file">
+              <input type="file" accept="image/*" class="custom-file-input" id="inputGroupFile01" name="photo" aria-describedby="inputGroupFileAddon01" (change)="onFileChange($event)">
+              <label class="custom-file-label" for="inputGroupFile01" *ngIf="this.bandImg">{{this.name}}</label>
+              <label class="custom-file-label" for="inputGroupFile01" *ngIf="!this.bandImg">Choose file</label>
+            </div>
+        </div>
+        </div> -->
+    </div>
+    <div class="form-row">
+        <div class="input-group col-md-6">
+            <label for="">Tipo de unidad</label>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="input-group col-md-6">
+            <div class="form-check">
+                <input class="form-check-input"  type="radio" name="exampleRadios" (click)="filtro(1)" id="exampleRadios1" value="1" checked>
+                <label class="form-check-label" for="exampleRadios1">
+                  Por pieza
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" (click)="filtro(0)" id="exampleRadios2" value="0">
+                <label class="form-check-label" for="exampleRadios2">
+                  Por caja
+                </label>
+              </div>
+        </div>
+    </div>
+        <button type="submit" class="btn btn-primary" [disabled]="this.form.invalid" (click)="onUpload()">Dar de alta</button>
+    </div>
+</div>

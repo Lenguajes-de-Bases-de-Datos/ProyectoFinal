@@ -1,28 +1,32 @@
 
+<div class="fondo">
 <div class="wrapper">
   <h1>Eliminar Usuario</h1>
   <div class="find">
     <div class="form" [formGroup]="form">
 
+      <div class="cajauno">
       <div class="form-group col-md-12" *ngIf="bandT else noShow">
         <label for="inputEmail4">Buscar al usuario por su nombre</label>
         <input type="search" class="form-control" name="nombre_usuario" id="nombre_usuario" formControlName="user" (keyup)="detectT()" [disabled]="bandT">
       </div>
+    </div>
       <ng-template #noShow></ng-template>
 
+      <div class="cajados">
       <div class="form-group col-md-12" *ngIf="bandID else noShow">
         <label for="inputEmail4">Buscar al usuario por su ID</label>
         <input type="number" class="form-control" name="id_usario" id="id_usuario" formControlName="id_user" (keyup)="detectID()" (click)="detectID" [disabled]="bandID">
         <div class="boton">
-          <button type="submit" (click)="buscar()">Buscar Usuario</button>
+          <button type="submit" class="botonbuscar" (click)="buscar()">Buscar Usuario</button>
         </div>
       </div>
-
+    </div>
     </div>
   </div>
   
 </div>
-<div class="wrapper wrapper2">
+<div class="wrapper2">
   <table>
     <th>Hola</th>
     <tr>
@@ -40,3 +44,4 @@
     </tr>
   </table>
 </div> 
+</div>
