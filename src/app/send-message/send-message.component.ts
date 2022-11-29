@@ -15,7 +15,7 @@ export class SendMessageComponent implements OnInit {
   constructor(private socket:SocketsWebService) { 
     let user:any = localStorage.getItem('cuenta');
     user = JSON.parse(user);
-    this.payload.author = `${user.nombre}`;
+    this.payload.author = `${user.nombre} ${user.appat} ${user.apmat}`;
     this.payload.room = user.ID_sucursal; 
   }
 
