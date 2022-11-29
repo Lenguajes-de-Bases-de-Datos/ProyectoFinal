@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 * {
     padding: 0;
@@ -13,19 +14,7 @@
     margin: auto;
 }
 
-.other{
-    height: 800px !important;
 
-}
-
-.carousel-inner{
-    width: 70%;
-    height: 30% !important;
-    margin: auto;
-    margin-top: 10%;
-   
-    
-}
 
 .fondoprincipal{
     
@@ -35,47 +24,59 @@
     background-size: 100vh 100vw;
     background-color: #EE5B9F;
     height: 100%;
-    
+
+}
+
+
+
+.t{
+    margin-top: 2%;
+    font-size: 15px;
+    font-family: Fredoka One;
+    text-shadow: 3px 3px 7px rgb(34, 33, 33);
+    color: black;
+    text-align: justify;
+    width: 40%;
+    margin-right: 4%;
 }
 
 .texto{
-    font-family: Fredoka One;
-    font-size: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     
-    text-align: justify;
-    color: white;
-    text-shadow: 5px 5px 7px rgb(77, 77, 77);
-    
-    
+    text-align: center;
 }
 
 #bienvenido{
     
-    margin-top: -175%;
     justify-content: center;
-    
 }
 
 p{
-    margin-left: 3% !important;
-    margin-right: 3% !important;
-    margin-top: 5%;
+    margin: auto;
     padding: 3px;
+    text-align: justify;
 }
 
-div.carousel-item > img{
-    width: 50%;
-    height: 10% !important;
-    box-shadow: 0 0 20px rgb(255, 255, 255);
-}
-
-.t{
+.cajauno{
+    /*padding: 30px;*/
     display: flex;
-    justify-content: end;
-    margin: 50px;
-    
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.card{
+    background-color: #f6f6f6;
+    box-shadow: 0 0 20px rgb(197, 197, 197);
+    margin: 7px;
+    padding: 8px;
+    margin-top: 2.5%;
+    margin-bottom: 3%;
+}
+
+.card-text{
+    font-family: Pacifico;
+    color: rgb(0, 0, 0);
+    text-shadow: 5px 5px 7px rgb(0, 0, 0);
+    text-align: center;
 }
