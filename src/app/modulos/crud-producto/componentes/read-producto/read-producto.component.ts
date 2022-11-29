@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, ViewChild,EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { PaginacionComponent } from 'src/app/home/paginacion/paginacion.component';
 import { RequestsService } from 'src/app/services/requests.service';
 
@@ -22,7 +23,7 @@ export class ReadProductoComponent implements OnInit {
   @Output() ev:EventEmitter<number> = new EventEmitter<number>();
   user:any;
   @ViewChild('paginacion') element?:PaginacionComponent;
-  constructor(private request:RequestsService) { 
+  constructor(private request:RequestsService, private router:Router) { 
     this.user = localStorage.getItem('cuenta');
     this.user = JSON.parse(this.user);
     if(this.user.privilegios!='superadmin'){
@@ -106,5 +107,8 @@ export class ReadProductoComponent implements OnInit {
   }
   update(id:number){
     this.element?.update(1);
+  }
+  actualizar(id:number){
+    this.router.navigate(['/update-producto',id]);
   }
 }

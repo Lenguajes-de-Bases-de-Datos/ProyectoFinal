@@ -40,6 +40,7 @@ import { OneVentaComponent } from './modulos/crud-venta/componentes/one-venta/on
 import { OneProductoComponent } from './modulos/crud-producto/componentes/one-producto/one-producto.component';
 import { OpenCajaComponent } from './modulos/crud-producto/componentes/open-caja/open-caja.component';
 import { CheckExistenciasComponent } from './modulos/crud-producto/componentes/check-existencias/check-existencias.component';
+import { UpdateProductoComponent } from './modulos/crud-producto/componentes/update-producto/update-producto.component';
 
 const routes: Routes = [
   {path:'portal', component:PortalComponent},
@@ -59,6 +60,7 @@ const routes: Routes = [
   {path:'update-sucursal',component:UpdateSucursalComponent,canActivate:[AuthGuardService]},
   {path:'create-producto',component:CreateProductoComponent,canActivate:[AuthGuardService]},
   {path:'read-producto',component:ReadProductoComponent,canActivate:[AuthGuardService]},
+  {path:'update-producto/:id',component:UpdateProductoComponent,canActivate:[AuthGuardService]},
   {path:'one-producto/:nombre',component:OneProductoComponent,canActivate:[AuthGuardService]},
   {path:'open-caja',component:OpenCajaComponent,canActivate:[AuthGuardService]},
   {path:'check-existencias/:id',component:CheckExistenciasComponent,canActivate:[AuthGuardService]},

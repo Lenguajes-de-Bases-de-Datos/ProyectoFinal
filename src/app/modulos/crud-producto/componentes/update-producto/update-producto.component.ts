@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { RequestsService } from 'src/app/services/requests.service';
 import swal from 'sweetalert2';
 @Component({
@@ -16,8 +17,10 @@ export class UpdateProductoComponent implements OnInit {
   name:string="";
   pieza:any=1;
   categorias:any[]=[];
-
-  constructor(private request:RequestsService) {
+  id_producto:any;
+  img:any;
+  bandImgAct:boolean=false;
+  constructor(private request:RequestsService,private active:ActivatedRoute, private router:Router) {
     this.form = new FormGroup({
       categoria : new FormControl('',[Validators.required]),
       nombre : new FormControl('',[Validators.required,Validators.pattern('[^\"\'\`|!&()]+')]),
@@ -26,6 +29,26 @@ export class UpdateProductoComponent implements OnInit {
       descripcion: new FormControl('',[Validators.pattern('[^\"\'\`|&!]+')]),
     });
     
+    this.active.params.subscribe((params:Params)=>{
+      if(params['id'] == undefined){
+
+      }else{
+        this.id_producto=params['id'];
+        console.log(this.id_producto);
+        this.request.consultas(`SELECT * FROM producto where ID=${params['id']}`).subscribe((res:any)=>{
+          this.form.controls['categoria'].setValue(res[0].categoria);
+          this.form.controls['nombre'].setValue(res[0].nombre);
+          this.form.controls['precio'].setValue(res[0].precioUnitario);
+          this.form.controls['contenido'].setValue(res[0].piezas);
+          this.form.controls['descripcion'].setValue(res[0].descripcion);
+          this.img=res[0].imagen;
+          this.name=this.img;
+        });
+        console.log(this.form.value);
+
+      }
+    });
+
     this.request.consultas('SELECT * FROM categoria WHERE status=1').subscribe((res:any)=>{
       this.categorias = res;
     });
@@ -44,13 +67,10 @@ export class UpdateProductoComponent implements OnInit {
   }
 
   actualizar(){
-   /* let mysql = `INSERT INTO producto (ID,categoria,nombre,descripcion,precioUnitario,
-      status,imagen,piezas,pieza) values (ID,${this.form.get('categoria')?.value},
-      '${this.form.get('nombre')?.value}','${this.form.get('descripcion')?.value}',
-      ${this.form.get('precio')?.value},${1},'${this.name}',${this.form.get('contenido')?.value},
-      ${this.pieza})`;*/
+    
       let mysql = `UPDATE producto SET categoria=${this.form.get('categoria')?.value},nombre='${this.form.get('nombre')?.value}',descripcion='${this.form.get('descripcion')?.value}',
-      precioUnitario=${this.form.get('precio')?.value},piezas=${this.form.get('contenido')?.value},pieza=${this.pieza}`;
+      precioUnitario=${this.form.get('precio')?.value},piezas=${this.form.get('contenido')?.value},imagen='${this.name}',pieza=${this.pieza} where ID=${this.id_producto}`;
+
       let obj = {
         sql:mysql,
         table:'producto'
@@ -65,6 +85,7 @@ export class UpdateProductoComponent implements OnInit {
             confirmButtonText:'Entendido'
           });
           this.form.reset();
+          this.router.navigate(['/read-producto']);
         }else{
           swal.fire({
             allowOutsideClick: true,
@@ -88,22 +109,35 @@ export class UpdateProductoComponent implements OnInit {
     this.uploadedFiles=e.target.files;
     this.name=this.uploadedFiles[0].name;
     this.bandImg=true;
+    this.bandImgAct=true;
   }
   onUpload(){
     let formData = new FormData();
 
-    /*for(let i=0; i<this.uploadedFiles.length; i++){
+    for(let i=0; i<this.uploadedFiles.length; i++){
       formData.append('uploads[]',this.uploadedFiles[i],this.uploadedFiles[i].name);
      
 
     }
     //call service
+    
+    if(this.bandImgAct){
+      this.request.borrarImg(this.img).subscribe((res:any)=>{
+        if(res.band){
+          this.funcionGuardar(formData);
+        }
+      });
+    }
+    this.bandImg=false;
+    console.log("Valores del form");
+    console.log(this.form.value);
+    console.log(this.img);
+    this.actualizar();
+  }
+  funcionGuardar(formData:FormData){
     this.request.uploadFile(formData).subscribe((res:any)=>{
    
     });
-    this.bandImg=false;*/
-    console.log(this.form);
-    this.actualizar();
   }
 
 }
