@@ -18,28 +18,31 @@
 
         <div class="form-group">
             <label for="inputnombre">Nombre de la categoria</label>
-            <input [ngClass]="{'invalid':this.form.get('nombre')?.invalid,'valid':!this.form.get('nombre')?.invalid}" formControlName="nombre" type="text" class="form-control" id="inputnombre" placeholder="Ingresa nombre">
+              <input [ngClass]="{'invalid':this.form.get('nombre')?.invalid,'valid':!this.form.get('nombre')?.invalid}" formControlName="nombre" type="text" class="form-control" id="inputnombre" placeholder="Ingresa nombre">
+            </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputpinicio">Pasillo donde comienza</label>
+              <input [ngClass]="{'invalid':this.form.get('pasilloInicio')?.invalid,'valid':!this.form.get('pasilloInicio')?.invalid}" formControlName="pasilloInicio" type="text" class="form-control" id="inputpinicio">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputpfin">Pasillo donde finaliza</label>
+              <input [ngClass]="{'invalid':this.form.get('pasilloFin')?.invalid,'valid':!this.form.get('pasilloFin')?.invalid}" formControlName="pasilloFin" type="text" class="form-control" id="inputpfin">
+            </div>
           </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="inputpinicio">Pasillo donde comienza</label>
-            <input [ngClass]="{'invalid':this.form.get('pasilloInicio')?.invalid,'valid':!this.form.get('pasilloInicio')?.invalid}" formControlName="pasilloInicio" type="text" class="form-control" id="inputpinicio">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="inputpfin">Pasillo donde finaliza</label>
-            <input [ngClass]="{'invalid':this.form.get('pasilloFin')?.invalid,'valid':!this.form.get('pasilloFin')?.invalid}" formControlName="pasilloFin" type="text" class="form-control" id="inputpfin">
-          </div>
-        </div>
-       
-        <div class="form-row">
-     
-          <div class="custom-control custom-radio custom-control-inline">
-            <input  type="radio" id="customRadioInline1" name="activa" class="custom-control-input" value="si" formControlName="activa">
-            <label class="custom-control-label" for="customRadioInline1">Si</label>
-          </div>
-          <div class="custom-control custom-radio custom-control-inline">
-            <input   type="radio" id="customRadioInline2" name="activa" class="custom-control-input" value="no" formControlName="activa">
-            <label class="custom-control-label" for="customRadioInline2">No</label>
+        
+          <div class="form-row">
+            <div class="form-group">
+              <label for="customRadioInline1">Activar la categoria</label>
+              <br>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input  type="radio" id="customRadioInline1" name="activa" class="custom-control-input" value="si" formControlName="activa">
+              <label class="custom-control-label" for="customRadioInline1">Si</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input   type="radio" id="customRadioInline2" name="activa" class="custom-control-input" value="no" formControlName="activa">
+              <label class="custom-control-label" for="customRadioInline2">No</label>
+            </div>
           </div>
 
         </div>

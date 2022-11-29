@@ -48,7 +48,7 @@
               <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
             </div>
             <div class="custom-file">
-              <input type="file" accept="image/*" class="custom-file-input" id="inputGroupFile01" name="photo" aria-describedby="inputGroupFileAddon01" (change)="onFileChange($event)">
+              <input type="file" accept="image/*" class="custom-file-input" id="inputGroupFile01" name="photo" aria-describedby="inputGroupFileAddon01" (change)="onFileChange($event)" required>
               <label class="custom-file-label" for="inputGroupFile01" *ngIf="this.bandImg">{{this.name}}</label>
               <label class="custom-file-label" for="inputGroupFile01" *ngIf="!this.bandImg">Choose file</label>
             </div>
