@@ -11,7 +11,7 @@
       <option value="3">Por fecha</option>
       <option value="4">Por rango de fecha</option> 
       <option value="5">Por creador de la venta</option> 
-      
+      <option value="6" *ngIf="issuper">Por id de sucursal</option>
     </select>
   </div>
 
@@ -46,13 +46,19 @@
           <input formControlName="name" type="text" class="form-control" id="inputname" 
           [ngClass]="{'invalid':this.form.get('name')?.invalid,'valid':!this.form.get('name')?.invalid}">
         </div>
+
+        <div *ngIf="this.option == '6'" class="form-group col-md-6">
+          <label for="inputid">Sucursal</label>
+          <input formControlName="sucursal" type="text" class="form-control" id="inputid" 
+          [ngClass]="{'invalid':this.form.get('sucursal')?.invalid,'valid':!this.form.get('sucursal')?.invalid}">
+        </div>
       </div>
       
     </div>
 
 
     <div class="alert alert-success" role="alert">
-        Ganacias: <a href="#" class="alert-link">${{total | number:'1.1-3'}}</a> en todas las ventas
+        Recaudado: <a href="#" class="alert-link">${{total | number:'1.1-3'}}</a> en todas las ventas, Ganancias: <a href="" class="alert-link">${{total*0.05 | number:'1.1-3'}}</a> 
       </div>
     <div class="table-responsive-lg">
         <table class="table table-striped table-dark">
@@ -63,6 +69,7 @@
               </tr>
               <tr>
                 <th scope="col">#</th>
+                <th scope="col" *ngIf="issuper">Sucursal</th>
                 <th scope="col">Realizó</th>
                 <th scope="col">Fecha</th>
                 <th scope="col">Total</th>
@@ -77,6 +84,7 @@
               <tr *ngFor="let obj of ventas,index as i,let ultimo = last ">
                  
                 <td *ngIf="i!=10">{{obj.id}}</td>
+                <td *ngIf="i!=10">{{obj.suc}}</td>
                 <td *ngIf="i!=10">{{obj.usuario}}</td>
                 <td *ngIf="i!=10">{{obj.fecha | date:'short'}}</td>
                 <td *ngIf="i!=10">{{obj.total | currency:'MXN'}}</td>

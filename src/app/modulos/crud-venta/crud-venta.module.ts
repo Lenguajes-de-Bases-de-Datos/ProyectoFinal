@@ -5,6 +5,7 @@ import { ReadVentaComponent } from './componentes/read-venta/read-venta.componen
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeModule } from 'src/app/home/home.module';
 import { OneVentaComponent } from './componentes/one-venta/one-venta.component';
+import { UserVentaComponent } from './componentes/user-venta/user-venta.component';
 
 
 
@@ -12,7 +13,8 @@ import { OneVentaComponent } from './componentes/one-venta/one-venta.component';
   declarations: [
     CreateVentaComponent,
     ReadVentaComponent,
-    OneVentaComponent
+    OneVentaComponent,
+    UserVentaComponent
   ],
   imports: [
     CommonModule,

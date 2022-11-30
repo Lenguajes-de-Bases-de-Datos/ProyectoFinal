@@ -34,6 +34,7 @@ export class AuthGuardService implements CanActivate{
 
 
           swal.fire({
+            backdrop:true,
             title: 'Tu sesion ha expirado ',
             text: "¿Deseas extenderla?",
             showCancelButton: true,
@@ -61,6 +62,7 @@ export class AuthGuardService implements CanActivate{
                   sessionStorage.setItem('token',res.msg);
                  
                   swal.fire({
+                    backdrop:true,
                     allowOutsideClick: true,
                     title: "Exito...",
                     text: `Tu sesion ha sido actualizada...`,
@@ -69,6 +71,7 @@ export class AuthGuardService implements CanActivate{
                   });
                 }else{
                   swal.fire({
+                    backdrop:true,
                     allowOutsideClick: true,
                     title: "Error...",
                     text: `Por favor vuelve a iniciar sesion...`,
@@ -118,6 +121,7 @@ export class AuthGuardService implements CanActivate{
     sessionStorage.removeItem('token');
     
     swal.fire({
+      backdrop:true,
       allowOutsideClick: true,
       title: "Error de Session...",
       text: "Tu session ha expirado por favor vuelve a autenticarte...",

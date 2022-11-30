@@ -32,6 +32,7 @@ export class AppComponent {
           sessionStorage.removeItem('token');
          
           swal.fire({
+            backdrop:true,
             allowOutsideClick: true,
             title: "Error de Session...",
             text: "Tu session ha expirado por favor vuelve a autenticarte...",

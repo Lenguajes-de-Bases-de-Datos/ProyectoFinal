@@ -40,6 +40,8 @@ import { OneVentaComponent } from './modulos/crud-venta/componentes/one-venta/on
 import { OneProductoComponent } from './modulos/crud-producto/componentes/one-producto/one-producto.component';
 import { OpenCajaComponent } from './modulos/crud-producto/componentes/open-caja/open-caja.component';
 import { CheckExistenciasComponent } from './modulos/crud-producto/componentes/check-existencias/check-existencias.component';
+import { UserCompraComponent } from './modulos/crud-compra/componentes/user-compra/user-compra.component';
+import { UserVentaComponent } from './modulos/crud-venta/componentes/user-venta/user-venta.component';
 
 const routes: Routes = [
   {path:'portal', component:PortalComponent},
@@ -75,9 +77,13 @@ const routes: Routes = [
   {path:'default',component:DefaultComponent,canActivate:[AuthGuardService]},
   {path:'read-compra',component:ReadCompraComponent,canActivate:[AuthGuardService]},
   {path:'one-compra/:id',component:OneCompraComponent,canActivate:[AuthGuardService]},
+  {path:'user-compra',component:UserCompraComponent,canActivate:[AuthGuardService]},
+  
   {path:'create-venta',component:CreateVentaComponent,canActivate:[AuthGuardService]},
   {path:'read-venta',component:ReadVentaComponent,canActivate:[AuthGuardService]},
   {path:'one-venta/:id',component:OneVentaComponent,canActivate:[AuthGuardService]},
+  {path:'user-venta',component:UserVentaComponent,canActivate:[AuthGuardService]},
+  
   {path:'**',component:PortalComponent,canActivate:[AuthGuardService]},
   
 ];

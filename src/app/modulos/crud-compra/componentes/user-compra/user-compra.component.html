@@ -1,0 +1,34 @@
+
+
+
+<div class="wrapper">
+<div class="table-responsive-lg">
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th scope="col" colspan="8" style="text-align: center;">Compras totales realizadas por cada usuario</th>
+
+            </tr>
+            <tr>
+                <th scope="col">Realizó</th>
+                <th scope="col">Total de compras</th>
+                <th scope="col" >Invirtio</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let obj of this.res,index as i,let ultimo = last">
+
+                <td *ngIf="i!=10">{{obj.nombre}}</td>
+                <td *ngIf="i!=10">{{obj.total}}</td>
+                <td *ngIf="i!=10 " >{{obj.inversion}}</td>
+                  
+               
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+<app-paginacion  [isprocedure]="true" [procedure]="procedure" (array)="result($event)" #pag></app-paginacion>
+
+</div>

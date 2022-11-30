@@ -10,6 +10,9 @@ export class PaginacionComponent implements OnInit {
   @Input() cont:number = 0;
   @Input() contpag:number=1;
   @Input() query:string="";
+  @Input() isprocedure:boolean = false;
+  @Input() procedure:string = "";
+  
   @Output() array:EventEmitter<any[]>=new EventEmitter<any[]>();
   aux:string="";
   res:any[]=[];
@@ -89,18 +92,33 @@ export class PaginacionComponent implements OnInit {
     this.cont = 0;
     this.contpag = 1;
     this.aux = "";
-    this.request.consultas(this.query+` LIMIT ${this.cont},11`).subscribe((res:any)=>{
-      this.res =res;
-      this.array.emit(res);
-    });
+    if(this.isprocedure){
+      
+      this.request.consultas(this.procedure+`${this.cont})`).subscribe((res:any)=>{
+        this.res =res;
+        this.array.emit(res);
+      });
+    }else{
+      this.request.consultas(this.query+` LIMIT ${this.cont},11`).subscribe((res:any)=>{
+        this.res =res;
+        this.array.emit(res);
+      });
+    }
   }
   ngAfterViewInit(){
     this.aux = this.query;
+    if(this.isprocedure){
+      this.procedure += `${this.cont})`;
+      this.request.consultas(this.procedure).subscribe((res:any)=>{
+        this.res =res;
+      });
+    }else{
     this.request.consultas(this.query+` LIMIT ${this.cont},11`).subscribe((res:any)=>{
       this.res =res;
     
       // this.array.emit(res);
     });
+  }
   }
   next(){
     
@@ -108,28 +126,58 @@ export class PaginacionComponent implements OnInit {
       this.contpag++;
       this.cont+=10;
    
-    this.request.consultas(this.query+` LIMIT ${this.cont},11`).subscribe((res:any)=>{
-      this.res =res;
-      this.array.emit(res);
-    });
+      if(this.isprocedure){
+        this.procedure += `${this.cont})`;
+        this.request.consultas(this.procedure).subscribe((res:any)=>{
+          this.res =res;
+          this.array.emit(res);
+        });
+      }else{
+
+      
+        this.request.consultas(this.query+` LIMIT ${this.cont},11`).subscribe((res:any)=>{
+          this.res =res;
+          this.array.emit(res);
+        });
+    }
   }
   previous(){
     
    
       this.contpag--;
       this.cont -= 10;
+    if(this.isprocedure){
+      this.procedure += `${this.cont})`;
+      this.request.consultas(this.procedure).subscribe((res:any)=>{
+        this.res =res;
+        this.array.emit(res);
+      });
+    }else{
+
     
-    this.request.consultas(this.query+` LIMIT ${this.cont},11`).subscribe((res:any)=>{
-      this.res =res;
-      this.array.emit(res);
-    });
-  }
-  update(time:number){
-    setTimeout(()=>{
       this.request.consultas(this.query+` LIMIT ${this.cont},11`).subscribe((res:any)=>{
         this.res =res;
         this.array.emit(res);
       });
+    }
+  }
+  update(time:number){
+    setTimeout(()=>{
+      if(this.isprocedure){
+        this.procedure += `${this.cont})`;
+        this.request.consultas(this.procedure).subscribe((res:any)=>{
+          this.res =res;
+          this.array.emit(res);
+        });
+      }else{
+
+        this.request.consultas(this.query+` LIMIT ${this.cont},11`).subscribe((res:any)=>{
+          this.res =res;
+          this.array.emit(res);
+      
+      
+        });
+    }
     },time);
   }
 }
