@@ -91,4 +91,10 @@ export class NavbarComponent implements OnInit {
   seen(){
     this.count= 0;
   }
+  grafica(){
+    this.router.navigate(['/grafica-genero']);
+  }
+  grafica2(){
+    this.router.navigate(['/grafica-ventas']);
+  }
 }

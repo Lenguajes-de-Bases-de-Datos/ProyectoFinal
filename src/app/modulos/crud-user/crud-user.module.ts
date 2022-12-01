@@ -10,6 +10,8 @@ import { HomeModule } from 'src/app/home/home.module';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MoreUserComponent } from './componentes/crud-users/more-user/more-user.component';
+import { GraficaGeneroComponent } from './componentes/grafica-genero/grafica-genero.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -18,12 +20,14 @@ import { MoreUserComponent } from './componentes/crud-users/more-user/more-user.
     UpdateUserComponent,
     ReadUserComponent,
     MoreUserComponent,
+    GraficaGeneroComponent,
   ],
   imports: [
     CommonModule,
 
     HomeModule, ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgChartsModule
   ],
   exports:[CreateUserComponent]
 })

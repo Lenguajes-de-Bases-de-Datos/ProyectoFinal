@@ -1,0 +1,22 @@
+<div class="container mt-5 pt-5">
+    <div class="col-12">
+        <div class="row">
+            <div class="col-5 pl-5 mt-5 text">
+                <h1>Bar Chart Venta</h1>
+                <br>
+                <h3>Suffle Data</h3>
+                <br>
+                <button class="btn btn-outline-primary" (click)="shuffleData()">Shuffle</button>
+            </div>
+            <div class="col-7">
+                <canvas baseChart
+                    [datasets]="barChartData"
+                    [labels]="barChartLabels"
+                    [plugins]="barChartPlugins"
+                    [legend]="barChartLegend"
+                    [options]="barChartOptions">
+                </canvas>
+            </div>
+        </div>
+    </div>
+</div>
