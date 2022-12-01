@@ -1,7 +1,7 @@
 <div class="wrapper">
     <h1 *ngIf="actualiza else alta">Actualizar Producto</h1>
     <ng-template #alta>
-        <h1>Registrar Producto</h1>
+        <h1>Actualizar Producto</h1>
     </ng-template>
     <div [formGroup]="form">
         
@@ -41,7 +41,7 @@
             </select>
            
         </div>
-        <!-- <div class="input-group  col-md-6">
+        <div class="input-group  col-md-6">
             <div class="input-group"><label for="">Imagen</label></div>
             <div class="input-group filee">
             <div class="form-group-prepend">
@@ -50,10 +50,10 @@
             <div class="custom-file">
               <input type="file" accept="image/*" class="custom-file-input" id="inputGroupFile01" name="photo" aria-describedby="inputGroupFileAddon01" (change)="onFileChange($event)">
               <label class="custom-file-label" for="inputGroupFile01" *ngIf="this.bandImg">{{this.name}}</label>
-              <label class="custom-file-label" for="inputGroupFile01" *ngIf="!this.bandImg">Choose file</label>
+              <label class="custom-file-label" for="inputGroupFile01" *ngIf="!this.bandImg">{{this.name}}</label>
             </div>
         </div>
-        </div> -->
+        </div>
     </div>
     <div class="form-row">
         <div class="input-group col-md-6">
@@ -76,6 +76,6 @@
               </div>
         </div>
     </div>
-        <button type="submit" class="btn btn-primary" [disabled]="this.form.invalid" (click)="onUpload()">Dar de alta</button>
+        <button type="submit" class="btn btn-primary" [disabled]="this.form.invalid" (click)="onUpload()">Actualizar Producto</button>
     </div>
 </div>

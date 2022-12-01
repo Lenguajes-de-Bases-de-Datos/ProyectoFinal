@@ -32,18 +32,25 @@
         </div>
        
         <div class="form-row">
-          <label for="" class="mr-5">Activo</label>
-          <div class="custom-control custom-radio custom-control-inline">
-            <input  type="radio" id="customRadioInline1" name="activa" class="custom-control-input" value="si" formControlName="activa">
-            <label class="custom-control-label" for="customRadioInline1">Si</label>
-          </div>
-          <div class="custom-control custom-radio custom-control-inline">
-            <input   type="radio" id="customRadioInline2" name="activa" class="custom-control-input" value="no" formControlName="activa">
-            <label class="custom-control-label" for="customRadioInline2">No</label>
+         
+        
+          <div class="form-row">
+            <div class="form-group">
+              <label for="customRadioInline1">Activar la categoria</label>
+              <br>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input  type="radio" id="customRadioInline1" name="activa" class="custom-control-input" value="si" formControlName="activa">
+              <label class="custom-control-label" for="customRadioInline1">Si</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input   type="radio" id="customRadioInline2" name="activa" class="custom-control-input" value="no" formControlName="activa">
+              <label class="custom-control-label" for="customRadioInline2">No</label>
+            </div>
           </div>
 
         </div>
        
-        <button (click)="update()" type="submit" class="btn btn-primary">Actualizar</button>
+        
     </div>
+    <button (click)="update()" type="submit" class="btn btn-primary">Actualizar</button>
 </div>

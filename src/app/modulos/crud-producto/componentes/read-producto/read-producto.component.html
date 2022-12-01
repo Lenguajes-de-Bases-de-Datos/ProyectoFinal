@@ -52,8 +52,9 @@
               <th scope="col">Precio</th>
               <th scope="col">Activo</th>
               <th scope="col">Piezas/caja</th>
-              <th scope="col">Actualizar</th>
+              <th scope="col">Refresh</th>
               <th scope="col">S/Existencias</th>
+              <th scope="col">Actualizar</th>
               
              
             </tr>
@@ -78,6 +79,7 @@
               <td *ngIf="i!=10 && this.user.privilegios == 'superadmin'">{{obj.suc}}-{{obj.existencias}}</td>
               <td *ngIf="i!=10 && this.user.privilegios != 'superadmin'">{{obj.existencias}}</td>
               <td *ngIf="i!=10 && cart"><i class="icon-cart-plus" (click)="resp(obj)"></i></td>
+              <td *ngIf="i!=10"><i (click)="actualizar(obj.ID)" class="icon-pencil"></i></td>
               
             </tr>
           
