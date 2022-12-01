@@ -37,12 +37,17 @@ export class CreateCompraComponent implements OnInit {
   ngOnInit(): void {
   }
   actTotal(key:any,i:number){
-    if(key.keyCode >=96 && key.keyCode <=105){
+    if((key.keyCode >=96 && key.keyCode <=105 || key.keyCode>=48 && key.keyCode <= 57) && this.prod[i].cant.match("[0-9]+")){
+      this.total -= this.prod[i].tot;
+      this.prod[i].tot = this.prod[i].precio*this.prod[i].cant;
+      this.total += this.prod[i].tot;
+    }else if(key.keyCode != 8){
+      this.prod[i].cant = 1;
       this.total -= this.prod[i].tot;
       this.prod[i].tot = this.prod[i].precio*this.prod[i].cant;
       this.total += this.prod[i].tot;
     }else{
-
+      
     }
   }
 change(){
@@ -72,19 +77,28 @@ buscar(){
      
   } 
   realizaCompra(){
-    let user:any = localStorage.getItem('cuenta');
-    user = JSON.parse(user);
-    let sql = `INSERT INTO compra (ID,ID_usuario,ID_prov,total,fecha,observaciones) `;
-    sql += `VALUES(ID,${user.ID},${this.idprov},${this.total},now(),'${this.obs}')`;
-    let body= {
-      sql:sql,
-      table:'compra'
-    };
-    this.request.accion(body).subscribe((res:any)=>{
-      this.compProd();
-    });
+    if(this.obs.match("[|\"\'&]+")){
+      swal.fire({
+        backdrop: true, 
+        allowOutsideClick: true,
+        title: "Texto incorrecto en observaciones...",
+        text: "No se permiten caracteres como \", ', |,etc...",
+        confirmButtonText:'Entendido'
+      });
+    }else{
+      let user:any = localStorage.getItem('cuenta');
+      user = JSON.parse(user);
+      let sql = `INSERT INTO compra (ID,ID_usuario,ID_prov,total,fecha,observaciones) `;
+      sql += `VALUES(ID,${user.ID},${this.idprov},${this.total},now(),'${this.obs}')`;
+      let body= {
+        sql:sql,
+        table:'compra'
+      };
+      this.request.accion(body).subscribe((res:any)=>{
+        this.compProd();
+      });
     
-    
+  }
   }
   compProd(){
     let user:any = localStorage.getItem('cuenta');
@@ -132,6 +146,12 @@ buscar(){
       // this.insertaSucProd(auxsql,user.ID_sucursal);
     });
   }
+  deleteOne(i:any){
+
+    this.total -= this.prod[i].tot;
+    this.prod.splice(i,1);
+  }
+  //insertarSucProd no se usa
   insertaSucProd(auxsql:string,suc:any){
     let sql = `INSERT INTO sucursal_producto VALUES `;
     let sql2 = `UPDATE sucursal_producto SET `;
@@ -207,6 +227,14 @@ buscar(){
       text: "Compra realizada exitosamente...",
       confirmButtonText:'Entendido'
     });
+  }
+  salir(i:any){
+    if(this.prod[i].cant == ""){
+      this.prod[i].cant = 1;
+      this.total -= this.prod[i].tot;
+      this.prod[i].tot = this.prod[i].precio*this.prod[i].cant;
+      this.total += this.prod[i].tot;
+    }
   }
   validar(){
     if(this.idprov!=0 &&this.prod.length>0){

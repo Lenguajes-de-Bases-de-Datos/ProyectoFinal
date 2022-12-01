@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthGuardService } from 'src/app/services/auth-guard.service';
 import { SocketsWebService } from 'src/app/services/sockets-web.service';
 import swal from 'sweetalert2';
+import jwt_decode from "jwt-decode";
 declare const events : any;
 @Component({
   selector: 'app-navbar',
@@ -51,6 +52,16 @@ export class NavbarComponent implements OnInit {
     this.notifications.push(res);
     this.count++;
     });
+
+
+
+    try {
+      let token = sessionStorage.getItem('token') || "";
+      let resp = jwt_decode(token);
+      console.log(resp);
+    } catch(Error) {
+      
+    }
   }
   buscar(){
     if(this.prod=="" || this.prod.match('[\'\"|&]+')){

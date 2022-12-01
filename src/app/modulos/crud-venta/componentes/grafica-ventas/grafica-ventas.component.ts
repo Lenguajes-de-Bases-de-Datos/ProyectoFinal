@@ -15,7 +15,7 @@ export class GraficaVentasComponent implements OnInit {
   barChartData: ChartDataset[] = [
     { data: [this.aleatorio(),this.aleatorio()], borderWidth: this.ancho, type: this.barChartType, borderRadius: this.radius},
   ];
-  barChartLabels: string[] = ['Hombres','Mujeres'];
+  barChartLabels: string[] = ['Enero','Febrero'];
 
   //Para que sea responsivo y adaptable para un celular
   barChartOptions: ChartOptions = {

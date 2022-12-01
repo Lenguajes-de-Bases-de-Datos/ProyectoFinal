@@ -7,7 +7,9 @@ a{
 form{
     padding-right: 3em;
 }
-
+.show{
+    float:right
+}
 .btn{
     background: rgb(235, 64, 93);
     color: white;
@@ -25,7 +27,7 @@ nav{
     float:right;
     padding-left: 24em;
     font-family: Fredoka One;
-    /*background-color:  #5de696 ;*/
+    
     background-color: #3bebf1;
     
     

@@ -36,6 +36,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Producto</th>
                 <th scope="col">Cantidad</th>
+                <th scope="col">Precio del proveedor</th>
                 <th scope="col">Total</th>
                
                
@@ -48,9 +49,10 @@
                 <td *ngIf="i!=10">{{obj.nombre}}</td>
                 <td *ngIf="i!=10">
                   
-                  <input (keyup)="actTotal($event,i)" [(ngModel)]="obj.cant" type="text" id="inputcantidad" class="form-control"  placeholder="0-9">
+                  <input (blur)="salir(i)" (keyup)="actTotal($event,i)" [(ngModel)]="obj.cant" type="text" id="inputcantidad" class="form-control"  placeholder="0-9">
   
                 </td>
+                <td *ngIf="i!=10">{{obj.precio | number: '1.1-3' }}</td>
                 <td *ngIf="i!=10">{{obj.tot | number: '1.1-3' }}</td>
                 <td *ngIf="i!=10">
                   
@@ -58,7 +60,7 @@
   
   
                 </td>
-                <td *ngIf="i!=10"><i class="icon-trash-4 delete"></i></td>
+                <td *ngIf="i!=10"><i (click)="deleteOne(i)" class="icon-trash-4 delete"></i></td>
                   
                 
               </tr>

@@ -159,9 +159,9 @@ export class SidebarComponent implements OnInit {
         excluye:[""]
        } ,
        {
-        ruta:'',
-        nombre:'Actualizar',
-        excluye:[""]
+        ruta:'/user-compra',
+        nombre:'Compras por cada usuario',
+        excluye:["vendedor","almacenista","reponedor"]
        }
     ],
       icono:"",
@@ -185,9 +185,9 @@ export class SidebarComponent implements OnInit {
         excluye:[""]
        } ,
        {
-        ruta:'update-user',
-        nombre:'Actualizar',
-        excluye:[""]
+        ruta:'/user-venta',
+        nombre:'Ventas por cada usuario',
+        excluye:["vendedor","almacenista","reponedor"]
        }
     ],
       icono:"",

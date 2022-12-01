@@ -1,12 +1,13 @@
 <div class="wrapper">
   <h1>Más Detalles De Usuario</h1>
     <div class="card" style="width: 35rem;">
-        <img [src]="user.imagen" class="card-img-top" alt="...">
+        <img  [src]="path" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Más información sobre el usuario</h5>
           <p class="card-text">
             <b>Nombre: </b>{{ user.nombre }} {{ user.appat }} {{ user.apmat }}
           </p>
+          <p><b>Genero: </b>{{ user.genero }}</p>
           <p><b>ID: </b>{{ user.ID }}</p>
           <p><b>Telefono: </b>{{ user.telefono }}</p>
           <p><b>Email: </b>{{ user.email }}</p>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartDataset, Color, ChartOptions, ChartType } from 'chart.js';
+import { RequestsService } from 'src/app/services/requests.service';
 
 @Component({
   selector: 'app-grafica-genero',
@@ -7,17 +8,15 @@ import { ChartDataset, Color, ChartOptions, ChartType } from 'chart.js';
   styleUrls: ['./grafica-genero.component.css']
 })
 export class GraficaGeneroComponent implements OnInit {
-
+  array:any[] = [];
+  user:any ;
   barChartType: ChartType = 'bar';
    ancho = 3;
    radius = 8;
    
-   barChartData: ChartDataset[] = [
-     { data: [this.aleatorio(),0], label: 'Hombres', backgroundColor:'rgba(115, 0, 147, 0.564)', borderColor: 'rgb(62, 2, 79)', borderWidth: this.ancho, type: this.barChartType, borderRadius: this.radius},
-     { data: [0,this.aleatorio()], label: 'Mujeres', backgroundColor:'rgba(122, 85, 0, 0.674)', borderColor: 'rgba(69, 49, 0, 0.981)', borderWidth: this.ancho, type: this.barChartType, borderRadius: this.radius},
-   ];
+   barChartData: ChartDataset[] = [];
  
-   barChartLabels: string[] = ['Hombres','Mujeres'];
+   barChartLabels: string[] = ['Numero de personal'];
  
    //Para que sea responsivo y adaptable para un celular
    barChartOptions: ChartOptions = {
@@ -97,20 +96,37 @@ export class GraficaGeneroComponent implements OnInit {
    //Este abierta a plugins para mejorar el grafico
    barChartPlugins = [];
  
-   constructor() { }
- 
-   ngOnInit(): void {
+   constructor(private request:RequestsService) { 
+    
+    this.user = localStorage.getItem('cuenta');
+    this.user = JSON.parse(this.user);
+    this.obtener();
    }
  
-   shuffleData(){
-     this.barChartData= [
-      {data: [this.aleatorio(),0], label: 'Hombres', backgroundColor:'rgba(115, 0, 147, 0.564)', borderColor: 'rgb(62, 2, 79)', borderWidth: this.ancho, type: this.barChartType, borderRadius: this.radius},
-      { data: [0,this.aleatorio()], label: 'Mujeres', backgroundColor:'rgba(122, 85, 0, 0.674)', borderColor: 'rgba(69, 49, 0, 0.981)', borderWidth: this.ancho, type: this.barChartType, borderRadius: this.radius},    
-    ];
+   ngOnInit(): void {
    }
  
    aleatorio():number{
      return Math.round(Math.random() * (100 - 10) + 10);
    }
-
+   obtener(){
+    if(this.user.privilegios == "superadmin"){
+      this.request.consultas('CALL reportes("g",0,"0000-00-00","0000-00-00")').subscribe((res:any)=>{
+      this.array = res[0];
+      this.rellenar();      
+      });
+    }else{
+      this.request.consultas(`CALL reportes("g",${this.user.ID_sucursal},"0000-00-00","0000-00-00")`).subscribe((res:any)=>{
+        this.array = res[0];
+        console.log(this.array);
+        this.rellenar();
+      });
+    }    
+   }
+   rellenar(){
+    this.barChartData= [
+      {data: [this.array[1].total], label: 'Hombres', backgroundColor:'rgba(115, 0, 147, 0.564)', borderColor: 'rgb(62, 2, 79)', borderWidth: this.ancho, type: this.barChartType, borderRadius: this.radius},
+      {data: [this.array[0].total], label: 'Mujeres', backgroundColor:'rgba(122, 85, 0, 0.674)', borderColor: 'rgba(69, 49, 0, 0.981)', borderWidth: this.ancho, type: this.barChartType, borderRadius: this.radius},    
+    ];
+   }
 }

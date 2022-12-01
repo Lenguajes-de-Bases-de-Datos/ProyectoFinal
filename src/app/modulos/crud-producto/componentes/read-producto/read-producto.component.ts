@@ -33,8 +33,8 @@ export class ReadProductoComponent implements OnInit {
       this.sql = "select p.id ID,c.ncategoria,p.nombre,p.descripcion,p.precioUnitario,p.status,p.piezas,IFNULL(sp.existencias,'Sin registro') existencias,s.id suc from producto p left join sucursal_producto sp on p.id=sp.id_producto JOIN categoria c on p.categoria = c.id LEFT JOIN sucursal s ON s.id=sp.id_sucursal";
     }
     this.form = new FormGroup({
-      texto : new FormControl('',[Validators.required]),
-      id : new FormControl('',[Validators.required])
+      texto : new FormControl('',[Validators.required,Validators.pattern("[^\"\'|&]+")]),
+      id : new FormControl('',[Validators.required,Validators.pattern("[0-9]+")])
     });
     this.request.consultas(this.sql+' LIMIT 0,11').subscribe((res:any)=>{
       this.productos = res;

@@ -10,6 +10,7 @@ import { RequestsService } from 'src/app/services/requests.service';
 export class MoreUserComponent implements OnInit {
   user:any;
   ID:number | undefined;
+  path:string = "../../../../../../assets/img/";
   /**@Output() SendDatas = new EventEmitter<number>();
   @Input() id:number | undefined;**/
   constructor(private request:RequestsService,private router:Router, private rutaActiva: ActivatedRoute) { 
@@ -21,6 +22,7 @@ export class MoreUserComponent implements OnInit {
     let sql=`SELECT * FROM usuario WHERE ID=${this.ID}`;
     this.request.consultas(sql).subscribe((res:any)=>{
       this.user = res[0];
+      this.path += this.user.imagen;
     });;
   }
 

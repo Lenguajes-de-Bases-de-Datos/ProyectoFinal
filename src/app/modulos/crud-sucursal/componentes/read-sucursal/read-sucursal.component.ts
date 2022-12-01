@@ -18,8 +18,8 @@ export class ReadSucursalComponent implements OnInit {
   @ViewChild('paginacion') element?:PaginacionComponent;
   constructor(private request:RequestsService,private router:Router) {
     this.form = new FormGroup({
-      texto : new FormControl('',[Validators.required]),
-      id : new FormControl('',[Validators.required])
+      texto : new FormControl('',[Validators.required,Validators.pattern("[^\"\'|&]+")]),
+      id : new FormControl('',[Validators.required,Validators.pattern("[0-9]+")])
     });
     this.request.consultas(this.sql+' LIMIT 0,11').subscribe((res:any)=>{
       this.sucursales = res;
