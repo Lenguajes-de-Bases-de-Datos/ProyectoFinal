@@ -57,7 +57,7 @@ export class ReadVentaComponent implements OnInit {
       case "1":
         this.sql = `SELECT v.id,concat(u.nombre,' ',u.appat,' ',u.apmat) usuario,v.fechav fecha,v.total,v.descripcion,v.status,u.id_sucursal suc  `;
         this.sql += `FROM venta v,usuario u WHERE v.id_usuario = u.id`;
-        if(this.user.privilegios =! "superadmin"){
+        if(this.user.privilegios != "superadmin"){
           this.sql += ` and u.id_sucursal=${this.user.ID_sucursal}`;
           sqltot = `select sum(v.total) total from venta v,usuario u WHERE v.id_usuario=u.id and u.id = ${this.user.ID_sucursal}`;
         }  else{
@@ -67,7 +67,7 @@ export class ReadVentaComponent implements OnInit {
       case "2":
         this.sql = `SELECT v.id,concat(u.nombre,' ',u.appat,' ',u.apmat) usuario,v.fechav fecha,v.total,v.descripcion,v.status,u.id_sucursal suc  `;
         this.sql += `FROM venta v,usuario u WHERE v.id_usuario = u.id and v.id = ${this.form.get('id')?.value}`;
-        if(this.user.privilegios =! "superadmin"){
+        if(this.user.privilegios != "superadmin"){
           this.sql += ` and u.id_sucursal=${this.user.ID_sucursal}`; 
           sqltot = `select v.total total from venta v,usuario u WHERE v.id_usuario=u.id and v.id = ${this.form.get('id')?.value} and u.id_sucursal = ${this.user.ID_sucursal}`;
         }else{
@@ -80,7 +80,7 @@ export class ReadVentaComponent implements OnInit {
         this.sql = `SELECT v.id,concat(u.nombre,' ',u.appat,' ',u.apmat) usuario,v.fechav fecha,v.total,v.descripcion,v.status,u.id_sucursal suc `;
         this.sql += `FROM venta v,usuario u WHERE v.id_usuario = u.id and DATE(v.fechav) = '${this.form.get('fechaini')?.value}'`;
         
-        if(this.user.privilegios =! "superadmin"){
+        if(this.user.privilegios != "superadmin"){
           this.sql += ` and u.id_sucursal=${this.user.ID_sucursal}`;
           sqltot = `select sum(v.total) total from venta v,usuario u WHERE v.id_usuario = u.id and DATE(v.fechav) = '${this.form.get('fechaini')?.value}' and u.id_sucursal = ${this.user.ID_sucursal}`;
         
@@ -92,7 +92,7 @@ export class ReadVentaComponent implements OnInit {
       case "4":
         this.sql = `SELECT v.id,concat(u.nombre,' ',u.appat,' ',u.apmat) usuario,v.fechav fecha,v.total,v.descripcion,v.status,u.id_sucursal suc  `;
         this.sql += `FROM venta v,usuario u WHERE v.id_usuario = u.id and DATE(v.fechav) BETWEEN '${this.form.get('fechaini')?.value}' AND '${this.form.get('fechafin')?.value}'`;
-        if(this.user.privilegios =! "superadmin"){
+        if(this.user.privilegios != "superadmin"){
           this.sql += ` and u.id_sucursal=${this.user.ID_sucursal}`;
           sqltot = `select sum(v.total) total from venta v,usuario u WHERE v.id_usuario = u.id and DATE(v.fecha) BETWEEN '${this.form.get('fechaini')?.value}' and '${this.form.get('fechafin')?.value}' and u.id_sucursal = ${this.user.ID_sucursal}`;
         }else{
@@ -103,7 +103,7 @@ export class ReadVentaComponent implements OnInit {
       case "5":
         this.sql = `SELECT v.id,concat(u.nombre,' ',u.appat,' ',u.apmat) usuario,v.fechav fecha,v.total,v.descripcion,v.status,u.id_sucursal suc `;
         this.sql += `FROM venta v,usuario u WHERE v.id_usuario = u.id and concat(u.nombre,u.appat,u.apmat) LIKE '%${this.form.get('name')?.value}%'`;
-        if(this.user.privilegios =! "superadmin"){
+        if(this.user.privilegios != "superadmin"){
           this.sql += ` and u.id_sucursal=${this.user.ID_sucursal}`;
           sqltot = `select sum(v.total) total from venta v,usuario u WHERE v.id_usuario = u.id and concat(u.nombre,u.appat,u.apmat) LIKE '%${this.form.get('name')?.value}%' and u.id_sucursal = ${this.user.ID_sucursal}`;
         
@@ -116,7 +116,7 @@ export class ReadVentaComponent implements OnInit {
       case "6":
         this.sql = `SELECT v.id,concat(u.nombre,' ',u.appat,' ',u.apmat) usuario,v.fechav fecha,v.total,v.descripcion,v.status,u.id_sucursal suc  `;
         this.sql += `FROM venta v,usuario u WHERE v.id_usuario = u.id and u.id_sucursal = ${this.form.get('sucursal')?.value}`;
-        if(this.user.privilegios =! "superadmin"){
+        if(this.user.privilegios != "superadmin"){
           this.sql += ` and u.id_sucursal=${this.user.ID_sucursal}`;
           
         }else{

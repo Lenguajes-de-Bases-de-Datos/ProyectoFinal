@@ -18,12 +18,14 @@
             <div class="form-row">
               <div *ngIf="this.option == '2'" class="form-group col-md-6">
                 <label for="inputnom">Texto</label>
-                <input formControlName="texto" type="text" class="form-control" id="inputnom">
+                <input formControlName="texto" type="text" class="form-control" id="inputnom" 
+                [ngClass]="{'invalid':this.form.get('texto')?.invalid,'valid':!this.form.get('texto')?.invalid}">
               </div>
     
               <div *ngIf="this.option == '3'" class="form-group col-md-6">
                 <label for="inputid">ID</label>
-                <input formControlName="id" type="text" class="form-control" id="inputid">
+                <input formControlName="id" type="text" class="form-control" id="inputid" 
+                [ngClass]="{'invalid':this.form.get('id')?.invalid,'valid':!this.form.get('id')?.invalid}">
               </div>
 
             </div>
