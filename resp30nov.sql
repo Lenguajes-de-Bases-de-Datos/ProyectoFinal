@@ -581,6 +581,142 @@ INSERT INTO `venta` VALUES
 UNLOCK TABLES;
 
 --
+-- Dumping routines for database 'crazycandy'
+--
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `cvtotales` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `cvtotales`(a CHAR(1),b INT,c CHAR(1),t CHAR(1),f1 DATE,f2 DATE,n VARCHAR(100),d INT)
+BEGIN 
+IF a = 'v' and c = 'g' and t = 't' THEN 
+SELECT concat(u.nombre,' ',u.appat,' ',u.apmat) nombre, count(*) total,sum(v.total) inversion,u.id_sucursal suc from venta v,usuario u WHERE v.id_usuario=u.id GROUP BY u.id LIMIT d,11;
+ELSEIF a = 'c' and c = 'g' and t = 't' THEN
+SELECT concat(u.nombre,' ',u.appat,' ',u.apmat) nombre, count(*) total,sum(c.total) inversion,u.id_sucursal suc from compra c,usuario u WHERE c.id_usuario=u.id GROUP BY u.id LIMIT d,11;
+ELSEIF a = 'v' and c = 'g' and t = 'f' THEN
+SELECT concat(u.nombre,' ',u.appat,' ',u.apmat) nombre, count(*) total,sum(v.total) inversion,u.id_sucursal suc from venta v,usuario u WHERE v.id_usuario=u.id and DATE(v.fechav) = f1 GROUP BY u.id LIMIT d,11;
+ELSEIF a = 'c' and c = 'g' and t = 'f' THEN
+SELECT concat(u.nombre,' ',u.appat,' ',u.apmat) nombre, count(*) total,sum(c.total) inversion,u.id_sucursal suc from compra c,usuario u WHERE c.id_usuario=u.id and DATE(c.fecha) = f1 GROUP BY u.id LIMIT d,11;
+ELSEIF a = 'v' and c = 'g' and t = 'r' THEN
+SELECT concat(u.nombre,' ',u.appat,' ',u.apmat) nombre, count(*) total,sum(v.total) inversion,u.id_sucursal suc from venta v,usuario u WHERE v.id_usuario=u.id and DATE(v.fechav) BETWEEN f1 AND f2 GROUP BY u.id LIMIT d,11;
+ELSEIF a = 'c' and c = 'g' and t = 'r' THEN
+SELECT concat(u.nombre,' ',u.appat,' ',u.apmat) nombre, count(*) total,sum(c.total) inversion,u.id_sucursal suc from compra c,usuario u WHERE c.id_usuario=u.id and DATE(c.fecha) BETWEEN f1 AND f2 GROUP BY u.id LIMIT d,11;
+ELSEIF a = 'v' and c = 'g' and t = 'n' THEN
+SELECT concat(u.nombre,' ',u.appat,' ',u.apmat) nombre, count(*) total,sum(v.total) inversion,u.id_sucursal suc from venta v,usuario u WHERE v.id_usuario=u.id and concat(u.nombre,u.appat,u.apmat) LIKE concat('%',n,'%') GROUP BY u.id LIMIT d,11;
+ELSEIF a = 'c' and c = 'g' and t = 'n' THEN
+SELECT concat(u.nombre,' ',u.appat,' ',u.apmat) nombre, count(*) total,sum(c.total) inversion,u.id_sucursal suc from compra c,usuario u WHERE c.id_usuario=u.id and concat(u.nombre,u.appat,u.apmat) LIKE concat('%',n,'%') GROUP BY u.id LIMIT d,11;
+ELSEIF a = 'v' and c = 's' and t = 't' THEN
+SELECT concat(u.nombre,' ',u.appat,' ',u.apmat) nombre, count(*) total,sum(v.total) inversion,u.id_sucursal suc from venta v,usuario u WHERE v.id_usuario=u.id and u.id_sucursal = b GROUP BY u.id LIMIT d,11; 
+ELSEIF a = 'c' and c = 's' and t = 't' THEN
+SELECT concat(u.nombre,' ',u.appat,' ',u.apmat) nombre, count(*) total,sum(c.total) inversion,u.id_sucursal suc from compra c,usuario u WHERE c.id_usuario=u.id and u.id_sucursal = b GROUP BY u.id LIMIT d,11;
+ELSEIF a = 'v' and c = 's' and t = 'f' THEN
+SELECT concat(u.nombre,' ',u.appat,' ',u.apmat) nombre, count(*) total,sum(v.total) inversion,u.id_sucursal suc from venta v,usuario u WHERE v.id_usuario=u.id and DATE(v.fechav) = f1 and u.id_sucursal = b GROUP BY u.id LIMIT d,11;
+
+ELSEIF a = 'c' and c = 's' and t = 'f' THEN
+SELECT concat(u.nombre,' ',u.appat,' ',u.apmat) nombre, count(*) total,sum(c.total) inversion,u.id_sucursal suc from compra c,usuario u WHERE c.id_usuario=u.id and DATE(c.fecha) = f1 and u.id_sucursal = b GROUP BY u.id LIMIT d,11;
+ELSEIF a = 'v' and c = 's' and t = 'r' THEN
+SELECT concat(u.nombre,' ',u.appat,' ',u.apmat) nombre, count(*) total,sum(v.total) inversion,u.id_sucursal suc from venta v,usuario u WHERE v.id_usuario=u.id and DATE(v.fechav) BETWEEN f1 AND f2 and u.id_sucursal = b GROUP BY u.id LIMIT d,11;
+
+ELSEIF a = 'c' and c = 's' and t = 'r' THEN
+SELECT concat(u.nombre,' ',u.appat,' ',u.apmat) nombre, count(*) total,sum(c.total) inversion,u.id_sucursal suc from compra c,usuario u WHERE c.id_usuario=u.id and DATE(c.fecha) BETWEEN f1 AND f2 and u.id_sucursal = b GROUP BY u.id LIMIT d,11;
+
+ELSEIF a = 'v' and c = 's' and t = 'n' THEN
+SELECT concat(u.nombre,' ',u.appat,' ',u.apmat) nombre, count(*) total,sum(v.total) inversion,u.id_sucursal suc from venta v,usuario u WHERE v.id_usuario=u.id and concat(u.nombre,u.appat,u.apmat) LIKE concat('%',n,'%') and u.id_sucursal = b GROUP BY u.id LIMIT d,11;
+
+ELSEIF a = 'c' and c = 's' and t = 'n' THEN
+SELECT concat(u.nombre,' ',u.appat,' ',u.apmat) nombre, count(*) total,sum(c.total) inversion,u.id_sucursal suc from compra c,usuario u WHERE c.id_usuario=u.id and concat(u.nombre,u.appat,u.apmat) LIKE concat('%',n,'%') and u.id_sucursal = b GROUP BY u.id LIMIT d,11;
+
+
+END IF; 
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `insertPiezas` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertPiezas`(IN suc INT,IN prod INT,IN exist INT,IN status BOOLEAN,IN unidad VARCHAR(5))
+BEGIN
+DECLARE num INT;
+SELECT count(*) INTO num FROM sucursal_producto WHERE id_producto=prod and id_sucursal=suc;
+IF num>0 THEN
+UPDATE sucursal_producto SET existencias=existencias+exist WHERE id_producto=prod and id_sucursal=suc; 
+ELSE
+INSERT INTO sucursal_producto VALUES (suc,prod,exist,status,unidad);
+END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `obtenerProductosCompra` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `obtenerProductosCompra`(IN id_compra INT)
+BEGIN
+SELECT c.id,p.id id_prod,p.nombre,cat.ncategoria,cp.cantidad,cp.precioUnitario precioCompra,p.precioUnitario precioVenta 
+FROM compra c,compra_producto cp,producto p,categoria cat 
+WHERE c.id=cp.id_comp and cp.id_prod=p.id and p.categoria=cat.id and c.id=id_compra;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `reportes` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `reportes`(t CHAR(1),suc INT,f1 DATE,f2 DATE)
+BEGIN
+
+IF t = 'v' and suc = 0 THEN
+SELECT count(*) total FROM venta WHERE DATE(fechav) BETWEEN f1 AND f2;
+ELSEIF t = 'g' and suc = 0 THEN
+SELECT count(*) total,genero FROM usuario GROUP BY genero;
+ELSEIF t = 'v' and suc != 0 THEN
+SELECT count(*) total,id_sucursal s FROM venta v,usuario u WHERE v.id_usuario=u.id and u.id_sucursal = suc and DATE(v.fechav) BETWEEN f1 AND f2;
+ELSEIF t = 'g' and suc != 0 THEN
+SELECT count(*) total,genero FROM usuario WHERE id_sucursal = suc GROUP BY genero;
+END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+
+--
 -- Final view structure for view `nomcomprov`
 --
 
@@ -607,4 +743,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-30  0:51:12
+-- Dump completed on 2022-11-30 18:37:13
