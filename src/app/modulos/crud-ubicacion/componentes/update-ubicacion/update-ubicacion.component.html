@@ -1,8 +1,13 @@
+<div class="fondo">
 <div class="wrapper" >
     <div [formGroup]="this.form">
-
-        <div class="form-row">
-            <div class="form-group col-md-6">
+      <div class="titulo">
+      <h1>Actualizar Ubicación</h1>
+    </div>
+    <div class="cajauno">
+        
+          <div class="cajitauno">
+            <div class="form-group">
               <label for="inputnum">Ingresa ID de la ubicación</label>
               <input type="text" class="form-control" id="inputnum" formControlName="ubinum">
               <p *ngIf='this.form.get("ubinum")?.value == "" || this.form.get("ubinum")?.value == null'><b>Si no te sabes el id de la ubicacion ve a la opción Consultas</b></p>
@@ -17,14 +22,17 @@
                 <option selected value="0">Todas las Ubicaciones por Ciudad...</option>
                 <option *ngFor="let cd of resCiudades" [value]="cd.ciudad">{{cd.ciudad}}</option>
             </select> -->
-            <button  (click)="buscar()" type="submit" class="btn btn-primary" id="Buscar" [disabled]="(this.form.get('ubinum')?.invalid && this.form.get('estado')?.invalid && this.form.get('ciudad')?.invalid)">Buscar</button>
-             
+            <div class="boton">
+            <button  (click)="buscar()" type="submit" class="btn" id="Buscar" [disabled]="(this.form.get('ubinum')?.invalid && this.form.get('estado')?.invalid && this.form.get('ciudad')?.invalid)">Buscar</button>
+          </div>
             </div>
+          
             <!-- <div style="display: none;" class="form-group col-md-6">
                 <label for="inputnom"></label>
                 <input type="text" class="form-control" id="inputnom"  formControlName="busnombre" (keyup)="controlar(2)">
                  </div> -->
         </div>
+      
         
         <div class="form-row" >
           <div class="form-group col-md-6">
@@ -48,6 +56,11 @@
             </div>
             
           </div>
-        <button (click)="update()" type="submit" class="btn btn-primary">Actualizar</button>
+        </div>
+          <div class="botonac">
+        <button (click)="update()" type="submit" class="btn">Actualizar</button>
       </div>
+      
     </div>
+    </div>
+  </div>

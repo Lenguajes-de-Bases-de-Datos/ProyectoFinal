@@ -1,10 +1,11 @@
-
+<div class="fondo">
 <div class="wrapper">
   
   
     
- 
-    <button type="submit" class="btn btn-primary mb-2" (click)="venta()" [disabled]="isEmptyArray()">Realizar</button>
+    <div class="boton">
+    <button type="submit" class="btn" (click)="venta()" [disabled]="isEmptyArray()">Realizar</button>
+  </div>
     <textarea [(ngModel)]="this.desc" class="form-control z-depth-1 mb-2" id="exampleFormControlTextarea6" rows="3" placeholder="Comentarios..."  
     >
 
@@ -132,4 +133,4 @@
 
 <app-paginacion [query]="sql" (array)="result($event)" #paginacion></app-paginacion>
   
- 
+</div>

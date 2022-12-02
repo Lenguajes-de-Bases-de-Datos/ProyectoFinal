@@ -1,6 +1,11 @@
+<div class="fondo">
 <div class="wrapper" >
     <div [formGroup]="this.form">
-        
+      <div class="titulo">
+        <h1>Crear Ubicación</h1>
+      </div>
+
+      <div class="cajauno">
         <div class="form-row" >
           <div class="form-group col-md-6">
             <label for="inputEmail4">Estado</label>
@@ -24,7 +29,10 @@
             
           </div>
           
-        <button  class="btn btn-primary" (click)="send()" [disabled]="this.form.invalid">Añadir nueva ubicación</button>
-        
+          <div class="boton">
+        <button  class="btn" (click)="send()" [disabled]="this.form.invalid">Añadir nueva ubicación</button>
+      </div>
       </div>
     </div>
+    </div>
+  </div>

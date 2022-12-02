@@ -4,7 +4,7 @@
 
         <div class="cajauno">
         <div class="formcajauno">
-            <div class="form-group col-md-6">
+            <div class="form-group">
               <label for="inputnum">Ingresa Numero</label>
               <input type="text" class="form-control" id="inputnum" formControlName="busnum" (keyup)="controlar(1)">
              
@@ -12,7 +12,7 @@
                 <button  (click)="buscar()" type="submit" class="botonbuscar" id="Buscar" [disabled]="(this.form.get('busnum')?.invalid && this.form.get('busnombre')?.invalid)">Buscar</button>
               </div>
             </div>
-            <div style="display: none;" class="form-group col-md-6">
+            <div style="display: none;" class="form-group">
                 <label for="inputnom">Ingresa Nombre</label>
                 <input type="text" class="form-control" id="inputnom"  formControlName="busnombre" (keyup)="controlar(2)">
                  </div>
