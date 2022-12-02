@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ChartDataset, Color, ChartOptions, ChartType } from 'chart.js';
 import { RequestsService } from 'src/app/services/requests.service';
-
+import * as moment from 'moment';
 @Component({
   selector: 'app-grafica-ventas',
   templateUrl: './grafica-ventas.component.html',
@@ -102,8 +102,8 @@ export class GraficaVentasComponent implements OnInit {
 
   constructor(private request:RequestsService) {
     this.form = new FormGroup({
-      fechaini: new FormControl('',[Validators.required]),
-      fechafin: new FormControl('',[Validators.required]),
+      fechaini: new FormControl(moment().subtract(1,'month').format('YYYY-MM-DD'),[Validators.required]),
+      fechafin: new FormControl(moment().format('YYYY-MM-DD'),[Validators.required]),
       
     });
     this.user = localStorage.getItem('cuenta');
@@ -111,6 +111,7 @@ export class GraficaVentasComponent implements OnInit {
     if(this.user.privilegios == "superadmin"){
       this.issuper = true;
     }
+    this.obtener();
   }
 
   ngOnInit(): void {
