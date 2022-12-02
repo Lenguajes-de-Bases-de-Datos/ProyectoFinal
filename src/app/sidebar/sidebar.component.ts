@@ -108,8 +108,8 @@ export class SidebarComponent implements OnInit {
         excluye:[""]
        } ,
        {
-        ruta:'',
-        nombre:'Actualizar',
+        ruta:'/mas-vendido',
+        nombre:'Más vendidos',
         excluye:[""]
        }
     ],

@@ -8,6 +8,7 @@ import { OneProductoComponent } from './componentes/one-producto/one-producto.co
 import { OpenCajaComponent } from './componentes/open-caja/open-caja.component';
 import { CheckExistenciasComponent } from './componentes/check-existencias/check-existencias.component';
 import { UpdateProductoComponent } from './componentes/update-producto/update-producto.component';
+import { MasVendidoComponent } from './componentes/mas-vendido/mas-vendido.component';
 
 
 
@@ -18,7 +19,8 @@ import { UpdateProductoComponent } from './componentes/update-producto/update-pr
     OneProductoComponent,
     OpenCajaComponent,
     CheckExistenciasComponent,
-    UpdateProductoComponent
+    UpdateProductoComponent,
+    MasVendidoComponent
   ],
   imports: [
     CommonModule,

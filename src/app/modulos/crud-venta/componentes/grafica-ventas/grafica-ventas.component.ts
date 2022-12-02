@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ChartDataset, Color, ChartOptions, ChartType } from 'chart.js';
+import { RequestsService } from 'src/app/services/requests.service';
 
 @Component({
   selector: 'app-grafica-ventas',
@@ -7,7 +9,10 @@ import { ChartDataset, Color, ChartOptions, ChartType } from 'chart.js';
   styleUrls: ['./grafica-ventas.component.css']
 })
 export class GraficaVentasComponent implements OnInit {
-
+  array:any[]=[];
+  issuper:boolean=false;
+  form:FormGroup;
+  user:any;
   barChartType: ChartType = 'bar';
   ancho = 3;
   radius = 8;
@@ -70,7 +75,7 @@ export class GraficaVentasComponent implements OnInit {
       x: {
         title: {
           display: true,
-          text: 'Genero',
+          text: 'Ventas por sucursal',
           font: {
             family: 'Verbana',
             size: 18,
@@ -95,7 +100,18 @@ export class GraficaVentasComponent implements OnInit {
   //Este abierta a plugins para mejorar el grafico
   barChartPlugins = [];
 
-  constructor() { }
+  constructor(private request:RequestsService) {
+    this.form = new FormGroup({
+      fechaini: new FormControl('',[Validators.required]),
+      fechafin: new FormControl('',[Validators.required]),
+      
+    });
+    this.user = localStorage.getItem('cuenta');
+    this.user = JSON.parse(this.user);
+    if(this.user.privilegios == "superadmin"){
+      this.issuper = true;
+    }
+  }
 
   ngOnInit(): void {
   }
@@ -109,5 +125,33 @@ export class GraficaVentasComponent implements OnInit {
   aleatorio():number{
     return Math.round(Math.random() * (100 - 10) + 10);
   }
-
+  obtener(){
+    if(this.issuper){
+      this.request.consultas(`CALL reportes('v',0,'${this.form.get('fechaini')?.value}','${this.form.get('fechafin')?.value}')`)
+      .subscribe((res:any)=>{
+        this.array = res[0];
+        console.log(this.array)
+        this.rellenar();
+      })
+    }else{
+      this.request.consultas(`CALL reportes('v',${this.user.ID_sucursal},'${this.form.get('fechaini')?.value}','${this.form.get('fechafin')?.value}')`)
+      .subscribe((res:any)=>{
+        this.array = res[0];
+        console.log(this.array)
+        this.rellenar();
+      })
+    }
+  }
+  rellenar(){
+    let vals:any = [];
+    let labels:string[]=[];
+    for(let i=0;i<this.array.length;i++){
+      vals.push(this.array[i].total);
+      labels.push(this.array[i].s);
+    } 
+    this.barChartData= [
+      {data: vals,  borderWidth: this.ancho, type: this.barChartType, borderRadius: this.radius}, 
+    ];
+    this.barChartLabels = labels;
+  }
 }

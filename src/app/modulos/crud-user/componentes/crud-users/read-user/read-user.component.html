@@ -14,6 +14,8 @@
       <option value="6">Por id</option>
       <option value="7">Por correo electrónico</option>
       <option value="8" *ngIf="issuper">Por sucursal</option>
+      <option value="9" >Por fecha de contratación</option>
+      <option value="10" >Por rango de fecha de contratación</option>
       
     </select>
   </div>
@@ -56,6 +58,22 @@
         <label for="inputemail">ID de sucursal</label>
         <input formControlName="suc" type="text" class="form-control" id="inputemail" 
         [ngClass]="{'invalid':this.form.get('suc')?.invalid,'valid':!this.form.get('suc')?.invalid}">
+      </div>
+      <div *ngIf="controlador == 5 " class="form-group col-md-6">
+        <label for="inputfi">Fecha de contratación</label>
+        <input formControlName="fechaini" type="date" class="form-control" id="inputfi" 
+        [ngClass]="{'invalid':this.form.get('fechaini')?.invalid,'valid':!this.form.get('fechaini')?.invalid}">
+      </div>
+
+      <div *ngIf="controlador == 6 " class="form-group col-md-6">
+        <label for="inputfi">Fecha inicial</label>
+        <input formControlName="fechaini" type="date" class="form-control" id="inputfi" 
+        [ngClass]="{'invalid':this.form.get('fechaini')?.invalid,'valid':!this.form.get('fechaini')?.invalid}">
+      </div>
+      <div *ngIf="controlador == 6 " class="form-group col-md-6">
+        <label for="inputff">Fecha final</label>
+        <input formControlName="fechafin" type="date" class="form-control" id="inputff" 
+        [ngClass]="{'invalid':this.form.get('fechafin')?.invalid,'valid':!this.form.get('fechafin')?.invalid}">
       </div>
 
 

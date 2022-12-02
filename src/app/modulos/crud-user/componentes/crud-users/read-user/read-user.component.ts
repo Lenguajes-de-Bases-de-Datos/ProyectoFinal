@@ -44,7 +44,10 @@ export class ReadUserComponent implements OnInit {
       apmat : new FormControl('prueba',[Validators.required,Validators.pattern('[^|\"\'&!$()?`]+')]),
       id : new FormControl('123',[Validators.required,Validators.pattern('[0-9]+')]),
       email : new FormControl('prueba@gmail.com',[Validators.required,Validators.email]),
-      suc : new FormControl('1',[Validators.required,Validators.pattern("[0-9]+")])
+      suc : new FormControl('1',[Validators.required,Validators.pattern("[0-9]+")]),
+      fechaini : new FormControl('1',[Validators.required]),
+      fechafin : new FormControl('1',[Validators.required]),
+      
     });
    }
 
@@ -87,6 +90,16 @@ export class ReadUserComponent implements OnInit {
       this.sql = `SELECT * FROM usuario WHERE id_sucursal = ${this.form.get('suc')?.value}`;
       this.title = 'Por sucursal';
       
+    }else if(this.option == "9"){
+      this.controlador = 5;
+      this.sql = `SELECT * FROM usuario WHERE DATE(fecha) = '${this.form.get('fechaini')?.value}'`;
+      this.title = 'Por fecha de contratación';
+      
+    }else if(this.option == "10"){
+      this.controlador = 6;
+      this.sql = `SELECT * FROM usuario WHERE DATE(fecha) BETWEEN '${this.form.get('fechaini')?.value}' AND '${this.form.get('fechafin')?.value}'`;
+      this.title = 'Por rango de fecha de contratación';
+      
     }
     if(this.issuper){
 
@@ -110,6 +123,9 @@ export class ReadUserComponent implements OnInit {
     this.form.controls['id'].setValue('123');
     this.form.controls['email'].setValue('example@gmail.com');
     this.form.controls['suc'].setValue('1');
+    this.form.controls['fechaini'].setValue('1');
+    this.form.controls['fechafin'].setValue('1');
+    
 
    if(this.option == "1" || this.option == "2" || this.option == "3" || this.option == "4"){
       this.buscar();
@@ -131,6 +147,15 @@ export class ReadUserComponent implements OnInit {
     }else if(this.option == "8"){
       this.controlador = 4;
       this.form.controls['suc'].setValue('');
+    }else if (this.option == "9"){
+      this.controlador = 5;
+      this.form.controls['fechaini'].setValue('');
+    
+    }else if(this.option == "10"){
+      this.controlador = 6;
+      this.form.controls['fechaini'].setValue('');
+      this.form.controls['fechafin'].setValue('');
+    
     }
   }
   next(){

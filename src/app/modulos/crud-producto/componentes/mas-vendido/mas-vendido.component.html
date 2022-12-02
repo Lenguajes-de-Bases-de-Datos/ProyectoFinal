@@ -1,0 +1,88 @@
+<div class="wrapper">
+
+   
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <button   (click)="buscar()"  class="btn btn-outline-secondary" type="button" [disabled]="form.invalid">Buscar</button>
+      </div>
+      <select (change)="change()" [(ngModel)]="this.option"  class="custom-select" id="inputGroupSelect03" aria-label="Example select with button addon" >
+        <option selected value="0">Tipos de consultas...</option>
+        <option value="1">Todos</option>
+        <option value="2">Por patron</option>
+        <option value="3">Por id</option>
+        <option value="4">Por rango de fecha</option>
+      </select>
+    </div>
+  
+    <div [formGroup]="form">
+        <div class="form-row">
+          <div *ngIf="this.option == '2'" class="form-group col-md-6">
+            <label for="inputnom">Texto</label>
+            <input formControlName="texto" type="text" class="form-control" id="inputnom" 
+            [ngClass]="{'invalid':this.form.get('texto')?.invalid,'valid':!this.form.get('texto')?.invalid}">
+          </div>
+
+          <div *ngIf="this.option == '3'" class="form-group col-md-6">
+            <label for="inputid">ID</label>
+            <input formControlName="id" type="text" class="form-control" id="inputid" 
+            [ngClass]="{'invalid':this.form.get('id')?.invalid,'valid':!this.form.get('id')?.invalid}">
+          </div>
+
+          <div *ngIf="this.option == '4' || this.option == '3' || this.option == '2'" class="form-group col-md-6">
+            <label for="inputrfecha">Fecha de inicio</label>
+            <input formControlName="fechaini" type="date" class="form-control" id="inputrfecha" 
+            [ngClass]="{'invalid':this.form.get('fechaini')?.invalid,'valid':!this.form.get('fechaini')?.invalid}">
+          </div>
+          <div *ngIf="this.option == '4' || this.option == '3' || this.option == '2'" class="form-group col-md-6">
+            <label for="inputrfecha2">Fecha final</label>
+            <input formControlName="fechafin" type="date" class="form-control" id="inputrfecha2" 
+            [ngClass]="{'invalid':this.form.get('fechafin')?.invalid,'valid':!this.form.get('fechafin')?.invalid}">
+          </div>
+  
+
+        </div>
+        
+      </div>
+
+ <div class="table-responsive-lg">
+      <table class="table table-striped table-dark">
+          <thead>
+            <tr>
+              <th *ngIf="this.user.privilegios!='superadmin'" scope="col" colspan="8" style="text-align: center;">
+                Productos y sus ventas en sucursal {{this.user.ID_sucursal}}</th>
+                <th *ngIf="this.user.privilegios=='superadmin'" scope="col" colspan="8" style="text-align: center;">
+                  Productos y sus ventas</th>
+                
+            </tr>
+
+            <tr>
+              <th scope="col"># del producto</th>
+              <th scope="col">Producto</th>
+              <th scope="col">Categoria</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Ventas</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let obj of productos,index as i,let ultimo = last">
+               
+              <td *ngIf="i!=10">{{obj.id}}</td>
+              <td *ngIf="i!=10">{{obj.nombre}}</td>
+              <td *ngIf="i!=10">{{obj.cat}}</td>
+              <td *ngIf="i!=10">{{obj.precio | number:'1.1-3'}}</td>
+              <td *ngIf="i!=10">{{obj.tot}}</td>
+              
+            </tr>
+          
+          </tbody>
+        </table>
+  </div>      
+  
+  <app-paginacion [query]="sql" (array)="result($event)" #paginacion></app-paginacion>
+  
+ 
+
+
+
+</div>
