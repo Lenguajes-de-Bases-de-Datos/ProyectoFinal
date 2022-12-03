@@ -508,6 +508,7 @@ CREATE TABLE `usuario` (
   PRIMARY KEY (`ID`),
   UNIQUE KEY `email` (`email`),
   KEY `ID_sucursal` (`ID_sucursal`),
+  KEY `fecha` (`fecha`),
   CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`ID_sucursal`) REFERENCES `sucursal` (`ID`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -747,4 +748,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-02 18:03:56
+-- Dump completed on 2022-12-02 18:07:42
