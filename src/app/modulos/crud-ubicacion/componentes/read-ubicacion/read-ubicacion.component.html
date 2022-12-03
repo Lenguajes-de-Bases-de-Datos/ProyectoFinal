@@ -5,7 +5,7 @@
       <button   (click)="buscar()" (click)="paginacion.reinicia()" (click)="change()" class="btn" type="button">Buscar</button>
     </div>
     <select (change)="change()" [(ngModel)]="this.option"  class="custom-select" id="inputGroupSelect03" aria-label="Example select with button addon" >
-      <option selected value="0">Tipos de consultas...</option>
+      <option  value="0" disabled selected>Tipos de consultas...</option>
         <option value="1">Todos</option>
         <option value="2">Estado</option>
         <option value="3">Ciudad</option>
