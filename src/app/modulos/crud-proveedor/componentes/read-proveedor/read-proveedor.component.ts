@@ -87,9 +87,7 @@ export class ReadProveedorComponent implements OnInit {
        this.element?.reinicia(); 
     }, 100);
   }
-  moreUser(id:number){
 
-  }
   change(){
     if(this.option == "1"){
       this.controlador = 1;
@@ -185,6 +183,10 @@ export class ReadProveedorComponent implements OnInit {
       }
     });
     
+  }
+
+  moreProveedor(id:number){
+    this.router.navigate([`/more-proveedor/${id}`]);
   }
 
 }

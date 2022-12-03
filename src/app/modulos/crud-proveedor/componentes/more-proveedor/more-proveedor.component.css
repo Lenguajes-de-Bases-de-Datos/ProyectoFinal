@@ -1,0 +1,15 @@
+.reg{
+    cursor: pointer;
+    color: red !important;
+}
+.reg:hover{
+    color: rgb(24, 24, 155) !important;
+}
+.wrapper{
+    width: 50%;
+    margin: auto;
+}
+img{
+    width: 30%;
+    margin: auto;
+}
