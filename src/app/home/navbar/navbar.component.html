@@ -14,15 +14,15 @@
        
         <li class="nav-item dropdown" id="notification_li">
           <span id="notification_count">{{count}}</span>
-        <a class="nav-link dropdown-toggle icon-bell-1" href="#" id="notificationLink" [ngClass]="{paused:band_paused}" role="button" data-toggle="dropdown" aria-expanded="false" (click)="seen()"></a>
+        <a class="nav-link dropdown-toggle icon-bell-1"  id="notificationLink" [ngClass]="{paused:band_paused}" role="button" data-toggle="dropdown" aria-expanded="false" (click)="seen()"></a>
           
           <div class="dropdown-menu" >
            
               <!-- <a *ngFor="let obj of notifications,index as i" class="dropdown-item" href="#"  (click)="updateCount(i)">{{obj.text}}</a> -->
               <div class="list-group lista" >
-                <a class="list-group-item list-group-item-action active" *ngFor="let obj of notifications,index as i" class="dropdown-item" href="#"  (click)="updateCount(i)">
+                <a class="list-group-item list-group-item-action active" *ngFor="let obj of notifications,index as i" class="dropdown-item" >
                   <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">Mensaje</h5>
+                    <h5 class="mb-1">{{obj.header}}</h5>
                     <small></small>
                   </div>
                   <p class="mb-1">{{obj.text}}.</p>
