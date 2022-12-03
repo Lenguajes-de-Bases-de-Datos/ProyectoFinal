@@ -30,7 +30,7 @@ export class ReadCompraComponent implements OnInit {
     }else{
       this.sql = "SELECT c.id id,concat(u.id,' ',u.nombre,' ',u.appat,' ',apmat) usuario,u.id_sucursal suc,c.id_prov prov,c.total tot,c.fecha fecha,c.observaciones obs FROM compra c,usuario u WHERE c.id_usuario=u.id";
       this.band = true;
-      //pendientesqltot = `select sum(total) total from compra WHERE ID_sucursal=${this.user.ID_sucursal} GROUP BY ID_sucursal`;
+      sqltot = `select sum(total) total from compra `;
       
     }
     this.request.consultas(this.sql+' LIMIT 0,11').subscribe((res:any)=>{
@@ -56,25 +56,38 @@ export class ReadCompraComponent implements OnInit {
     if(this.option == "2"){
       this.sql = "SELECT c.id id,concat(u.id,' ',u.nombre,' ',u.appat,' ',apmat) usuario,u.id_sucursal suc,c.id_prov prov,c.total tot,c.fecha fecha,c.observaciones obs"; 
       this.sql+=` FROM compra c,usuario u WHERE c.id_usuario=u.id and DATE(c.fecha) = '${this.form.get('fecha')?.value}'`;
-      sqltot = `select sum(c.total) total from compra c,usuario u WHERE c.ID_usuario=u.id and u.ID_sucursal=${this.user.ID_sucursal} and c.fecha='${this.form.get('fecha')?.value}' GROUP BY u.ID_sucursal`;
+      //es superadmin la consulta cambia
+      if(this.band){
+        sqltot = `select sum(c.total) total from compra c,usuario u WHERE c.ID_usuario=u.id  and date(c.fecha)='${this.form.get('fecha')?.value}' GROUP BY date(c.fecha)`;
+      }else{
+        sqltot = `select sum(c.total) total from compra c,usuario u WHERE c.ID_usuario=u.id and u.ID_sucursal=${this.user.ID_sucursal} and date(c.fecha)='${this.form.get('fecha')?.value}' GROUP BY u.ID_sucursal`;
+      }
     }else if(this.option == "3"){
       this.sql = "SELECT c.id id,concat(u.id,' ',u.nombre,' ',u.appat,' ',apmat) usuario,u.id_sucursal suc,c.id_prov prov,c.total tot,c.fecha fecha,c.observaciones obs"; 
-      this.sql+=` FROM compra c,usuario u WHERE c.id_usuario=u.id and c.fecha BETWEEN '${this.form.get('fechaini')?.value}' and '${this.form.get('fechafin')?.value}'`;
-      sqltot = `select sum(c.total) total from compra c,usuario u WHERE c.ID_usuario=u.id and u.ID_sucursal=${this.user.ID_sucursal} and c.fecha BETWEEN '${this.form.get('fechaini')?.value}' and '${this.form.get('fechafin')?.value}' GROUP BY u.ID_sucursal`;
-    
+      this.sql+=` FROM compra c,usuario u WHERE c.id_usuario=u.id and date(c.fecha) BETWEEN '${this.form.get('fechaini')?.value}' and '${this.form.get('fechafin')?.value}'`;
+      if(this.band){
+        sqltot = `select sum(c.total) total from compra c,usuario u WHERE c.ID_usuario=u.id and date(c.fecha) BETWEEN '${this.form.get('fechaini')?.value}' and '${this.form.get('fechafin')?.value}'`;
+      }else{
+        sqltot = `select sum(c.total) total from compra c,usuario u WHERE c.ID_usuario=u.id and u.ID_sucursal=${this.user.ID_sucursal} and c.fecha BETWEEN '${this.form.get('fechaini')?.value}' and '${this.form.get('fechafin')?.value}' GROUP BY u.ID_sucursal`;
+      }
     }else if(this.option == "4"){
       this.sql = "SELECT c.id id,concat(u.id,' ',u.nombre,' ',u.appat,' ',apmat) usuario,u.id_sucursal suc,c.id_prov prov,c.total tot,c.fecha fecha,c.observaciones obs"; 
       this.sql+=` FROM compra c,usuario u WHERE c.id_usuario=u.id and concat(u.nombre,u.appat,u.apmat) LIKE '%${this.form.get('nombre')?.value}%'`;
-      sqltot = `select sum(c.total) total from compra c,usuario u WHERE c.ID_usuario=u.id and u.ID_sucursal=${this.user.ID_sucursal} and u.nombre LIKE '%${this.form.get('nombre')?.value}%' GROUP BY u.ID_sucursal`;
-    
+      if(this.band){
+        sqltot = `select sum(c.total) total from compra c,usuario u WHERE c.ID_usuario=u.id and u.nombre LIKE '%${this.form.get('nombre')?.value}%' `;
+      
+      }else{
+        sqltot = `select sum(c.total) total from compra c,usuario u WHERE c.ID_usuario=u.id and u.ID_sucursal=${this.user.ID_sucursal} and u.nombre LIKE '%${this.form.get('nombre')?.value}%' GROUP BY u.ID_sucursal`;
+      }
     }else if(this.option == "5"){
       this.sql = "SELECT c.id id,concat(u.id,' ',u.nombre,' ',u.appat,' ',apmat) usuario,u.id_sucursal suc,c.id_prov prov,c.total tot,c.fecha fecha,c.observaciones obs"; 
-      this.sql+=` FROM compra c,usuario u WHERE c.id_usuario=u.id and c.ID_sucursal = ${this.form.get('sucursal')?.value}`;
-      //sqltot = `select sum(c.total) total from compra c,usuario u WHERE u.ID_sucursal=${this.form.get('sucursal')?.value} GROUP BY u.ID_sucursal`;
+      this.sql+=` FROM compra c,usuario u WHERE c.id_usuario=u.id and u.ID_sucursal = ${this.form.get('sucursal')?.value}`;
+      sqltot = `select sum(c.total) total from compra c,usuario u WHERE c.id_usuario = u.id and u.ID_sucursal=${this.form.get('sucursal')?.value} `;
     
     }else if(this.option == "1"){
       this.sql = "SELECT c.id id,concat(u.id,' ',u.nombre,' ',u.appat,' ',apmat) usuario,u.id_sucursal suc,c.id_prov prov,c.total tot,c.fecha fecha,c.observaciones obs FROM compra c,usuario u WHERE c.id_usuario=u.id";
-  
+      sqltot = `select sum(total) total from compra `;
+      
     }else{
 
     }

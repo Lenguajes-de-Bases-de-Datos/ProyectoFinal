@@ -1,6 +1,8 @@
+
 <div class="fondo">
   <div class="wrapper" >
-    <div [formGroup]="this.form">
+    <h1>Crear nuevo usuario</h1>
+    <div [formGroup]="this.form" class="formulario">
         
         <div class="form-row" >
           <div class="form-group col-md-6">
@@ -31,14 +33,17 @@
       
        
         <div class="form-row">
+            
             <div class="form-group col-md-6">
                 <label for="inputAddress">Email</label>
                 <input [ngClass]="{'invalid':this.form.get('email')?.invalid,'valid':!this.form.get('email')?.invalid}" type="text" class="form-control" id="inputAddress" placeholder="example@gmail.com" formControlName="email">
               </div>
+
           <div class="form-group col-md-6">
             <label for="inputState">Privilegios</label>
             <select [ngClass]="{'invalid':this.form.get('privilegios')?.invalid,'valid':!this.form.get('privilegios')?.invalid}" id="inputState" class="form-control" formControlName="privilegios">
-              <option selected disabled>Choose...</option>
+              <option value="" selected="true" disable>Choose...</option>
+              <option>Superadmin</option>
               <option>Administrador</option>
               <option>Vendedor</option>
               <option>Almacenista</option>
@@ -50,8 +55,9 @@
   
           <div class="form-group col-md-6">
             <label for="inputAddress">Salario</label>
-            <input [ngClass]="{'invalid':this.form.get('salario')?.invalid,'valid':!this.form.get('salario')?.invalid}" type="text" class="form-control" id="inputAddress" placeholder="" formControlName="salario">
+            <input [ngClass]="{'invalid':this.form.get('salario')?.invalid,'valid':!this.form.get('salario')?.invalid}" type="text" class="form-control" id="inputAddress" placeholder="0-9.0-9 (Obligatorio el . con deciamales)" formControlName="salario">
           </div>
+
           <div class="form-group col-md-6">
             <label for="inputAddress">Genero</label>
             <div class="genders">
@@ -86,8 +92,10 @@
             <textarea  class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="Write something here..." formControlName="desc" ></textarea>
         </div>
         </div>
-        <button  class="btn btn-primary" (click)="send()" [disabled]="this.form.invalid">Sign up</button>
-        
+
+        <div class="boton">
+          <button  class="btn" (click)="send()" [disabled]="this.form.invalid">Sign up</button>
+        </div>
       </div>
     </div>
 </div>

@@ -1,3 +1,4 @@
+<div class="fondo">
 <div class="wrapper">
     <a class="icon-arrow-left card-link reg" (click)="regresar()">  Regresar</a>
     <!--Información de la venta-->
@@ -69,5 +70,7 @@
     </div> 
      
 </div>
+
 <app-paginacion [query]="sql" (array)="result($event)" #paginacion></app-paginacion>
+</div>
   

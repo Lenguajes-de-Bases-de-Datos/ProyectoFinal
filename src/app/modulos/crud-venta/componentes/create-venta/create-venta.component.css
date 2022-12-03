@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
 .wrapper{
-    width: 80%;
+    width: 90%;
     margin: auto;
     font-family: Fredoka One;
 }
@@ -14,7 +14,7 @@
     background-size: 100% 100%;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    padding: 3em;
+    padding: 2em;
 }
 
 .car{
@@ -61,4 +61,14 @@ table{
 
 .boton{
     margin: 10px;
+}
+
+h1{
+    text-shadow: 5px 5px 7px rgb(70, 70, 70);
+    color: white;
+}
+
+.titulo{
+    margin: 30px;
+    padding: 10px;
 }

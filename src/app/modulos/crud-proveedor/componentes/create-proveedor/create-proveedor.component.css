@@ -38,7 +38,7 @@ i{
 }
 
 .cajauno{
-    background-color: rgba(0, 0, 0, 0.205);
+    background-color: rgba(238, 76, 170, 0.527);
     margin: 15px;
     padding: 15px;
     box-shadow: 0 0 20px rgb(255, 254, 254);
@@ -46,7 +46,7 @@ i{
 }
 
 label{
-    font-size: 15px;
+    font-size: 17px;
     text-shadow: 5px 5px 7px rgb(70, 70, 70);
     color: white;
 }

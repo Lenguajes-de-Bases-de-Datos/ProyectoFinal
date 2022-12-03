@@ -2,7 +2,7 @@
 
 
 .wrapper{
-    width: 60%;
+    width: 90%;
     margin: auto;
     font-family: Fredoka One;
 }
@@ -79,4 +79,13 @@ label{
     text-shadow: 5px 5px 7px rgb(17, 17, 17);
     box-shadow: 0 0 20px rgb(255, 254, 254);
     padding: 2em;
+}
+
+h1{
+    text-shadow: 5px 5px 7px rgb(70, 70, 70);
+    color: white;
+}
+
+.titulo{
+    padding: 10px;
 }

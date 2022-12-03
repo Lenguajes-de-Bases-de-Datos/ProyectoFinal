@@ -1,0 +1,40 @@
+<div class="container mt-5 pt-5">
+    <div class="col-12">
+        <div class="form-row" [formGroup]="form" >
+    
+            <div class="form-group col-md-6">
+              <label for="inputrfecha">Fecha de inicio</label>
+              <input formControlName="fechaini" type="date" class="form-control" id="inputrfecha" 
+              [ngClass]="{'invalid':this.form.get('fechaini')?.invalid,'valid':!this.form.get('fechaini')?.invalid}">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputrfecha2">Fecha final</label>
+              <input formControlName="fechafin" type="date" class="form-control" id="inputrfecha2" 
+              [ngClass]="{'invalid':this.form.get('fechafin')?.invalid,'valid':!this.form.get('fechafin')?.invalid}">
+            </div>
+            <div class="form-group col-md-4">
+                <button type="submit" class="btn btn-info" [disabled]="this.form.invalid" (click)="obtener()">Obtener reporte</button>    
+            </div>
+            
+          </div>
+
+        <div class="row">
+            <div class="col-5 pl-5 mt-5 text">
+                <h1>Bar Chart Venta</h1>
+                <br>
+                <h3>Suffle Data</h3>
+                <br>
+                <button class="btn btn-outline-primary" (click)="shuffleData()">Buscar</button>
+            </div>
+            <div class="col-7">
+                <canvas baseChart
+                    [datasets]="barChartData"
+                    [labels]="barChartLabels"
+                    [plugins]="barChartPlugins"
+                    [legend]="barChartLegend"
+                    [options]="barChartOptions">
+                </canvas>
+            </div>
+        </div>
+    </div>
+</div>

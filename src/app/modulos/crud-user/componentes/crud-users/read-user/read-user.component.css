@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
 .wrapper{
-    width: 85%;
+    width: 95%;
     margin: auto;
     font-family: Fredoka One;
 }
@@ -21,7 +21,6 @@ a, .delete{
     background-attachment: fixed;
     background-repeat: no-repeat;
     padding: 2em;
-
 }
 
 .custom-select{
@@ -33,6 +32,8 @@ a, .delete{
     color: white;
     box-shadow: 3px 3px 3px rgba(51, 51, 51, 0.5);
     border-radius: 5px;
+    width: 90px;
+    font-size: 15px;
 }
 
 .btnbuscar:hover{
@@ -41,7 +42,18 @@ a, .delete{
 }
 
 table{
-    background: rgb(20, 141, 255);
+    background: rgb(18, 24, 104);
     text-align: center;
+    color: white;
+    
 }
 
+h1{
+    text-shadow: 5px 5px 7px rgb(70, 70, 70);
+    color: white;
+}
+
+.titulo{
+    margin: 10px;
+    padding: 10px;
+}

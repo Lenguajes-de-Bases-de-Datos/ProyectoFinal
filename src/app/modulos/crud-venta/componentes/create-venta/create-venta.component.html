@@ -1,11 +1,12 @@
 <div class="fondo">
 <div class="wrapper">
-  
-  
-    
+  <div class="titulo">
+    <h1>Crear Venta</h1>
+  </div>
     <div class="boton">
     <button type="submit" class="btn" (click)="venta()" [disabled]="isEmptyArray()">Realizar</button>
   </div>
+
     <textarea [(ngModel)]="this.desc" class="form-control z-depth-1 mb-2" id="exampleFormControlTextarea6" rows="3" placeholder="Comentarios..."  
     >
 
@@ -34,7 +35,7 @@
                 <td *ngIf="i!=10">{{obj.nombre}}</td>
                 <td *ngIf="i!=10">
                   
-                  <input (keyup)="actTotal($event,i)" [(ngModel)]="obj.cant" type="text" id="inputcantidad" class="form-control"  placeholder="0-9">
+                  <input (blur)="salir(i)" (keyup)="actTotal($event,i)" [(ngModel)]="obj.cant" type="text" id="inputcantidad" class="form-control"  placeholder="0-9">
   
                 </td>
                 <td *ngIf="i!=10">{{obj.precio | number: '1.1-3' }}</td>
@@ -45,7 +46,7 @@
   
   
                 </td>
-                <td *ngIf="i!=10"><i class="icon-trash-4 delete" (click)="deleteOne(obj)"></i></td>
+                <td *ngIf="i!=10"><i class="icon-trash-4 delete" (click)="deleteOne(i)"></i></td>
                   
                 
               </tr>

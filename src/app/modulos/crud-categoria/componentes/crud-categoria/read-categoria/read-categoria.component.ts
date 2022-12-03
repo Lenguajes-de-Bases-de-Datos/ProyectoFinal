@@ -25,8 +25,8 @@ export class ReadCategoriaComponent implements OnInit {
      
     });
     this.form = new FormGroup({
-      texto : new FormControl('',[Validators.required]),
-      id : new FormControl('',[Validators.required])
+      texto : new FormControl('',[Validators.required,Validators.pattern("[^\"\'|&]+")]),
+      id : new FormControl('',[Validators.required,Validators.pattern("[0-9]+")])
     });
   }
 

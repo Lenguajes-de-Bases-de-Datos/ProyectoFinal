@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
 .fondo{
-    background-image: url('../../../../../../assets/img/fondorosa.png');
+    background-image: url('../../../../../../assets/img/fondo8.png');
     height: 100vh 100vw;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -10,10 +10,15 @@
 }
 
 label{
-    color: black;
+    color: rgb(255, 255, 255);
     font-size: 20px;
-    -webkit-text-stroke: 1px deeppink;
+    text-shadow: 2px 2px 3px rgb(51, 51, 51);
 }
+
+.form-row{
+    margin: 10px;
+}
+
 
 .wrapper{
     width: 80%;
@@ -42,6 +47,12 @@ i{
     margin-left: 20px;
 }
 
+.boton{
+    margin-left: 120px;
+    margin-top: -50px;
+    padding: 20px;
+}
+
 .btn{
     background: deeppink;
     color: white;
@@ -63,15 +74,6 @@ input{
     margin-right: 50px !important;
 }
 
-.botonsign{
-    margin: auto;
-    margin-top: 30px;
-    background: deeppink;
-    color: white;
-    box-shadow: 3px 3px 3px rgba(51, 51, 51, 0.5);
-    border-radius: 5px;
-}
-
 .genders{
     display: flex;
     justify-content: space-between;
@@ -81,3 +83,15 @@ input[type="radio"]{
 
 }
 
+h1{
+    margin: 5px;
+    padding: 5px;
+}
+
+.formulario{
+    background-color: rgba(0, 0, 0, 0.205);
+    padding: 15px;
+    margin: 15px;
+    box-shadow: 0 0 20px rgb(255, 254, 254);
+    border-radius: 5px;
+}

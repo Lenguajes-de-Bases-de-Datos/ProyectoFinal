@@ -2,7 +2,9 @@
 <div class="wrapper">
     <h1 *ngIf="actualiza else alta">Actualizar Producto</h1>
     <ng-template #alta>
+        <div class="titulo">
         <h1>Registrar Producto</h1>
+        </div>  
     </ng-template>
     <div [formGroup]="form">
         
@@ -14,8 +16,9 @@
                 [ngClass]="{'invalid':this.form.get('nombre')?.invalid,'valid':!this.form.get('nombre')?.invalid}">
             </div>
             <div class="form-group col-md-6">
-                <label for="inputprecio">Precio:</label>
-                <input type="text" class="form-control" id="inputprecio" formControlName="precio" placeholder="0-9"
+
+                <label for="inputprecio">Precio</label>
+                <input type="text" class="form-control" id="inputprecio" formControlName="precio" placeholder="0-9.0-9 (Obligatorio el . con deciamales)"
                 [ngClass]="{'invalid':this.form.get('precio')?.invalid,'valid':!this.form.get('precio')?.invalid}">
             </div>
         </div>
@@ -52,7 +55,7 @@
               <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
             </div>
             <div class="custom-file">
-              <input type="file" accept="image/*" class="custom-file-input" id="inputGroupFile01" name="photo" aria-describedby="inputGroupFileAddon01" (change)="onFileChange($event)">
+              <input type="file" accept="image/*" class="custom-file-input" id="inputGroupFile01" name="photo" aria-describedby="inputGroupFileAddon01" (change)="onFileChange($event)" required>
               <label class="custom-file-label" for="inputGroupFile01" *ngIf="this.bandImg">{{this.name}}</label>
               <label class="custom-file-label" for="inputGroupFile01" *ngIf="!this.bandImg">Choose file</label>
           

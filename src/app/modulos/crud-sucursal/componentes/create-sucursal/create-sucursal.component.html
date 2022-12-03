@@ -7,6 +7,8 @@
           <h1 >Registrar Sucursal</h1>
         
         </ng-template>
+
+        <div class="cajauno">
         <div class="form-group col-md-4">
             <label for="inputState">Ubicación</label>
             <select id="inputState" class="form-control" formControlName="ubicacion" [ngClass]="{'invalid':this.form.get('ubicacion')?.invalid,'valid':!this.form.get('ubicacion')?.invalid}">
@@ -54,9 +56,12 @@
 
          
         <button *ngIf="!actualiza" type="submit" class="btn btn-primary" [disabled]="form.invalid" (click)="enviar()">Dar de alta</button>
-        <button *ngIf="actualiza" type="submit" class="btn btn-primary" [disabled]="form.invalid" (click)="update()">Actualizar</button>
-          
+        
+        <div class="boton">
+          <button *ngIf="actualiza" type="submit" class="btnbuscar" [disabled]="form.invalid" (click)="update()">Actualizar</button>
+        </div>
       
       </div>
+    </div>
 </div>
 </div>

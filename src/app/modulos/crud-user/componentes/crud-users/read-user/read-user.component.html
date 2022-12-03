@@ -1,8 +1,11 @@
 <div class="fondo">
 <div class="wrapper">
+  <div class="titulo">
+  <h1>Consultar Usuario</h1>
+</div>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
-      <button   (click)="buscar()" (click)="paginacion.reinicia()" class="btnbuscar" type="button" [disabled]="this.form.invalid">Buscar</button>
+      <button   (click)="buscar()"  class="btnbuscar" type="button" [disabled]="this.form.invalid">Buscar</button>
     </div>
     <select (change)="change()" [(ngModel)]="this.option"  class="custom-select" id="inputGroupSelect03" aria-label="Example select with button addon" >
       <option class="opciones" selected value="0">Tipos de consultas...</option>
@@ -13,6 +16,9 @@
       <option value="5">Por nombre</option>
       <option value="6">Por id</option>
       <option value="7">Por correo electrónico</option>
+      <option value="8" *ngIf="issuper">Por sucursal</option>
+      <option value="9" >Por fecha de contratación</option>
+      <option value="10" >Por rango de fecha de contratación</option>
       
     </select>
   </div>
@@ -51,7 +57,27 @@
         <input formControlName="email" type="text" class="form-control" id="inputemail" 
         [ngClass]="{'invalid':this.form.get('email')?.invalid,'valid':!this.form.get('email')?.invalid}">
       </div>
+      <div *ngIf="controlador == 4 and issuper" class="form-group col-md-6">
+        <label for="inputemail">ID de sucursal</label>
+        <input formControlName="suc" type="text" class="form-control" id="inputemail" 
+        [ngClass]="{'invalid':this.form.get('suc')?.invalid,'valid':!this.form.get('suc')?.invalid}">
+      </div>
+      <div *ngIf="controlador == 5 " class="form-group col-md-6">
+        <label for="inputfi">Fecha de contratación</label>
+        <input formControlName="fechaini" type="date" class="form-control" id="inputfi" 
+        [ngClass]="{'invalid':this.form.get('fechaini')?.invalid,'valid':!this.form.get('fechaini')?.invalid}">
+      </div>
 
+      <div *ngIf="controlador == 6 " class="form-group col-md-6">
+        <label for="inputfi">Fecha inicial</label>
+        <input formControlName="fechaini" type="date" class="form-control" id="inputfi" 
+        [ngClass]="{'invalid':this.form.get('fechaini')?.invalid,'valid':!this.form.get('fechaini')?.invalid}">
+      </div>
+      <div *ngIf="controlador == 6 " class="form-group col-md-6">
+        <label for="inputff">Fecha final</label>
+        <input formControlName="fechafin" type="date" class="form-control" id="inputff" 
+        [ngClass]="{'invalid':this.form.get('fechafin')?.invalid,'valid':!this.form.get('fechafin')?.invalid}">
+      </div>
 
 
       <div *ngIf="controlador == 1 " class="form-group col-md-6">
@@ -88,6 +114,7 @@
             <th scope="col">Activo</th>
             <th scope="col">Acción</th>
             <th scope="col">Más</th>
+            <th scope="col">Actualizar</th>
           </tr>
         </thead>
         <tbody>
@@ -109,7 +136,7 @@
               </ng-template>
             </td>
             <td *ngIf="i!=10"><i class="icon-newspaper-o more" (click)="moreUser(obj.ID)"></i></td>
-            
+            <td *ngIf="i!=10"><i (click)="update(obj.ID)" class="icon-pencil"></i></td>
           </tr>
         
         </tbody>

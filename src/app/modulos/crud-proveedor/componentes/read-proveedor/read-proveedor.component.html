@@ -2,7 +2,11 @@
 <div class="wrapper">
     <div class="input-group mb-3">
         <div class="input-group-prepend">
+
           <button   (click)="buscar()" (click)="paginacion.reinicia()" (click)="change()" class="btnbuscar" type="button">Buscar</button>
+
+          <!--<button   (click)="buscar()" (click)="change()" class="btn btn-outline-secondary" type="button" >Buscar</button>-->
+
         </div>
         <select (change)="change()" [(ngModel)]="this.option"  class="custom-select" id="inputGroupSelect03" aria-label="Example select with button addon" >
             <option selected value="0">Tipos de consultas...</option>
@@ -42,7 +46,7 @@
                 <th scope="col">Status</th>
                 <th scope="col">Acción</th>
                 <th scope="col">Más</th>
-                <th scope="col">Editar</th>
+                <th scope="col">Actualizar</th>
               </tr>
             </thead>
             <tbody>

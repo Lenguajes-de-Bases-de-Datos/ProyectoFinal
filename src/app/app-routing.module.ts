@@ -40,12 +40,18 @@ import { OneVentaComponent } from './modulos/crud-venta/componentes/one-venta/on
 import { OneProductoComponent } from './modulos/crud-producto/componentes/one-producto/one-producto.component';
 import { OpenCajaComponent } from './modulos/crud-producto/componentes/open-caja/open-caja.component';
 import { CheckExistenciasComponent } from './modulos/crud-producto/componentes/check-existencias/check-existencias.component';
+import { UserCompraComponent } from './modulos/crud-compra/componentes/user-compra/user-compra.component';
+import { UserVentaComponent } from './modulos/crud-venta/componentes/user-venta/user-venta.component';
+import { UpdateProductoComponent } from './modulos/crud-producto/componentes/update-producto/update-producto.component';
+import { GraficaGeneroComponent } from './modulos/crud-user/componentes/grafica-genero/grafica-genero.component';
+import { GraficaVentasComponent } from './modulos/crud-venta/componentes/grafica-ventas/grafica-ventas.component';
+import { MasVendidoComponent } from './modulos/crud-producto/componentes/mas-vendido/mas-vendido.component';
 
 const routes: Routes = [
   {path:'portal', component:PortalComponent},
   {path:'sign-up',component:CreateUserComponent,canActivate:[AuthGuardService],data:['administrador']},
   {path:'read-users', component:ReadUserComponent,canActivate:[AuthGuardService]},
-  {path:'update-user', component:UpdateUserComponent,canActivate:[AuthGuardService]},
+  {path:'update-user/:id', component:UpdateUserComponent,canActivate:[AuthGuardService]},
   {path:'delete-user', component:DeleteUserComponent,canActivate:[AuthGuardService]},
   {path:'send-msg',component:SendMessageComponent,canActivate:[AuthGuardService]},
   {path:'create-categoria',component:CreateCategoriaComponent,canActivate:[AuthGuardService]},
@@ -59,9 +65,11 @@ const routes: Routes = [
   {path:'update-sucursal',component:UpdateSucursalComponent,canActivate:[AuthGuardService]},
   {path:'create-producto',component:CreateProductoComponent,canActivate:[AuthGuardService]},
   {path:'read-producto',component:ReadProductoComponent,canActivate:[AuthGuardService]},
+  {path:'update-producto/:id',component:UpdateProductoComponent,canActivate:[AuthGuardService]},
   {path:'one-producto/:nombre',component:OneProductoComponent,canActivate:[AuthGuardService]},
   {path:'open-caja',component:OpenCajaComponent,canActivate:[AuthGuardService]},
   {path:'check-existencias/:id',component:CheckExistenciasComponent,canActivate:[AuthGuardService]},
+  {path:'mas-vendido',component:MasVendidoComponent,canActivate:[AuthGuardService]},
   {path:'create-compra',component:CreateCompraComponent,canActivate:[AuthGuardService]},
   {path:'create-proveedor', component:CreateProveedorComponent,canActivate:[AuthGuardService]},
   {path:'read-proveedor',component:ReadProveedorComponent,canActivate:[AuthGuardService]},
@@ -75,9 +83,13 @@ const routes: Routes = [
   {path:'default',component:DefaultComponent,canActivate:[AuthGuardService]},
   {path:'read-compra',component:ReadCompraComponent,canActivate:[AuthGuardService]},
   {path:'one-compra/:id',component:OneCompraComponent,canActivate:[AuthGuardService]},
+  {path:'user-compra',component:UserCompraComponent,canActivate:[AuthGuardService]},
   {path:'create-venta',component:CreateVentaComponent,canActivate:[AuthGuardService]},
   {path:'read-venta',component:ReadVentaComponent,canActivate:[AuthGuardService]},
   {path:'one-venta/:id',component:OneVentaComponent,canActivate:[AuthGuardService]},
+  {path:'grafica-genero',component:GraficaGeneroComponent,canActivate:[AuthGuardService]},
+  {path:'grafica-ventas',component:GraficaVentasComponent,canActivate:[AuthGuardService]},
+  {path:'user-venta',component:UserVentaComponent,canActivate:[AuthGuardService]},
   {path:'**',component:PortalComponent,canActivate:[AuthGuardService]},
   
 ];

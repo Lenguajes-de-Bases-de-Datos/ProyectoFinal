@@ -1,11 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
 .reg{
     cursor: pointer;
-    color: red !important;
+    color: rgb(255, 0, 76) !important;
 }
 .reg:hover{
-    color: rgb(24, 24, 155) !important;
+    color: rgb(85, 20, 53) !important;
 }
 .wrapper{
     width: 50%;
     margin: auto;
+    font-family: Fredoka One;
 }
+img{
+    width: 30%;
+    margin: auto;
+    padding: 10px;
+}
+
+.fondo{
+    background-image: url('../../../../../../assets/img/fondo5.png');
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    padding: 2em;
+}
+
+.titulo{
+    padding: 20px;
+}
+
+h1{
+    font-size: 30px;
+    text-shadow: 5px 5px 7px rgb(70, 70, 70);
+    color: white;
+    
+}
+
+.card{
+    background-color: rgba(233, 233, 233, 0.918);
+    padding: 15px;
+    box-shadow: 0 0 40px rgb(252, 97, 7);
+    border-radius: 5px;
+}
+
+ul{
+    background-color: rgba(233, 233, 233, 0.918);
+    box-shadow: 0 0 40px rgb(252, 97, 7);
+}
+
+h5{
+    text-align: center;
+    text-shadow: 3px 3px 5px rgb(97, 97, 97);
+    padding: 10px;
+    color: rgb(228, 93, 45);
+}
+
+b{
+    padding: 10px;
+    color: rgb(228, 80, 26);
+}
+

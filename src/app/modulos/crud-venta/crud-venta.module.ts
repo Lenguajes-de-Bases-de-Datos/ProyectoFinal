@@ -5,6 +5,9 @@ import { ReadVentaComponent } from './componentes/read-venta/read-venta.componen
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeModule } from 'src/app/home/home.module';
 import { OneVentaComponent } from './componentes/one-venta/one-venta.component';
+import { GraficaVentasComponent } from './componentes/grafica-ventas/grafica-ventas.component';
+import { NgChartsModule } from 'ng2-charts';
+import { UserVentaComponent } from './componentes/user-venta/user-venta.component';
 
 
 
@@ -12,13 +15,16 @@ import { OneVentaComponent } from './componentes/one-venta/one-venta.component';
   declarations: [
     CreateVentaComponent,
     ReadVentaComponent,
-    OneVentaComponent
+    OneVentaComponent,
+    GraficaVentasComponent,
+    UserVentaComponent
   ],
   imports: [
     CommonModule,
     HomeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgChartsModule
   ]
 })
 export class CrudVentaModule { }

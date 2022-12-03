@@ -6,6 +6,7 @@ import { CrudProductoModule } from '../crud-producto/crud-producto.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeModule } from 'src/app/home/home.module';
 import { OneCompraComponent } from './componentes/one-compra/one-compra.component';
+import { UserCompraComponent } from './componentes/user-compra/user-compra.component';
 
 
 
@@ -13,7 +14,8 @@ import { OneCompraComponent } from './componentes/one-compra/one-compra.componen
   declarations: [
     CreateCompraComponent,
     ReadCompraComponent,
-    OneCompraComponent
+    OneCompraComponent,
+    UserCompraComponent
   ],
   imports: [
     CommonModule,

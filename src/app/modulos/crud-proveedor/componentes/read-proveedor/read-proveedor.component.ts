@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { PaginacionComponent } from 'src/app/home/paginacion/paginacion.component';
 import { RequestsService } from 'src/app/services/requests.service';
 import swal from 'sweetalert2';
 
@@ -17,9 +18,10 @@ export class ReadProveedorComponent implements OnInit {
   sql:string="SELECT * FROM proveedor";
   option:string="1";
   controlador:number = 0;
-  idProveedor:any=0;
-  nomEncargado:any;
+  idProveedor:string="";
+  nomEncargado:string="";
 
+  @ViewChild('paginacion') element?:PaginacionComponent;
   constructor(private request:RequestsService, private router:Router) {
     let mysql = `CREATE OR REPLACE VIEW nomcomprov AS SELECT id,concat(nencargado,' ',appat,' ',apmat) nomcom FROM proveedor`;
 
@@ -52,12 +54,38 @@ export class ReadProveedorComponent implements OnInit {
       this.sql = `SELECT * FROM proveedor`;
       this.title = 'Todos';
     }else if(this.option == "2"){
-      this.sql += `id = ${this.idProveedor}`;
-      this.title = 'ID del proveedor';
+      if(this.idProveedor.match("[0-9]+")){
+        this.sql += `id = ${this.idProveedor}`;
+        this.title = 'ID del proveedor';
+    
+      }else{
+        swal.fire({
+          backdrop:true,
+          allowOutsideClick: true,
+          title: "Error ...",
+          text: `Solo se aceptan numeros...`,
+          confirmButtonText:'Entendido'
+        });
+      }
     }else if(this.option == "3"){
-      this.sql += `id in(select id from nomcomprov where nomcom like '%${this.nomEncargado}%')`;
-      this.title = 'Nombre del proveedor';
+      if(this.nomEncargado.match("[|\"\'&]+")){
+        swal.fire({
+          backdrop:true,
+          allowOutsideClick: true,
+          title: "Error ...",
+          text: `Caracteres inadecuados como: ",',etc...`,
+          confirmButtonText:'Entendido'
+        });
+      }else{
+       
+        this.sql += `id in(select id from nomcomprov where nomcom like '%${this.nomEncargado}%')`;
+        this.title = 'Nombre del proveedor';
+      }
     }
+
+    setTimeout(() => {
+       this.element?.reinicia(); 
+    }, 100);
   }
   moreUser(id:number){
 

@@ -1,13 +1,14 @@
 <nav class="navbar navbar-expand-lg">
     
-
-  <a class="navbar-brand" href="#"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-      
-    </button>
+  <a class="navbar-brand" href=""></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="icon-bars"></span>
+    
+  </button>
+ 
+ 
   
-    <div class="collapse navbar-collapse" id="navtext">
+    <div class="collapse navbar-collapse opt" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <img src="" alt="">
        
@@ -21,7 +22,7 @@
               <div class="list-group lista" >
                 <a class="list-group-item list-group-item-action active" *ngFor="let obj of notifications,index as i" class="dropdown-item" href="#"  (click)="updateCount(i)">
                   <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">List group item heading</h5>
+                    <h5 class="mb-1">Mensaje</h5>
                     <small></small>
                   </div>
                   <p class="mb-1">{{obj.text}}.</p>
@@ -49,14 +50,15 @@
             <a class="dropdown-item" href="#">Another action</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" (click)="logOut()">Log Out</a>
+            <a class="dropdown-item" (click)="grafica()">GenGra</a>
+            <a class="dropdown-item" (click)="grafica2()">VenGra</a>
           </div>
         </li>
 
 
       </ul>
      
-
-     
+      
 
 
     </div>

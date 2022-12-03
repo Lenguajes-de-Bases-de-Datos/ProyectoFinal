@@ -64,10 +64,19 @@ export class RequestsService {
     return this.request.post(this.path+a,params,{headers:headers});
   }
 
-  uploadFile(formData:FormData){
+  uploadFile(formData:FormData):any{
     let urlApi = '/api/subir';
     return this.request.post(this.path+urlApi, formData);
 
 
   }
+
+  borrarImg(nombre:string):any{
+      let params ={
+        nombre:nombre
+      }
+      let urlApi='/api/borrar';
+      return this.request.post(this.path+urlApi,params);
+  }
+  
 }
