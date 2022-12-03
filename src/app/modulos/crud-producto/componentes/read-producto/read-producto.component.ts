@@ -11,7 +11,7 @@ import { RequestsService } from 'src/app/services/requests.service';
   styleUrls: ['./read-producto.component.css']
 })
 export class ReadProductoComponent implements OnInit {
-  option:string="";
+  option:string="1";
   form!:FormGroup;
   //sql:string="SELECT p.ID ID,c.ncategoria,p.nombre,p.descripcion,p.precioUnitario,p.status,p.piezas FROM producto p,categoria c WHERE p.categoria = c.id";
   
@@ -110,5 +110,8 @@ export class ReadProductoComponent implements OnInit {
   }
   actualizar(id:number){
     this.router.navigate(['/update-producto',id]);
+  }
+  ngAfterViewInit(){
+    this.element?.reinicia();
   }
 }

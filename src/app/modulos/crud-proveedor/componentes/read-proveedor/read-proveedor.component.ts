@@ -188,5 +188,7 @@ export class ReadProveedorComponent implements OnInit {
   moreProveedor(id:number){
     this.router.navigate([`/more-proveedor/${id}`]);
   }
-
+  ngAfterViewInit(){
+    this.element?.reinicia();
+  }
 }
