@@ -26,17 +26,7 @@ export class SidebarComponent implements OnInit {
         ruta:'/read-users',
         nombre:'Consultar',
         excluye:[""]
-       } ,
-       {
-        ruta:'update-user',
-        nombre:'Actualizar',
-        excluye:[""]
-       }, 
-       {
-        ruta:'delete-user',
-        nombre:'Eliminar',
-        excluye:[""]
-      }
+       } 
     ],
       icono:"icon-torsos",
       id:"users",
@@ -77,11 +67,6 @@ export class SidebarComponent implements OnInit {
        { 
         ruta:'/read-sucursal',
         nombre:'Consultar',
-        excluye:[""]
-       } ,
-       {
-        ruta:'/update-sucursal',
-        nombre:'Actualizar',
         excluye:[""]
        }
     ],
@@ -129,17 +114,7 @@ export class SidebarComponent implements OnInit {
         ruta:'/read-proveedor',
         nombre:'Consultar',
         excluye:[""]
-       } ,
-       {
-        ruta:'',
-        nombre:'Actualizar',
-        excluye:[""]
-       }, 
-       {
-        ruta:'',
-        nombre:'Eliminar',
-        excluye:[""]
-      }
+       } 
     ],
       icono:"icon-building",
       id:"proveedor",
@@ -220,17 +195,7 @@ export class SidebarComponent implements OnInit {
         ruta:'/read-ubicacion',
         nombre:'Consultar',
         excluye:[""]
-       } ,
-       {
-        ruta:'/update-ubicacion',
-        nombre:'Actualizar',
-        excluye:[""]
-       }, 
-       {
-        ruta:'',
-        nombre:'Eliminar',
-        excluye:[""]
-      }
+       } 
     ],
       icono:"icon-map-marker",
       id:"ubicacion",
