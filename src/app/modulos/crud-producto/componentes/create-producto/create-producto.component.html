@@ -1,3 +1,4 @@
+<div class="fondo">
 <div class="wrapper">
     <h1 *ngIf="actualiza else alta">Actualizar Producto</h1>
     <ng-template #alta>
@@ -5,10 +6,11 @@
     </ng-template>
     <div [formGroup]="form">
         
+    <div class="cajauno">
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="inputnombre" >Nombre</label>
-                <input type="text" class="form-control" id="inputnombre" formControlName="nombre" placeholder="producto"
+                <label for="inputnombre" >Nombre:</label>
+                <input type="text" class="form-control" id="inputnombre" formControlName="nombre" placeholder="Producto"
                 [ngClass]="{'invalid':this.form.get('nombre')?.invalid,'valid':!this.form.get('nombre')?.invalid}">
             </div>
             <div class="form-group col-md-6">
@@ -17,14 +19,16 @@
                 [ngClass]="{'invalid':this.form.get('precio')?.invalid,'valid':!this.form.get('precio')?.invalid}">
             </div>
         </div>
+    
+    
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="inputcont">Contenido</label>
+                <label for="inputcont">Contenido:</label>
                 <input type="text" class="form-control" id="inputcont" formControlName="contenido" placeholder="0-9"
                 [ngClass]="{'invalid':this.form.get('contenido')?.invalid,'valid':!this.form.get('contenido')?.invalid}">
             </div>
             <div class="form-group col-md-6">
-                <label for="inputDesc">Descripción</label>
+                <label for="inputDesc">Descripción:</label>
                 <textarea  class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="Comentarios..." formControlName="descripcion" 
                 formControlName="descripcion" [ngClass]="{'invalid':this.form.get('descripcion')?.invalid,'valid':!this.form.get('descripcion')?.invalid}">
     
@@ -33,7 +37,7 @@
         </div>
         <div class="form-row">
         <div class="form-group col-md-6">
-            <label for="inputState">Categoria</label>
+            <label for="inputState">Categoria:</label>
             <select id="inputState" class="form-control" formControlName="categoria"
             [ngClass]="{'invalid':this.form.get('categoria')?.invalid,'valid':!this.form.get('categoria')?.invalid}">
                 <option value="" selected="true" disabled>Choose...</option>
@@ -42,7 +46,7 @@
            
         </div>
         <div class="input-group  col-md-6">
-            <div class="input-group"><label for="">Imagen</label></div>
+            <div class="input-group"><label for="">Imagen:</label></div>
             <div class="input-group filee">
             <div class="form-group-prepend">
               <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
@@ -51,14 +55,18 @@
               <input type="file" accept="image/*" class="custom-file-input" id="inputGroupFile01" name="photo" aria-describedby="inputGroupFileAddon01" (change)="onFileChange($event)" required>
               <label class="custom-file-label" for="inputGroupFile01" *ngIf="this.bandImg">{{this.name}}</label>
               <label class="custom-file-label" for="inputGroupFile01" *ngIf="!this.bandImg">Choose file</label>
+          
             </div>
         </div>
         </div>
     </div>
+
+    <div class="tipo">
     <div class="form-row">
         <div class="input-group col-md-6">
-            <label for="">Tipo de unidad</label>
+            <label for="">Tipo de unidad:</label>
         </div>
+    </div>
     </div>
     <div class="form-row">
         <div class="input-group col-md-6">
@@ -76,6 +84,11 @@
               </div>
         </div>
     </div>
-        <button type="submit" class="btn btn-primary" [disabled]="this.form.invalid" (click)="onUpload()">Dar de alta</button>
-    </div>
+</div>
+        <div class="boton">
+            <button type="submit" class="btn" [disabled]="this.form.invalid" (click)="onUpload()">Dar de alta</button>
+        </div>
+    
+</div>
+</div>
 </div>
