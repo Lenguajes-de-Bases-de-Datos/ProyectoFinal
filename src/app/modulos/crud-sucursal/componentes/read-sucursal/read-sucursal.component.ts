@@ -68,4 +68,7 @@ export class ReadSucursalComponent implements OnInit {
   update(id:number){
     this.router.navigate(['/create-sucursal',id])
   }
+  ngAfterViewInit(){
+    this.element?.reinicia();
+  }
 }
