@@ -106,19 +106,19 @@ export class PaginacionComponent implements OnInit {
     }
   }
   ngAfterViewInit(){
-    this.aux = this.query;
-    if(this.isprocedure){
-      this.procedure += `${this.cont})`;
-      this.request.consultas(this.procedure).subscribe((res:any)=>{
-        this.res =res;
-      });
-    }else{
-    this.request.consultas(this.query+` LIMIT ${this.cont},11`).subscribe((res:any)=>{
-      this.res =res;
+  //   this.aux = this.query;
+  //   if(this.isprocedure){
+  //     this.procedure += `${this.cont})`;
+  //     this.request.consultas(this.procedure).subscribe((res:any)=>{
+  //       this.res =res;
+  //     });
+  //   }else{
+  //   this.request.consultas(this.query+` LIMIT ${this.cont},11`).subscribe((res:any)=>{
+  //     this.res =res;
     
-      // this.array.emit(res);
-    });
-  }
+      
+  //   });
+  // }
   }
   next(){
     

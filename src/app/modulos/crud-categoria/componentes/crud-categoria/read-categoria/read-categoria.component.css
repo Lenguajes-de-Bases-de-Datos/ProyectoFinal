@@ -1,10 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+
 .wrapper{
     width: 70%;
     margin: auto;
+    font-family: Fredoka One;
 }
 .icon-pencil{
     cursor: pointer;
 }
 a{
     cursor: pointer;
+}
+
+.fondo{
+    background-image: url('../../../../../../assets/img/fondo9.png');
+    
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    padding: 2em;
+    
+    
+}
+
+.btnbuscar{
+    background: rgb(26, 64, 236);
+    color: white;
+    box-shadow: 3px 3px 3px rgba(51, 51, 51, 0.5);
+    border-radius: 5px;
+}
+
+.btnbuscar:hover{
+    cursor: pointer;
+    background: rgb(163, 205, 233);
+}
+
+table{
+    background: rgb(20, 141, 255);
+    text-align: center;
 }

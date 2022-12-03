@@ -1,25 +1,32 @@
-
+<div class="fondo">
 <div class="wrapper">
-    <div [formGroup]="form" >
+    <div class="form" [formGroup]="form" >
 
-
-        <div class="form-row">
-            <div class="form-group col-md-6">
+        <div class="cajauno">
+        <div class="formcajauno">
+            <div class="form-group">
               <label for="inputnum">Ingresa Numero</label>
               <input type="text" class="form-control" id="inputnum" formControlName="busnum" (keyup)="controlar(1)">
-              <button  (click)="buscar()" type="submit" class="btn btn-primary" id="Buscar" [disabled]="(this.form.get('busnum')?.invalid && this.form.get('busnombre')?.invalid)">Buscar</button>
              
+              <div class="boton">
+                <button  (click)="buscar()" type="submit" class="botonbuscar" id="Buscar" [disabled]="(this.form.get('busnum')?.invalid && this.form.get('busnombre')?.invalid)">Buscar</button>
+              </div>
             </div>
-            <div style="display: none;" class="form-group col-md-6">
+            <div style="display: none;" class="form-group">
                 <label for="inputnom">Ingresa Nombre</label>
                 <input type="text" class="form-control" id="inputnom"  formControlName="busnombre" (keyup)="controlar(2)">
                  </div>
         </div>
+      </div>
 
+      <div class="cajados">
         <div class="form-group">
             <label for="inputnombre">Nombre de la categoria</label>
             <input [ngClass]="{'invalid':this.form.get('nombre')?.invalid,'valid':!this.form.get('nombre')?.invalid}" formControlName="nombre" type="text" class="form-control" id="inputnombre" placeholder="Ingresa nombre">
           </div>
+      </div>
+
+      <div class="cajatres">
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputpinicio">Pasillo donde comienza</label>
@@ -30,7 +37,9 @@
             <input [ngClass]="{'invalid':this.form.get('pasilloFin')?.invalid,'valid':!this.form.get('pasilloFin')?.invalid}" formControlName="pasilloFin" type="text" class="form-control" id="inputpfin">
           </div>
         </div>
+      </div>  
        
+      <div class="cajacuatro">
         <div class="form-row">
          
         
@@ -49,8 +58,13 @@
           </div>
 
         </div>
+      </div>
        
         
+      <div class="boton">
+        <button (click)="update()" type="submit" class="botonbuscar">Actualizar</button>
+      </div>
     </div>
-    <button (click)="update()" type="submit" class="btn btn-primary">Actualizar</button>
+   
+</div>
 </div>

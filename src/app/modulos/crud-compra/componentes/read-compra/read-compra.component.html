@@ -1,11 +1,12 @@
+<div class="fondo">
 <div class="wrapper">
 <!--Tipos de busqueda.....-->
     <div class="input-group mb-3">
         <div class="input-group-prepend">
-          <button   (click)="buscar()"  class="btn btn-outline-secondary" type="button" [disabled]="form.invalid">Buscar</button>
+          <button   (click)="buscar()"  class="btnbuscar" type="button" [disabled]="form.invalid">Buscar</button>
         </div>
         <select (change)="change()" [(ngModel)]="this.option"  class="custom-select" id="inputGroupSelect03" aria-label="Example select with button addon" >
-          <option selected value="0">Tipos de consultas...</option>
+          <option value="0" disabled selected>Tipos de consultas...</option>
           <option value="1">Todos</option>
           <option value="2">Por fecha</option>
           <option value="3">Por rango de fecha</option>
@@ -91,4 +92,5 @@
     </div>
     <app-paginacion [query]="sql" (array)="result($event)" #pag></app-paginacion>
 
+</div>
 </div>

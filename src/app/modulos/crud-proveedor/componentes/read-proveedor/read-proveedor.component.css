@@ -1,4 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
 .wrapper{
     width: 80%;
     margin: auto;
+    font-family: Fredoka One;
+}
+
+.fondo{
+    background-image: url('../../../../../assets/img/fondo5.png');
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    padding: 3em;
+    
+}
+
+.btnbuscar{
+    background: rgb(255, 106, 20);
+    color: white;
+    box-shadow: 3px 3px 3px rgba(51, 51, 51, 0.5);
+    font-size: 20px;
+    
+    
+}
+
+.btnbuscar:hover{
+    cursor: pointer;
+    background: rgb(241, 159, 92);
+    color: rgb(179, 54, 4);
+    
+}
+
+table{
+    background-color: rgb(219, 100, 57);
+    text-align: center;
 }
