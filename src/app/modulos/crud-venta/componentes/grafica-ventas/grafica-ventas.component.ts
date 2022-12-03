@@ -17,18 +17,16 @@ export class GraficaVentasComponent implements OnInit {
   ancho = 3;
   radius = 8;
   colors:string[] = ['rgb(69,177,223)', 'rgb(99,201,122)'];
-  barChartData: ChartDataset[] = [
-    { data: [this.aleatorio(),this.aleatorio()], borderWidth: this.ancho, type: this.barChartType, borderRadius: this.radius},
-  ];
-  barChartLabels: string[] = ['Enero','Febrero'];
-
+  barChartData: ChartDataset[] = [];
+  barChartLabels: string[] = ['No De Sucursales'];
+  bandgra:boolean=false;
   //Para que sea responsivo y adaptable para un celular
   barChartOptions: ChartOptions = {
     responsive: true,
     plugins: {
       title: {//titulo de la grafica
         display: true,
-        text: 'Relación de Hombres y Mujeres dentro del sistema',
+        text: 'Grafica De Número De Ventas En Todas Las Sucursales',
         font: {
           family: 'Impact',
           size: 40,
@@ -63,7 +61,7 @@ export class GraficaVentasComponent implements OnInit {
           },
           title: {
             display: true, //debe de estar en true para que aparezca el titulo
-            text:'Numero de empleados del sistema',
+            text:'Número de ventas',
             color: 'rgb(72, 72, 72)',
             font: {
               family: 'Verbana',
@@ -75,7 +73,7 @@ export class GraficaVentasComponent implements OnInit {
       x: {
         title: {
           display: true,
-          text: 'Ventas por sucursal',
+          text: 'Sucursales',
           font: {
             family: 'Verbana',
             size: 18,
@@ -111,26 +109,29 @@ export class GraficaVentasComponent implements OnInit {
     if(this.user.privilegios == "superadmin"){
       this.issuper = true;
     }
-    this.obtener();
+    //this.obtener();
   }
 
   ngOnInit(): void {
   }
 
-  shuffleData(){
-    this.barChartData= [
-     {data: [this.aleatorio(),this.aleatorio()],  borderWidth: this.ancho, type: this.barChartType, borderRadius: this.radius}, 
-   ];
-  }
-
-  aleatorio():number{
-    return Math.round(Math.random() * (100 - 10) + 10);
+  aleatorio(l:string):number{
+    if('b'==l){
+      return Math.round(Math.random() * (220 - 30) + 30);
+    }else if('s'==l){
+      return Math.round(Math.random() * (8- 0) + 0);
+    }else{
+      return Math.round(Math.random() * (86 - 30) + 30);
+    }
   }
   obtener(){
+    this.bandgra=false;
+    this.barChartData=[];
     if(this.issuper){
       this.request.consultas(`CALL reportes('v',0,'${this.form.get('fechaini')?.value}','${this.form.get('fechafin')?.value}')`)
       .subscribe((res:any)=>{
         this.array = res[0];
+        console.log("Array")
         console.log(this.array)
         this.rellenar();
       })
@@ -144,15 +145,13 @@ export class GraficaVentasComponent implements OnInit {
     }
   }
   rellenar(){
-    let vals:any = [];
-    let labels:string[]=[];
     for(let i=0;i<this.array.length;i++){
-      vals.push(this.array[i].total);
-      labels.push(this.array[i].s);
-    } 
-    this.barChartData= [
-      {data: vals,  borderWidth: this.ancho, type: this.barChartType, borderRadius: this.radius}, 
-    ];
-    this.barChartLabels = labels;
+      //vals.push(this.array[i].total);
+      this.barChartData.push({data: [this.array[i].total], label: `Sucursal ${this.array[i].s}`, backgroundColor:`rgba(${this.aleatorio('b')}, ${this.aleatorio('s')}, ${this.aleatorio('b')}, 0.564)`, borderColor: `rgb(${this.aleatorio('sb')}, ${this.aleatorio('s')}, ${this.aleatorio('sb')})`,  borderWidth: this.ancho, type: this.barChartType, borderRadius: this.radius});
+      //labels.push(this.array[i].s);
+    }
+    this.bandgra=true;
+    console.log("Datos")
+    console.log(this.barChartData);
   }
 }

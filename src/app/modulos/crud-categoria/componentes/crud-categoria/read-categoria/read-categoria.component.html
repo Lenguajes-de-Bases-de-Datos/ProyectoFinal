@@ -6,7 +6,7 @@
       <button   (click)="buscar()"  class="btnbuscar" type="button" [disabled]="form.invalid">Buscar</button>
     </div>
     <select (change)="change()" [(ngModel)]="this.option"  class="custom-select" id="inputGroupSelect03" aria-label="Example select with button addon" >
-      <option  value="0" disabled selected>Tipos de consultas...</option>
+      <option  value="0" disabled selected="true">Tipos de consultas...</option>
       <option value="1" >Todos</option>
       <option value="2">Por patron</option>
       <option value="3">Por id</option>

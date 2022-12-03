@@ -18,15 +18,14 @@
             
           </div>
 
-        <div class="row">
-            <div class="col-5 pl-5 mt-5 text">
+        <div class="" *ngIf="bandgra">
+            <!-- <div class="col-5 pl-5 mt-5 text">
                 <h1>Bar Chart Venta</h1>
                 <br>
                 <h3>Suffle Data</h3>
                 <br>
                 <button class="btn btn-outline-primary" (click)="shuffleData()">Buscar</button>
-            </div>
-            <div class="col-7">
+            </div> -->
                 <canvas baseChart
                     [datasets]="barChartData"
                     [labels]="barChartLabels"
@@ -34,7 +33,6 @@
                     [legend]="barChartLegend"
                     [options]="barChartOptions">
                 </canvas>
-            </div>
         </div>
     </div>
 </div>

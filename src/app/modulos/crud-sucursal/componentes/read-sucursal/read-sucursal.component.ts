@@ -12,7 +12,7 @@ export class ReadSucursalComponent implements OnInit {
   form!:FormGroup;
   sucursales:any[]=[];
   op:string="s.";
-  option:string="";
+  option:string="1";
   sql:string="SELECT s.id 'ID',concat(u.estado,' ',u.ciudad,' ',u.colonia,' ',u.cp) 'ID_ubicacion',u.cp,s.calle,s.numero,s.telefono,s.email,s.status,s.horarioap,s.horariocierre FROM sucursal s,ubicacion u WHERE s.id_ubicacion=u.id";
   sentencia:string="UPDATE sucursal SET status = ";
   @ViewChild('paginacion') element?:PaginacionComponent;
@@ -67,5 +67,8 @@ export class ReadSucursalComponent implements OnInit {
   }
   update(id:number){
     this.router.navigate(['/create-sucursal',id])
+  }
+  ngAfterViewInit(){
+    this.element?.reinicia();
   }
 }

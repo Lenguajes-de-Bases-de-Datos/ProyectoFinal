@@ -45,6 +45,7 @@ import { UpdateProductoComponent } from './modulos/crud-producto/componentes/upd
 import { GraficaGeneroComponent } from './modulos/crud-user/componentes/grafica-genero/grafica-genero.component';
 import { GraficaVentasComponent } from './modulos/crud-venta/componentes/grafica-ventas/grafica-ventas.component';
 import { MasVendidoComponent } from './modulos/crud-producto/componentes/mas-vendido/mas-vendido.component';
+import { MoreProveedorComponent } from './modulos/crud-proveedor/componentes/more-proveedor/more-proveedor.component';
 
 const routes: Routes = [
   {path:'portal', component:PortalComponent},
@@ -72,6 +73,7 @@ const routes: Routes = [
   {path:'create-proveedor', component:CreateProveedorComponent,canActivate:[AuthGuardService]},
   {path:'read-proveedor',component:ReadProveedorComponent,canActivate:[AuthGuardService]},
   {path:'update-proveedor/:id',component:UpdateProveedorComponent,canActivate:[AuthGuardService]},
+  {path:'more-proveedor/:id', component:MoreProveedorComponent,canActivate:[AuthGuardService]},
   {path:'more-user/:ID',component:MoreUserComponent,canActivate:[AuthGuardService]},
   {path:'create-ubicacion',component:CreateUbicacionComponent,canActivate:[AuthGuardService]},
   {path:'read-ubicacion',component:ReadUbicacionComponent,canActivate:[AuthGuardService]},

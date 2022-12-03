@@ -5,6 +5,7 @@ import { ReadProveedorComponent } from './componentes/read-proveedor/read-provee
 import { UpdateProveedorComponent } from './componentes/update-proveedor/update-proveedor.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeModule } from 'src/app/home/home.module';
+import { MoreProveedorComponent } from './componentes/more-proveedor/more-proveedor.component';
 
 
 
@@ -12,7 +13,8 @@ import { HomeModule } from 'src/app/home/home.module';
   declarations: [
     CreateProveedorComponent,
     ReadProveedorComponent,
-    UpdateProveedorComponent
+    UpdateProveedorComponent,
+    MoreProveedorComponent
   ],
   imports: [
     CommonModule,
