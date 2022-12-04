@@ -1,0 +1,37 @@
+<div class="fondo">
+<div class="wrapper">
+  <div class="titulo">
+    <h1>Más Detalles De Proveedor</h1>
+  </div>
+      <div class="card" style="width: 35rem;">
+          <!-- <img  [src]="path" class="card-img-top" alt="..."> -->
+          <div class="card-body">
+            <p class="card-text">
+              <b>Nombre de la empresa: </b>{{ proveedor.nempresa }}
+            </p>
+            <p><b>Nombre del encargado: </b>{{ proveedor.nencargado }} {{ proveedor.appat }} {{ proveedor.apmat }}</p>
+            <p><b>ID Proveedor: </b>{{ proveedor.ID }}</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <h5 class="card-title">Más información sobre el proveedor</h5>
+            </li>
+            <li class="list-group-item">
+                <p><b>Ubicacion: </b>Calle {{ proveedor.calle }} #{{ proveedor.numero }}, colonia {{ proveedor.colonia}} CP {{ proveedor.cp }},
+                 {{ proveedor.ciudad }}, {{ proveedor.estado }}.</p>
+            </li>
+            <li class="list-group-item">
+              <p><b>Descripción: </b>{{ proveedor.descripcion }}</p>
+            </li>
+            <li class="list-group-item">
+                <p><b>Telefono: </b>{{ proveedor.telefono }}</p>
+                <p><b>Email: </b>{{ proveedor.email }}</p>
+                <p><b>Status: </b>{{ proveedor.status }}</p>
+            </li>
+          </ul>
+          <div class="card-body">
+            <a class="icon-arrow-left card-link reg" (click)="regresar()">  Regresar</a>
+          </div>
+      </div>
+  </div>
+</div>

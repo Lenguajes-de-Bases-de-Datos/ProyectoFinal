@@ -14,7 +14,7 @@ export class ReadVentaComponent implements OnInit {
   sql:string="";
   sentencia:string="UPDATE venta SET status = ";
   total:number=0;
-  option:string = "";
+  option:string = "1";
   form:FormGroup;
   user:any;
   issuper:boolean=false;
@@ -190,5 +190,7 @@ export class ReadVentaComponent implements OnInit {
   result(ev:any){
     this.ventas = ev;
   }
-
+  ngAfterViewInit(){
+    this.element?.reinicia();
+  }
 }

@@ -269,4 +269,7 @@ export class ReadUserComponent implements OnInit {
     this.router.navigate(['/update-user',id]);
     
   }
+  ngAfterViewInit(){
+    this.element?.reinicia();
+  }
 }

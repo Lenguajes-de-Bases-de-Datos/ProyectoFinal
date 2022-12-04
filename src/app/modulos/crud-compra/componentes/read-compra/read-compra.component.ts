@@ -14,7 +14,7 @@ export class ReadCompraComponent implements OnInit {
   sql:string="SELECT c.id id,concat(u.id,' ',u.nombre,' ',u.appat,' ',apmat) usuario,c.id_sucursal suc,c.id_prov prov,c.total tot,c.fecha fecha,c.observaciones obs FROM compra c,usuario u WHERE c.id_usuario=u.id";
   total:number=0;
   form!:FormGroup;
-  option:string="";
+  option:string="1";
   band!:boolean;
   user!:any;
   @ViewChild('pag') element?:PaginacionComponent;
@@ -150,5 +150,8 @@ export class ReadCompraComponent implements OnInit {
   }
   result(res:any){
     this.compras = res;
+  }
+  ngAfterViewInit(){
+    this.element?.reinicia();
   }
 }

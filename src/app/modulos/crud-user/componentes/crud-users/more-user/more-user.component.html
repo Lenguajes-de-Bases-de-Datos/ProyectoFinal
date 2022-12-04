@@ -7,23 +7,25 @@
         <img  [src]="path" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Más información sobre el usuario</h5>
+          <p><b>ID: </b>{{ user.id_usuario }}</p>
           <p class="card-text">
             <b>Nombre: </b>{{ user.nombre }} {{ user.appat }} {{ user.apmat }}
           </p>
           <p><b>Genero: </b>{{ user.genero }}</p>
-          <p><b>ID: </b>{{ user.ID }}</p>
           <p><b>Telefono: </b>{{ user.telefono }}</p>
           <p><b>Email: </b>{{ user.email }}</p>
           <p><b>Status: </b>{{ user.status }}</p>
+          <p><b>Fecha de contratación: </b>{{user.fecha | date: 'short'}}</p>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">
             <!-- <p>{{}}</p> -->
             <p><b>Puesto: </b>{{ user.privilegios }}</p>
-            <p><b>ID sucursal: </b> {{ user.ID_sucursal }}</p>
+            <p><b>ID sucursal: </b> {{ user.id_suc_us }}</p>
+            <p><b>Sucursal: </b> {{ user.calle }} #{{ user.numero }}, colonia {{ user.colonia }} CP {{ user.cp }}, {{ user.ciudad }}, {{ user.estado }}</p>
           </li>
           <li class="list-group-item">
-            <p><b>Salario: </b>{{ user.salario }}</p>
+            <p><b>Salario: </b>{{ user.salario | currency:'MXN' }}</p>
             <p><b>Descripción: </b>{{ user.des }}</p>
           </li>
           <li class="list-group-item">

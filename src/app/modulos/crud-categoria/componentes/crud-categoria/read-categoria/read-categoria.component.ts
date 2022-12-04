@@ -16,7 +16,7 @@ export class ReadCategoriaComponent implements OnInit {
   lon:number =10;
   sentencia:string="UPDATE categoria SET status = ";
   sql:string="SELECT * FROM categoria";
-  option:string="";
+  option:string="1";
   form!:FormGroup;
   @ViewChild('pag') element?:PaginacionComponent;
   constructor(private request:RequestsService,private router:Router) { 
