@@ -26,19 +26,9 @@ export class SidebarComponent implements OnInit {
         ruta:'/read-users',
         nombre:'Consultar',
         excluye:[""]
-       } ,
-       {
-        ruta:'update-user',
-        nombre:'Actualizar',
-        excluye:[""]
-       }, 
-       {
-        ruta:'delete-user',
-        nombre:'Eliminar',
-        excluye:[""]
-      }
+       } 
     ],
-      icono:"",
+      icono:"icon-torsos",
       id:"users",
       data:['administrador','superadmin']
     },
@@ -62,7 +52,7 @@ export class SidebarComponent implements OnInit {
         excluye:[""]
        }
     ],
-      icono:"",
+      icono:"icon-bag",
       id:"categories",
       data:['administrador','superadmin','vendedor','almacenista','reponedor']
     },
@@ -78,14 +68,9 @@ export class SidebarComponent implements OnInit {
         ruta:'/read-sucursal',
         nombre:'Consultar',
         excluye:[""]
-       } ,
-       {
-        ruta:'/update-sucursal',
-        nombre:'Actualizar',
-        excluye:[""]
        }
     ],
-      icono:"",
+      icono:"icon-shop",
       id:"providers",
       data:['administrador','superadmin']
     },
@@ -113,7 +98,7 @@ export class SidebarComponent implements OnInit {
         excluye:[""]
        }
     ],
-      icono:"",
+      icono:"icon-dropbox",
       id:"orders",
       data:['administrador','superadmin','vendedor','almacenista','reponedor']
     },
@@ -129,19 +114,9 @@ export class SidebarComponent implements OnInit {
         ruta:'/read-proveedor',
         nombre:'Consultar',
         excluye:[""]
-       } ,
-       {
-        ruta:'',
-        nombre:'Actualizar',
-        excluye:[""]
-       }, 
-       {
-        ruta:'',
-        nombre:'Eliminar',
-        excluye:[""]
-      }
+       } 
     ],
-      icono:"",
+      icono:"icon-building",
       id:"proveedor",
       data:['administrador','superadmin','vendedor','almacenista']
     },
@@ -164,7 +139,7 @@ export class SidebarComponent implements OnInit {
         excluye:["vendedor","almacenista","reponedor"]
        }
     ],
-      icono:"",
+      icono:"icon-caddie-shopping-streamline",
       id:"compras",
       data:['administrador','superadmin','almacenista']
     },
@@ -190,7 +165,7 @@ export class SidebarComponent implements OnInit {
         excluye:["vendedor","almacenista","reponedor"]
        }
     ],
-      icono:"",
+      icono:"icon-caddie-shop-shopping-streamline",
       id:"ventas",
       data:['administrador','superadmin','vendedor']
     },
@@ -204,7 +179,7 @@ export class SidebarComponent implements OnInit {
         excluye:[""]
       }
     ],
-      icono:"",
+      icono:"icon-paper-plane",
       id:"send-msg",
       data:['administrador','superadmin','vendedor','almacenista','reponedor']
     },
@@ -220,22 +195,30 @@ export class SidebarComponent implements OnInit {
         ruta:'/read-ubicacion',
         nombre:'Consultar',
         excluye:[""]
-       } ,
-       {
-        ruta:'/update-ubicacion',
-        nombre:'Actualizar',
-        excluye:[""]
-       }, 
-       {
-        ruta:'',
-        nombre:'Eliminar',
-        excluye:[""]
-      }
+       } 
     ],
-      icono:"",
+      icono:"icon-map-marker",
       id:"ubicacion",
       data:['administrador','superadmin','vendedor','almacenista','reponedor']
     },
+    {
+      opcion:"Gráficas",
+      class:"",
+      rutas:[{
+        ruta:'/grafica-ventas',
+        nombre:'Ventas totales en cada sucursal',
+        excluye:["administrador","vendedor","almacenista","reponedor"]
+      },
+       { 
+        ruta:'/grafica-genero',
+        nombre:'Conteo de empleados femeninos y masculinos',
+        excluye:[""]
+       } 
+    ],
+      icono:"icon-graph",
+      id:"graficas",
+      data:['administrador','superadmin','vendedor','almacenista','reponedor']
+    }
   ];
   constructor(private request:RequestsService) {
     this.user = localStorage.getItem('cuenta');

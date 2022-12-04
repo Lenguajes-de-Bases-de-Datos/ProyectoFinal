@@ -20,7 +20,6 @@ import { HomeModule } from './home/home.module';
 import { CardCategoriaComponent } from './modulos/crud-categoria/componentes/crud-categoria/card-categoria/card-categoria.component';
 import { CreateSucursalComponent } from './modulos/crud-sucursal/componentes/create-sucursal/create-sucursal.component';
 import { ReadSucursalComponent } from './modulos/crud-sucursal/componentes/read-sucursal/read-sucursal.component';
-import { UpdateSucursalComponent } from './modulos/crud-sucursal/componentes/update-sucursal/update-sucursal.component';
 import { ReadProductoComponent } from './modulos/crud-producto/componentes/read-producto/read-producto.component';
 import { CreateProductoComponent } from './modulos/crud-producto/componentes/create-producto/create-producto.component';
 import { CreateCompraComponent } from './modulos/crud-compra/componentes/create-compra/create-compra.component';
@@ -62,7 +61,6 @@ const routes: Routes = [
   {path:'create-sucursal',component:CreateSucursalComponent,canActivate:[AuthGuardService]},
   {path:'create-sucursal/:id',component:CreateSucursalComponent,canActivate:[AuthGuardService]},
   {path:'read-sucursal',component:ReadSucursalComponent,canActivate:[AuthGuardService]},
-  {path:'update-sucursal',component:UpdateSucursalComponent,canActivate:[AuthGuardService]},
   {path:'create-producto',component:CreateProductoComponent,canActivate:[AuthGuardService]},
   {path:'read-producto',component:ReadProductoComponent,canActivate:[AuthGuardService]},
   {path:'update-producto/:id',component:UpdateProductoComponent,canActivate:[AuthGuardService]},

@@ -1,15 +1,19 @@
 <div class="fondo">
 <div class="wrapper">
+    <div class="titulo">
+      <h1>Consultar Proveedor</h1>
+    </div>
     <div class="input-group mb-3">
         <div class="input-group-prepend">
 
-          <button   (click)="buscar()" (click)="paginacion.reinicia()" (click)="change()" class="btnbuscar" type="button">Buscar</button>
-
           <!--<button   (click)="buscar()" (click)="change()" class="btn btn-outline-secondary" type="button" >Buscar</button>-->
+
+          <button   (click)="buscar()" (click)="change()" class="btnbuscar" type="button" >Buscar</button>
+
 
         </div>
         <select (change)="change()" [(ngModel)]="this.option"  class="custom-select" id="inputGroupSelect03" aria-label="Example select with button addon" >
-            <option selected value="0">Tipos de consultas...</option>
+            <option value="0" disabled selected>Tipos de consultas...</option>
             <option value="1">Todos</option>
             <option value="2">ID</option>
             <option value="3">Nombre proveedor</option>

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
 .wrapper{
-    width: 95%;
+    width: 90%;
     margin: auto;
     font-family: Fredoka One;
 }
@@ -21,6 +21,7 @@ a, .delete{
     background-attachment: fixed;
     background-repeat: no-repeat;
     padding: 2em;
+    
 }
 
 .custom-select{

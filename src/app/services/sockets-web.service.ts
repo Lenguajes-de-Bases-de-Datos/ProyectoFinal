@@ -13,6 +13,7 @@ export class SocketsWebService {
   constructor() { 
     let user:any = localStorage.getItem('cuenta');
     user = JSON.parse(user);
+    let suc = user.privilegios=="superadmin"?0:user.ID_sucursal;
     // super({
     //   url:"http://localhost:3000",
     //   options:{
@@ -28,7 +29,7 @@ export class SocketsWebService {
         autoConnect:false,
         transports:["websocket"],
         query:{
-          room:`${user.ID_sucursal}`
+          room:`${suc}`
         }
       }
     });
@@ -39,6 +40,8 @@ export class SocketsWebService {
   conneccion(){
     let user:any = localStorage.getItem('cuenta');
     user = JSON.parse(user);
+    let suc = user.privilegios=="superadmin"?0:user.ID_sucursal;
+    
     // this.ioSocket.emptyConfig.options={
     //   autoConnect:false,
     //   transports:["websocket"],
@@ -52,7 +55,7 @@ export class SocketsWebService {
         autoConnect:false,
         transports:["websocket"],
         query:{
-          room:`${user.ID_sucursal}`
+          room:`${suc}`
         }
       }
     });

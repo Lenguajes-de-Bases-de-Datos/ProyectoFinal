@@ -91,12 +91,7 @@ export class NavbarComponent implements OnInit {
   //Actualiza el contador de la bubble que indica el número de notificaciones...
   //una vez que se da clic sobre una notificacion se decrementa el contador.
   updateCount(i:number){
-    if(this.notifications[i].cont == 0){
-
-    }else{
-      this.count--;
-      this.notifications[i].cont=0;
-    }
+    
     
   }
   seen(){

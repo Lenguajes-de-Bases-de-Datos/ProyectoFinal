@@ -9,8 +9,8 @@
       <button   (click)="buscar()"  class="btnbuscar" type="button" [disabled]="form.invalid">Buscar</button>
     </div>
     <select (change)="change()" [(ngModel)]="this.option"  class="custom-select" id="inputGroupSelect03" aria-label="Example select with button addon" >
-      <option selected value="0">Tipos de consultas...</option>
-      <option value="1">Todos</option>
+      <option  value="0" disabled selected>Tipos de consultas...</option>
+      <option value="1" >Todos</option>
       <option value="2">Por patron</option>
       <option value="3">Por id</option>
        
@@ -43,7 +43,7 @@
         <th scope="col">Pasillo donde comienza</th>
         <th scope="col">Pasillo donde finaliza</th>
         <th scope="col">Activa</th>
-        <th scope="col">Mas detalles</th>
+        <th scope="col">Más detalles</th>
         <th scope="col">Editar</th>
         
       </tr>
