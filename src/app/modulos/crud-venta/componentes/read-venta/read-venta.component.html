@@ -85,9 +85,9 @@
               <tr *ngFor="let obj of ventas,index as i,let ultimo = last ">
                  
                 <td *ngIf="i!=10">{{obj.id}}</td>
-                <div *ngIf="issuper">
-                  <td *ngIf="i!=10">{{obj.suc}}</td>
-                </div>
+                
+                  <td *ngIf="i!=10 && issuper==true">{{obj.suc}}</td>
+                
                 <td *ngIf="i!=10">{{obj.usuario}}</td>
                 <td *ngIf="i!=10">{{obj.fecha | date:'short'}}</td>
                 <td *ngIf="i!=10">{{obj.total | currency:'MXN'}}</td>
