@@ -1,3 +1,5 @@
+<div class="fondo">
+
 <div class="wrapper">
     <a class="icon-arrow-left card-link reg" (click)="regresar()">  Regresar</a>
     <div class="table-responsive-lg">
@@ -37,7 +39,9 @@
     <div class="alert alert-success" role="alert">
         Inversion de: <a  class="alert-link">{{compra.tot | number:'1.1-3'}}</a>. Se espera generar en ventas: 
         <a class="alert-link">{{sum | number:'1.1-3'}}</a>. Para obtener la ganancia de: 
-        <a class="alert-link">{{sum-compra.tot | number:'1.1-3'}}</a> 
+        <a class="alert-link">{{sum-compra.tot | number:'1.1-3'}}</a> de los
+        <a class="alert-link">{{totprods}}</a> productos de la compra
+        
       </div>
 <!--PRODUCTOS QUE SE RELACIONAN CON LA COMPRA-->
     <div class="table-responsive-lg">
@@ -53,6 +57,7 @@
                     <th scope="col">Categoria</th>
                     <th scope="col">Cantidad</th>
                     <th scope="col">Precio por el proveedor</th>
+                    <th scope="col">Total</th>
                     <th scope="col">Precio a vender</th>
                     
                 </tr>
@@ -65,6 +70,7 @@
                     <td *ngIf="i!=10" >{{obj.ncategoria}}</td>
                     <td *ngIf="i!=10">{{obj.cantidad}}</td>
                     <td *ngIf="i!=10">{{obj.precioCompra | number:'1.1-3'}}</td>
+                    <td *ngIf="i!=10">{{obj.precioCompra*obj.cantidad | number:'1.1-3'}}</td>
                     <td *ngIf="i!=10">{{obj.precioVenta | number:'1.1-3'}}</td>
                     
                    
@@ -76,4 +82,6 @@
     </div>
 
 
+</div>
+<app-paginacion [isprocedure]="true" [procedure]="procedure" (array)="result($event)" #paginacion></app-paginacion>
 </div>

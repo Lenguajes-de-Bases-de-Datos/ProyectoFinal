@@ -4,6 +4,7 @@ import { AuthGuardService } from 'src/app/services/auth-guard.service';
 import { SocketsWebService } from 'src/app/services/sockets-web.service';
 import swal from 'sweetalert2';
 import jwt_decode from "jwt-decode";
+import { RequestsService } from 'src/app/services/requests.service';
 declare const events : any;
 @Component({
   selector: 'app-navbar',
@@ -17,9 +18,11 @@ export class NavbarComponent implements OnInit {
   name!:any;
   prod:string="";
   valid:boolean=true;
-  constructor(public socket:SocketsWebService,private router:Router,private auth:AuthGuardService) { 
-    let user:any = localStorage.getItem('cuenta') || "";
-    user = JSON.parse(user);
+  user:any;
+  namesuc:string = "";
+  constructor(public request:RequestsService,public socket:SocketsWebService,private router:Router,private auth:AuthGuardService) { 
+    this.user = localStorage.getItem('cuenta') || "";
+    this.user = JSON.parse(this.user);
     //esta parte verifica si ya se habia usado anteriormente un socket
     //en caso de que si, solo vuelve a establecer una nueva conección
     //y en caso de que no, no realiza nada ya que, el constructor del
@@ -28,9 +31,9 @@ export class NavbarComponent implements OnInit {
     if(!this.socket.isFirst){
       this.socket.conneccion();
     }
-    if(user!=undefined){
+    if(this.user!=undefined){
       
-      this.name = user.nombre+" "+user.appat+" "+user.apmat;
+      this.name = this.user.nombre+" "+this.user.appat+" "+this.user.apmat;
     }
     setTimeout(()=>{
       this.band_paused=false;
@@ -62,6 +65,11 @@ export class NavbarComponent implements OnInit {
     } catch(Error) {
       
     }
+
+    this.request.consultas(`SELECT concat(u.estado,' ',u.ciudad,' ',u.colonia,' ',s.calle,' ',s.numero) ub FROM sucursal s,ubicacion u WHERE s.id_ubicacion=u.id and s.id=${this.user.ID_sucursal}`)
+    .subscribe((res:any)=>{
+      this.namesuc = res[0].ub;
+    });
   }
   buscar(){
     if(this.prod=="" || this.prod.match('[\'\"|&]+')){

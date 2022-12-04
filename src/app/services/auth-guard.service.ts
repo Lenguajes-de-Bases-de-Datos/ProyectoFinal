@@ -119,7 +119,7 @@ export class AuthGuardService implements CanActivate{
   reubicar(){
     this.band=true;
     sessionStorage.removeItem('token');
-    
+    localStorage.removeItem('cuenta')
     swal.fire({
       backdrop:true,
       allowOutsideClick: true,

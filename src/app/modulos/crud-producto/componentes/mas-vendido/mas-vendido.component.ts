@@ -32,10 +32,13 @@ export class MasVendidoComponent implements OnInit {
     }else{
       this.sql += ` and u.id_sucursal=${this.user.ID_sucursal}`
     }
-    this.change();
+    
    }
 
   ngOnInit(): void {
+  }
+  ngAfterViewInit(){
+    this.element?.reinicia();
   }
   buscar(){
     if(this.option == "1"){

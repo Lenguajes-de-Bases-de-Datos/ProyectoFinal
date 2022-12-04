@@ -30,7 +30,7 @@ export class AppComponent {
         if(err.status===401){
           this.auth.band=true;
           sessionStorage.removeItem('token');
-         
+          localStorage.removeItem('cuenta')
           swal.fire({
             backdrop:true,
             allowOutsideClick: true,

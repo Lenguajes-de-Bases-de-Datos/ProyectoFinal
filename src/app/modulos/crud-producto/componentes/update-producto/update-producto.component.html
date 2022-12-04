@@ -1,8 +1,13 @@
+<div class="fondo">
 <div class="wrapper">
     <h1 *ngIf="actualiza else alta">Actualizar Producto</h1>
     <ng-template #alta>
+        <div class="titulo">
         <h1>Actualizar Producto</h1>
+    </div>
     </ng-template>
+
+    <div class="cajauno">
     <div [formGroup]="form">
         
         <div class="form-row">
@@ -76,6 +81,10 @@
               </div>
         </div>
     </div>
-        <button type="submit" class="btn btn-primary" [disabled]="this.form.invalid" (click)="onUpload()">Actualizar Producto</button>
+        <div class="boton">
+            <button type="submit" class="btnbuscar" [disabled]="this.form.invalid" (click)="onUpload()">Actualizar Producto</button>
+        </div>
     </div>
+</div>
+</div>
 </div>

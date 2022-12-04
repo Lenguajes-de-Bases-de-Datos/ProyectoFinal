@@ -57,3 +57,11 @@ body{
 .icon-pencil:hover{
     color: rgb(196, 255, 3);
 }
+i{
+    cursor: pointer;
+}
+.icon-info-circle:hover{
+    
+    color: rgb(13, 167, 167);
+    
+}

@@ -1,7 +1,10 @@
 <div class="fondo">
 <div class="wrapper">
 
-   
+   <div class="titulo">
+    <h1>Consultar Producto</h1>
+
+   </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <button   (click)="buscar()"  class="btnbuscar" type="button" [disabled]="form.invalid">Buscar</button>
@@ -79,9 +82,8 @@
               <td *ngIf="i!=10"><i class="icon-refresh" (click)="update(obj.ID)"></i></td>
               <td *ngIf="i!=10 && this.user.privilegios == 'superadmin'">{{obj.suc}}-{{obj.existencias}}</td>
               <td *ngIf="i!=10 && this.user.privilegios != 'superadmin'">{{obj.existencias}}</td>
-              <td *ngIf="i!=10 && cart"><i class="icon-cart-plus" (click)="resp(obj)"></i></td>
               <td *ngIf="i!=10"><i (click)="actualizar(obj.ID)" class="icon-pencil"></i></td>
-              
+              <td *ngIf="i!=10 && cart"><i class="icon-cart-plus car" (click)="resp(obj)"></i></td>
             </tr>
           
           </tbody>

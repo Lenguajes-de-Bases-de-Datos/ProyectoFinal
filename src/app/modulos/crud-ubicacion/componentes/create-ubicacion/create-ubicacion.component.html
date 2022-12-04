@@ -1,29 +1,28 @@
 <div class="fondo">
 <div class="wrapper" >
+  <div class="titulo">
   <h1>Registrar Ubicación</h1>
+</div>
     <div [formGroup]="this.form">
-      <div class="titulo">
-        <h1>Crear Ubicación</h1>
-      </div>
 
       <div class="cajauno">
         <div class="form-row" >
           <div class="form-group col-md-6">
-            <label for="inputEmail4">Estado</label>
+            <label for="inputEmail4">Estado:</label>
             <input placeholder="No se admiten caracteres especiales('!&|)" [ngClass]="{'invalid':this.form.get('estado')?.invalid,'valid':!this.form.get('estado')?.invalid}" type="text" class="form-control" id="inputNombre" formControlName="estado">
            </div>
           <div class="form-group col-md-6">
-            <label for="inputPassword4">Ciudad</label>
+            <label for="inputPassword4">Ciudad:</label>
             <input placeholder="No se admiten caracteres especiales('!&|)" [ngClass]="{'invalid':this.form.get('ciudad')?.invalid,'valid':!this.form.get('ciudad')?.invalid}" type="text" class="form-control" id="inputAppat" formControlName="ciudad">
           </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="inputEmail4">Colonia</label>
+              <label for="inputEmail4">Colonia:</label>
               <input placeholder="No se admiten caracteres especiales('!&|)" [ngClass]="{'invalid':this.form.get('colonia')?.invalid,'valid':!this.form.get('colonia')?.invalid}" type="text" class="form-control" id="inputApmat" formControlName="colonia">
             </div>
             <div class="form-group col-md-5">
-              <label for="inputPassword4">cp</label>
+              <label for="inputPassword4">Cp:</label>
               <input placeholder="4 caracteres numericos obligatorios" [ngClass]="{'invalid':this.form.get('cp')?.invalid,'valid':!this.form.get('cp')?.invalid}" type="text" class="form-control" id="inputPassword4" formControlName="cp">
              
             </div>

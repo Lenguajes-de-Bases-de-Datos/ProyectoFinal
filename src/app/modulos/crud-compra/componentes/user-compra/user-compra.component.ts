@@ -13,7 +13,7 @@ export class UserCompraComponent implements OnInit {
   res:any[]=[];
   user:any;
   form:FormGroup;
-  option:string = "";
+  option:string = "1";
   issuper:boolean = false;
   
   @ViewChild('pag') element?:PaginacionComponent;

@@ -2,7 +2,7 @@
 
 
 .wrapper{
-    width: 60%;
+    width: 90%;
     margin: auto;
     font-family: Fredoka One;
 }
@@ -15,7 +15,7 @@
     background-size: 100% 100%;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    padding: 4em;
+    padding: 2em;
     
     
 }
@@ -68,6 +68,11 @@ label{
 
 .cajacuatro{
     padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
 }
 
 .form{
@@ -80,3 +85,13 @@ label{
     box-shadow: 0 0 20px rgb(255, 254, 254);
     padding: 2em;
 }
+
+h1{
+    text-shadow: 5px 5px 7px rgb(70, 70, 70);
+    color: white;
+}
+
+.titulo{
+    padding: 10px;
+}
+

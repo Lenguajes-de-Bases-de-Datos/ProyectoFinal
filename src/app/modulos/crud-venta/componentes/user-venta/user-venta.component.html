@@ -1,14 +1,16 @@
-
+<div class="fondo">
 <div class="wrapper">
 
-
+  <div class="titulo">
+    <h1>Ventas por Usuario</h1>
+  </div>
     <div class="input-group mb-3">
         <div class="input-group-prepend">
-          <button   (click)="buscar()"  class="btn btn-outline-secondary" type="button" [disabled]="form.invalid">Buscar</button>
+          <button   (click)="buscar()"  class="btnbuscar" type="button" [disabled]="form.invalid">Buscar</button>
         </div>
         <select (change)="change()" [(ngModel)]="this.option"  class="custom-select" id="inputGroupSelect03" aria-label="Example select with button addon" >
-          <option selected value="0">Tipos de consultas...</option>
-          <option value="1">Todos</option>
+          <option value="0" disabled selected="true">Tipos de consultas...</option>
+          <option value="1" >Todos</option>
           <option value="2">Por fecha</option>
           <option value="3">Por rango de fecha</option> 
           <option value="4">Por creador de la venta</option> 
@@ -73,10 +75,8 @@
             </thead>
             <tbody>
                 <tr *ngFor="let obj of this.res,index as i,let ultimo = last">
-                    <div *ngIf="this.user.privilegios=='superadmin'">
-                        <td *ngIf="i!=10 ">{{obj.suc}}</td>
                     
-                    </div>
+                    <td *ngIf="i!=10 && this.user.privilegios=='superadmin'">{{obj.suc}}</td>
                     
                     <td *ngIf="i!=10">{{obj.nombre}}</td>
                     <td *ngIf="i!=10">{{obj.total}}</td>
@@ -91,3 +91,4 @@
     <app-paginacion  [isprocedure]="true" [procedure]="procedure" (array)="result($event)" #pag></app-paginacion>
     
     </div>
+  </div>

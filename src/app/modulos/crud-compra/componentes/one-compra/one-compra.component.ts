@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { PaginacionComponent } from 'src/app/home/paginacion/paginacion.component';
 import { RequestsService } from 'src/app/services/requests.service';
 
 @Component({
@@ -20,6 +21,9 @@ export class OneCompraComponent implements OnInit {
   };
   band=false;
   sum:number=0;
+  procedure:string="";
+  totprods:number = 0;
+  @ViewChild('paginacion') element?:PaginacionComponent;
   constructor(private request:RequestsService,private active:ActivatedRoute,private router:Router) { 
     let user:any=localStorage.getItem('cuenta');
     user = JSON.parse(user);
@@ -45,11 +49,12 @@ export class OneCompraComponent implements OnInit {
           this.compra.obs=res[0].observaciones;
 
         });
-        this.request.consultas(`CALL obtenerProductosCompra (${id})`).subscribe((res:any)=>{
+        this.procedure=`CALL obtenerProductosCompra (${id},`;
+         this.request.consultas(`SELECT count(*) tot FROM compra c,compra_producto cp WHERE c.id=cp.id_comp and c.id=${id}`).subscribe((res:any)=>{
 
-          this.prods = res[0];
+           this.totprods = res[0].tot;
 
-        }); 
+         }); 
         this.request.consultas(`select sum(p.precioUnitario*cp.cantidad) sum FROM compra c,producto p,compra_producto cp WHERE c.id=cp.id_comp and cp.id_prod=p.id and c.id=${id} Group By c.id`)
         .subscribe((res:any)=>{
           this.sum = res[0].sum;
@@ -64,8 +69,13 @@ export class OneCompraComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  ngAfterViewInit(){
+    this.element?.reinicia();
+  }
   regresar(){
     this.router.navigate(['/read-compra']);
   }
-
+  result(ev:any){
+    this.prods = ev[0];
+  }
 }

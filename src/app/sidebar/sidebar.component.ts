@@ -85,7 +85,7 @@ export class SidebarComponent implements OnInit {
       { 
         ruta:'/open-caja',
         nombre:'Abrir caja',
-        excluye:[""]
+        excluye:["superadmin"]
        } ,
        { 
         ruta:'/read-producto',

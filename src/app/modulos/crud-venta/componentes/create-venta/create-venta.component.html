@@ -1,11 +1,12 @@
 <div class="fondo">
 <div class="wrapper">
-  
-  
-    
+  <div class="titulo">
+    <h1>Crear Venta</h1>
+  </div>
     <div class="boton">
     <button type="submit" class="btn" (click)="venta()" [disabled]="isEmptyArray()">Realizar</button>
   </div>
+
     <textarea [(ngModel)]="this.desc" class="form-control z-depth-1 mb-2" id="exampleFormControlTextarea6" rows="3" placeholder="Comentarios..."  
     >
 

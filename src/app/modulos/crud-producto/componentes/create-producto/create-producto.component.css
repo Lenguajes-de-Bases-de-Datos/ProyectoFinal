@@ -2,7 +2,7 @@
 
 
 .wrapper{
-    width: 80%;
+    width: 90%;
     margin: auto;
     font-family: Fredoka One;
     
@@ -34,7 +34,7 @@ h1{
 }
 
 .cajauno{
-    background-color: rgba(0, 0, 0, 0.205);
+    background-color: rgba(170, 60, 137, 0.596);
     margin: 15px;
     padding: 15px;
     box-shadow: 0 0 20px rgb(255, 254, 254);
@@ -78,4 +78,9 @@ span:hover{
     cursor: pointer;
     background: rgb(206, 128, 164);
     color: rgb(204, 23, 98);
+}
+
+.titulo{
+    margin: 10px;
+    padding: 10px;
 }

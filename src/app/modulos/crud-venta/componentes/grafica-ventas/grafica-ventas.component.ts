@@ -28,17 +28,17 @@ export class GraficaVentasComponent implements OnInit {
         display: true,
         text: 'Grafica De Número De Ventas En Todas Las Sucursales',
         font: {
-          family: 'Impact',
+          family: 'Fredoka One',
           size: 40,
         },
-        color: 'rgb(105, 7, 7)'
+        color: '#cc0066'
       },
       legend: {//los simbolos de lo que es cada color de la grafica
         labels: {
           // This more specific font property overrides the global property
           font: {
             size: 15,
-            family: 'Consolas',
+            family: 'Fredoka One',
           },
           color: 'black'
         },
@@ -55,7 +55,7 @@ export class GraficaVentasComponent implements OnInit {
             color: 'rgb(72, 0, 75)',
             font: {
               size: 18,
-              family: 'Alegrian',
+              family: 'Fredoka One',
               weight: 'bold'
             }
           },
@@ -64,7 +64,7 @@ export class GraficaVentasComponent implements OnInit {
             text:'Número de ventas',
             color: 'rgb(72, 72, 72)',
             font: {
-              family: 'Verbana',
+              family: 'Fredoka One',
               size: 18,
               weight: 'bold'
             }
@@ -75,7 +75,7 @@ export class GraficaVentasComponent implements OnInit {
           display: true,
           text: 'Sucursales',
           font: {
-            family: 'Verbana',
+            family: 'Fredoka One',
             size: 18,
             weight: 'bold'
           },
@@ -85,7 +85,7 @@ export class GraficaVentasComponent implements OnInit {
           color: 'rgb(72, 0, 75)',
           font: {
             size: 18,
-            family: 'Alegrian',
+            family: 'Fredoka One',
             weight: 'bold'
           }
         },
@@ -147,7 +147,7 @@ export class GraficaVentasComponent implements OnInit {
   rellenar(){
     for(let i=0;i<this.array.length;i++){
       //vals.push(this.array[i].total);
-      this.barChartData.push({data: [this.array[i].total], label: `Sucursal ${this.array[i].s}`, backgroundColor:`rgba(${this.aleatorio('b')}, ${this.aleatorio('s')}, ${this.aleatorio('b')}, 0.564)`, borderColor: `rgb(${this.aleatorio('sb')}, ${this.aleatorio('s')}, ${this.aleatorio('sb')})`,  borderWidth: this.ancho, type: this.barChartType, borderRadius: this.radius});
+      this.barChartData.push({data: [this.array[i].total], label: `Sucursal ${this.array[i].s}`, backgroundColor:`rgba(${this.aleatorio('b')}, ${this.aleatorio('s')}, ${this.aleatorio('b')})`, borderColor: `rgb(${this.aleatorio('sb')}, ${this.aleatorio('s')}, ${this.aleatorio('sb')})`,  borderWidth: this.ancho, type: this.barChartType, borderRadius: this.radius});
       //labels.push(this.array[i].s);
     }
     this.bandgra=true;

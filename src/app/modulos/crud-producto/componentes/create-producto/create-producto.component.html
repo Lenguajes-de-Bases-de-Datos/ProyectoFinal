@@ -2,7 +2,9 @@
 <div class="wrapper">
     <h1 *ngIf="actualiza else alta">Actualizar Producto</h1>
     <ng-template #alta>
+        <div class="titulo">
         <h1>Registrar Producto</h1>
+        </div>  
     </ng-template>
     <div [formGroup]="form">
         

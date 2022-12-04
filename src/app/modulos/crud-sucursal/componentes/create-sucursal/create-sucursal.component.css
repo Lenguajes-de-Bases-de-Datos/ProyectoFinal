@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
 .wrapper{
-    width: 80%;
+    width: 90%;
     margin: auto;
     font-family: Fredoka One;
 }
@@ -11,7 +11,71 @@
     background-size: 100% 100%;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    padding: 4em;
+    padding: 2em;
     
     
+}
+
+h1{
+    text-shadow: 5px 5px 7px rgb(70, 70, 70);
+    color: white;
+    margin: 25px;
+}
+
+.titulo{
+    margin: 30px;
+    padding: 10px;
+}
+
+.cajauno{
+    background-color: rgba(218, 59, 191, 0.603);
+    /*background-color: deeppink;*/
+    border-radius: 10px;
+    color: white;
+    text-shadow: 5px 5px 7px rgb(17, 17, 17);
+    box-shadow: 0 0 20px rgb(255, 254, 254);
+    padding: 15px;
+}
+
+.boton{
+    text-align: center;
+    padding: 15px;
+    
+}
+
+.btnbuscar{
+    background: rgb(175, 39, 134);
+    color: white;
+    box-shadow: 3px 3px 3px rgba(51, 51, 51, 0.5);
+    border-radius: 5px;
+    width: 200px;
+    height: 50px;
+    font-size: 16px;
+    text-align: center;
+    margin: auto;
+}
+
+.btnbuscar:hover{
+    cursor: pointer;
+    background: rgb(165, 61, 125);
+    color: rgb(253, 253, 253);
+    
+}
+
+label{
+    font-size: 20px;
+    text-shadow: 5px 5px 7px rgb(70, 70, 70);
+    color: white;
+}
+
+span{
+    background-color: rgb(172, 56, 133);
+    height: 45px;
+    color: white;
+}
+
+span:hover{
+    cursor: pointer;
+    background: rgb(153, 56, 124);
+    color: rgb(255, 255, 255);
 }

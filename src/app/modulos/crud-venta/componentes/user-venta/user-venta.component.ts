@@ -13,7 +13,7 @@ export class UserVentaComponent implements OnInit {
   procedure:string="CALL cvtotales('v',0,'g','t','1999-10-10','1999-10-10','a',";
   res:any[]=[];
   user:any;
-  option:string = "";
+  option:string = "1";
   issuper:boolean=false;
   form:FormGroup;
   

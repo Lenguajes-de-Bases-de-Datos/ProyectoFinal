@@ -26,17 +26,17 @@ export class GraficaGeneroComponent implements OnInit {
          display: true,
          text: 'Relación de Hombres y Mujeres dentro del sistema',
          font: {
-           family: 'Impact',
+           family: 'Fredoka One',
            size: 40,
          },
-         color: 'rgb(105, 7, 7)'
+         color: '#cf1d51'
        },
        legend: {//los simbolos de lo que es cada color de la grafica
          labels: {
            // This more specific font property overrides the global property
            font: {
              size: 15,
-             family: 'Consolas',
+             family: 'Fredoka One',
            },
            color: 'black'
          },
@@ -53,7 +53,7 @@ export class GraficaGeneroComponent implements OnInit {
              color: 'rgb(72, 0, 75)',
              font: {
                size: 18,
-               family: 'Alegrian',
+               family: 'Fredoka One',
                weight: 'bold'
              }
            },
@@ -62,7 +62,7 @@ export class GraficaGeneroComponent implements OnInit {
              text:'Numero de empleados del sistema',
              color: 'rgb(72, 72, 72)',
              font: {
-               family: 'Verbana',
+               family: 'Fredoka One',
                size: 18,
                weight: 'bold'
              }
@@ -73,7 +73,7 @@ export class GraficaGeneroComponent implements OnInit {
            display: true,
            text: 'Genero',
            font: {
-             family: 'Verbana',
+             family: 'Fredoka One',
              size: 18,
              weight: 'bold'
            },
@@ -83,7 +83,7 @@ export class GraficaGeneroComponent implements OnInit {
            color: 'rgb(72, 0, 75)',
            font: {
              size: 18,
-             family: 'Alegrian',
+             family: 'Fredoka One',
              weight: 'bold'
            }
          },
@@ -125,8 +125,8 @@ export class GraficaGeneroComponent implements OnInit {
    }
    rellenar(){
     this.barChartData= [
-      {data: [this.array[1].total], label: 'Hombres', backgroundColor:'rgba(115, 0, 147, 0.564)', borderColor: 'rgb(62, 2, 79)', borderWidth: this.ancho, type: this.barChartType, borderRadius: this.radius},
-      {data: [this.array[0].total], label: 'Mujeres', backgroundColor:'rgba(122, 85, 0, 0.674)', borderColor: 'rgba(69, 49, 0, 0.981)', borderWidth: this.ancho, type: this.barChartType, borderRadius: this.radius},    
+      {data: [this.array[1].total], label: 'Hombres', backgroundColor:'rgba(115, 0, 147)', borderColor: 'rgb(62, 2, 79)', borderWidth: this.ancho, type: this.barChartType, borderRadius: this.radius},
+      {data: [this.array[0].total], label: 'Mujeres', backgroundColor:'rgba(122, 85, 0)', borderColor: 'rgba(69, 49, 0, 0.981)', borderWidth: this.ancho, type: this.barChartType, borderRadius: this.radius},    
     ];
    }
 }

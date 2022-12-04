@@ -127,8 +127,8 @@ export class PaginacionComponent implements OnInit {
       this.cont+=10;
    
       if(this.isprocedure){
-        this.procedure += `${this.cont})`;
-        this.request.consultas(this.procedure).subscribe((res:any)=>{
+        
+        this.request.consultas(this.procedure+`${this.cont})`).subscribe((res:any)=>{
           this.res =res;
           this.array.emit(res);
         });
@@ -147,8 +147,8 @@ export class PaginacionComponent implements OnInit {
       this.contpag--;
       this.cont -= 10;
     if(this.isprocedure){
-      this.procedure += `${this.cont})`;
-      this.request.consultas(this.procedure).subscribe((res:any)=>{
+      
+      this.request.consultas(this.procedure+`${this.cont})`).subscribe((res:any)=>{
         this.res =res;
         this.array.emit(res);
       });
@@ -164,8 +164,8 @@ export class PaginacionComponent implements OnInit {
   update(time:number){
     setTimeout(()=>{
       if(this.isprocedure){
-        this.procedure += `${this.cont})`;
-        this.request.consultas(this.procedure).subscribe((res:any)=>{
+        
+        this.request.consultas(this.procedure+`${this.cont})`).subscribe((res:any)=>{
           this.res =res;
           this.array.emit(res);
         });
