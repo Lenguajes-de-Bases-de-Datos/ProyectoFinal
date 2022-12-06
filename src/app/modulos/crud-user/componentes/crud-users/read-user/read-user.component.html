@@ -99,7 +99,7 @@
     <table class="table table-striped table">
         <thead>
           <tr>
-            <th scope="col" colspan="9" style="text-align: center;">{{title}}</th>
+            <th scope="col" colspan="11" style="text-align: center;">{{title}}</th>
             
           </tr>
           <tr>
@@ -111,7 +111,7 @@
             <th scope="col">Cargo</th>
             <th scope="col">Email</th>
             <th scope="col">Status</th>
-            <th scope="col">Activo</th>
+            <!-- <th scope="col">Activo</th> -->
             <th scope="col">Acción</th>
             <th scope="col">Más</th>
             <th scope="col">Actualizar</th>
@@ -128,7 +128,7 @@
             <td *ngIf="i!=10">{{obj.privilegios}}</td>
             <td *ngIf="i!=10">{{obj.email}}</td>
             <td *ngIf="i!=10">{{obj.status}}</td>
-            <td *ngIf="i!=10">{{obj.activo}}</td>
+            <!-- <td *ngIf="i!=10">{{obj.activo}}</td> -->
             <td *ngIf="i!=10">
               <a *ngIf="obj.status==1 else darAlta" class="icon-trash-4 delete" (click)="accion(obj.ID,obj.status)" (click)="paginacion.update(2000)"></a>
               <ng-template #darAlta>

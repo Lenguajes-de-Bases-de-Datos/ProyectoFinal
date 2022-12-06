@@ -38,7 +38,7 @@ export class MasVendidoComponent implements OnInit {
   ngOnInit(): void {
   }
   ngAfterViewInit(){
-    this.element?.reinicia();
+    this.buscar();
   }
   buscar(){
     if(this.option == "1"){
