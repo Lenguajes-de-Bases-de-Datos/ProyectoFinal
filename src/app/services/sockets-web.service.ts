@@ -24,7 +24,7 @@ export class SocketsWebService {
     //   }
     // });
     this.ioSocket = new Socket({
-      url:"http://localhost:3000",
+      url:"http://localhost:3004",
       options:{
         autoConnect:false,
         transports:["websocket"],
@@ -50,7 +50,7 @@ export class SocketsWebService {
     //   }
     // };
     this.ioSocket = new Socket({
-      url:"http://localhost:3000",
+      url:"http://localhost:3004",
       options:{
         autoConnect:false,
         transports:["websocket"],

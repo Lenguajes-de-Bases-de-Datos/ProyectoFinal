@@ -36,7 +36,7 @@
             
             <div class="form-group col-md-6">
                 <label for="inputAddress">Email</label>
-                <input [ngClass]="{'invalid':this.form.get('email')?.invalid,'valid':!this.form.get('email')?.invalid}" type="text" class="form-control" id="inputAddress" placeholder="example@gmail.com" formControlName="email">
+                <input [ngClass]="{'invalid':this.form.get('email')?.invalid,'valid':!this.form.get('email')?.invalid}" type="text" class="form-control" id="inputemail" placeholder="example@gmail.com" formControlName="email">
               </div>
 
           <div class="form-group col-md-6">
@@ -55,15 +55,15 @@
   
           <div class="form-group col-md-6">
             <label for="inputAddress">Salario</label>
-            <input [ngClass]="{'invalid':this.form.get('salario')?.invalid,'valid':!this.form.get('salario')?.invalid}" type="text" class="form-control" id="inputAddress" placeholder="0-9.0-9 (Obligatorio el . con deciamales)" formControlName="salario">
+            <input [ngClass]="{'invalid':this.form.get('salario')?.invalid,'valid':!this.form.get('salario')?.invalid}" type="text" class="form-control" id="input" placeholder="0-9.0-9 (Obligatorio el . con deciamales)" formControlName="salario">
           </div>
 
           <div class="form-group col-md-6">
             <label for="inputAddress">Genero</label>
             <div class="genders">
-              <input [ngClass]="{'invalid':this.form.get('genero')?.invalid,'valid':!this.form.get('genero')?.invalid}" type="radio" value="hombre" name="gender" class="form-control" id="m" placeholder="" formControlName="genero">
+              <input [ngClass]="{'invalid':this.form.get('genero')?.invalid,'valid':!this.form.get('genero')?.invalid}" type="radio" value="hombre" name="genero" class="form-control" id="m" placeholder="" formControlName="genero">
               <label for="m">Hombre</label><br>
-              <input [ngClass]="{'invalid':this.form.get('genero')?.invalid,'valid':!this.form.get('genero')?.invalid}" type="radio" value="mujer" name="gender" class="form-control" id="f" placeholder="" formControlName="genero">
+              <input [ngClass]="{'invalid':this.form.get('genero')?.invalid,'valid':!this.form.get('genero')?.invalid}" type="radio" value="mujer" name="genero" class="form-control" id="f" placeholder="" formControlName="genero">
               <label for="f">Mujer</label><br>
             </div>
           </div>

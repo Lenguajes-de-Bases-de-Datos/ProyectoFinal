@@ -90,6 +90,7 @@ buscar(){
       user = JSON.parse(user);
       let sql = `INSERT INTO compra (ID,ID_usuario,ID_prov,total,fecha,observaciones) `;
       sql += `VALUES(ID,${user.ID},${this.idprov},${this.total},now(),'${this.obs}')`;
+      console.log("sql + "+sql)
       let body= {
         sql:sql,
         table:'compra'

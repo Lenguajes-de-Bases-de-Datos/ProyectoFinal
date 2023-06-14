@@ -4,7 +4,7 @@ import { HttpClient,HttpHeaders, HttpParams } from '@angular/common/http';
   providedIn: 'root'
 })
 export class RequestsService {
-  path:string="http://localhost:3000";
+  path:string="http://localhost:3004";
   sucursal!:number;
   constructor(private request:HttpClient) { }
 
@@ -43,10 +43,10 @@ export class RequestsService {
   }
   logIn(params:any):any{
 
-    return this.request.post("http://localhost:3000/login",params,{responseType: 'json'});
+    return this.request.post("http://localhost:3004/login",params,{responseType: 'json'});
   }
   extender(body:any):any{
-    return this.request.post("http://localhost:3000/extender",body,{responseType: 'json'});
+    return this.request.post("http://localhost:3004/extender",body,{responseType: 'json'});
   }
   verifyToken(){
     

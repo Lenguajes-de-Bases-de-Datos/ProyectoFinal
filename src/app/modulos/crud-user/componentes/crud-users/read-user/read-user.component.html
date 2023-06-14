@@ -22,7 +22,12 @@
       
     </select>
   </div>
-<div class="input-group mb-3">
+
+  <app-options  [sql]="this.sql" (event)="cambio($event)" (event)="paginacion.reinicia()" #options></app-options>
+  <div class="table-responsive-lg">
+ 
+
+<!-- <div class="input-group mb-3">
 
   <div class="custom-control custom-radio custom-control-inline">
     <input type="radio" id="Todos" name="customRadioInline" class="custom-control-input" checked="true" (click)="filtro(1)" (click)="paginacion.update(1)" (click)="paginacion.reinicia()">
@@ -38,7 +43,7 @@
     <label class="custom-control-label" for="Inhabilitados">Inhabilitados</label>
   </div>
 
-</div>
+</div> -->
   <div [formGroup]="form">
     <div class="form-row">
       <div *ngIf="controlador == 1 " class="form-group col-md-6">

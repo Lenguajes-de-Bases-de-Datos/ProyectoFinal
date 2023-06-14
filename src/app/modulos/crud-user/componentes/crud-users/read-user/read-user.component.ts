@@ -115,6 +115,10 @@ export class ReadUserComponent implements OnInit {
       this.element?.reinicia();
     },100);
   }
+  cambio(sql:string){
+    this.sql = sql;
+    this.element?.update(1);
+  }
   change(){
     this.controlador = 0;
     this.form.controls['nombre'].setValue('example');

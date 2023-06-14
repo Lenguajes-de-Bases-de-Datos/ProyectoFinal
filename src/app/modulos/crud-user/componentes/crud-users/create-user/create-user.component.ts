@@ -55,8 +55,8 @@ export class CreateUserComponent implements OnInit {
     }else{
       gender="f";
     }
-    let mysql = `INSERT INTO usuario (ID,ID_sucursal,password,nombre,appat,apmat,privilegios,des,email,telefono,salario,genero,fecha)
-    VALUES(ID,${this.form.get('sucursal')?.value.charAt(0)},sha2('${this.form.get('password')?.value}',256),LOWER('${this.form.get('nombre')?.value}'),LOWER('${this.form.get('appat')?.value}'),
+    let mysql = `INSERT INTO usuario (ID_sucursal,password,nombre,appat,apmat,privilegios,des,email,telefono,salario,genero,fecha)
+    VALUES(${this.form.get('sucursal')?.value.charAt(0)},sha2('${this.form.get('password')?.value}',256),LOWER('${this.form.get('nombre')?.value}'),LOWER('${this.form.get('appat')?.value}'),
     LOWER('${this.form.get('apmat')?.value}'),'${this.form.get('privilegios')?.value.toLowerCase()}',LOWER('${this.form.get('desc')?.value}'),'${this.form.get('email')?.value}','${this.form.get('phone')?.value}',
     ${this.form.get('salario')?.value},'${gender}',now())`;
     let params = {
