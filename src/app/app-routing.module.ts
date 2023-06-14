@@ -46,6 +46,7 @@ import { GraficaGeneroComponent } from './modulos/crud-user/componentes/grafica-
 import { GraficaVentasComponent } from './modulos/crud-venta/componentes/grafica-ventas/grafica-ventas.component';
 import { MasVendidoComponent } from './modulos/crud-producto/componentes/mas-vendido/mas-vendido.component';
 import { MoreProveedorComponent } from './modulos/crud-proveedor/componentes/more-proveedor/more-proveedor.component';
+import { GestViewComponent } from './modulos/gest-view/gest-view.component';
 
 const routes: Routes = [
   {path:'portal', component:PortalComponent},
@@ -90,6 +91,7 @@ const routes: Routes = [
   {path:'grafica-genero',component:GraficaGeneroComponent,canActivate:[AuthGuardService]},
   {path:'grafica-ventas',component:GraficaVentasComponent,canActivate:[AuthGuardService]},
   {path:'user-venta',component:UserVentaComponent,canActivate:[AuthGuardService]},
+  {path:'gest-view', component:GestViewComponent},
   {path:'**',component:PortalComponent,canActivate:[AuthGuardService]},
   
 ];

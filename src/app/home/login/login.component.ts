@@ -35,6 +35,11 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  gestUser(){
+    this.messageEvent.emit(false);
+    this.router.navigate(['/gest-view']);
+  }
+
   ngOnInit(): void {
   }
   enter(){

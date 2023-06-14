@@ -1,0 +1,104 @@
+<div class="fondo">
+    <div class="wrapper">
+        
+        <div class="input-group-prepend">
+            <button   (click)="buscar(0)"  class="btnbuscar" type="button" >Productos</button>
+            <button   (click)="buscar(1)"  class="btnbuscar" type="button" >Categorias</button>
+            <button   (click)="buscar(2)"  class="btnbuscar" type="button" >Sucursales</button>
+        </div>
+       
+        <div class="view-producto" *ngIf="actionProd">
+
+            <div class="titulo">
+                <h1>Productos CrazyCandy</h1>
+            </div>
+            
+            <div class="fondo">
+                <div class="wrapper">
+                    <div class="card-columns">
+                        <div class="card" *ngFor="let obj of productos">
+                            <img [src]="'../../assets/productos/'+obj.imagen" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">{{obj.nombre}} {{obj.precio | currency:'MXN'}}</h5>
+                                <p class="card-text">{{obj.descripcion}}</p>
+                                
+                            </div>
+                        </div>
+                
+                    </div>
+                </div>
+                </div>  
+            
+
+       </div>
+      
+       <div class="view-categoria" *ngIf="actionCat">
+            <div class="titulo">
+                <h1>Categorías Producto CrazyCandy</h1>
+            </div>
+
+            <div class="table-responsive-lg">
+                <table class="table table-striped table-dark">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Pasillo Inicio</th>
+                        <th scope="col">Pasillo Fin</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let obj of categorias">
+                        
+                        <td>{{obj.ID}}</td>
+                        <td>{{obj.ncategoria}}</td>
+                        <td>{{obj.pasilloInicio}}</td>
+                        <td>{{obj.pasilloFin}}</td>
+                        </tr>
+                    
+                    </tbody>
+                    </table>
+            </div>
+            
+       </div>
+     
+       <div class="view-sucursales" *ngIf="actionSuc">
+            <div class="titulo">
+                <h1>Sucursales CrazyCandy</h1>
+            </div>
+            
+            <div class="table-responsive-lg">
+                <table class="table table-striped table-dark">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Ubicación</th>
+                        <th scope="col">Calle</th>
+                        <th scope="col">Número</th>
+                        <th scope="col">Telefono</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Horario de Apertura</th>
+                        <th scope="col">Horario de Cierre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let obj of sucursales">
+                        
+                        <td>{{obj.ID}}</td>
+                        <td>{{obj.id_ubicacion}}</td>
+                        <td>{{obj.calle}}</td>
+                        <td>{{obj.numero}}</td>
+                        <td>{{obj.telefono}}</td>
+                        <td>{{obj.email}}</td>
+                        <td>{{obj.horarioap}}</td>
+                        <td>{{obj.horariocierre}}</td>
+                        </tr>
+                    
+                    </tbody>
+                    </table>
+            </div>
+
+        </div>
+
+    </div>
+</div>

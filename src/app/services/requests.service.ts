@@ -79,4 +79,15 @@ export class RequestsService {
       return this.request.post(this.path+urlApi,params);
   }
   
+  viewProd():any{
+    return this.request.get("http://localhost:3004/vistaProducto");
+  }
+
+  viewCategoria():any{
+    return this.request.get("http://localhost:3004/vistaCategoria");
+  }
+
+  viewSucursal():any{
+    return this.request.get("http://localhost:3004/vistaSucursal");
+  }
 }

@@ -17,13 +17,15 @@ import { CrudProductoModule } from'./modulos/crud-producto/crud-producto.module'
 import { CrudCompraModule } from './modulos/crud-compra/crud-compra.module';
 import { CrudVentaModule } from './modulos/crud-venta/crud-venta.module';
 import { SendMessageComponent } from './send-message/send-message.component';
+import { GestViewComponent } from './modulos/gest-view/gest-view.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
-    SendMessageComponent
+    SendMessageComponent,
+    GestViewComponent
 
   ],
   imports: [
