@@ -39,13 +39,17 @@
     color: white;
     box-shadow: 3px 3px 3px rgba(51, 51, 51, 0.5);
     border-radius: 5px;
-    width: 90px;
-    font-size: 15px;
+    width: 140px;
+    font-size: 20px;
+    margin-right: 10px;
+    height: 45px;
+
 }
 
 .btnbuscar:hover{
     cursor: pointer;
     background: rgb(213, 66, 250);
+    box-shadow: inset 8px 8px 8px rgb(85, 5, 117);;
 }
 
 table{
@@ -63,6 +67,11 @@ h1{
 .titulo{
     margin: 10px;
     padding: 10px;
+}
+
+.btn_{
+    height: 45px;
+    justify-content: center;
 }
 
 .card{
